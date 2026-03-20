@@ -1,6 +1,9 @@
 cli:
   mise run cli
 
+beans-serve:
+  mise run beans-serve
+
 docs-serve:
   mise run docs-serve
 
