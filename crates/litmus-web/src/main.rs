@@ -3,6 +3,7 @@ mod scene_renderer;
 mod themes;
 
 use dioxus::prelude::*;
+use dioxus::document::eval;
 
 /// Global compare selection state — stores slugs of themes selected for comparison.
 #[derive(Clone, Default)]
@@ -552,6 +553,9 @@ fn ThemeDetail(slug: String) -> Element {
                             scene: scene.clone(),
                         }
                     }
+
+                    // Export section
+                    ExportButtons { theme: theme.clone() }
                 }
             }
         }
@@ -674,6 +678,135 @@ fn CompareBar() -> Element {
                     }
                 }
             }
+        }
+    }
+}
+
+/// Export format selector with copy-to-clipboard buttons.
+#[component]
+fn ExportButtons(theme: litmus_model::Theme) -> Element {
+    let mut active_format = use_signal(|| Option::<&'static str>::None);
+    let mut copied = use_signal(|| false);
+
+    let format = *active_format.read();
+    let is_copied = *copied.read();
+
+    let content = format.map(|f| match f {
+        "kitty" => litmus_model::export::to_kitty_conf(&theme),
+        "toml" => litmus_model::export::to_toml(&theme),
+        "nix" => litmus_model::export::to_nix(&theme),
+        _ => String::new(),
+    });
+
+    rsx! {
+        div {
+            style: "margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); \
+                    padding-top: 1.5rem;",
+
+            div {
+                style: "display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; \
+                        margin-bottom: 1rem;",
+
+                h3 {
+                    style: "font-size: 1rem; margin: 0;",
+                    "Export"
+                }
+
+                ExportFormatBtn {
+                    label: "kitty.conf",
+                    active: format == Some("kitty"),
+                    onclick: move |_| {
+                        active_format.set(Some("kitty"));
+                        copied.set(false);
+                    },
+                }
+                ExportFormatBtn {
+                    label: "TOML",
+                    active: format == Some("toml"),
+                    onclick: move |_| {
+                        active_format.set(Some("toml"));
+                        copied.set(false);
+                    },
+                }
+                ExportFormatBtn {
+                    label: "Nix",
+                    active: format == Some("nix"),
+                    onclick: move |_| {
+                        active_format.set(Some("nix"));
+                        copied.set(false);
+                    },
+                }
+
+                // Share link
+                button {
+                    class: "export-btn",
+                    onclick: move |_| {
+                        // Copy current URL to clipboard
+                        let js = "navigator.clipboard.writeText(window.location.href)";
+                        eval(js);
+                        copied.set(true);
+                    },
+                    "Copy Link"
+                }
+
+                if is_copied {
+                    span {
+                        style: "font-size: 0.75rem; color: #a6e3a1;",
+                        "Copied!"
+                    }
+                }
+            }
+
+            if let Some(text) = &content {
+                div {
+                    style: "position: relative;",
+
+                    button {
+                        class: "export-copy-btn",
+                        onclick: {
+                            let text = text.clone();
+                            move |_| {
+                                let escaped = text.replace('\\', "\\\\")
+                                    .replace('`', "\\`")
+                                    .replace('$', "\\$");
+                                let js = format!("navigator.clipboard.writeText(`{escaped}`)");
+                                eval(&js);
+                                copied.set(true);
+                            }
+                        },
+                        if is_copied { "Copied!" } else { "Copy" }
+                    }
+
+                    pre {
+                        class: "mono",
+                        style: "background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 0.5rem; \
+                                overflow-x: auto; font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.1);",
+                        "{text}"
+                    }
+                }
+            }
+        }
+    }
+}
+
+#[component]
+fn ExportFormatBtn(
+    label: &'static str,
+    active: bool,
+    onclick: EventHandler<MouseEvent>,
+) -> Element {
+    let style = if active {
+        "background: rgba(122, 162, 247, 0.2); color: #7aa2f7; border-color: #7aa2f7;"
+    } else {
+        "background: transparent; color: inherit; border-color: rgba(255,255,255,0.15);"
+    };
+
+    rsx! {
+        button {
+            class: "export-btn",
+            style: "{style}",
+            onclick: move |evt| onclick.call(evt),
+            "{label}"
         }
     }
 }
@@ -883,8 +1016,19 @@ fn CompareThemes(slugs: String) -> Element {
                             div {
                                 style: "min-width: 250px;",
                                 div {
-                                    style: "font-size: 0.8rem; margin-bottom: 0.25rem; opacity: 0.7;",
-                                    "{theme.name}"
+                                    style: "display: flex; justify-content: space-between; \
+                                            align-items: center; margin-bottom: 0.25rem;",
+                                    span {
+                                        style: "font-size: 0.8rem; opacity: 0.7;",
+                                        "{theme.name}"
+                                    }
+                                    Link {
+                                        to: Route::ThemeDetail {
+                                            slug: theme_slug(&theme.name),
+                                        },
+                                        style: "font-size: 0.7rem; color: #a6e3a1; text-decoration: none;",
+                                        "Choose"
+                                    }
                                 }
                                 scene_renderer::SceneView {
                                     theme: theme.clone(),
