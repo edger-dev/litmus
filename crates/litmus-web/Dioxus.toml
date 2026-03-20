@@ -11,3 +11,7 @@ watch_path = ["src", "assets"]
 
 [web.resource]
 dev.script = []
+dev.style = ["assets/style.css"]
+
+[web.resource.style]
+style = ["assets/style.css"]

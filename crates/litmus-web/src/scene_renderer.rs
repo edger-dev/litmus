@@ -8,9 +8,7 @@ pub fn SceneView(theme: Theme, scene: Scene) -> Element {
     let bg = theme.background.to_hex();
     let fg = theme.foreground.to_hex();
     let container_style = format!(
-        "background-color: {bg}; color: {fg}; font-family: monospace; \
-         padding: 1rem; border-radius: 0.5rem; overflow-x: auto; \
-         line-height: 1.4; white-space: pre;"
+        "background-color: {bg}; color: {fg};"
     );
 
     rsx! {
@@ -87,7 +85,6 @@ pub fn AllScenesView(theme: Theme) -> Element {
 
     rsx! {
         div { class: "scenes-container",
-            style: "display: flex; flex-direction: column; gap: 1.5rem;",
             for scene in scenes {
                 SceneView { key: "{scene.id}", theme: theme.clone(), scene: scene }
             }

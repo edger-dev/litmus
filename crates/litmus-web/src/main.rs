@@ -18,7 +18,10 @@ enum Route {
 
 #[component]
 fn App() -> Element {
-    rsx! { Router::<Route> {} }
+    rsx! {
+        document::Link { rel: "stylesheet", href: asset!("assets/style.css") }
+        Router::<Route> {}
+    }
 }
 
 /// Shared app shell: nav header + content area.
@@ -29,27 +32,19 @@ fn Shell() -> Element {
             style: "min-height: 100vh; background: #1a1b26; color: #c0caf5; \
                     font-family: system-ui, -apple-system, sans-serif;",
 
-            // Nav header
-            nav {
-                style: "border-bottom: 1px solid #33467c; padding: 0.75rem 2rem; \
-                        display: flex; align-items: center; gap: 1.5rem;",
-
+            nav { class: "nav",
                 Link {
                     to: Route::ThemeList {},
-                    style: "text-decoration: none; color: #c0caf5; font-size: 1.25rem; \
-                            font-weight: bold; letter-spacing: 0.02em;",
+                    style: "font-size: 1.25rem; font-weight: bold; letter-spacing: 0.02em;",
                     "litmus"
                 }
-
                 span {
                     style: "font-size: 0.85rem; opacity: 0.6;",
                     "terminal color theme previewer"
                 }
             }
 
-            // Page content
-            div {
-                style: "max-width: 1100px; margin: 0 auto; padding: 2rem;",
+            div { class: "content",
                 Outlet::<Route> {}
             }
         }
@@ -68,10 +63,7 @@ fn ThemeList() -> Element {
                 "Themes"
             }
 
-            div {
-                style: "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); \
-                        gap: 1rem;",
-
+            div { class: "theme-grid",
                 for theme in &all_themes {
                     ThemeCard { theme: theme.clone() }
                 }
@@ -94,24 +86,19 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
             style: "text-decoration: none; color: inherit;",
 
             div {
-                style: "background: {bg}; color: {fg}; border-radius: 0.5rem; \
-                        padding: 1rem; border: 1px solid #33467c; \
-                        transition: transform 0.15s ease; cursor: pointer;",
-                onmouseenter: |_| {},
+                class: "theme-card",
+                style: "background: {bg}; color: {fg};",
 
-                // Theme name
                 div {
                     style: "font-weight: bold; margin-bottom: 0.75rem; font-size: 0.95rem;",
                     "{theme.name}"
                 }
 
-                // Color swatches row
-                div {
-                    style: "display: flex; gap: 3px;",
+                div { class: "swatch-row",
                     for color in ansi.iter() {
                         div {
-                            style: "width: 20px; height: 20px; border-radius: 3px; \
-                                    background: {color.to_hex()};",
+                            class: "swatch",
+                            style: "background: {color.to_hex()};",
                         }
                     }
                 }
@@ -136,7 +123,6 @@ fn ThemeDetail(slug: String) -> Element {
 
             rsx! {
                 div {
-                    // Back link
                     div {
                         style: "margin-bottom: 1.5rem;",
                         Link {
@@ -146,7 +132,6 @@ fn ThemeDetail(slug: String) -> Element {
                         }
                     }
 
-                    // Theme header
                     h2 {
                         style: "font-size: 1.3rem; margin-bottom: 0.5rem;",
                         "{theme.name}"
@@ -154,8 +139,8 @@ fn ThemeDetail(slug: String) -> Element {
 
                     // Color palette
                     div {
-                        style: "background: {bg}; color: {fg}; border-radius: 0.5rem; \
-                                padding: 1rem; margin-bottom: 1.5rem; border: 1px solid #33467c;",
+                        class: "color-palette",
+                        style: "background: {bg}; color: {fg};",
 
                         div {
                             style: "font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; \
@@ -163,10 +148,7 @@ fn ThemeDetail(slug: String) -> Element {
                             "Color Palette"
                         }
 
-                        // Special colors
-                        div {
-                            style: "display: flex; gap: 0.5rem; margin-bottom: 0.75rem; \
-                                    flex-wrap: wrap;",
+                        div { class: "special-colors",
                             ColorSwatch { label: "bg", color: theme.background.to_hex() }
                             ColorSwatch { label: "fg", color: theme.foreground.to_hex() }
                             ColorSwatch { label: "cursor", color: theme.cursor.to_hex() }
@@ -174,15 +156,11 @@ fn ThemeDetail(slug: String) -> Element {
                             ColorSwatch { label: "sel fg", color: theme.selection_foreground.to_hex() }
                         }
 
-                        // ANSI colors
-                        div {
-                            style: "display: flex; gap: 3px; flex-wrap: wrap;",
+                        div { class: "swatch-row",
                             for (i, color) in theme.ansi.as_array().iter().enumerate() {
                                 div {
-                                    style: "width: 32px; height: 32px; border-radius: 4px; \
-                                            background: {color.to_hex()}; display: flex; \
-                                            align-items: center; justify-content: center; \
-                                            font-size: 0.6rem; color: {fg};",
+                                    class: "swatch-lg mono",
+                                    style: "background: {color.to_hex()}; color: {fg};",
                                     title: "{color.to_hex()}",
                                     "{i}"
                                 }
@@ -190,7 +168,6 @@ fn ThemeDetail(slug: String) -> Element {
                         }
                     }
 
-                    // Scene previews
                     scene_renderer::AllScenesView { theme: theme }
                 }
             }
@@ -214,12 +191,10 @@ fn ThemeDetail(slug: String) -> Element {
 #[component]
 fn ColorSwatch(label: String, color: String) -> Element {
     rsx! {
-        div {
-            style: "display: flex; align-items: center; gap: 0.3rem; \
-                    font-size: 0.75rem; font-family: monospace;",
+        div { class: "color-label",
             div {
-                style: "width: 16px; height: 16px; border-radius: 3px; \
-                        background: {color}; border: 1px solid rgba(255,255,255,0.2);",
+                class: "color-chip",
+                style: "background: {color};",
             }
             span { "{label}" }
         }
