@@ -374,8 +374,38 @@ fn ThemeDetail(slug: String) -> Element {
                 &theme.foreground, &theme.background,
             );
 
+            let scene_count = scenes.len();
+            let mut compare_sel = use_context::<Signal<CompareSelection>>();
+            let detail_slug = this_slug.clone();
+
             rsx! {
                 div {
+                    tabindex: "0",
+                    autofocus: true,
+                    style: "outline: none;",
+                    onkeydown: move |evt: Event<KeyboardData>| {
+                        match evt.key() {
+                            Key::ArrowLeft => {
+                                if tab_idx > 0 {
+                                    active_tab.set(tab_idx - 1);
+                                }
+                            }
+                            Key::ArrowRight => {
+                                if tab_idx + 1 < scene_count {
+                                    active_tab.set(tab_idx + 1);
+                                }
+                            }
+                            Key::Character(ref c) if c == "c" => {
+                                let mut sel = compare_sel.write();
+                                if let Some(pos) = sel.0.iter().position(|s| s == &detail_slug) {
+                                    sel.0.remove(pos);
+                                } else if sel.0.len() < MAX_COMPARE {
+                                    sel.0.push(detail_slug.clone());
+                                }
+                            }
+                            _ => {}
+                        }
+                    },
                     // Breadcrumb + actions
                     div {
                         style: "margin-bottom: 1.5rem; display: flex; gap: 1.5rem;",
@@ -497,13 +527,22 @@ fn ThemeDetail(slug: String) -> Element {
                     }
 
                     // Scene tabs
-                    div { class: "scene-tabs",
-                        for (i, scene) in scenes.iter().enumerate() {
-                            button {
-                                class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
-                                onclick: move |_| active_tab.set(i),
-                                "{scene.name}"
+                    div {
+                        style: "display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; \
+                                margin-bottom: 1rem;",
+                        div { class: "scene-tabs",
+                            for (i, scene) in scenes.iter().enumerate() {
+                                button {
+                                    class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
+                                    onclick: move |_| active_tab.set(i),
+                                    "{scene.name}"
+                                }
                             }
+                        }
+                        span {
+                            class: "mono",
+                            style: "font-size: 0.65rem; opacity: 0.35; margin-left: auto;",
+                            "← → navigate · c compare"
                         }
                     }
 
