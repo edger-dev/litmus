@@ -138,8 +138,11 @@ fn ThemeList() -> Element {
 fn ThemeCard(theme: litmus_model::Theme) -> Element {
     let bg = theme.background.to_hex();
     let fg = theme.foreground.to_hex();
-    let slug = theme.name.to_lowercase().replace(' ', "-");
+    let slug = theme_slug(&theme.name);
     let ansi = theme.ansi.as_array();
+    let is_light = litmus_model::contrast::relative_luminance(&theme.background) > 0.5;
+    let variant = if is_light { "light" } else { "dark" };
+    let fg_bg_ratio = litmus_model::contrast::contrast_ratio(&theme.foreground, &theme.background);
 
     rsx! {
         Link {
@@ -151,8 +154,16 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
                 style: "background: {bg}; color: {fg};",
 
                 div {
-                    style: "font-weight: bold; margin-bottom: 0.75rem; font-size: 0.95rem;",
-                    "{theme.name}"
+                    style: "display: flex; justify-content: space-between; align-items: baseline; \
+                            margin-bottom: 0.75rem;",
+                    span {
+                        style: "font-weight: bold; font-size: 0.95rem;",
+                        "{theme.name}"
+                    }
+                    span {
+                        style: "font-size: 0.7rem; opacity: 0.6;",
+                        "{variant} {fg_bg_ratio:.1}:1"
+                    }
                 }
 
                 div { class: "swatch-row",

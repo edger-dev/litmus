@@ -39,6 +39,8 @@ body {
   overflow-x: auto;
   white-space: pre;
   tab-size: 4;
+  /* Visible border on both light and dark scene backgrounds */
+  border: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 /* Responsive scene scaling on small screens */
@@ -53,7 +55,9 @@ body {
 .theme-card {
   border-radius: 0.5rem;
   padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Double border for visibility on both light and dark backgrounds */
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
 }
