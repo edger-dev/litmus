@@ -282,7 +282,7 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
 
     rsx! {
         Link {
-            to: Route::ThemeDetail { slug: slug },
+            to: Route::ThemeDetail { slug },
             style: "text-decoration: none; color: inherit;",
 
             div {
@@ -330,11 +330,13 @@ static ANSI_NAMES: &[&str] = &[
     "bright blue", "bright magenta", "bright cyan", "bright white",
 ];
 
-/// Single theme detail page.
+/// Single theme detail page with tabbed scene navigation.
 #[component]
 fn ThemeDetail(slug: String) -> Element {
     let all_themes = themes::load_embedded_themes();
     let theme = all_themes.iter().find(|t| theme_slug(&t.name) == slug);
+    let mut active_tab = use_signal(|| 0usize);
+    let mut palette_expanded = use_signal(|| false);
 
     match theme {
         Some(theme) => {
@@ -342,8 +344,11 @@ fn ThemeDetail(slug: String) -> Element {
             let bg = theme.background.to_hex();
             let fg = theme.foreground.to_hex();
             let this_slug = theme_slug(&theme.name);
+            let scenes = litmus_model::scenes::all_scenes();
+            let tab_idx = (*active_tab.read()).min(scenes.len().saturating_sub(1));
+            let expanded = *palette_expanded.read();
 
-            // Pick a default comparison partner (next theme in list, wrapping)
+            // Pick a default comparison partner
             let compare_partner = all_themes.iter()
                 .find(|t| theme_slug(&t.name) != this_slug)
                 .map(|t| theme_slug(&t.name))
@@ -357,6 +362,7 @@ fn ThemeDetail(slug: String) -> Element {
 
             rsx! {
                 div {
+                    // Breadcrumb + actions
                     div {
                         style: "margin-bottom: 1.5rem; display: flex; gap: 1.5rem;",
                         Link {
@@ -374,89 +380,125 @@ fn ThemeDetail(slug: String) -> Element {
                         }
                     }
 
-                    h2 {
-                        style: "font-size: 1.3rem; margin-bottom: 0.5rem;",
-                        "{theme.name}"
-                    }
-
-                    // Contrast summary
+                    // Theme header with inline metadata
                     div {
-                        style: "margin-bottom: 1.5rem; font-size: 0.85rem;",
-
-                        span {
-                            style: "opacity: 0.7; margin-right: 0.5rem;",
-                            "fg/bg contrast: "
+                        style: "display: flex; align-items: baseline; gap: 1rem; \
+                                margin-bottom: 1rem; flex-wrap: wrap;",
+                        h2 {
+                            style: "font-size: 1.3rem;",
+                            "{theme.name}"
                         }
                         span {
                             class: "mono",
-                            style: if fg_bg_ratio >= litmus_model::contrast::WCAG_AA_NORMAL {
-                                "color: #a6e3a1;"
+                            style: "font-size: 0.8rem; opacity: 0.7;",
+                            if fg_bg_ratio >= litmus_model::contrast::WCAG_AA_NORMAL {
+                                span { style: "color: #a6e3a1;", "{fg_bg_ratio:.1}:1" }
                             } else {
-                                "color: #f38ba8;"
-                            },
-                            "{fg_bg_ratio:.1}:1"
-                        }
-
-                        if issues.is_empty() {
-                            span {
-                                style: "margin-left: 1.5rem; color: #a6e3a1;",
-                                "All scene colors pass WCAG AA"
+                                span { style: "color: #f38ba8;", "{fg_bg_ratio:.1}:1" }
                             }
-                        } else {
+                        }
+                        if !issues.is_empty() {
                             span {
-                                style: "margin-left: 1.5rem; color: #f38ba8;",
-                                "{issues.len()} contrast issue(s) in scene previews"
+                                style: "font-size: 0.8rem; color: #f38ba8;",
+                                "{issues.len()} contrast issue(s)"
                             }
                         }
                     }
 
-                    // Color palette
+                    // Compact color palette (expandable)
                     div {
                         class: "color-palette",
-                        style: "background: {bg}; color: {fg};",
+                        style: "background: {bg}; color: {fg}; margin-bottom: 1.5rem;",
 
+                        // Compact: single row of all colors
                         div {
-                            style: "font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; \
-                                    opacity: 0.7;",
-                            "Color Palette"
-                        }
+                            style: "display: flex; align-items: center; gap: 0.5rem; \
+                                    cursor: pointer;",
+                            onclick: move |_| palette_expanded.set(!expanded),
 
-                        div { class: "special-colors",
+                            // Special colors
                             ColorSwatch { label: "bg", color: theme.background.to_hex() }
                             ColorSwatch { label: "fg", color: theme.foreground.to_hex() }
-                            ColorSwatch { label: "cursor", color: theme.cursor.to_hex() }
-                            ColorSwatch { label: "sel bg", color: theme.selection_background.to_hex() }
-                            ColorSwatch { label: "sel fg", color: theme.selection_foreground.to_hex() }
+                            ColorSwatch { label: "cur", color: theme.cursor.to_hex() }
+
+                            // Divider
+                            span { style: "opacity: 0.2;", "|" }
+
+                            // ANSI strip
+                            div { class: "swatch-row",
+                                for color in theme.ansi.as_array().iter() {
+                                    div {
+                                        class: "swatch",
+                                        style: "background: {color.to_hex()};",
+                                        title: "{color.to_hex()}",
+                                    }
+                                }
+                            }
+
+                            span {
+                                class: "mono",
+                                style: "font-size: 0.7rem; opacity: 0.5; margin-left: auto;",
+                                if expanded { "collapse" } else { "expand" }
+                            }
                         }
 
-                        // ANSI colors with names
-                        div {
-                            style: "display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.5rem; \
-                                    margin-top: 0.5rem;",
-                            for (i, color) in theme.ansi.as_array().iter().enumerate() {
+                        // Expanded: full detail
+                        if expanded {
+                            div {
+                                style: "margin-top: 1rem;",
+
+                                div { class: "special-colors",
+                                    style: "margin-bottom: 0.75rem;",
+                                    ColorSwatch { label: "bg", color: theme.background.to_hex() }
+                                    ColorSwatch { label: "fg", color: theme.foreground.to_hex() }
+                                    ColorSwatch { label: "cursor", color: theme.cursor.to_hex() }
+                                    ColorSwatch { label: "sel bg", color: theme.selection_background.to_hex() }
+                                    ColorSwatch { label: "sel fg", color: theme.selection_foreground.to_hex() }
+                                }
+
                                 div {
-                                    style: "text-align: center;",
-                                    div {
-                                        class: "swatch-lg mono",
-                                        style: "background: {color.to_hex()}; color: {fg}; \
-                                                width: 100%; margin-bottom: 0.25rem;",
-                                        title: "{color.to_hex()}",
-                                        "{i}"
-                                    }
-                                    div {
-                                        class: "mono",
-                                        style: "font-size: 0.55rem; opacity: 0.7; \
-                                                white-space: nowrap; overflow: hidden; \
-                                                text-overflow: ellipsis;",
-                                        "{ANSI_NAMES[i]}"
+                                    style: "display: grid; grid-template-columns: repeat(8, 1fr); \
+                                            gap: 0.5rem;",
+                                    for (i, color) in theme.ansi.as_array().iter().enumerate() {
+                                        div {
+                                            style: "text-align: center;",
+                                            div {
+                                                class: "swatch-lg mono",
+                                                style: "background: {color.to_hex()}; color: {fg}; \
+                                                        width: 100%; margin-bottom: 0.25rem;",
+                                                title: "{color.to_hex()}",
+                                                "{i}"
+                                            }
+                                            div {
+                                                class: "mono",
+                                                style: "font-size: 0.55rem; opacity: 0.7;",
+                                                "{ANSI_NAMES[i]}"
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
 
-                    // Scene previews
-                    scene_renderer::AllScenesView { theme: theme }
+                    // Scene tabs
+                    div { class: "scene-tabs",
+                        for (i, scene) in scenes.iter().enumerate() {
+                            button {
+                                class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
+                                onclick: move |_| active_tab.set(i),
+                                "{scene.name}"
+                            }
+                        }
+                    }
+
+                    // Active scene
+                    if let Some(scene) = scenes.get(tab_idx) {
+                        scene_renderer::SceneView {
+                            theme: theme.clone(),
+                            scene: scene.clone(),
+                        }
+                    }
                 }
             }
         }
