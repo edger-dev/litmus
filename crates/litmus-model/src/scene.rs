@@ -132,7 +132,7 @@ impl SceneLine {
 }
 
 /// A terminal scene: a sequence of styled lines with metadata.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Scene {
     /// Machine-readable identifier (e.g. "git-diff").
     pub id: String,

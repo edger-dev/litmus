@@ -36,7 +36,7 @@ impl Color {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct AnsiColors {
     pub black: Color,
     pub red: Color,
@@ -78,7 +78,7 @@ impl AnsiColors {
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Theme {
     pub name: String,
     pub background: Color,
