@@ -72,7 +72,16 @@ fn theme_passes_filter(
     theme: &litmus_model::Theme,
     variant: VariantFilter,
     good_contrast_only: bool,
+    query: &str,
 ) -> bool {
+    if !query.is_empty() {
+        let q = query.to_lowercase();
+        let name = theme.name.to_lowercase();
+        let fam = family::theme_family(&theme.name).to_lowercase();
+        if !name.contains(&q) && !fam.contains(&q) {
+            return false;
+        }
+    }
     match variant {
         VariantFilter::All => {}
         VariantFilter::Dark => {
@@ -103,13 +112,15 @@ fn ThemeList() -> Element {
 
     let mut variant_filter = use_signal(|| VariantFilter::All);
     let mut good_contrast = use_signal(|| false);
+    let mut search_query = use_signal(String::new);
 
     let variant = *variant_filter.read();
     let contrast_on = *good_contrast.read();
+    let query = search_query.read().clone();
 
     let filtered: Vec<litmus_model::Theme> = all_themes
         .iter()
-        .filter(|t| theme_passes_filter(t, variant, contrast_on))
+        .filter(|t| theme_passes_filter(t, variant, contrast_on, &query))
         .cloned()
         .collect();
     let families = family::group_by_family(&filtered);
@@ -164,6 +175,17 @@ fn ThemeList() -> Element {
 
                 // Filter controls
                 div { class: "filter-bar",
+                    // Search
+                    input {
+                        class: "search-input",
+                        r#type: "text",
+                        placeholder: "Search themes...",
+                        value: "{query}",
+                        oninput: move |evt: Event<FormData>| {
+                            search_query.set(evt.value());
+                        },
+                    }
+
                     // Variant filter
                     FilterButton {
                         label: "All",

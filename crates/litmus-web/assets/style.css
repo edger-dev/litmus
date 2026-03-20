@@ -103,6 +103,27 @@ body {
   background: rgba(122, 162, 247, 0.1);
 }
 
+.search-input {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  width: 10rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.search-input:focus {
+  border-color: #7aa2f7;
+}
+
+.search-input::placeholder {
+  color: rgba(192, 202, 245, 0.4);
+}
+
 /* Theme cards */
 .theme-card {
   border-radius: 0.5rem;
