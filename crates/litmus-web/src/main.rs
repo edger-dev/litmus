@@ -1,3 +1,4 @@
+mod family;
 mod scene_renderer;
 mod themes;
 
@@ -51,10 +52,11 @@ fn Shell() -> Element {
     }
 }
 
-/// Theme listing page.
+/// Theme listing page grouped by family.
 #[component]
 fn ThemeList() -> Element {
     let all_themes = themes::load_embedded_themes();
+    let families = family::group_by_family(&all_themes);
 
     rsx! {
         div {
@@ -63,9 +65,20 @@ fn ThemeList() -> Element {
                 "Themes"
             }
 
-            div { class: "theme-grid",
-                for theme in &all_themes {
-                    ThemeCard { theme: theme.clone() }
+            for fam in &families {
+                div {
+                    style: "margin-bottom: 2rem;",
+
+                    h3 {
+                        style: "font-size: 1rem; margin-bottom: 0.75rem; opacity: 0.8;",
+                        "{fam.name}"
+                    }
+
+                    div { class: "theme-grid",
+                        for theme in &fam.themes {
+                            ThemeCard { theme: theme.clone() }
+                        }
+                    }
                 }
             }
         }
