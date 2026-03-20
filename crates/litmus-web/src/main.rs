@@ -44,16 +44,8 @@ fn Shell() -> Element {
                     "litmus"
                 }
                 span {
-                    style: "font-size: 0.85rem; opacity: 0.6; margin-right: auto;",
+                    style: "font-size: 0.85rem; opacity: 0.6;",
                     "terminal color theme previewer"
-                }
-                for scene in litmus_model::scenes::all_scenes().iter() {
-                    Link {
-                        to: Route::SceneAcrossThemes { scene_id: scene.id.clone() },
-                        style: "font-size: 0.8rem; opacity: 0.7; text-decoration: none; \
-                                color: inherit;",
-                        "{scene.name}"
-                    }
                 }
             }
 
