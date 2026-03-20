@@ -120,6 +120,12 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
     }
 }
 
+static ANSI_NAMES: &[&str] = &[
+    "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
+    "bright black", "bright red", "bright green", "bright yellow",
+    "bright blue", "bright magenta", "bright cyan", "bright white",
+];
+
 /// Single theme detail page.
 #[component]
 fn ThemeDetail(slug: String) -> Element {
@@ -133,6 +139,12 @@ fn ThemeDetail(slug: String) -> Element {
             let theme = theme.clone();
             let bg = theme.background.to_hex();
             let fg = theme.foreground.to_hex();
+
+            // Contrast validation
+            let issues = litmus_model::contrast::validate_theme_readability(&theme);
+            let fg_bg_ratio = litmus_model::contrast::contrast_ratio(
+                &theme.foreground, &theme.background,
+            );
 
             rsx! {
                 div {
@@ -148,6 +160,37 @@ fn ThemeDetail(slug: String) -> Element {
                     h2 {
                         style: "font-size: 1.3rem; margin-bottom: 0.5rem;",
                         "{theme.name}"
+                    }
+
+                    // Contrast summary
+                    div {
+                        style: "margin-bottom: 1.5rem; font-size: 0.85rem;",
+
+                        span {
+                            style: "opacity: 0.7; margin-right: 0.5rem;",
+                            "fg/bg contrast: "
+                        }
+                        span {
+                            class: "mono",
+                            style: if fg_bg_ratio >= litmus_model::contrast::WCAG_AA_NORMAL {
+                                "color: #a6e3a1;"
+                            } else {
+                                "color: #f38ba8;"
+                            },
+                            "{fg_bg_ratio:.1}:1"
+                        }
+
+                        if issues.is_empty() {
+                            span {
+                                style: "margin-left: 1.5rem; color: #a6e3a1;",
+                                "All scene colors pass WCAG AA"
+                            }
+                        } else {
+                            span {
+                                style: "margin-left: 1.5rem; color: #f38ba8;",
+                                "{issues.len()} contrast issue(s) in scene previews"
+                            }
+                        }
                     }
 
                     // Color palette
@@ -169,18 +212,33 @@ fn ThemeDetail(slug: String) -> Element {
                             ColorSwatch { label: "sel fg", color: theme.selection_foreground.to_hex() }
                         }
 
-                        div { class: "swatch-row",
+                        // ANSI colors with names
+                        div {
+                            style: "display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.5rem; \
+                                    margin-top: 0.5rem;",
                             for (i, color) in theme.ansi.as_array().iter().enumerate() {
                                 div {
-                                    class: "swatch-lg mono",
-                                    style: "background: {color.to_hex()}; color: {fg};",
-                                    title: "{color.to_hex()}",
-                                    "{i}"
+                                    style: "text-align: center;",
+                                    div {
+                                        class: "swatch-lg mono",
+                                        style: "background: {color.to_hex()}; color: {fg}; \
+                                                width: 100%; margin-bottom: 0.25rem;",
+                                        title: "{color.to_hex()}",
+                                        "{i}"
+                                    }
+                                    div {
+                                        class: "mono",
+                                        style: "font-size: 0.55rem; opacity: 0.7; \
+                                                white-space: nowrap; overflow: hidden; \
+                                                text-overflow: ellipsis;",
+                                        "{ANSI_NAMES[i]}"
+                                    }
                                 }
                             }
                         }
                     }
 
+                    // Scene previews
                     scene_renderer::AllScenesView { theme: theme }
                 }
             }
