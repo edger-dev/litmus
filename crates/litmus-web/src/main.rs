@@ -15,6 +15,8 @@ enum Route {
     ThemeList {},
     #[route("/theme/:slug")]
     ThemeDetail { slug: String },
+    #[route("/scene/:scene_id")]
+    SceneAcrossThemes { scene_id: String },
 }
 
 #[component]
@@ -40,8 +42,16 @@ fn Shell() -> Element {
                     "litmus"
                 }
                 span {
-                    style: "font-size: 0.85rem; opacity: 0.6;",
+                    style: "font-size: 0.85rem; opacity: 0.6; margin-right: auto;",
                     "terminal color theme previewer"
+                }
+                for scene in litmus_model::scenes::all_scenes().iter() {
+                    Link {
+                        to: Route::SceneAcrossThemes { scene_id: scene.id.clone() },
+                        style: "font-size: 0.8rem; opacity: 0.7; text-decoration: none; \
+                                color: inherit;",
+                        "{scene.name}"
+                    }
                 }
             }
 
@@ -268,6 +278,75 @@ fn ColorSwatch(label: String, color: String) -> Element {
                 style: "background: {color};",
             }
             span { "{label}" }
+        }
+    }
+}
+
+/// Scene-centric view: one scene rendered across all themes.
+#[component]
+fn SceneAcrossThemes(scene_id: String) -> Element {
+    let all_themes = themes::load_embedded_themes();
+    let scenes = litmus_model::scenes::all_scenes();
+    let scene = scenes.iter().find(|s| s.id == scene_id);
+
+    match scene {
+        Some(scene) => {
+            rsx! {
+                div {
+                    div {
+                        style: "margin-bottom: 1.5rem;",
+                        Link {
+                            to: Route::ThemeList {},
+                            style: "color: #7aa2f7; text-decoration: none; font-size: 0.9rem;",
+                            "< All themes"
+                        }
+                    }
+
+                    h2 {
+                        style: "font-size: 1.3rem; margin-bottom: 0.25rem;",
+                        "{scene.name}"
+                    }
+                    p {
+                        style: "font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;",
+                        "{scene.description}"
+                    }
+
+                    div { class: "scenes-container",
+                        for theme in &all_themes {
+                            div {
+                                div {
+                                    style: "font-size: 0.85rem; font-weight: bold; \
+                                            margin-bottom: 0.25rem;",
+                                    Link {
+                                        to: Route::ThemeDetail {
+                                            slug: theme.name.to_lowercase().replace(' ', "-"),
+                                        },
+                                        style: "color: #7aa2f7; text-decoration: none;",
+                                        "{theme.name}"
+                                    }
+                                }
+                                scene_renderer::SceneView {
+                                    theme: theme.clone(),
+                                    scene: scene.clone(),
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        None => {
+            rsx! {
+                div {
+                    h2 { "Scene not found" }
+                    p { "No scene matches \"{scene_id}\"." }
+                    Link {
+                        to: Route::ThemeList {},
+                        style: "color: #7aa2f7;",
+                        "Back to all themes"
+                    }
+                }
+            }
         }
     }
 }
