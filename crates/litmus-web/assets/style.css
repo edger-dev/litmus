@@ -208,6 +208,25 @@ body {
   }
 }
 
+/* Scene grid (scene-across-themes) */
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.scene-grid-card {
+  border-radius: 0.375rem;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .scene-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Compare grid */
 .compare-grid {
   display: grid;

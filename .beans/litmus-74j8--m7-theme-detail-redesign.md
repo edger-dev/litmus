@@ -1,12 +1,17 @@
 ---
 # litmus-74j8
 title: 'M7: Theme Detail Redesign'
-status: todo
+status: completed
 type: milestone
+priority: normal
 created_at: 2026-03-20T18:29:09Z
-updated_at: 2026-03-20T18:29:09Z
+updated_at: 2026-03-20T18:40:40Z
 blocked_by:
     - litmus-m8gs
 ---
 
 Restructure theme detail from vertical dump into focused interactive layout. Tabbed scenes, compact palette, compare accumulator, keyboard nav.
+
+## Summary of Changes
+
+All M7 tasks completed: tabbed scene navigation, expandable palette, compare accumulator with floating bar, and keyboard navigation.

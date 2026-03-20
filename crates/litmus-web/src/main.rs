@@ -834,7 +834,7 @@ fn CompareSelector(
     }
 }
 
-/// Scene-centric view: one scene rendered across all themes.
+/// Scene-centric view: one scene rendered across all themes in a grid.
 #[component]
 fn SceneAcrossThemes(scene_id: String) -> Element {
     let all_themes = themes::load_embedded_themes();
@@ -859,27 +859,47 @@ fn SceneAcrossThemes(scene_id: String) -> Element {
                         "{scene.name}"
                     }
                     p {
-                        style: "font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;",
+                        style: "font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem;",
                         "{scene.description}"
                     }
 
-                    div { class: "scenes-container",
+                    // Scene selector tabs
+                    div { class: "scene-tabs",
+                        style: "margin-bottom: 1.5rem;",
+                        for s in &scenes {
+                            Link {
+                                to: Route::SceneAcrossThemes { scene_id: s.id.clone() },
+                                class: if s.id == scene.id { "scene-tab scene-tab-active" } else { "scene-tab" },
+                                style: "text-decoration: none;",
+                                "{s.name}"
+                            }
+                        }
+                    }
+
+                    // Grid of all themes with compact scene rendering
+                    div { class: "scene-grid",
                         for theme in &all_themes {
-                            div {
+                            div { class: "scene-grid-card",
                                 div {
-                                    style: "font-size: 0.85rem; font-weight: bold; \
-                                            margin-bottom: 0.25rem;",
+                                    style: "display: flex; justify-content: space-between; \
+                                            align-items: center; margin-bottom: 0.25rem;",
                                     Link {
                                         to: Route::ThemeDetail {
-                                            slug: theme.name.to_lowercase().replace(' ', "-"),
+                                            slug: theme_slug(&theme.name),
                                         },
-                                        style: "color: #7aa2f7; text-decoration: none;",
+                                        style: "color: #7aa2f7; text-decoration: none; \
+                                                font-size: 0.8rem; font-weight: bold;",
                                         "{theme.name}"
+                                    }
+                                    CompareToggle {
+                                        slug: theme_slug(&theme.name),
+                                        name: theme.name.clone(),
                                     }
                                 }
                                 scene_renderer::SceneView {
                                     theme: theme.clone(),
                                     scene: scene.clone(),
+                                    compact: true,
                                 }
                             }
                         }
