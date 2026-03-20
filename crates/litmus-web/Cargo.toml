@@ -6,7 +6,7 @@ license.workspace = true
 
 [features]
 default = ["web"]
-web = ["dioxus/web"]
+web = ["dioxus/web", "dioxus/router"]
 
 [[bin]]
 name = "litmus-web"
