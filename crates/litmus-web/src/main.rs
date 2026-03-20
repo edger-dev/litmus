@@ -4,6 +4,12 @@ mod themes;
 
 use dioxus::prelude::*;
 
+/// Global compare selection state — stores slugs of themes selected for comparison.
+#[derive(Clone, Default)]
+struct CompareSelection(Vec<String>);
+
+const MAX_COMPARE: usize = 4;
+
 fn main() {
     dioxus::launch(App);
 }
@@ -23,6 +29,8 @@ enum Route {
 
 #[component]
 fn App() -> Element {
+    use_context_provider(|| Signal::new(CompareSelection::default()));
+
     rsx! {
         document::Link { rel: "stylesheet", href: asset!("assets/style.css") }
         Router::<Route> {}
@@ -52,6 +60,8 @@ fn Shell() -> Element {
             div { class: "content",
                 Outlet::<Route> {}
             }
+
+            CompareBar {}
         }
     }
 }
@@ -282,7 +292,7 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
 
     rsx! {
         Link {
-            to: Route::ThemeDetail { slug },
+            to: Route::ThemeDetail { slug: slug.clone() },
             style: "text-decoration: none; color: inherit;",
 
             div {
@@ -309,15 +319,19 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
                     max_lines: 5,
                 }
 
-                // Color swatches
-                div { class: "swatch-row",
-                    style: "margin-top: 0.5rem;",
-                    for color in ansi.iter() {
-                        div {
-                            class: "swatch",
-                            style: "background: {color.to_hex()};",
+                // Color swatches + compare
+                div {
+                    style: "display: flex; justify-content: space-between; align-items: center; \
+                            margin-top: 0.5rem;",
+                    div { class: "swatch-row",
+                        for color in ansi.iter() {
+                            div {
+                                class: "swatch",
+                                style: "background: {color.to_hex()};",
+                            }
                         }
                     }
+                    CompareToggle { slug, name: theme.name.clone() }
                 }
             }
         }
@@ -372,12 +386,13 @@ fn ThemeDetail(slug: String) -> Element {
                         }
                         Link {
                             to: Route::CompareThemes {
-                                left: this_slug,
+                                left: this_slug.clone(),
                                 right: compare_partner,
                             },
                             style: "color: #7aa2f7; text-decoration: none; font-size: 0.9rem;",
                             "Compare..."
                         }
+                        CompareToggle { slug: this_slug, name: theme.name.clone() }
                     }
 
                     // Theme header with inline metadata
@@ -527,6 +542,101 @@ fn ColorSwatch(label: String, color: String) -> Element {
                 style: "background: {color};",
             }
             span { "{label}" }
+        }
+    }
+}
+
+/// Button to add/remove a theme from the compare selection.
+#[component]
+fn CompareToggle(slug: String, name: String) -> Element {
+    let mut selection = use_context::<Signal<CompareSelection>>();
+    let is_selected = selection.read().0.contains(&slug);
+
+    let slug_for_click = slug.clone();
+    rsx! {
+        button {
+            class: if is_selected { "compare-toggle compare-toggle-active" } else { "compare-toggle" },
+            onclick: move |evt: Event<MouseData>| {
+                evt.stop_propagation();
+                let mut sel = selection.write();
+                if let Some(pos) = sel.0.iter().position(|s| s == &slug_for_click) {
+                    sel.0.remove(pos);
+                } else if sel.0.len() < MAX_COMPARE {
+                    sel.0.push(slug_for_click.clone());
+                }
+            },
+            if is_selected { "- Remove" } else { "+ Compare" }
+        }
+    }
+}
+
+/// Floating bar showing selected themes for comparison.
+#[component]
+fn CompareBar() -> Element {
+    let mut selection = use_context::<Signal<CompareSelection>>();
+    let sel = selection.read().clone();
+    let all_themes = themes::load_embedded_themes();
+
+    if sel.0.is_empty() {
+        return rsx! {};
+    }
+
+    let count = sel.0.len();
+    let can_compare = count >= 2;
+
+    rsx! {
+        div { class: "compare-bar",
+            div { class: "compare-bar-inner",
+                div {
+                    style: "display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;",
+                    span {
+                        style: "font-size: 0.85rem; font-weight: bold;",
+                        "Compare ({count})"
+                    }
+                    for slug in &sel.0 {
+                        {
+                            let name = all_themes.iter()
+                                .find(|t| theme_slug(&t.name) == *slug)
+                                .map(|t| t.name.clone())
+                                .unwrap_or_else(|| slug.clone());
+                            let slug_remove = slug.clone();
+                            rsx! {
+                                span { class: "compare-chip",
+                                    "{name}"
+                                    button {
+                                        class: "compare-chip-remove",
+                                        onclick: move |_| {
+                                            let mut sel = selection.write();
+                                            sel.0.retain(|s| s != &slug_remove);
+                                        },
+                                        "x"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                div {
+                    style: "display: flex; gap: 0.5rem;",
+                    if can_compare {
+                        Link {
+                            to: Route::CompareThemes {
+                                left: sel.0[0].clone(),
+                                right: sel.0[1].clone(),
+                            },
+                            class: "compare-bar-btn",
+                            "Go to Compare"
+                        }
+                    }
+                    button {
+                        class: "compare-bar-btn-clear",
+                        onclick: move |_| {
+                            selection.write().0.clear();
+                        },
+                        "Clear"
+                    }
+                }
+            }
         }
     }
 }
