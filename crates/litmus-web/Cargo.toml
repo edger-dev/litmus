@@ -1,0 +1,17 @@
+[package]
+name = "litmus-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]
+
+[[bin]]
+name = "litmus-web"
+path = "src/main.rs"
+
+[dependencies]
+litmus-model.workspace = true
+dioxus = "0.7"

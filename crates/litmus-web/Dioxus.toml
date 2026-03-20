@@ -1,0 +1,13 @@
+[application]
+name = "litmus-web"
+default_platform = "web"
+
+[web.app]
+title = "litmus"
+
+[web.watcher]
+reload_html = true
+watch_path = ["src", "assets"]
+
+[web.resource]
+dev.script = []

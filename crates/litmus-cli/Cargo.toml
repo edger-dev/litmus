@@ -1,0 +1,12 @@
+[package]
+name = "litmus-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "litmus"
+path = "src/main.rs"
+
+[dependencies]
+litmus-model.workspace = true
