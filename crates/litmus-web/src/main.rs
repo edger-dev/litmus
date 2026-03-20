@@ -17,6 +17,8 @@ enum Route {
     ThemeDetail { slug: String },
     #[route("/scene/:scene_id")]
     SceneAcrossThemes { scene_id: String },
+    #[route("/compare/:left/:right")]
+    CompareThemes { left: String, right: String },
 }
 
 #[component]
@@ -140,15 +142,20 @@ static ANSI_NAMES: &[&str] = &[
 #[component]
 fn ThemeDetail(slug: String) -> Element {
     let all_themes = themes::load_embedded_themes();
-    let theme = all_themes.iter().find(|t| {
-        t.name.to_lowercase().replace(' ', "-") == slug
-    });
+    let theme = all_themes.iter().find(|t| theme_slug(&t.name) == slug);
 
     match theme {
         Some(theme) => {
             let theme = theme.clone();
             let bg = theme.background.to_hex();
             let fg = theme.foreground.to_hex();
+            let this_slug = theme_slug(&theme.name);
+
+            // Pick a default comparison partner (next theme in list, wrapping)
+            let compare_partner = all_themes.iter()
+                .find(|t| theme_slug(&t.name) != this_slug)
+                .map(|t| theme_slug(&t.name))
+                .unwrap_or_default();
 
             // Contrast validation
             let issues = litmus_model::contrast::validate_theme_readability(&theme);
@@ -159,11 +166,19 @@ fn ThemeDetail(slug: String) -> Element {
             rsx! {
                 div {
                     div {
-                        style: "margin-bottom: 1.5rem;",
+                        style: "margin-bottom: 1.5rem; display: flex; gap: 1.5rem;",
                         Link {
                             to: Route::ThemeList {},
                             style: "color: #7aa2f7; text-decoration: none; font-size: 0.9rem;",
                             "< All themes"
+                        }
+                        Link {
+                            to: Route::CompareThemes {
+                                left: this_slug,
+                                right: compare_partner,
+                            },
+                            style: "color: #7aa2f7; text-decoration: none; font-size: 0.9rem;",
+                            "Compare..."
                         }
                     }
 
@@ -278,6 +293,160 @@ fn ColorSwatch(label: String, color: String) -> Element {
                 style: "background: {color};",
             }
             span { "{label}" }
+        }
+    }
+}
+
+fn theme_slug(name: &str) -> String {
+    name.to_lowercase().replace(' ', "-")
+}
+
+/// Side-by-side theme comparison.
+#[component]
+fn CompareThemes(left: String, right: String) -> Element {
+    let all_themes = themes::load_embedded_themes();
+    let scenes = litmus_model::scenes::all_scenes();
+
+    let left_theme = all_themes.iter().find(|t| theme_slug(&t.name) == left);
+    let right_theme = all_themes.iter().find(|t| theme_slug(&t.name) == right);
+
+    let (Some(left_theme), Some(right_theme)) = (left_theme, right_theme) else {
+        return rsx! {
+            div {
+                h2 { "Theme not found" }
+                p { "Could not find one or both themes." }
+                Link {
+                    to: Route::ThemeList {},
+                    style: "color: #7aa2f7;",
+                    "Back to all themes"
+                }
+            }
+        };
+    };
+
+    let left_theme = left_theme.clone();
+    let right_theme = right_theme.clone();
+
+    rsx! {
+        div {
+            div {
+                style: "margin-bottom: 1.5rem;",
+                Link {
+                    to: Route::ThemeList {},
+                    style: "color: #7aa2f7; text-decoration: none; font-size: 0.9rem;",
+                    "< All themes"
+                }
+            }
+
+            h2 {
+                style: "font-size: 1.3rem; margin-bottom: 1.5rem;",
+                "{left_theme.name} vs {right_theme.name}"
+            }
+
+            // Theme selectors for changing comparison
+            CompareSelector {
+                all_themes: all_themes.clone(),
+                current_left: left.clone(),
+                current_right: right.clone(),
+            }
+
+            for scene in &scenes {
+                div {
+                    style: "margin-bottom: 2rem;",
+
+                    h3 {
+                        style: "font-size: 0.95rem; margin-bottom: 0.75rem; opacity: 0.8;",
+                        "{scene.name}"
+                    }
+
+                    div {
+                        style: "display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;",
+                        class: "compare-grid",
+
+                        div {
+                            div {
+                                style: "font-size: 0.8rem; margin-bottom: 0.25rem; opacity: 0.7;",
+                                "{left_theme.name}"
+                            }
+                            scene_renderer::SceneView {
+                                theme: left_theme.clone(),
+                                scene: scene.clone(),
+                            }
+                        }
+                        div {
+                            div {
+                                style: "font-size: 0.8rem; margin-bottom: 0.25rem; opacity: 0.7;",
+                                "{right_theme.name}"
+                            }
+                            scene_renderer::SceneView {
+                                theme: right_theme.clone(),
+                                scene: scene.clone(),
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Dropdowns for selecting comparison themes.
+#[component]
+fn CompareSelector(
+    all_themes: Vec<litmus_model::Theme>,
+    current_left: String,
+    current_right: String,
+) -> Element {
+    let nav = use_navigator();
+    let themes_for_right = all_themes.clone();
+
+    let mut left_slug = use_signal(|| current_left.clone());
+    let mut right_slug = use_signal(|| current_right.clone());
+
+    rsx! {
+        div {
+            style: "display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; \
+                    align-items: center;",
+
+            select {
+                style: "background: #1a1b26; color: #c0caf5; border: 1px solid #33467c; \
+                        padding: 0.4rem 0.6rem; border-radius: 0.25rem;",
+                value: "{current_left}",
+                onchange: move |evt: Event<FormData>| {
+                    left_slug.set(evt.value());
+                    nav.push(Route::CompareThemes {
+                        left: evt.value(),
+                        right: right_slug.read().clone(),
+                    });
+                },
+                for t in &all_themes {
+                    option {
+                        value: "{theme_slug(&t.name)}",
+                        "{t.name}"
+                    }
+                }
+            }
+
+            span { style: "opacity: 0.6;", "vs" }
+
+            select {
+                style: "background: #1a1b26; color: #c0caf5; border: 1px solid #33467c; \
+                        padding: 0.4rem 0.6rem; border-radius: 0.25rem;",
+                value: "{current_right}",
+                onchange: move |evt: Event<FormData>| {
+                    right_slug.set(evt.value());
+                    nav.push(Route::CompareThemes {
+                        left: left_slug.read().clone(),
+                        right: evt.value(),
+                    });
+                },
+                for t in &themes_for_right {
+                    option {
+                        value: "{theme_slug(&t.name)}",
+                        "{t.name}"
+                    }
+                }
+            }
         }
     }
 }
