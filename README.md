@@ -20,13 +20,21 @@ A web app that lets you **preview any theme across realistic terminal scenes ins
 
 ### Features
 
-- **19 curated themes** from 8 families (Catppuccin, Tokyo Night, Gruvbox, Solarized, Rose Pine, Everforest, Dracula, Nord, Kanagawa)
-- **5 realistic terminal scenes**: shell prompt, git diff, directory listing, cargo build output, git log with branch graph
+- **29 curated themes** from 15 families (Ayu, Catppuccin, Dracula, Everforest, Gruvbox, Horizon, Kanagawa, Material, Monokai, Moonlight, Nightfox, Nord, One Dark, Palenight, Rose Pine, Solarized, Tokyo Night)
+- **8 realistic terminal scenes**: shell prompt, git diff, directory listing, cargo build, git log, neovim/code, Python REPL, system monitor
 - **WCAG contrast validation**: automatic readability checks for every color pair in every scene
-- **Side-by-side comparison**: compare two themes across the same scenes
+- **Side-by-side comparison**: compare 2–4 themes with color diff table
 - **Browse by theme or by scene**: theme-first (pick a theme, see all scenes) or scene-first (pick a scene, see all themes)
 - **Family grouping**: themes organized by family on the listing page
 - **Light/dark detection**: automatic variant labeling with contrast ratios
+- **Mini scene previews** on theme cards
+- **Theme search** by name and family
+- **Light/dark variant and contrast quality filters**
+- **Tabbed scene navigation** with keyboard shortcuts (arrow keys, `c` to compare)
+- **Multi-theme comparison** (2–4 themes, color diff table)
+- **Compare accumulator**: floating bar to collect themes from any page
+- **Config export**: kitty.conf, TOML, Nix with copy-to-clipboard
+- **Color blindness simulation**: preview themes under protanopia, deuteranopia, and tritanopia (Machado 2009)
 
 ## Getting Started
 
@@ -58,14 +66,15 @@ crates/
   litmus-model/    Shared data model: Theme, Scene, contrast validation
   litmus-cli/      TUI theme previewer (ratatui + crossterm)
   litmus-web/      Web theme browser (Dioxus, targets wasm32)
-themes/            19 curated themes in TOML format
+themes/            29 curated themes in TOML format
 ```
 
 ### Key Modules
 
 - **`litmus_model::scene`** — Scene format: `ThemeColor` (semantic color refs), `StyledSpan`, `SceneLine`, `Scene`
-- **`litmus_model::scenes`** — 5 built-in terminal scenes
+- **`litmus_model::scenes`** — 8 built-in terminal scenes
 - **`litmus_model::contrast`** — WCAG 2.1 contrast ratio calculation and scene validation
+- **`litmus_model::cvd`** — Color vision deficiency simulation (Machado 2009 matrices)
 - **`litmus_web::scene_renderer`** — Dioxus components that render scenes as styled HTML
 
 ### Theme Format
@@ -91,10 +100,8 @@ Litmus scenes model the consumer perspective — showing how standard terminal o
 ## Future Directions
 
 - Live terminal playground (xterm.js)
-- Config generation (kitty.conf, home-manager modules)
 - Editor ecosystem previews (neovim, helix)
 - Theme forking and customization
-- Color blindness simulation
 - Community-submitted scenes
 
 ## Contributing

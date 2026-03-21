@@ -1,0 +1,26 @@
+name = "Ayu Light"
+
+[colors]
+background = "#fafafa"
+foreground = "#575f66"
+cursor = "#ff6a00"
+selection_background = "#d1e4f4"
+selection_foreground = "#575f66"
+
+[colors.ansi]
+black = "#000000"
+red = "#f51818"
+green = "#86b300"
+yellow = "#f29718"
+blue = "#41a6d9"
+magenta = "#a37acc"
+cyan = "#4dbf99"
+white = "#abb0b6"
+bright_black = "#828c99"
+bright_red = "#ff3333"
+bright_green = "#86b300"
+bright_yellow = "#f29718"
+bright_blue = "#73d8ff"
+bright_magenta = "#a37acc"
+bright_cyan = "#4dbf99"
+bright_white = "#ffffff"

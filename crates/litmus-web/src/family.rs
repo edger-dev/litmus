@@ -2,9 +2,11 @@ use litmus_model::Theme;
 
 /// Known theme family prefixes (checked in order, longest match wins).
 static FAMILIES: &[&str] = &[
+    "Ayu",
     "Catppuccin",
     "Everforest",
     "Gruvbox",
+    "Kanagawa",
     "Rose Pine",
     "Rosé Pine",
     "Solarized",
@@ -62,9 +64,16 @@ mod tests {
     }
 
     #[test]
+    fn ayu_and_kanagawa_families() {
+        assert_eq!(theme_family("Ayu Dark"), "Ayu");
+        assert_eq!(theme_family("Ayu Light"), "Ayu");
+        assert_eq!(theme_family("Kanagawa Wave"), "Kanagawa");
+        assert_eq!(theme_family("Kanagawa Dragon"), "Kanagawa");
+    }
+
+    #[test]
     fn standalone_themes() {
         assert_eq!(theme_family("Dracula"), "Dracula");
         assert_eq!(theme_family("Nord"), "Nord");
-        assert_eq!(theme_family("Kanagawa"), "Kanagawa");
     }
 }

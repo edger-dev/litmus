@@ -1,0 +1,26 @@
+name = "Material"
+
+[colors]
+background = "#263238"
+foreground = "#eeffff"
+cursor = "#ffcc00"
+selection_background = "#425b67"
+selection_foreground = "#eeffff"
+
+[colors.ansi]
+black = "#000000"
+red = "#f07178"
+green = "#c3e88d"
+yellow = "#ffcb6b"
+blue = "#82aaff"
+magenta = "#c792ea"
+cyan = "#89ddff"
+white = "#eeffff"
+bright_black = "#546e7a"
+bright_red = "#f07178"
+bright_green = "#c3e88d"
+bright_yellow = "#ffcb6b"
+bright_blue = "#82aaff"
+bright_magenta = "#c792ea"
+bright_cyan = "#89ddff"
+bright_white = "#ffffff"

@@ -15,6 +15,9 @@ pub fn all_scenes() -> Vec<Scene> {
         ls_color_scene(),
         cargo_build_scene(),
         log_viewer_scene(),
+        neovim_scene(),
+        python_repl_scene(),
+        htop_scene(),
     ]
 }
 
@@ -415,6 +418,337 @@ pub fn log_viewer_scene() -> Scene {
     }
 }
 
+/// Neovim / code editor scene with syntax highlighting.
+pub fn neovim_scene() -> Scene {
+    Scene {
+        id: "neovim".into(),
+        name: "Neovim / Code".into(),
+        description: "Code editor with syntax highlighting, line numbers, and LSP diagnostics".into(),
+        lines: vec![
+            // Status line (top)
+            SceneLine::new(vec![
+                StyledSpan::colored("  NORMAL ", ansi(0)).bold().on(ansi(2)),
+                StyledSpan::colored(" main.rs ", ansi(15)).on(ansi(8)),
+                StyledSpan::colored(" [+] ", ansi(11)).on(ansi(8)),
+                StyledSpan::colored("                              ", ThemeColor::Foreground).on(ansi(8)),
+                StyledSpan::colored(" utf-8  rust  42:10 ", ansi(15)).on(ansi(8)),
+            ]),
+            // Code with line numbers
+            SceneLine::new(vec![
+                StyledSpan::colored("  38 ", ansi(8)).dim(),
+                StyledSpan::colored("use ", ansi(5)),
+                StyledSpan::colored("std::collections::HashMap", ThemeColor::Foreground),
+                StyledSpan::plain(";"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  39 ", ansi(8)).dim(),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  40 ", ansi(8)).dim(),
+                StyledSpan::colored("/// ", ansi(8)).italic(),
+                StyledSpan::colored("Process incoming data and return results.", ansi(8)).italic(),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  41 ", ansi(8)).dim(),
+                StyledSpan::colored("pub ", ansi(5)),
+                StyledSpan::colored("fn ", ansi(12)),
+                StyledSpan::colored("process", ansi(3)),
+                StyledSpan::plain("("),
+                StyledSpan::colored("data", ThemeColor::Foreground),
+                StyledSpan::plain(": &["),
+                StyledSpan::colored("u8", ansi(3)),
+                StyledSpan::plain("]) -> "),
+                StyledSpan::colored("Result", ansi(3)),
+                StyledSpan::plain("<"),
+                StyledSpan::colored("Vec", ansi(3)),
+                StyledSpan::plain("<"),
+                StyledSpan::colored("String", ansi(3)),
+                StyledSpan::plain(">> {"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  42 ", ansi(11)),
+                StyledSpan::plain("    "),
+                StyledSpan::colored("let ", ansi(5)),
+                StyledSpan::colored("mut ", ansi(5)),
+                StyledSpan::plain("results = "),
+                StyledSpan::colored("Vec", ansi(3)),
+                StyledSpan::plain("::new();"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  43 ", ansi(8)).dim(),
+                StyledSpan::plain("    "),
+                StyledSpan::colored("for ", ansi(5)),
+                StyledSpan::plain("chunk "),
+                StyledSpan::colored("in ", ansi(5)),
+                StyledSpan::plain("data.chunks("),
+                StyledSpan::colored("64", ansi(11)),
+                StyledSpan::plain(") {"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  44 ", ansi(8)).dim(),
+                StyledSpan::plain("        "),
+                StyledSpan::colored("let ", ansi(5)),
+                StyledSpan::plain("parsed = "),
+                StyledSpan::colored("String", ansi(3)),
+                StyledSpan::plain("::from_utf8(chunk)"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  45 ", ansi(8)).dim(),
+                StyledSpan::plain("            .map_err(|e| e.to_string())?;"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  46 ", ansi(8)).dim(),
+                StyledSpan::plain("        results.push(parsed);"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  47 ", ansi(8)).dim(),
+                StyledSpan::plain("    }"),
+            ]),
+            // LSP diagnostic hint
+            SceneLine::new(vec![
+                StyledSpan::colored("  48 ", ansi(8)).dim(),
+                StyledSpan::plain("    "),
+                StyledSpan::colored("Ok", ansi(3)),
+                StyledSpan::plain("(results)"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  49 ", ansi(8)).dim(),
+                StyledSpan::plain("}"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("       hint: ", ansi(6)).italic(),
+                StyledSpan::colored("consider adding `#[must_use]`", ansi(6)).italic(),
+            ]),
+        ],
+    }
+}
+
+/// Python REPL scene with prompts, tracebacks, and output.
+pub fn python_repl_scene() -> Scene {
+    Scene {
+        id: "python-repl".into(),
+        name: "Python REPL".into(),
+        description: "Interactive Python session with prompts, output, and tracebacks".into(),
+        lines: vec![
+            SceneLine::new(vec![
+                StyledSpan::colored(">>> ", ansi(2)).bold(),
+                StyledSpan::colored("import ", ansi(5)),
+                StyledSpan::plain("json"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(">>> ", ansi(2)).bold(),
+                StyledSpan::plain("data = {"),
+                StyledSpan::colored("\"name\"", ansi(2)),
+                StyledSpan::plain(": "),
+                StyledSpan::colored("\"litmus\"", ansi(2)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("\"version\"", ansi(2)),
+                StyledSpan::plain(": "),
+                StyledSpan::colored("3", ansi(11)),
+                StyledSpan::plain("}"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(">>> ", ansi(2)).bold(),
+                StyledSpan::colored("print", ansi(6)),
+                StyledSpan::plain("(json.dumps(data, indent="),
+                StyledSpan::colored("2", ansi(11)),
+                StyledSpan::plain("))"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("{"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("  "),
+                StyledSpan::colored("\"name\"", ansi(6)),
+                StyledSpan::plain(": "),
+                StyledSpan::colored("\"litmus\"", ansi(2)),
+                StyledSpan::plain(","),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("  "),
+                StyledSpan::colored("\"version\"", ansi(6)),
+                StyledSpan::plain(": "),
+                StyledSpan::colored("3", ansi(11)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("}"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(">>> ", ansi(2)).bold(),
+                StyledSpan::plain("data["),
+                StyledSpan::colored("\"missing_key\"", ansi(2)),
+                StyledSpan::plain("]"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("Traceback (most recent call last):", ansi(1)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("  File "),
+                StyledSpan::colored("\"<stdin>\"", ansi(13)),
+                StyledSpan::plain(", line "),
+                StyledSpan::colored("1", ansi(11)),
+                StyledSpan::plain(", in "),
+                StyledSpan::colored("<module>", ansi(6)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("KeyError", ansi(1)).bold(),
+                StyledSpan::colored(": ", ansi(1)),
+                StyledSpan::colored("'missing_key'", ansi(2)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(">>> ", ansi(2)).bold(),
+                StyledSpan::plain("[x**"),
+                StyledSpan::colored("2 ", ansi(11)),
+                StyledSpan::colored("for ", ansi(5)),
+                StyledSpan::plain("x "),
+                StyledSpan::colored("in ", ansi(5)),
+                StyledSpan::colored("range", ansi(6)),
+                StyledSpan::plain("("),
+                StyledSpan::colored("8", ansi(11)),
+                StyledSpan::plain(")]"),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::plain("["),
+                StyledSpan::colored("0", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("1", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("4", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("9", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("16", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("25", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("36", ansi(11)),
+                StyledSpan::plain(", "),
+                StyledSpan::colored("49", ansi(11)),
+                StyledSpan::plain("]"),
+            ]),
+        ],
+    }
+}
+
+/// htop-style process viewer with CPU/memory bars and process list.
+pub fn htop_scene() -> Scene {
+    Scene {
+        id: "htop".into(),
+        name: "System Monitor".into(),
+        description: "htop-style view with CPU bars, memory usage, and process list".into(),
+        lines: vec![
+            // CPU bars
+            SceneLine::new(vec![
+                StyledSpan::colored("  1", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||||||||||||", ansi(2)),
+                StyledSpan::colored("||||", ansi(11)),
+                StyledSpan::colored("||", ansi(1)),
+                StyledSpan::plain("                  "),
+                StyledSpan::colored("32.4%", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+                StyledSpan::plain("  "),
+                StyledSpan::colored("  3", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||||||", ansi(2)),
+                StyledSpan::colored("|||", ansi(11)),
+                StyledSpan::plain("                       "),
+                StyledSpan::colored("18.7%", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  2", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||||||||||||||||||", ansi(2)),
+                StyledSpan::colored("|||||", ansi(11)),
+                StyledSpan::colored("||||", ansi(1)),
+                StyledSpan::plain("       "),
+                StyledSpan::colored("57.1%", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+                StyledSpan::plain("  "),
+                StyledSpan::colored("  4", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||||", ansi(2)),
+                StyledSpan::plain("                          "),
+                StyledSpan::colored(" 8.3%", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+            ]),
+            // Memory
+            SceneLine::new(vec![
+                StyledSpan::colored("  Mem", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||||||||||||||||||||", ansi(2)),
+                StyledSpan::colored("|||||||", ansi(11)),
+                StyledSpan::plain("          "),
+                StyledSpan::colored("5.2G", ThemeColor::Foreground),
+                StyledSpan::plain("/"),
+                StyledSpan::colored("16.0G", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  Swp", ansi(6)),
+                StyledSpan::colored("[", ThemeColor::Foreground),
+                StyledSpan::colored("||", ansi(2)),
+                StyledSpan::plain("                                   "),
+                StyledSpan::colored("0.1G", ThemeColor::Foreground),
+                StyledSpan::plain("/"),
+                StyledSpan::colored("8.0G", ThemeColor::Foreground),
+                StyledSpan::colored("]", ThemeColor::Foreground),
+            ]),
+            SceneLine::empty(),
+            // Column headers
+            SceneLine::new(vec![
+                StyledSpan::colored("  PID", ansi(2)).bold(),
+                StyledSpan::colored(" USER     ", ansi(2)).bold(),
+                StyledSpan::colored(" PRI", ansi(2)).bold(),
+                StyledSpan::colored("  NI", ansi(2)).bold(),
+                StyledSpan::colored("   VIRT", ansi(2)).bold(),
+                StyledSpan::colored("    RES", ansi(2)).bold(),
+                StyledSpan::colored("  CPU%", ansi(2)).bold(),
+                StyledSpan::colored("  MEM%", ansi(2)).bold(),
+                StyledSpan::colored("  Command", ansi(2)).bold(),
+            ]),
+            // Processes
+            SceneLine::new(vec![
+                StyledSpan::colored(" 1842", ansi(2)),
+                StyledSpan::plain(" user      20   0  2.1G  384M"),
+                StyledSpan::colored("  24.3", ansi(11)),
+                StyledSpan::plain("   2.4"),
+                StyledSpan::colored("  cargo build --release", ansi(15)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(" 2104", ansi(2)),
+                StyledSpan::plain(" user      20   0  1.8G  220M"),
+                StyledSpan::colored("  18.1", ansi(11)),
+                StyledSpan::plain("   1.4"),
+                StyledSpan::colored("  nvim src/main.rs", ansi(15)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  903", ansi(2)),
+                StyledSpan::plain(" user      20   0  812M  164M"),
+                StyledSpan::plain("   6.2"),
+                StyledSpan::plain("   1.0"),
+                StyledSpan::colored("  kitty", ansi(15)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored("  456", ansi(1)),
+                StyledSpan::colored(" root", ansi(1)),
+                StyledSpan::plain("      20   0  412M   48M"),
+                StyledSpan::plain("   2.1"),
+                StyledSpan::plain("   0.3"),
+                StyledSpan::colored("  systemd", ansi(15)),
+            ]),
+            SceneLine::new(vec![
+                StyledSpan::colored(" 3201", ansi(2)),
+                StyledSpan::plain(" user      20   0  620M  102M"),
+                StyledSpan::plain("   1.4"),
+                StyledSpan::plain("   0.6"),
+                StyledSpan::colored("  firefox", ansi(15)),
+            ]),
+        ],
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -422,7 +756,7 @@ mod tests {
     #[test]
     fn all_scenes_non_empty() {
         let scenes = all_scenes();
-        assert_eq!(scenes.len(), 5);
+        assert_eq!(scenes.len(), 8);
         for scene in &scenes {
             assert!(!scene.id.is_empty());
             assert!(!scene.name.is_empty());

@@ -1,5 +1,6 @@
 pub mod base16;
 pub mod contrast;
+pub mod cvd;
 pub mod defaults;
 pub mod error;
 pub mod export;

@@ -1,0 +1,26 @@
+name = "Kanagawa Dragon"
+
+[colors]
+background = "#181616"
+foreground = "#c5c9c5"
+cursor = "#c8c093"
+selection_background = "#2d4f67"
+selection_foreground = "#c8c093"
+
+[colors.ansi]
+black = "#0d0c0c"
+red = "#c4746e"
+green = "#8a9a7b"
+yellow = "#c4b28a"
+blue = "#8ba4b0"
+magenta = "#a292a3"
+cyan = "#8ea4a2"
+white = "#c8c093"
+bright_black = "#a6a69c"
+bright_red = "#e46876"
+bright_green = "#87a987"
+bright_yellow = "#e6c384"
+bright_blue = "#7fb4ca"
+bright_magenta = "#938aa9"
+bright_cyan = "#7aa89f"
+bright_white = "#c5c9c5"

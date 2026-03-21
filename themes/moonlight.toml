@@ -1,0 +1,26 @@
+name = "Moonlight"
+
+[colors]
+background = "#222436"
+foreground = "#c8d3f5"
+cursor = "#c8d3f5"
+selection_background = "#2d3f76"
+selection_foreground = "#c8d3f5"
+
+[colors.ansi]
+black = "#191a2a"
+red = "#ff757f"
+green = "#c3e88d"
+yellow = "#ffc777"
+blue = "#82aaff"
+magenta = "#c099ff"
+cyan = "#86e1fc"
+white = "#828bb8"
+bright_black = "#444a73"
+bright_red = "#ff757f"
+bright_green = "#c3e88d"
+bright_yellow = "#ffc777"
+bright_blue = "#82aaff"
+bright_magenta = "#c099ff"
+bright_cyan = "#86e1fc"
+bright_white = "#c8d3f5"

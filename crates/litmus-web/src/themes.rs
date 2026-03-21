@@ -2,6 +2,8 @@ use litmus_model::Theme;
 
 /// Embedded theme data for WASM builds.
 static THEME_DATA: &[&str] = &[
+    include_str!("../../../themes/ayu/ayu-dark.toml"),
+    include_str!("../../../themes/ayu/ayu-light.toml"),
     include_str!("../../../themes/catppuccin/frappe.toml"),
     include_str!("../../../themes/catppuccin/latte.toml"),
     include_str!("../../../themes/catppuccin/macchiato.toml"),
@@ -11,8 +13,16 @@ static THEME_DATA: &[&str] = &[
     include_str!("../../../themes/everforest/everforest-light.toml"),
     include_str!("../../../themes/gruvbox/gruvbox-dark.toml"),
     include_str!("../../../themes/gruvbox/gruvbox-light.toml"),
-    include_str!("../../../themes/kanagawa.toml"),
+    include_str!("../../../themes/horizon.toml"),
+    include_str!("../../../themes/kanagawa/kanagawa-dragon.toml"),
+    include_str!("../../../themes/kanagawa/kanagawa-wave.toml"),
+    include_str!("../../../themes/material.toml"),
+    include_str!("../../../themes/monokai.toml"),
+    include_str!("../../../themes/moonlight.toml"),
+    include_str!("../../../themes/nightfox.toml"),
     include_str!("../../../themes/nord.toml"),
+    include_str!("../../../themes/one-dark.toml"),
+    include_str!("../../../themes/palenight.toml"),
     include_str!("../../../themes/rose-pine/rose-pine.toml"),
     include_str!("../../../themes/rose-pine/rose-pine-dawn.toml"),
     include_str!("../../../themes/rose-pine/rose-pine-moon.toml"),

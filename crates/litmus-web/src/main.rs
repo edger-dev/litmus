@@ -4,6 +4,7 @@ mod themes;
 
 use dioxus::prelude::*;
 use dioxus::document::eval;
+use litmus_model::cvd::CvdType;
 
 /// Global compare selection state — stores slugs of themes selected for comparison.
 #[derive(Clone, Default)]
@@ -42,11 +43,11 @@ fn App() -> Element {
 #[component]
 fn Shell() -> Element {
     rsx! {
-        div {
-            style: "min-height: 100vh; background: #1a1b26; color: #c0caf5; \
-                    font-family: system-ui, -apple-system, sans-serif;",
+        div { class: "shell",
 
-            nav { class: "nav",
+            a { class: "skip-to-content", href: "#main-content", "Skip to content" }
+
+            nav { class: "nav", role: "navigation", aria_label: "Main",
                 Link {
                     to: Route::ThemeList {},
                     style: "font-size: 1.25rem; font-weight: bold; letter-spacing: 0.02em;",
@@ -58,7 +59,7 @@ fn Shell() -> Element {
                 }
             }
 
-            div { class: "content",
+            div { id: "main-content", class: "content",
                 Outlet::<Route> {}
             }
 
@@ -124,15 +125,17 @@ fn ThemeList() -> Element {
     let mut variant_filter = use_signal(|| VariantFilter::All);
     let mut good_contrast = use_signal(|| false);
     let mut search_query = use_signal(String::new);
+    let cvd_mode = use_signal(|| Option::<CvdType>::None);
 
     let variant = *variant_filter.read();
     let contrast_on = *good_contrast.read();
     let query = search_query.read().clone();
+    let cvd = *cvd_mode.read();
 
     let filtered: Vec<litmus_model::Theme> = all_themes
         .iter()
         .filter(|t| theme_passes_filter(t, variant, contrast_on, &query))
-        .cloned()
+        .map(|t| maybe_simulate(t, cvd))
         .collect();
     let families = family::group_by_family(&filtered);
     let total = all_themes.len();
@@ -187,7 +190,9 @@ fn ThemeList() -> Element {
                 // Filter controls
                 div { class: "filter-bar",
                     // Search
+                    label { class: "sr-only", r#for: "theme-search", "Search themes" }
                     input {
+                        id: "theme-search",
                         class: "search-input",
                         r#type: "text",
                         placeholder: "Search themes...",
@@ -234,6 +239,9 @@ fn ThemeList() -> Element {
                 }
             }
 
+            // CVD simulation toggle
+            CvdSelector { cvd_signal: cvd_mode }
+
             for fam in &families {
                 div {
                     style: "margin-bottom: 2rem;",
@@ -273,6 +281,7 @@ fn FilterButton(label: &'static str, active: bool, onclick: EventHandler<MouseEv
         button {
             class: "filter-btn",
             style: "{style}",
+            aria_pressed: if active { "true" } else { "false" },
             onclick: move |evt| onclick.call(evt),
             "{label}"
         }
@@ -352,10 +361,12 @@ fn ThemeDetail(slug: String) -> Element {
     let theme = all_themes.iter().find(|t| theme_slug(&t.name) == slug);
     let mut active_tab = use_signal(|| 0usize);
     let mut palette_expanded = use_signal(|| false);
+    let cvd_mode = use_signal(|| Option::<CvdType>::None);
 
     match theme {
         Some(theme) => {
-            let theme = theme.clone();
+            let base_theme = theme.clone();
+            let theme = maybe_simulate(&base_theme, *cvd_mode.read());
             let bg = theme.background.to_hex();
             let fg = theme.foreground.to_hex();
             let this_slug = theme_slug(&theme.name);
@@ -530,10 +541,12 @@ fn ThemeDetail(slug: String) -> Element {
                     div {
                         style: "display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; \
                                 margin-bottom: 1rem;",
-                        div { class: "scene-tabs",
+                        div { class: "scene-tabs", role: "tablist",
                             for (i, scene) in scenes.iter().enumerate() {
                                 button {
                                     class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
+                                    role: "tab",
+                                    aria_selected: if i == tab_idx { "true" } else { "false" },
                                     onclick: move |_| active_tab.set(i),
                                     "{scene.name}"
                                 }
@@ -546,11 +559,16 @@ fn ThemeDetail(slug: String) -> Element {
                         }
                     }
 
+                    // CVD simulation toggle
+                    CvdSelector { cvd_signal: cvd_mode }
+
                     // Active scene
                     if let Some(scene) = scenes.get(tab_idx) {
-                        scene_renderer::SceneView {
-                            theme: theme.clone(),
-                            scene: scene.clone(),
+                        div { role: "tabpanel",
+                            scene_renderer::SceneView {
+                                theme: theme.clone(),
+                                scene: scene.clone(),
+                            }
                         }
                     }
 
@@ -598,6 +616,7 @@ fn CompareToggle(slug: String, name: String) -> Element {
     rsx! {
         button {
             class: if is_selected { "compare-toggle compare-toggle-active" } else { "compare-toggle" },
+            aria_pressed: if is_selected { "true" } else { "false" },
             onclick: move |evt: Event<MouseData>| {
                 evt.stop_propagation();
                 let mut sel = selection.write();
@@ -805,9 +824,61 @@ fn ExportFormatBtn(
         button {
             class: "export-btn",
             style: "{style}",
+            aria_pressed: if active { "true" } else { "false" },
             onclick: move |evt| onclick.call(evt),
             "{label}"
         }
+    }
+}
+
+/// CVD simulation selector — shared between theme detail, compare, and listing pages.
+#[component]
+fn CvdSelector(cvd_signal: Signal<Option<CvdType>>) -> Element {
+    let current = *cvd_signal.read();
+
+    rsx! {
+        div {
+            style: "display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;",
+            span {
+                style: "font-size: 0.75rem; opacity: 0.6; margin-right: 0.25rem;",
+                title: "Simulate color vision deficiency to check theme accessibility",
+                "CVD"
+            }
+            FilterButton {
+                label: "Normal",
+                active: current.is_none(),
+                onclick: move |_| cvd_signal.set(None),
+            }
+            for cvd_type in CvdType::all() {
+                {
+                    let ct = *cvd_type;
+                    let label = ct.label();
+                    let desc = ct.description();
+                    rsx! {
+                        button {
+                            class: "filter-btn",
+                            style: if current == Some(ct) {
+                                "background: rgba(122, 162, 247, 0.2); color: var(--color-accent); border-color: var(--color-accent);"
+                            } else {
+                                "background: transparent; color: inherit; border-color: rgba(255,255,255,0.15);"
+                            },
+                            aria_pressed: if current == Some(ct) { "true" } else { "false" },
+                            title: "{desc}",
+                            onclick: move |_| cvd_signal.set(Some(ct)),
+                            "{label}"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Optionally apply CVD simulation to a theme.
+fn maybe_simulate(theme: &litmus_model::Theme, cvd: Option<CvdType>) -> litmus_model::Theme {
+    match cvd {
+        Some(ct) => litmus_model::cvd::simulate_theme(theme, ct),
+        None => theme.clone(),
     }
 }
 
@@ -944,10 +1015,13 @@ fn CompareThemes(slugs: String) -> Element {
     let all_themes = themes::load_embedded_themes();
     let scenes = litmus_model::scenes::all_scenes();
     let slug_list: Vec<&str> = slugs.split(',').filter(|s| !s.is_empty()).collect();
+    let cvd_mode = use_signal(|| Option::<CvdType>::None);
+    let cvd = *cvd_mode.read();
 
     let compare_themes: Vec<litmus_model::Theme> = slug_list
         .iter()
         .filter_map(|slug| all_themes.iter().find(|t| theme_slug(&t.name) == *slug).cloned())
+        .map(|t| maybe_simulate(&t, cvd))
         .collect();
 
     if compare_themes.is_empty() {
@@ -994,6 +1068,9 @@ fn CompareThemes(slugs: String) -> Element {
                 current_slugs: slug_list.iter().map(|s| s.to_string()).collect(),
             }
 
+            // CVD simulation toggle
+            CvdSelector { cvd_signal: cvd_mode }
+
             // Color diff table
             if compare_themes.len() >= 2 {
                 ColorDiffTable { themes: compare_themes.clone() }
@@ -1009,8 +1086,8 @@ fn CompareThemes(slugs: String) -> Element {
                     }
 
                     div {
-                        style: "display: grid; grid-template-columns: {grid_cols}; gap: 0.75rem; \
-                                overflow-x: auto;",
+                        class: "compare-grid",
+                        style: "--compare-cols: {grid_cols};",
 
                         for theme in &compare_themes {
                             div {
@@ -1097,6 +1174,8 @@ fn SceneAcrossThemes(scene_id: String) -> Element {
     let all_themes = themes::load_embedded_themes();
     let scenes = litmus_model::scenes::all_scenes();
     let scene = scenes.iter().find(|s| s.id == scene_id);
+    let cvd_mode = use_signal(|| Option::<CvdType>::None);
+    let cvd = *cvd_mode.read();
 
     match scene {
         Some(scene) => {
@@ -1133,30 +1212,38 @@ fn SceneAcrossThemes(scene_id: String) -> Element {
                         }
                     }
 
+                    // CVD simulation toggle
+                    CvdSelector { cvd_signal: cvd_mode }
+
                     // Grid of all themes with compact scene rendering
                     div { class: "scene-grid",
                         for theme in &all_themes {
-                            div { class: "scene-grid-card",
-                                div {
-                                    style: "display: flex; justify-content: space-between; \
-                                            align-items: center; margin-bottom: 0.25rem;",
-                                    Link {
-                                        to: Route::ThemeDetail {
-                                            slug: theme_slug(&theme.name),
-                                        },
-                                        style: "color: #7aa2f7; text-decoration: none; \
-                                                font-size: 0.8rem; font-weight: bold;",
-                                        "{theme.name}"
+                            {
+                                let sim_theme = maybe_simulate(theme, cvd);
+                                rsx! {
+                                    div { class: "scene-grid-card",
+                                        div {
+                                            style: "display: flex; justify-content: space-between; \
+                                                    align-items: center; margin-bottom: 0.25rem;",
+                                            Link {
+                                                to: Route::ThemeDetail {
+                                                    slug: theme_slug(&theme.name),
+                                                },
+                                                style: "color: #7aa2f7; text-decoration: none; \
+                                                        font-size: 0.8rem; font-weight: bold;",
+                                                "{theme.name}"
+                                            }
+                                            CompareToggle {
+                                                slug: theme_slug(&theme.name),
+                                                name: theme.name.clone(),
+                                            }
+                                        }
+                                        scene_renderer::SceneView {
+                                            theme: sim_theme,
+                                            scene: scene.clone(),
+                                            compact: true,
+                                        }
                                     }
-                                    CompareToggle {
-                                        slug: theme_slug(&theme.name),
-                                        name: theme.name.clone(),
-                                    }
-                                }
-                                scene_renderer::SceneView {
-                                    theme: theme.clone(),
-                                    scene: scene.clone(),
-                                    compact: true,
                                 }
                             }
                         }

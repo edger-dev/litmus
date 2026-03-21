@@ -1,0 +1,26 @@
+name = "Horizon"
+
+[colors]
+background = "#1c1e26"
+foreground = "#d5d8da"
+cursor = "#e95678"
+selection_background = "#2e303e"
+selection_foreground = "#d5d8da"
+
+[colors.ansi]
+black = "#16161c"
+red = "#e95678"
+green = "#29d398"
+yellow = "#fab795"
+blue = "#26bbd9"
+magenta = "#ee64ac"
+cyan = "#59e3e3"
+white = "#d5d8da"
+bright_black = "#6c6f93"
+bright_red = "#ec6a88"
+bright_green = "#3fdaa4"
+bright_yellow = "#fbc3a7"
+bright_blue = "#3fc6de"
+bright_magenta = "#f075b7"
+bright_cyan = "#6be6e6"
+bright_white = "#ffffff"
