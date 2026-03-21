@@ -93,6 +93,15 @@ body {
 .sidebar-logo {
   text-decoration: none;
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-logo-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .sidebar-logo-text {
@@ -520,18 +529,23 @@ button.sidebar-feel-lucky:hover {
 }
 
 .theme-card-body {
-  padding: 1rem;
   cursor: pointer;
 }
 
 .theme-card-header {
   text-align: center;
-  margin-bottom: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(128, 128, 128, 0.1);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
 }
 
 .theme-card-name {
   font-weight: bold;
   font-size: 0.95rem;
+}
+
+.theme-card-preview {
+  padding: 0.75rem 1rem;
 }
 
 .theme-card-actions {
@@ -548,14 +562,10 @@ button.sidebar-feel-lucky:hover {
 .theme-card-score {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.7rem;
-  opacity: 0.7;
 }
 
-.theme-card-score-icon {
-  font-size: 0.8rem;
-  line-height: 1;
+.score-ring {
+  display: block;
 }
 
 .theme-card-actions-right {

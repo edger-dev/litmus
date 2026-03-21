@@ -90,7 +90,14 @@ pub fn Sidebar() -> Element {
             // Header
             div { class: "sidebar-header",
                 Link { to: Route::ThemeList {}, class: "sidebar-logo",
-                    span { class: "sidebar-logo-text", "litmus" }
+                    img {
+                        class: "sidebar-logo-icon",
+                        src: asset!("assets/litmus-icon.svg"),
+                        alt: "Litmus",
+                        width: "24",
+                        height: "24",
+                    }
+                    span { class: "sidebar-logo-text", "Litmus" }
                 }
                 span { class: "sidebar-subtitle", "terminal color theme previewer" }
             }

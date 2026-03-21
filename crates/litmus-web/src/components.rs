@@ -4,6 +4,77 @@ use litmus_model::cvd::CvdType;
 
 use crate::state::*;
 
+/// Circular score ring (donut gauge) rendered as inline SVG.
+#[component]
+pub fn ScoreRing(score: u8, size: f64) -> Element {
+    let radius = 40.0_f64;
+    let stroke_width = 10.0_f64;
+    let circumference = 2.0 * std::f64::consts::PI * radius;
+    let progress = (score as f64 / 100.0).min(1.0);
+    let dash_filled = circumference * progress;
+    let dash_gap = circumference - dash_filled;
+    let viewbox_size = (radius + stroke_width) * 2.0;
+    let center = viewbox_size / 2.0;
+
+    // Color: red < 70, orange < 85, green >= 85
+    let ring_color = if score < 70 {
+        "var(--app-error, #ff6b6b)"
+    } else if score < 85 {
+        "var(--app-warning, #ffa94d)"
+    } else {
+        "var(--app-success, #6bcb77)"
+    };
+
+    let dash_array = format!("{dash_filled} {dash_gap}");
+    let dash_offset = format!("{}", circumference * 0.25); // start from top
+    let size_px = format!("{size}px");
+    let viewbox = format!("0 0 {viewbox_size} {viewbox_size}");
+
+    rsx! {
+        svg {
+            class: "score-ring",
+            width: "{size_px}",
+            height: "{size_px}",
+            view_box: "{viewbox}",
+            // Background ring
+            circle {
+                cx: "{center}",
+                cy: "{center}",
+                r: "{radius}",
+                fill: "none",
+                stroke: "currentColor",
+                stroke_opacity: "0.15",
+                stroke_width: "{stroke_width}",
+            }
+            // Foreground ring
+            circle {
+                cx: "{center}",
+                cy: "{center}",
+                r: "{radius}",
+                fill: "none",
+                stroke: "{ring_color}",
+                stroke_width: "{stroke_width}",
+                stroke_dasharray: "{dash_array}",
+                stroke_dashoffset: "{dash_offset}",
+                stroke_linecap: "round",
+                transform: "rotate(-90 {center} {center})",
+            }
+            // Percentage text
+            text {
+                x: "{center}",
+                y: "{center}",
+                text_anchor: "middle",
+                dominant_baseline: "central",
+                fill: "currentColor",
+                font_size: "{radius * 0.7}",
+                font_weight: "bold",
+                font_family: "inherit",
+                "{score}%"
+            }
+        }
+    }
+}
+
 static ANSI_NAMES: &[&str] = &[
     "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
     "bright black", "bright red", "bright green", "bright yellow",

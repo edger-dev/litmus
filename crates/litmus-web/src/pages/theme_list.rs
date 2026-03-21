@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::{ShortlistCheckbox, UseAsAppThemeButton};
+use crate::components::{ScoreRing, ShortlistCheckbox, UseAsAppThemeButton};
 use crate::scene_renderer;
 use crate::state::*;
 use crate::themes;
@@ -141,17 +141,19 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
                         span { class: "theme-card-name", "{theme.name}" }
                     }
 
-                    scene_renderer::ScenePreview {
-                        theme: theme.clone(),
-                        scene: preview_scene,
-                        max_lines: 5,
-                    }
+                    div { class: "theme-card-preview",
+                        scene_renderer::ScenePreview {
+                            theme: theme.clone(),
+                            scene: preview_scene,
+                            max_lines: 5,
+                        }
 
-                    div { class: "swatch-row",
-                        for color in theme.ansi.as_array().iter() {
-                            div {
-                                class: "swatch",
-                                style: "background: {color.to_hex()};",
+                        div { class: "swatch-row",
+                            for color in theme.ansi.as_array().iter() {
+                                div {
+                                    class: "swatch",
+                                    style: "background: {color.to_hex()};",
+                                }
                             }
                         }
                     }
@@ -159,10 +161,8 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
             }
 
             div { class: "theme-card-actions",
-                span { class: "theme-card-score",
-                    title: "Readability score",
-                    span { class: "theme-card-score-icon", "\u{1F4C8}" }
-                    span { class: "mono", "{readability}%" }
+                span { class: "theme-card-score", title: "Readability score",
+                    ScoreRing { score: readability, size: 28.0 }
                 }
                 span { class: "theme-card-actions-right",
                     ShortlistCheckbox { slug: slug.clone(), name: theme.name.clone() }

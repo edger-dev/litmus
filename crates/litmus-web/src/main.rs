@@ -40,6 +40,7 @@ fn App() -> Element {
 
     rsx! {
         document::Link { rel: "stylesheet", href: asset!("assets/style.css") }
+        document::Link { rel: "icon", r#type: "image/svg+xml", href: asset!("assets/litmus-icon.svg") }
         Router::<Route> {}
     }
 }
