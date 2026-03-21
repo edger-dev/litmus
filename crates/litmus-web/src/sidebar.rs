@@ -75,7 +75,7 @@ pub fn Sidebar() -> Element {
     let all_slugs: Vec<String> = all_themes.iter().map(|t| theme_slug(&t.name)).collect();
 
     // Determine which nav item is active based on current route
-    let is_browse_active = matches!(current_route, Route::ThemeList {} | Route::ThemeDetail { .. });
+    let is_browse_active = matches!(current_route, Route::ThemeList {});
     let is_compare_active = matches!(current_route, Route::CompareThemes { .. } | Route::SceneAcrossThemes { .. });
     let detail_slug = match &current_route {
         Route::ThemeDetail { slug } => Some(slug.clone()),
@@ -209,6 +209,24 @@ pub fn Sidebar() -> Element {
                                             title: "Remove from shortlist",
                                             onclick: move |_| {
                                                 shortlist.write().0.retain(|s| s != &slug_remove);
+                                                if is_compare_active {
+                                                    let sl = shortlist.read().clone();
+                                                    let app_s = app_theme.read().0.clone();
+                                                    let mut new_slugs: Vec<String> = Vec::new();
+                                                    if let Some(ref s) = app_s {
+                                                        new_slugs.push(s.clone());
+                                                    }
+                                                    for s in &sl.0 {
+                                                        if !new_slugs.contains(s) {
+                                                            new_slugs.push(s.clone());
+                                                        }
+                                                    }
+                                                    if new_slugs.len() >= 2 {
+                                                        nav.replace(Route::CompareThemes { slugs: new_slugs.join(",") });
+                                                    } else {
+                                                        nav.replace(Route::ThemeList {});
+                                                    }
+                                                }
                                             },
                                             "\u{00d7}"
                                         }
@@ -224,6 +242,9 @@ pub fn Sidebar() -> Element {
                                 class: "sidebar-clear-btn",
                                 onclick: move |_| {
                                     shortlist.write().0.clear();
+                                    if is_compare_active {
+                                        nav.replace(Route::ThemeList {});
+                                    }
                                 },
                                 "Clear"
                             }
@@ -236,7 +257,10 @@ pub fn Sidebar() -> Element {
             if matches!(current_route, Route::ThemeDetail { .. } | Route::CompareThemes { .. }) {
                 div { class: "sidebar-section",
                     div { class: "sidebar-section-label", "Scenes" }
-                    SceneMinimap { scenes: litmus_model::scenes::all_scenes() }
+                    SceneMinimap {
+                        scenes: litmus_model::scenes::all_scenes(),
+                        show_badges: matches!(current_route, Route::ThemeDetail { .. }),
+                    }
                 }
             }
 

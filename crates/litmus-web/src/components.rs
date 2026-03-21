@@ -75,11 +75,6 @@ pub fn ScoreRing(score: u8, size: f64) -> Element {
     }
 }
 
-static ANSI_NAMES: &[&str] = &[
-    "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
-    "bright black", "bright red", "bright green", "bright yellow",
-    "bright blue", "bright magenta", "bright cyan", "bright white",
-];
 
 #[component]
 pub fn FilterButton(label: &'static str, active: bool, onclick: EventHandler<MouseEvent>) -> Element {
@@ -134,7 +129,10 @@ pub fn ShortlistCheckbox(slug: String, name: String) -> Element {
                     let mut sel = shortlist.write();
                     if let Some(pos) = sel.0.iter().position(|s| s == &slug_for_click) {
                         sel.0.remove(pos);
-                    } else if sel.0.len() < MAX_SHORTLIST {
+                    } else {
+                        if sel.0.len() >= MAX_SHORTLIST {
+                            sel.0.remove(0);
+                        }
                         sel.0.push(slug_for_click.clone());
                     }
                 },
@@ -353,7 +351,7 @@ fn ExportFormatBtn(
 /// Scene minimap — fixed vertical strip on the right edge showing all scene names.
 /// Highlights scenes currently visible in the viewport via IntersectionObserver.
 #[component]
-pub fn SceneMinimap(scenes: Vec<litmus_model::scene::Scene>) -> Element {
+pub fn SceneMinimap(scenes: Vec<litmus_model::scene::Scene>, #[props(default = true)] show_badges: bool) -> Element {
     let mut visible = use_context::<Signal<VisibleScenes>>();
     let scene_issue_counts = use_context::<Signal<SceneIssueCounts>>();
 
@@ -438,7 +436,7 @@ pub fn SceneMinimap(scenes: Vec<litmus_model::scene::Scene>) -> Element {
                                 eval(&js);
                             },
                             "{scene.name}"
-                            if issue_count > 0 {
+                            if show_badges && issue_count > 0 {
                                 span { class: "scene-tab-badge", "{issue_count}" }
                             }
                         }
@@ -449,81 +447,3 @@ pub fn SceneMinimap(scenes: Vec<litmus_model::scene::Scene>) -> Element {
     }
 }
 
-/// Color diff table showing which colors differ between compared themes.
-#[component]
-pub fn ColorDiffTable(themes: Vec<litmus_model::Theme>) -> Element {
-    let mut expanded = use_signal(|| false);
-    let is_expanded = *expanded.read();
-
-    let mut diff_rows: Vec<(String, Vec<String>, bool)> = Vec::new();
-
-    let add_row = |rows: &mut Vec<(String, Vec<String>, bool)>,
-                   name: &str,
-                   values: Vec<String>| {
-        let differs = values.windows(2).any(|w| w[0] != w[1]);
-        rows.push((name.to_string(), values, differs));
-    };
-
-    add_row(&mut diff_rows, "bg", themes.iter().map(|t| t.background.to_hex()).collect());
-    add_row(&mut diff_rows, "fg", themes.iter().map(|t| t.foreground.to_hex()).collect());
-    add_row(&mut diff_rows, "cursor", themes.iter().map(|t| t.cursor.to_hex()).collect());
-
-    for (i, name) in ANSI_NAMES.iter().enumerate() {
-        let values: Vec<String> = themes
-            .iter()
-            .map(|t| t.ansi.as_array()[i].to_hex())
-            .collect();
-        add_row(&mut diff_rows, name, values);
-    }
-
-    let diff_count = diff_rows.iter().filter(|(_, _, d)| *d).count();
-
-    rsx! {
-        div { class: "color-diff-table",
-            div {
-                class: "color-diff-header",
-                onclick: move |_| expanded.set(!is_expanded),
-
-                span { class: "mono", "Color differences: {diff_count}/19" }
-                span { class: "mono color-diff-toggle",
-                    if is_expanded { "collapse" } else { "expand" }
-                }
-            }
-
-            if is_expanded {
-                div { class: "color-diff-body",
-                    table { class: "mono color-diff-grid",
-                        thead {
-                            tr {
-                                th { class: "color-diff-cell", "Color" }
-                                for theme in &themes {
-                                    th { class: "color-diff-cell", "{theme.name}" }
-                                }
-                            }
-                        }
-
-                        tbody {
-                            for (name, values, differs) in &diff_rows {
-                                tr {
-                                    class: if *differs { "color-diff-row-changed" } else { "" },
-                                    td { class: "color-diff-cell color-diff-name", "{name}" }
-                                    for val in values {
-                                        td { class: "color-diff-cell",
-                                            div { class: "color-diff-value",
-                                                div {
-                                                    class: "color-diff-chip",
-                                                    style: "background: {val};",
-                                                }
-                                                span { class: "color-diff-hex", "{val}" }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}

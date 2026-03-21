@@ -78,30 +78,32 @@ pub fn ThemeList() -> Element {
                     span { class: "filter-badge", "({count_light})" }
                 }
 
-                select {
-                    class: "filter-bar-readability",
-                    value: match min_read {
-                        None => "any",
-                        Some(v) => match v {
-                            80 => "80",
-                            90 => "90",
-                            95 => "95",
-                            _ => "any",
+                div { class: "filter-bar-readability-wrap",
+                    select {
+                        class: "filter-bar-readability",
+                        value: match min_read {
+                            None => "any",
+                            Some(v) => match v {
+                                80 => "80",
+                                90 => "90",
+                                95 => "95",
+                                _ => "any",
+                            },
                         },
-                    },
-                    onchange: move |evt: Event<FormData>| {
-                        let val = evt.value();
-                        filter.write().min_readability = match val.as_str() {
-                            "80" => Some(80),
-                            "90" => Some(90),
-                            "95" => Some(95),
-                            _ => None,
-                        };
-                    },
-                    option { value: "any", "Readability: Any" }
-                    option { value: "80", "Readability: 80%+" }
-                    option { value: "90", "Readability: 90%+" }
-                    option { value: "95", "Readability: 95%+" }
+                        onchange: move |evt: Event<FormData>| {
+                            let val = evt.value();
+                            filter.write().min_readability = match val.as_str() {
+                                "80" => Some(80),
+                                "90" => Some(90),
+                                "95" => Some(95),
+                                _ => None,
+                            };
+                        },
+                        option { value: "any", "Readability: Any" }
+                        option { value: "80", "Readability: 80%+" }
+                        option { value: "90", "Readability: 90%+" }
+                        option { value: "95", "Readability: 95%+" }
+                    }
                 }
             }
 

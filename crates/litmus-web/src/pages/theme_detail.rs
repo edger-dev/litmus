@@ -16,7 +16,7 @@ static ANSI_NAMES: &[&str] = &[
 pub fn ThemeDetail(slug: String) -> Element {
     let all_themes = themes::load_embedded_themes();
     let theme = all_themes.iter().find(|t| theme_slug(&t.name) == slug);
-    let mut palette_expanded = use_signal(|| false);
+    let mut palette_expanded = use_signal(|| true);
     let cvd_sim = use_context::<Signal<CvdSimulation>>();
 
     match theme {
@@ -78,7 +78,10 @@ pub fn ThemeDetail(slug: String) -> Element {
                                     let mut sel = shortlist.write();
                                     if let Some(pos) = sel.0.iter().position(|s| s == &detail_slug) {
                                         sel.0.remove(pos);
-                                    } else if sel.0.len() < MAX_SHORTLIST {
+                                    } else {
+                                        if sel.0.len() >= MAX_SHORTLIST {
+                                            sel.0.remove(0);
+                                        }
                                         sel.0.push(detail_slug.clone());
                                     }
                                 }

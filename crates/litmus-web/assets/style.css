@@ -1062,11 +1062,42 @@ button.sidebar-feel-lucky:hover {
 /* ==========================================================================
    Compare
    ========================================================================== */
+.page-compare {
+  overflow-x: auto;
+}
+
+.compare-column-headers {
+  display: grid;
+  grid-template-columns: var(--compare-cols);
+  gap: 0.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--app-bg);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--app-border);
+  margin-bottom: 1rem;
+}
+
+.compare-column-header {
+  min-width: 250px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.compare-column-header-link {
+  color: var(--app-fg);
+  text-decoration: none;
+}
+
+.compare-column-header-link:hover {
+  color: var(--app-accent);
+}
+
 .compare-grid {
   display: grid;
   grid-template-columns: var(--compare-cols);
   gap: 0.75rem;
-  overflow-x: auto;
 }
 
 .compare-scene-group {
@@ -1081,93 +1112,6 @@ button.sidebar-feel-lucky:hover {
 
 .compare-grid-item {
   min-width: 250px;
-}
-
-.compare-grid-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.25rem;
-}
-
-.compare-grid-item-name {
-  font-size: 0.8rem;
-  color: var(--app-muted);
-}
-
-.choose-link {
-  font-size: 0.7rem;
-  text-decoration: none;
-}
-
-/* ==========================================================================
-   Color diff table
-   ========================================================================== */
-.color-diff-table {
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--app-border);
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.color-diff-header {
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--app-surface);
-  font-size: 0.8rem;
-}
-
-.color-diff-toggle {
-  font-size: 0.7rem;
-  opacity: 0.5;
-}
-
-.color-diff-body {
-  padding: 0.5rem 0.75rem;
-  overflow-x: auto;
-}
-
-.color-diff-grid {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.75rem;
-}
-
-.color-diff-cell {
-  text-align: left;
-  padding: 0.25rem 0.5rem;
-  border-bottom: 1px solid var(--app-border);
-}
-
-.color-diff-name {
-  opacity: 0.8;
-  white-space: nowrap;
-}
-
-.color-diff-row-changed {
-  background: rgba(243, 139, 168, 0.05);
-}
-
-.color-diff-value {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.color-diff-chip {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
-  border: 1px solid rgba(128, 128, 128, 0.3);
-  flex-shrink: 0;
-}
-
-.color-diff-hex {
-  opacity: 0.7;
-  font-size: 0.65rem;
 }
 
 /* ==========================================================================
@@ -1428,7 +1372,8 @@ select:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .compare-grid {
+  .compare-grid,
+  .compare-column-headers {
     grid-template-columns: 1fr;
   }
 

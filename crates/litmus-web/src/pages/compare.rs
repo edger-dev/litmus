@@ -1,10 +1,16 @@
 use dioxus::prelude::*;
 
-use crate::components::*;
+use crate::components::ColorSwatch;
 use crate::scene_renderer;
 use crate::state::*;
 use crate::themes;
 use crate::Route;
+
+static ANSI_NAMES: &[&str] = &[
+    "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
+    "bright black", "bright red", "bright green", "bright yellow",
+    "bright blue", "bright magenta", "bright cyan", "bright white",
+];
 
 /// Multi-theme comparison (2-4 themes side by side).
 #[component]
@@ -33,19 +39,25 @@ pub fn CompareThemes(slugs: String) -> Element {
     }
 
     let n = compare_themes.len();
-    let title = compare_themes
-        .iter()
-        .map(|t| t.name.as_str())
-        .collect::<Vec<_>>()
-        .join(" vs ");
     let grid_cols = format!("repeat({n}, 1fr)");
 
     rsx! {
         div { class: "page-compare",
-            h2 { class: "page-title", "{title}" }
+            style: "--compare-cols: {grid_cols};",
 
-            if compare_themes.len() >= 2 {
-                ColorDiffTable { themes: compare_themes.clone() }
+            // Sticky column headers with theme names
+            div { class: "compare-column-headers",
+                for theme in &compare_themes {
+                    div { class: "compare-column-header",
+                        Link {
+                            to: Route::ThemeDetail {
+                                slug: theme_slug(&theme.name),
+                            },
+                            class: "compare-column-header-link",
+                            "{theme.name}"
+                        }
+                    }
+                }
             }
 
             for scene in &scenes {
@@ -53,26 +65,54 @@ pub fn CompareThemes(slugs: String) -> Element {
                     id: "scene-{scene.id}",
                     h3 { class: "compare-scene-name", "{scene.name}" }
 
-                    div {
-                        class: "compare-grid",
-                        style: "--compare-cols: {grid_cols};",
-
+                    div { class: "compare-grid",
                         for theme in &compare_themes {
                             div { class: "compare-grid-item",
-                                div { class: "compare-grid-item-header",
-                                    span { class: "compare-grid-item-name", "{theme.name}" }
-                                    Link {
-                                        to: Route::ThemeDetail {
-                                            slug: theme_slug(&theme.name),
-                                        },
-                                        class: "text-success choose-link",
-                                        "Choose"
-                                    }
-                                }
                                 scene_renderer::SceneView {
                                     theme: theme.clone(),
                                     scene: scene.clone(),
                                     compact: n > 2,
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Color palettes at the end
+            h3 { class: "compare-scene-name", "Color Palette" }
+            div { class: "compare-grid",
+                for theme in &compare_themes {
+                    {
+                        let bg = theme.background.to_hex();
+                        let fg = theme.foreground.to_hex();
+                        rsx! {
+                            div { class: "compare-grid-item",
+                                div {
+                                    class: "color-palette",
+                                    style: "background: {bg}; color: {fg};",
+                                    div { class: "palette-expanded",
+                                        div { class: "special-colors",
+                                            ColorSwatch { label: "bg".to_string(), color: theme.background.to_hex() }
+                                            ColorSwatch { label: "fg".to_string(), color: theme.foreground.to_hex() }
+                                            ColorSwatch { label: "cursor".to_string(), color: theme.cursor.to_hex() }
+                                            ColorSwatch { label: "sel bg".to_string(), color: theme.selection_background.to_hex() }
+                                            ColorSwatch { label: "sel fg".to_string(), color: theme.selection_foreground.to_hex() }
+                                        }
+                                        div { class: "ansi-grid",
+                                            for (i, color) in theme.ansi.as_array().iter().enumerate() {
+                                                div { class: "ansi-cell",
+                                                    div {
+                                                        class: "swatch-lg mono",
+                                                        style: "background: {color.to_hex()}; color: {fg};",
+                                                        title: "{color.to_hex()}",
+                                                        "{i}"
+                                                    }
+                                                    div { class: "mono ansi-name", "{ANSI_NAMES[i]}" }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
