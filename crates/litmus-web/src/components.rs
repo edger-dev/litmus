@@ -39,18 +39,26 @@ pub fn ColorSwatch(label: String, color: String) -> Element {
 #[component]
 pub fn ShortlistCheckbox(slug: String, name: String) -> Element {
     let mut shortlist = use_context::<Signal<Shortlist>>();
+    let app_theme = use_context::<Signal<AppThemeSlug>>();
+    let is_current = app_theme.read().0.as_deref() == Some(&slug);
     let is_selected = shortlist.read().0.contains(&slug);
 
     let slug_for_click = slug.clone();
     rsx! {
         label {
-            class: if is_selected { "shortlist-checkbox shortlist-checkbox-active" } else { "shortlist-checkbox" },
+            class: {
+                let mut cls = String::from("shortlist-checkbox");
+                if is_current { cls.push_str(" shortlist-checkbox-disabled"); }
+                else if is_selected { cls.push_str(" shortlist-checkbox-active"); }
+                cls
+            },
             onclick: move |evt: Event<MouseData>| {
                 evt.stop_propagation();
             },
             input {
                 r#type: "checkbox",
-                checked: is_selected,
+                checked: is_selected || is_current,
+                disabled: is_current,
                 onchange: move |_| {
                     let mut sel = shortlist.write();
                     if let Some(pos) = sel.0.iter().position(|s| s == &slug_for_click) {
@@ -60,7 +68,7 @@ pub fn ShortlistCheckbox(slug: String, name: String) -> Element {
                     }
                 },
             }
-            span { "Shortlist" }
+            span { if is_current { "Current" } else { "Shortlist" } }
         }
     }
 }
@@ -69,13 +77,21 @@ pub fn ShortlistCheckbox(slug: String, name: String) -> Element {
 #[component]
 pub fn ShortlistToggle(slug: String, name: String) -> Element {
     let mut shortlist = use_context::<Signal<Shortlist>>();
+    let app_theme = use_context::<Signal<AppThemeSlug>>();
+    let is_current = app_theme.read().0.as_deref() == Some(&slug);
     let is_selected = shortlist.read().0.contains(&slug);
 
     let slug_for_click = slug.clone();
     rsx! {
         button {
-            class: if is_selected { "shortlist-toggle shortlist-toggle-active" } else { "shortlist-toggle" },
-            aria_pressed: if is_selected { "true" } else { "false" },
+            class: {
+                let mut cls = String::from("shortlist-toggle");
+                if is_current { cls.push_str(" shortlist-toggle-disabled"); }
+                else if is_selected { cls.push_str(" shortlist-toggle-active"); }
+                cls
+            },
+            aria_pressed: if is_selected || is_current { "true" } else { "false" },
+            disabled: is_current,
             onclick: move |evt: Event<MouseData>| {
                 evt.stop_propagation();
                 let mut sel = shortlist.write();
@@ -85,7 +101,7 @@ pub fn ShortlistToggle(slug: String, name: String) -> Element {
                     sel.0.push(slug_for_click.clone());
                 }
             },
-            if is_selected { "Shortlisted" } else { "+ Shortlist" }
+            if is_current { "Current" } else if is_selected { "Shortlisted" } else { "+ Shortlist" }
         }
     }
 }
@@ -94,6 +110,7 @@ pub fn ShortlistToggle(slug: String, name: String) -> Element {
 #[component]
 pub fn UseAsAppThemeButton(slug: String) -> Element {
     let mut app_theme = use_context::<Signal<AppThemeSlug>>();
+    let mut shortlist = use_context::<Signal<Shortlist>>();
     let is_active = app_theme.read().0.as_deref() == Some(&slug);
 
     let slug_for_click = slug.clone();
@@ -105,6 +122,15 @@ pub fn UseAsAppThemeButton(slug: String) -> Element {
                 if is_active {
                     app_theme.set(AppThemeSlug(None));
                 } else {
+                    // Push the previous app theme to the top of shortlist
+                    if let Some(prev) = app_theme.read().0.clone() {
+                        let mut sel = shortlist.write();
+                        // Remove if already in shortlist (we'll re-insert at front)
+                        sel.0.retain(|s| s != &prev);
+                        sel.0.insert(0, prev);
+                        // Trim to max
+                        sel.0.truncate(MAX_SHORTLIST);
+                    }
                     app_theme.set(AppThemeSlug(Some(slug_for_click.clone())));
                 }
             },

@@ -5,6 +5,19 @@ use crate::state::*;
 use crate::themes;
 use crate::Route;
 
+fn random_index(max: usize) -> usize {
+    #[cfg(target_arch = "wasm32")]
+    {
+        (js_sys::Math::random() * max as f64).floor() as usize
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let _ = max;
+        0
+    }
+}
+
+
 /// Persistent left sidebar: navigation, shortlist management, CVD toggle.
 #[component]
 pub fn Sidebar() -> Element {
@@ -13,11 +26,14 @@ pub fn Sidebar() -> Element {
     let mut cvd_sim = use_context::<Signal<CvdSimulation>>();
     let mut sidebar_open = use_context::<Signal<SidebarOpen>>();
     let app_theme = use_context::<Signal<AppThemeSlug>>();
+    let nav = navigator();
 
     let cvd = cvd_sim.read().0;
     let sl = shortlist.read().clone();
     let sl_count = sl.0.len();
     let app_slug = app_theme.read().0.clone();
+
+    let has_shortlist = sl_count > 0;
 
     // Build compare URL: app theme + shortlist slugs (deduped)
     let mut compare_slugs: Vec<String> = Vec::new();
@@ -30,8 +46,8 @@ pub fn Sidebar() -> Element {
         }
     }
 
-    // If fewer than 2 compare slugs, fill with alphabetically-first themes not already present
-    if compare_slugs.len() < 2 {
+    // If we have some themes but fewer than 2, fill to reach 2
+    if has_shortlist && compare_slugs.len() < 2 {
         let mut fillers: Vec<String> = all_themes.iter()
             .map(|t| theme_slug(&t.name))
             .filter(|s| !compare_slugs.contains(s))
@@ -45,14 +61,17 @@ pub fn Sidebar() -> Element {
         }
     }
 
-    let compare_label = if sl_count > 0 || app_slug.is_some() {
+    let compare_label = if has_shortlist {
         format!("Compare ({})", compare_slugs.len())
     } else {
-        "Compare...".to_string()
+        "Feel Lucky".to_string()
     };
     let compare_url = compare_slugs.join(",");
 
     let show_shortlist = sl_count > 0 || app_slug.is_some();
+
+    // Collect all theme slugs for the "Feel Lucky" random pick
+    let all_slugs: Vec<String> = all_themes.iter().map(|t| theme_slug(&t.name)).collect();
 
     rsx! {
         aside {
@@ -76,11 +95,50 @@ pub fn Sidebar() -> Element {
                     onclick: move |_| sidebar_open.set(SidebarOpen(false)),
                     "Browse Themes"
                 }
-                Link {
-                    to: Route::CompareThemes { slugs: compare_url.clone() },
-                    class: "sidebar-nav-link",
-                    onclick: move |_| sidebar_open.set(SidebarOpen(false)),
-                    "{compare_label}"
+                if has_shortlist {
+                    Link {
+                        to: Route::CompareThemes { slugs: compare_url.clone() },
+                        class: "sidebar-nav-link",
+                        onclick: move |_| sidebar_open.set(SidebarOpen(false)),
+                        "{compare_label}"
+                    }
+                } else {
+                    button {
+                        class: "sidebar-nav-link sidebar-feel-lucky",
+                        onclick: move |_| {
+                            sidebar_open.set(SidebarOpen(false));
+                            if all_slugs.len() >= 2 {
+                                // Pick a random theme different from current app theme
+                                let current = app_theme.read().0.clone();
+                                let candidates: Vec<&String> = all_slugs.iter()
+                                    .filter(|s| current.as_deref() != Some(s.as_str()))
+                                    .collect();
+                                if candidates.is_empty() { return; }
+                                let idx = random_index(candidates.len());
+                                let random_slug = candidates[idx].clone();
+
+                                // Add to shortlist
+                                {
+                                    let mut sel = shortlist.write();
+                                    if !sel.0.contains(&random_slug) {
+                                        sel.0.insert(0, random_slug.clone());
+                                        sel.0.truncate(MAX_SHORTLIST);
+                                    }
+                                }
+
+                                // Compare: current app theme + random (or two randoms if no app theme)
+                                let compare = if let Some(ref cur) = current {
+                                    format!("{},{}", cur, random_slug)
+                                } else {
+                                    let idx2 = (idx + 1 + random_index(candidates.len().saturating_sub(1).max(1))) % candidates.len();
+                                    let random_slug2 = candidates[idx2].clone();
+                                    format!("{},{}", random_slug, random_slug2)
+                                };
+                                nav.push(Route::CompareThemes { slugs: compare });
+                            }
+                        },
+                        "{compare_label}"
+                    }
                 }
             }
 

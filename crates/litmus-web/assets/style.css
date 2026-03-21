@@ -149,6 +149,22 @@ body {
   color: var(--app-accent);
 }
 
+button.sidebar-feel-lucky {
+  background: transparent;
+  border: 1px dashed var(--app-border);
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  opacity: 0.7;
+}
+
+button.sidebar-feel-lucky:hover {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--app-accent);
+  color: var(--app-accent);
+}
+
 /* Sidebar shortlist */
 .sidebar-shortlist {
   display: flex;
@@ -835,6 +851,11 @@ body {
   color: var(--app-accent);
 }
 
+.shortlist-toggle-disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 /* Shortlist checkbox (on cards) */
 .shortlist-checkbox {
   display: inline-flex;
@@ -853,6 +874,15 @@ body {
 .shortlist-checkbox-active {
   opacity: 1;
   color: var(--app-accent);
+}
+
+.shortlist-checkbox-disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.shortlist-checkbox-disabled input[type="checkbox"] {
+  cursor: default;
 }
 
 .shortlist-checkbox input[type="checkbox"] {

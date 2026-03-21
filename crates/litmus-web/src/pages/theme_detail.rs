@@ -45,6 +45,8 @@ pub fn ThemeDetail(slug: String) -> Element {
 
             let scene_count = scenes.len();
             let mut shortlist = use_context::<Signal<Shortlist>>();
+            let app_theme = use_context::<Signal<AppThemeSlug>>();
+            let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
             let mut active_scene_write = active_scene;
 
@@ -117,11 +119,13 @@ pub fn ThemeDetail(slug: String) -> Element {
                                 }
                             }
                             Key::Character(ref c) if c == "c" => {
-                                let mut sel = shortlist.write();
-                                if let Some(pos) = sel.0.iter().position(|s| s == &detail_slug) {
-                                    sel.0.remove(pos);
-                                } else if sel.0.len() < MAX_SHORTLIST {
-                                    sel.0.push(detail_slug.clone());
+                                if !is_current_theme {
+                                    let mut sel = shortlist.write();
+                                    if let Some(pos) = sel.0.iter().position(|s| s == &detail_slug) {
+                                        sel.0.remove(pos);
+                                    } else if sel.0.len() < MAX_SHORTLIST {
+                                        sel.0.push(detail_slug.clone());
+                                    }
                                 }
                             }
                             _ => {}

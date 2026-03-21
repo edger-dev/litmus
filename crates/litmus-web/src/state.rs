@@ -1,7 +1,7 @@
 use litmus_model::cvd::CvdType;
 
 pub const MAX_COMPARE: usize = 4;
-pub const MAX_SHORTLIST: usize = 8;
+pub const MAX_SHORTLIST: usize = 5;
 
 /// Global shortlist state — stores slugs of themes the user has favorited.
 #[derive(Clone, Default)]

@@ -1908,6 +1908,7 @@ name = "litmus-web"
 version = "0.1.0"
 dependencies = [
  "dioxus",
+ "js-sys",
  "litmus-model",
 ]
 
