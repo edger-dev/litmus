@@ -48,9 +48,19 @@ pub fn ThemeDetail(slug: String) -> Element {
             let detail_slug = this_slug.clone();
             let mut active_scene_write = active_scene;
 
-            // Group issues by scene for the expandable list
-            let mut issues_by_scene: Vec<(String, Vec<&litmus_model::contrast::ContrastIssue>)> = Vec::new();
+            // Count issues per scene for tab badges
+            let mut issues_per_scene: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
             for issue in &issues {
+                *issues_per_scene.entry(issue.scene_id.as_str()).or_insert(0) += 1;
+            }
+
+            // Group issues by scene, deduplicated by slug (same color pair = same issue type)
+            let mut issues_by_scene: Vec<(String, Vec<&litmus_model::contrast::ContrastIssue>)> = Vec::new();
+            let mut seen_slugs: std::collections::HashSet<&str> = std::collections::HashSet::new();
+            for issue in &issues {
+                if !seen_slugs.insert(issue.slug.as_str()) {
+                    continue;
+                }
                 if let Some(group) = issues_by_scene.iter_mut().find(|(id, _)| id == &issue.scene_id) {
                     group.1.push(issue);
                 } else {
@@ -117,22 +127,40 @@ pub fn ThemeDetail(slug: String) -> Element {
                     if issues_open && issue_count > 0 {
                         div { class: "contrast-issues-list",
                             for (scene_id, scene_issues) in &issues_by_scene {
-                                div { class: "contrast-issue-group",
-                                    div { class: "contrast-issue-scene mono", "{scene_id}:" }
-                                    for issue in scene_issues {
-                                        div { class: "contrast-issue-item mono",
-                                            span { class: "contrast-issue-text", "\"{issue.text}\"" }
-                                            " \u{2014} fg "
-                                            span {
-                                                class: "color-chip",
-                                                style: "background: {issue.fg.to_hex()};",
+                                {
+                                    let target_idx = scenes.iter().position(|s| s.id == *scene_id).unwrap_or(0);
+                                    rsx! {
+                                        div { class: "contrast-issue-group",
+                                            button {
+                                                class: "contrast-issue-scene mono",
+                                                onclick: move |_| active_scene_write.set(ActiveScene(Some(target_idx))),
+                                                "{scene_id} \u{2192}"
                                             }
-                                            span { " {issue.fg.to_hex()} on bg " }
-                                            span {
-                                                class: "color-chip",
-                                                style: "background: {issue.bg.to_hex()};",
+                                            for issue in scene_issues.iter() {
+                                                div { class: "contrast-issue-item",
+                                                    span {
+                                                        class: "contrast-issue-sample mono",
+                                                        style: "color: {issue.fg.to_hex()}; background: {issue.bg.to_hex()};",
+                                                        "Sample text"
+                                                    }
+                                                    span { class: "contrast-issue-ratio mono",
+                                                        "{issue.ratio:.1}:1"
+                                                        span { class: "contrast-issue-need", " (need {issue.threshold:.1}:1)" }
+                                                    }
+                                                    span { class: "contrast-issue-hex mono",
+                                                        span {
+                                                            class: "color-chip",
+                                                            style: "background: {issue.fg.to_hex()};",
+                                                        }
+                                                        " {issue.fg.to_hex()} / "
+                                                        span {
+                                                            class: "color-chip",
+                                                            style: "background: {issue.bg.to_hex()};",
+                                                        }
+                                                        " {issue.bg.to_hex()}"
+                                                    }
+                                                }
                                             }
-                                            span { " {issue.bg.to_hex()} \u{2014} {issue.ratio:.1}:1 (need {issue.threshold:.1}:1)" }
                                         }
                                     }
                                 }
@@ -144,12 +172,20 @@ pub fn ThemeDetail(slug: String) -> Element {
                     div { class: "scene-nav",
                         div { class: "scene-tabs", role: "tablist",
                             for (i, scene) in scenes.iter().enumerate() {
-                                button {
-                                    class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
-                                    role: "tab",
-                                    aria_selected: if i == tab_idx { "true" } else { "false" },
-                                    onclick: move |_| active_scene_write.set(ActiveScene(Some(i))),
-                                    "{scene.name}"
+                                {
+                                    let scene_issue_count = issues_per_scene.get(scene.id.as_str()).copied().unwrap_or(0);
+                                    rsx! {
+                                        button {
+                                            class: if i == tab_idx { "scene-tab scene-tab-active" } else { "scene-tab" },
+                                            role: "tab",
+                                            aria_selected: if i == tab_idx { "true" } else { "false" },
+                                            onclick: move |_| active_scene_write.set(ActiveScene(Some(i))),
+                                            "{scene.name}"
+                                            if scene_issue_count > 0 {
+                                                span { class: "scene-tab-badge", "{scene_issue_count}" }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -158,10 +194,19 @@ pub fn ThemeDetail(slug: String) -> Element {
 
                     // Active scene
                     if let Some(scene) = scenes.get(tab_idx) {
-                        div { role: "tabpanel",
-                            scene_renderer::SceneView {
-                                theme: theme.clone(),
-                                scene: scene.clone(),
+                        {
+                            let current_issue_spans: Vec<(usize, usize)> = issues.iter()
+                                .filter(|i| i.scene_id == scene.id)
+                                .map(|i| (i.line, i.span))
+                                .collect();
+                            rsx! {
+                                div { role: "tabpanel",
+                                    scene_renderer::SceneView {
+                                        theme: theme.clone(),
+                                        scene: scene.clone(),
+                                        issue_spans: current_issue_spans,
+                                    }
+                                }
                             }
                         }
                     }

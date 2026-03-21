@@ -3,8 +3,16 @@ use litmus_model::scene::{Scene, SceneLine, StyledSpan};
 use litmus_model::Theme;
 
 /// Render a complete scene as a terminal-style HTML block.
+///
+/// `issue_spans` contains `(line_idx, span_idx)` pairs marking spans with
+/// contrast issues. Those spans get a visual indicator via CSS.
 #[component]
-pub fn SceneView(theme: Theme, scene: Scene, #[props(default = false)] compact: bool) -> Element {
+pub fn SceneView(
+    theme: Theme,
+    scene: Scene,
+    #[props(default = false)] compact: bool,
+    #[props(default)] issue_spans: Vec<(usize, usize)>,
+) -> Element {
     let bg = theme.background.to_hex();
     let fg = theme.foreground.to_hex();
     let class = if compact { "scene-block scene-compact" } else { "scene-block" };
@@ -21,7 +29,7 @@ pub fn SceneView(theme: Theme, scene: Scene, #[props(default = false)] compact: 
             pre {
                 style: "background-color: {bg}; color: {fg};",
                 for (i, line) in scene.lines.iter().enumerate() {
-                    LineView { key: "{i}", theme: theme.clone(), line: line.clone() }
+                    LineView { key: "{i}", theme: theme.clone(), line: line.clone(), line_idx: i, issue_spans: issue_spans.clone() }
                     "\n"
                 }
             }
@@ -51,21 +59,26 @@ pub fn ScenePreview(theme: Theme, scene: Scene, #[props(default = 5)] max_lines:
 
 /// Render a single scene line.
 #[component]
-fn LineView(theme: Theme, line: SceneLine) -> Element {
+fn LineView(theme: Theme, line: SceneLine, #[props(default)] line_idx: usize, #[props(default)] issue_spans: Vec<(usize, usize)>) -> Element {
     if line.spans.is_empty() {
         return rsx! { "" };
     }
 
     rsx! {
         for (i, span) in line.spans.iter().enumerate() {
-            SpanView { key: "{i}", theme: theme.clone(), span: span.clone() }
+            {
+                let has_issue = issue_spans.iter().any(|(l, s)| *l == line_idx && *s == i);
+                rsx! {
+                    SpanView { key: "{i}", theme: theme.clone(), span: span.clone(), has_issue: has_issue }
+                }
+            }
         }
     }
 }
 
 /// Render a single styled span as an HTML <span> with inline styles.
 #[component]
-fn SpanView(theme: Theme, span: StyledSpan) -> Element {
+fn SpanView(theme: Theme, span: StyledSpan, #[props(default = false)] has_issue: bool) -> Element {
     let mut styles = Vec::new();
 
     if let Some(ref fg) = span.fg {
@@ -92,9 +105,10 @@ fn SpanView(theme: Theme, span: StyledSpan) -> Element {
     }
 
     let style_str = styles.join("; ");
+    let class = if has_issue { "contrast-issue-span" } else { "" };
 
     rsx! {
-        span { style: "{style_str}", "{span.text}" }
+        span { class: "{class}", style: "{style_str}", "{span.text}" }
     }
 }
 

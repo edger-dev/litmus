@@ -21,6 +21,18 @@ pub enum ThemeColor {
 }
 
 impl ThemeColor {
+    /// Return a short stable identifier for this color reference.
+    pub fn slug(&self) -> String {
+        match self {
+            ThemeColor::Foreground => "fg".into(),
+            ThemeColor::Background => "bg".into(),
+            ThemeColor::Cursor => "cursor".into(),
+            ThemeColor::SelectionBackground => "sel-bg".into(),
+            ThemeColor::SelectionForeground => "sel-fg".into(),
+            ThemeColor::Ansi(i) => format!("ansi{i}"),
+        }
+    }
+
     /// Resolve this semantic color reference to a concrete color from the theme.
     pub fn resolve<'a>(&self, theme: &'a Theme) -> &'a Color {
         match self {

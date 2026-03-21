@@ -632,7 +632,17 @@ body {
 .contrast-issue-scene {
   font-weight: 600;
   margin-bottom: 0.25rem;
-  color: var(--app-muted);
+  color: var(--app-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+.contrast-issue-scene:hover {
+  text-decoration: underline;
 }
 
 .contrast-issue-item {
@@ -640,12 +650,33 @@ body {
   line-height: 1.6;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.contrast-issue-text {
-  color: var(--app-warning);
+.contrast-issue-sample {
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  font-size: 0.75rem;
+}
+
+.contrast-issue-ratio {
+  font-weight: 600;
+  color: var(--app-error);
+}
+
+.contrast-issue-need {
+  font-weight: normal;
+  opacity: 0.6;
+}
+
+.contrast-issue-hex {
+  font-size: 0.65rem;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 /* Color palette */
@@ -754,6 +785,18 @@ body {
   background: var(--app-active);
   border-color: var(--app-accent);
   color: var(--app-accent);
+}
+
+.scene-tab-badge {
+  display: inline-block;
+  margin-left: 0.3rem;
+  padding: 0 0.35rem;
+  font-size: 0.6rem;
+  font-weight: bold;
+  line-height: 1.4;
+  border-radius: 9px;
+  background: var(--app-error);
+  color: var(--app-bg);
 }
 
 .scene-hint {
@@ -1143,6 +1186,13 @@ select:focus-visible {
   box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.3);
   text-shadow: 0 0 2px currentColor;
   animation: crt-flicker 0.1s infinite alternate;
+}
+
+/* Contrast issue span marker */
+.contrast-issue-span {
+  outline: 1px dashed var(--app-error);
+  outline-offset: 1px;
+  border-radius: 2px;
 }
 
 /* Scene transition */

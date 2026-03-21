@@ -1,6 +1,6 @@
 //! WCAG contrast ratio calculation and readability validation.
 
-use crate::scene::Scene;
+use crate::scene::{Scene, ThemeColor};
 use crate::{Color, Theme};
 
 /// Minimum contrast ratio for WCAG AA normal text.
@@ -39,6 +39,8 @@ pub fn contrast_ratio(c1: &Color, c2: &Color) -> f64 {
 pub struct ContrastIssue {
     /// Which scene the issue was found in.
     pub scene_id: String,
+    /// Stable identifier: `"scene-id/fg-slug-on-bg-slug"`.
+    pub slug: String,
     /// Line index within the scene.
     pub line: usize,
     /// Span index within the line.
@@ -49,6 +51,10 @@ pub struct ContrastIssue {
     pub fg: Color,
     /// Background color used.
     pub bg: Color,
+    /// Semantic foreground color reference.
+    pub fg_color: Option<ThemeColor>,
+    /// Semantic background color reference.
+    pub bg_color: Option<ThemeColor>,
     /// Computed contrast ratio.
     pub ratio: f64,
     /// The WCAG level that was checked against.
@@ -95,13 +101,21 @@ pub fn validate_scene_contrast(
             };
 
             if ratio < threshold {
+                let fg_tc = span.fg.clone();
+                let bg_tc = span.bg.clone();
+                let fg_slug = fg_tc.as_ref().map(|c| c.slug()).unwrap_or_else(|| "fg".into());
+                let bg_slug = bg_tc.as_ref().map(|c| c.slug()).unwrap_or_else(|| "bg".into());
+                let slug = format!("{}/{}-on-{}", scene.id, fg_slug, bg_slug);
                 issues.push(ContrastIssue {
                     scene_id: scene.id.clone(),
+                    slug,
                     line: line_idx,
                     span: span_idx,
                     text: span.text.clone(),
                     fg: fg.clone(),
                     bg: bg.clone(),
+                    fg_color: fg_tc,
+                    bg_color: bg_tc,
                     ratio,
                     level,
                     threshold,
