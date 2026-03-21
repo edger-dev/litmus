@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T06:17:32Z
-updated_at: 2026-03-21T06:23:40Z
+updated_at: 2026-03-21T13:10:26Z
+order: zz
 ---
 
 Simplify sidebar to shortlist/favorites, move filters to browse page, fix compare workflow, add UseAsAppTheme button

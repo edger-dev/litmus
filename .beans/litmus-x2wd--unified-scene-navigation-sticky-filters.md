@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T10:18:46Z
-updated_at: 2026-03-21T10:22:40Z
+updated_at: 2026-03-21T13:10:26Z
+order: zzV
 ---
 
 Detail page: show all scenes vertically with minimap. Compare page: add minimap. Sticky filter bar on theme list.

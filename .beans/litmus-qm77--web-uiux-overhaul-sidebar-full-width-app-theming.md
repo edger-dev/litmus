@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T05:00:36Z
-updated_at: 2026-03-21T05:06:31Z
+updated_at: 2026-03-21T13:10:26Z
+order: zzk
 ---
 
 Replace top nav + floating compare bar with persistent left sidebar. Full-width layout. App chrome theming via CSS custom properties. Mobile drawer. CRT easter egg.

@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T07:19:13Z
-updated_at: 2026-03-21T07:21:51Z
+updated_at: 2026-03-21T13:10:26Z
+order: zk
 ---
 
 Restructure ThemeCard, add ShortlistCheckbox, rework sidebar, rename button text, fix tooltip clipping

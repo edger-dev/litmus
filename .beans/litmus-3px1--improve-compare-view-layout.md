@@ -5,7 +5,8 @@ status: completed
 type: task
 priority: normal
 created_at: 2026-03-21T12:13:26Z
-updated_at: 2026-03-21T12:15:03Z
+updated_at: 2026-03-21T13:10:26Z
+order: zzy
 ---
 
 Fix multiple issues with compare view:

@@ -5,7 +5,8 @@ status: completed
 type: epic
 priority: normal
 created_at: 2026-03-21T05:36:19Z
-updated_at: 2026-03-21T05:40:32Z
+updated_at: 2026-03-21T13:10:26Z
+order: z
 ---
 
 8 items: fix app theme switcher, filter navigation, remove scene sidebar, separate filters, readability score, clickable contrast issues, move CVD, richer sidebar items

@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T06:40:03Z
-updated_at: 2026-03-21T06:43:52Z
+updated_at: 2026-03-21T13:10:26Z
+order: zs
 ---
 
 Add stable slugs, scene tab badges, visual-first issue display, and scene span markers

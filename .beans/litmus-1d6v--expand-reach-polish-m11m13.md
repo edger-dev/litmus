@@ -5,7 +5,8 @@ status: completed
 type: milestone
 priority: normal
 created_at: 2026-03-21T03:11:27Z
-updated_at: 2026-03-21T03:20:42Z
+updated_at: 2026-03-21T13:10:26Z
+order: "y"
 ---
 
 M11: A11y & Mobile Polish, M12: Theme & Scene Expansion, M13: Color Blindness Simulation

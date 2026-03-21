@@ -4,6 +4,62 @@ use litmus_model::cvd::CvdType;
 
 use crate::state::*;
 
+/// Format a star count for display (e.g. 1234 → "1.2k").
+fn format_star_count(count: u64) -> String {
+    if count >= 1000 {
+        let k = count as f64 / 1000.0;
+        if k >= 10.0 {
+            format!("{:.0}k", k)
+        } else {
+            format!("{:.1}k", k)
+        }
+    } else {
+        count.to_string()
+    }
+}
+
+/// GitHub star button — fetches stargazers count via GitHub API and renders a
+/// pill-style link to the repository.
+#[component]
+pub fn GitHubStars() -> Element {
+    let star_count = use_resource(|| async {
+        let js = r#"
+            const resp = await fetch("https://api.github.com/repos/edger-dev/litmus", {
+                headers: { "Accept": "application/vnd.github.v3+json" }
+            });
+            if (!resp.ok) return null;
+            const data = await resp.json();
+            return data.stargazers_count;
+        "#;
+        eval(js).await.ok().and_then(|v| v.as_u64())
+    });
+
+    let count = star_count.value().read().flatten();
+
+    rsx! {
+        a {
+            class: "github-stars",
+            href: "https://github.com/edger-dev/litmus",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            title: "Star on GitHub",
+            // Star icon (inline SVG)
+            svg {
+                width: "14",
+                height: "14",
+                view_box: "0 0 16 16",
+                fill: "currentColor",
+                path {
+                    d: "M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z",
+                }
+            }
+            if let Some(n) = count {
+                span { class: "github-stars-count", "{format_star_count(n)}" }
+            }
+        }
+    }
+}
+
 /// Circular score ring (donut gauge) rendered as inline SVG.
 #[component]
 pub fn ScoreRing(score: u8, size: f64) -> Element {

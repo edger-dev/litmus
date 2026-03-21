@@ -111,6 +111,40 @@ body {
   color: var(--app-fg);
 }
 
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.github-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--app-muted);
+  border: 1px solid var(--app-border);
+  border-radius: 1rem;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  line-height: 1;
+}
+
+.github-stars:hover {
+  color: var(--app-fg);
+  border-color: var(--app-muted);
+}
+
+.github-stars svg {
+  flex-shrink: 0;
+}
+
+.github-stars-count {
+  font-variant-numeric: tabular-nums;
+}
+
 .sidebar-subtitle {
   display: block;
   font-size: 0.7rem;

@@ -5,7 +5,8 @@ status: completed
 type: task
 priority: normal
 created_at: 2026-03-21T03:40:33Z
-updated_at: 2026-03-21T03:43:24Z
+updated_at: 2026-03-21T13:10:26Z
+order: zzz
 ---
 
 Rewrite docs: update intro/milestones, add architecture/development/agentic-workflow pages, delete contributing.md placeholder

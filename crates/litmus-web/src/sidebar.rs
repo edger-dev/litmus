@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::SceneMinimap;
+use crate::components::{GitHubStars, SceneMinimap};
 use crate::state::*;
 use crate::themes;
 use crate::Route;
@@ -90,15 +90,18 @@ pub fn Sidebar() -> Element {
 
             // Header
             div { class: "sidebar-header",
-                Link { to: Route::ThemeList {}, class: "sidebar-logo",
-                    img {
-                        class: "sidebar-logo-icon",
-                        src: asset!("assets/litmus-icon.svg"),
-                        alt: "Litmus",
-                        width: "24",
-                        height: "24",
+                div { class: "sidebar-header-row",
+                    Link { to: Route::ThemeList {}, class: "sidebar-logo",
+                        img {
+                            class: "sidebar-logo-icon",
+                            src: asset!("assets/litmus-icon.svg"),
+                            alt: "Litmus",
+                            width: "24",
+                            height: "24",
+                        }
+                        span { class: "sidebar-logo-text", "Litmus" }
                     }
-                    span { class: "sidebar-logo-text", "Litmus" }
+                    GitHubStars {}
                 }
                 span { class: "sidebar-subtitle", "terminal color theme previewer" }
             }

@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-21T08:02:40Z
-updated_at: 2026-03-21T08:05:58Z
+updated_at: 2026-03-21T13:10:26Z
+order: zy
 ---
 
 1. Limit shortlist to 5 themes (keep most recent)

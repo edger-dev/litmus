@@ -1,0 +1,48 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (wasm32 target)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache cargo registry & build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: wasm-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: wasm-
+
+      - name: Install Dioxus CLI
+        run: cargo install dioxus-cli --locked
+
+      - name: Build WASM
+        run: cd crates/litmus-web && dx build --release
+
+      - name: Copy Cloudflare config files
+        run: |
+          cp crates/litmus-web/_redirects crates/litmus-web/dist/
+          cp crates/litmus-web/_headers crates/litmus-web/dist/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy crates/litmus-web/dist/ --project-name=litmus
