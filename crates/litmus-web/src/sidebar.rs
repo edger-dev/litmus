@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+use crate::components::SceneMinimap;
 use crate::state::*;
 use crate::themes;
 use crate::Route;
@@ -228,6 +229,14 @@ pub fn Sidebar() -> Element {
                             }
                         }
                     }
+                }
+            }
+
+            // Scene minimap (shown on detail + compare pages)
+            if matches!(current_route, Route::ThemeDetail { .. } | Route::CompareThemes { .. }) {
+                div { class: "sidebar-section",
+                    div { class: "sidebar-section-label", "Scenes" }
+                    SceneMinimap { scenes: litmus_model::scenes::all_scenes() }
                 }
             }
 

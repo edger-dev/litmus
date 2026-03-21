@@ -79,8 +79,6 @@ pub fn CompareThemes(slugs: String) -> Element {
                     }
                 }
             }
-
-            SceneMinimap { scenes: scenes.clone() }
         }
     }
 }

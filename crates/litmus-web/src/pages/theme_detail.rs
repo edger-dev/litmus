@@ -4,7 +4,6 @@ use crate::components::*;
 use crate::scene_renderer::{self, SpanIssueDetail};
 use crate::state::*;
 use crate::themes;
-use crate::Route;
 
 static ANSI_NAMES: &[&str] = &[
     "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
@@ -12,13 +11,12 @@ static ANSI_NAMES: &[&str] = &[
     "bright blue", "bright magenta", "bright cyan", "bright white",
 ];
 
-/// Single theme detail page — all scenes rendered vertically with minimap.
+/// Single theme detail page — all scenes rendered vertically.
 #[component]
 pub fn ThemeDetail(slug: String) -> Element {
     let all_themes = themes::load_embedded_themes();
     let theme = all_themes.iter().find(|t| theme_slug(&t.name) == slug);
     let mut palette_expanded = use_signal(|| false);
-    let mut issues_expanded = use_signal(|| false);
     let cvd_sim = use_context::<Signal<CvdSimulation>>();
 
     match theme {
@@ -31,7 +29,6 @@ pub fn ThemeDetail(slug: String) -> Element {
             let this_slug = theme_slug(&theme.name);
             let scenes = litmus_model::scenes::all_scenes();
             let expanded = *palette_expanded.read();
-            let issues_open = *issues_expanded.read();
 
             let issues = litmus_model::contrast::validate_theme_readability(&theme);
             let issue_count = issues.len();
@@ -45,7 +42,7 @@ pub fn ThemeDetail(slug: String) -> Element {
             let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
 
-            // Count issues per scene
+            // Group issues per scene as (line, span, detail) tuples
             let mut issues_per_scene: std::collections::HashMap<&str, Vec<(usize, usize, SpanIssueDetail)>> = std::collections::HashMap::new();
             for issue in &issues {
                 issues_per_scene.entry(issue.scene_id.as_str()).or_default().push(
@@ -57,37 +54,6 @@ pub fn ThemeDetail(slug: String) -> Element {
                         bg_hex: issue.bg.to_hex(),
                     })
                 );
-            }
-
-            // Group issues by (scene_id, line_idx) for the expanded issues list
-            #[allow(clippy::type_complexity)]
-            let mut issues_by_scene_line: Vec<(String, String, Vec<(usize, Vec<(usize, SpanIssueDetail)>)>)> = Vec::new();
-            for issue in &issues {
-                let scene_name = scenes.iter()
-                    .find(|s| s.id == issue.scene_id)
-                    .map(|s| s.name.clone())
-                    .unwrap_or_else(|| issue.scene_id.clone());
-                let detail = SpanIssueDetail {
-                    ratio: issue.ratio,
-                    threshold: issue.threshold,
-                    level: issue.level.to_string(),
-                    fg_hex: issue.fg.to_hex(),
-                    bg_hex: issue.bg.to_hex(),
-                };
-
-                if let Some(scene_group) = issues_by_scene_line.iter_mut().find(|(id, _, _)| id == &issue.scene_id) {
-                    if let Some(line_group) = scene_group.2.iter_mut().find(|(li, _)| *li == issue.line) {
-                        line_group.1.push((issue.span, detail));
-                    } else {
-                        scene_group.2.push((issue.line, vec![(issue.span, detail)]));
-                    }
-                } else {
-                    issues_by_scene_line.push((
-                        issue.scene_id.clone(),
-                        scene_name,
-                        vec![(issue.line, vec![(issue.span, detail)])],
-                    ));
-                }
             }
 
             rsx! {
@@ -123,70 +89,12 @@ pub fn ThemeDetail(slug: String) -> Element {
                         }
                         span { class: "detail-readability mono", "readability: {readability}%" }
                         if issue_count > 0 {
-                            button {
-                                class: "detail-issues-toggle text-error",
-                                onclick: move |_| issues_expanded.set(!issues_open),
-                                if issues_open {
-                                    "{issue_count} contrast issue(s) \u{25BC}"
-                                } else {
-                                    "{issue_count} contrast issue(s) \u{25B6}"
-                                }
+                            span { class: "detail-issues-count text-error",
+                                "{issue_count} contrast issue(s)"
                             }
                         }
                         ShortlistCheckbox { slug: this_slug.clone(), name: theme.name.clone() }
                         UseAsAppThemeButton { slug: this_slug }
-                    }
-
-                    // Expandable contrast issues — rendered as actual scene lines
-                    if issues_open && issue_count > 0 {
-                        div { class: "contrast-issues-list",
-                            for (scene_id, scene_name, line_groups) in &issues_by_scene_line {
-                                {
-                                    let scene_obj = scenes.iter().find(|s| s.id == *scene_id);
-                                    let scroll_id = scene_id.clone();
-                                    rsx! {
-                                        div { class: "contrast-issue-group",
-                                            button {
-                                                class: "contrast-issue-scene mono",
-                                                onclick: move |_| {
-                                                    let js = format!(
-                                                        "document.getElementById('scene-{}').scrollIntoView({{behavior:'smooth',block:'start'}})",
-                                                        scroll_id
-                                                    );
-                                                    dioxus::document::eval(&js);
-                                                },
-                                                "{scene_name} \u{2192}"
-                                            }
-                                            for (line_idx, span_details) in line_groups.iter() {
-                                                {
-                                                    let issue_details_for_line: Vec<(usize, usize, SpanIssueDetail)> = span_details.iter()
-                                                        .map(|(si, d)| (*line_idx, *si, d.clone()))
-                                                        .collect();
-                                                    let line = scene_obj
-                                                        .and_then(|s| s.lines.get(*line_idx))
-                                                        .cloned();
-                                                    rsx! {
-                                                        if let Some(line) = line {
-                                                            div { class: "contrast-issue-line",
-                                                                pre {
-                                                                    style: "background-color: {bg}; color: {fg};",
-                                                                    scene_renderer::LineView {
-                                                                        theme: theme.clone(),
-                                                                        line: line,
-                                                                        line_idx: *line_idx,
-                                                                        issue_details: issue_details_for_line,
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
 
                     // All scenes rendered vertically
@@ -196,15 +104,15 @@ pub fn ThemeDetail(slug: String) -> Element {
                                 .get(scene.id.as_str())
                                 .cloned()
                                 .unwrap_or_default();
-                            let issue_count = scene_issues.len();
+                            let scene_issue_count = scene_issues.len();
                             rsx! {
                                 div {
                                     class: "detail-scene-section",
                                     id: "scene-{scene.id}",
                                     h3 { class: "detail-scene-heading",
                                         "{scene.name}"
-                                        if issue_count > 0 {
-                                            span { class: "scene-tab-badge", "{issue_count}" }
+                                        if scene_issue_count > 0 {
+                                            span { class: "scene-tab-badge", "{scene_issue_count}" }
                                         }
                                     }
                                     scene_renderer::SceneView {
@@ -276,8 +184,6 @@ pub fn ThemeDetail(slug: String) -> Element {
 
                     ExportButtons { theme: theme.clone() }
                 }
-
-                SceneMinimap { scenes: scenes.clone() }
             }
         }
         None => {
@@ -285,7 +191,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                 div {
                     h2 { "Theme not found" }
                     p { "No theme matches \"{slug}\"." }
-                    Link { to: Route::ThemeList {}, class: "accent-link", "Back to all themes" }
+                    Link { to: crate::Route::ThemeList {}, class: "accent-link", "Back to all themes" }
                 }
             }
         }
