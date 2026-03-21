@@ -1,76 +1,59 @@
 # Milestones
 
-## Context
-
-The MVP scope: curated themes, realistic app previews within provider ecosystems, static in-browser rendering, and a theme browsing UI. We start with a TUI prototype to inform data model design and serve as a playground, then build out 5 more milestones. Terminal-first; editor ecosystem is deferred to post-MVP.
+litmus development is organized into milestones, each delivering a focused set of features. 13 milestones have been completed, taking the project from a TUI prototype to a full-featured web app with 29 themes, 8 scenes, accessibility tooling, and config export.
 
 ## M0: TUI Prototype
 
-A terminal-based preview tool to explore theme rendering before committing to a data model. Serves as a design playground and sanity check.
-
-- Parse kitty.conf theme files directly as input (no canonical format yet)
-- ANSI color swatches: display the 16 ANSI colors + fg/bg/cursor/selection as colored blocks
-- Simple app mock-ups: hardcoded terminal output rendered with theme colors (fake git diff, ls output, shell prompt)
-- Live terminal capture: run real commands (git diff, ls) and display output with theme colors applied
-- TUI navigation: switch between themes, toggle between swatches/mock-ups/live views
-- Use ratatui or similar TUI framework
+Built a terminal-based preview tool using ratatui to explore theme rendering before committing to a data model. Parsed kitty.conf files directly, displayed ANSI color swatches, and rendered hardcoded terminal mock-ups with theme colors applied.
 
 ## M1: Theme Data Model & Parsing
 
-Define the unified theme format and implement parsers, informed by learnings from M0.
-
-- Design the internal theme representation (color palette schema — ANSI 0-15, foreground, background, cursor, selection, etc.)
-- Define a canonical theme file format (likely TOML or JSON)
-- Implement parsers for at least: kitty.conf, base16 YAML
-- Validation and error handling for theme data
-- Unit tests for parsing
+Defined the unified theme representation — `Color`, `AnsiColors` (16 named fields), and `Theme` struct. Established TOML as the canonical theme format. Implemented parsers for kitty.conf and base16 YAML. Added validation and unit tests.
 
 ## M2: Theme Curation
 
-Build the initial curated theme library.
-
-- Select 10-20 high-quality themes (Catppuccin Mocha/Latte, Tokyo Night, Gruvbox Dark/Light, Dracula, Nord, Rose Pine, Solarized Dark/Light, Kanagawa, Everforest, etc.)
-- Convert each to the canonical format
-- Organize by theme family (e.g., Catppuccin family has Mocha, Latte, Frappe, Macchiato)
-- Quality checks: ensure all required colors are present, no missing values
+Built the initial curated theme library with ~15 high-quality themes: Catppuccin (4 variants), Tokyo Night (3), Gruvbox (2), Dracula, Nord, Rose Pine (3), Solarized (2), Kanagawa, and Everforest (2). Organized by theme family with prefix-based grouping.
 
 ## M3: Terminal Ecosystem Rendering
 
-Build the web rendering engine and terminal provider/consumer previews.
-
-- Core renderer: theme data + annotated content → colored HTML spans (monospace)
-- Define "scene" format — annotated sample content with semantic color references
-- Create realistic terminal scenes:
-  - Shell prompt
-  - `ls --color` output
-  - `git diff` output (with context, additions, deletions, merge conflicts)
-  - `delta` output
-  - `tig` log view
-- Ensure scenes expose real readability issues (low contrast, blending)
+Created the scene system — the core abstraction where `ThemeColor` enum references semantic color slots rather than hardcoded RGB values. Built `StyledSpan` builder API and initial scenes (shell prompt, git diff, ls colors). Implemented the web renderer that resolves theme colors to CSS inline styles.
 
 ## M4: Theme Browsing UI
 
-Web app for browsing and viewing theme previews.
-
-- Web app shell (likely a static site — Rust backend optional, could be pure frontend)
-- Theme listing page with family grouping
-- Single-theme detail page showing all ecosystem previews
-- Provider ecosystem view (e.g., "kitty ecosystem" showing all consumers together)
-- Responsive layout, monospace font rendering
+Launched the Dioxus WASM web app with a theme listing page (family-grouped cards with swatch strips), single-theme detail page showing all scenes, and a responsive monospace layout.
 
 ## M5: Comparison & Polish
 
-Side-by-side comparison and final MVP polish.
+Added side-by-side theme comparison, theme-first and provider-first navigation, and visual polish for edge cases (very bright/dark themes, low-contrast text).
 
-- Side-by-side theme comparison (same scene, two themes)
-- Theme-first vs provider-first navigation (or hybrid)
-- Visual polish, edge case handling (very bright/dark themes, low contrast)
-- README update with usage instructions
+## M6: Filters & Mini Previews
 
-## Post-MVP: Editor Ecosystem Rendering
+Added mini scene previews to theme cards on the home page. Implemented search filtering by theme name/family. Added light/dark variant filter and WCAG contrast quality filter.
 
-Deferred — acceptable to ship MVP without this.
+## M7: Theme Detail Redesign
 
-- Neovim scenes: syntax highlighting, nvim-tree, lualine statusline
-- Silo/dual-mode app preview (e.g., jjui)
-- Scene format should be reusable across providers
+Redesigned the theme detail page with tabbed scene views. Added keyboard navigation (arrow keys to cycle scenes). Introduced the compare accumulator — press 'c' to collect themes for comparison.
+
+## M8: Scene Grid & Compact Rendering
+
+Implemented scene grid layout for viewing scenes side by side. Added compact rendering mode for denser previews. Introduced scene tabs for quick switching between scenes.
+
+## M9: Multi-Theme Compare
+
+Extended comparison from 2 to 2–4 themes side by side. Added a color diff table showing how palette values differ across compared themes.
+
+## M10: Config Export
+
+Added export functionality — generate kitty.conf, TOML, or Nix attribute set for any theme. Built a share/choose flow for copying or downloading the exported config.
+
+## M11: Accessibility & Mobile
+
+CSS custom properties for layout tokens. Semantic HTML elements and ARIA attributes for screen reader support. `:focus-visible` indicators for keyboard users. Responsive layout down to mobile viewports.
+
+## M12: Theme & Scene Expansion
+
+Expanded from 19 to 29 themes — added Ayu, Horizon, Material, Monokai, Moonlight, Nightfox, One Dark, Palenight, and additional Kanagawa variants. Grew from 5 to 8 scenes — added cargo build output, Python REPL, and htop scenes.
+
+## M13: Color Blindness Simulation
+
+Implemented CVD (color vision deficiency) simulation using Machado et al. 2009 transformation matrices. Three modes: protanopia, deuteranopia, tritanopia. Transforms entire themes through the simulation pipeline so all existing scenes and views work without modification.

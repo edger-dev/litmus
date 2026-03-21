@@ -19,3 +19,15 @@ The core issue: **you can't see how a theme actually looks across your real work
 A web app that lets you **preview any theme across all your terminal apps instantly**, with realistic sample content that exposes real readability issues.
 
 Pick a theme. See exactly how `git diff`, neovim, tig, zellij, and more will look — before touching a single config file.
+
+## Current Scale
+
+- **29 themes** across 15 families (Catppuccin, Tokyo Night, Gruvbox, Dracula, Nord, Rose Pine, and more)
+- **8 scenes** simulating real terminal output (shell prompt, git diff, ls colors, cargo build, neovim, Python REPL, log viewer, htop)
+- **3 crates**: `litmus-model` (shared data model), `litmus-cli` (TUI prototype), `litmus-web` (Dioxus WASM web app)
+- Accessibility tooling: WCAG contrast checking, color blindness simulation (CVD), keyboard navigation, screen reader support
+- Config export: generate kitty.conf, TOML, or Nix for any theme
+
+## Project Status
+
+The web app is the primary interface — the TUI was the M0 prototype that informed the data model design. 13 milestones have been completed, covering everything from the core data model through theme browsing, comparison, export, accessibility, and CVD simulation. See [Milestones](./milestones.md) for the full history.
