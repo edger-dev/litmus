@@ -67,6 +67,7 @@
             pkgs.sccache
             pkgs.mise
             pkgs.dioxus-cli
+            pkgs.wasm-bindgen-cli
             pkgs.cage
             pkgs.mdbook
             pkgs.bacon

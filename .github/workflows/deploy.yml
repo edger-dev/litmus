@@ -7,6 +7,7 @@ on:
       - crates/**
       - Cargo.toml
       - Cargo.lock
+      - .github/workflows/deploy.yml
   workflow_dispatch:
 
 jobs:
@@ -35,7 +36,10 @@ jobs:
           restore-keys: wasm-
 
       - name: Install Dioxus CLI
-        run: command -v dx || cargo install dioxus-cli --locked
+        run: command -v dx || cargo install dioxus-cli@0.7.3 --locked
+
+      - name: Install wasm-bindgen-cli
+        run: command -v wasm-bindgen || cargo install wasm-bindgen-cli@0.2.114 --locked
 
       - name: Build WASM
         run: cd crates/litmus-web && dx build --release
