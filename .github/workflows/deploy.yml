@@ -3,6 +3,10 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
+    paths:
+      - crates/**
+      - Cargo.toml
+      - Cargo.lock
   workflow_dispatch:
 
 jobs:
