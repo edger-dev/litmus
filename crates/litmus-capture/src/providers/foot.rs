@@ -48,15 +48,15 @@ impl ProviderCapture for FootProvider {
         config.push_str(&format!("cursor={} {}\n", hex(cur), hex(bg)));
         config.push_str(&format!("selection-background={}\n", hex(sel_bg)));
         config.push_str(&format!("selection-foreground={}\n", hex(sel_fg)));
-        config.push_str("\n");
+        config.push('\n');
         // Regular ANSI colors (0-7)
-        for i in 0..8 {
-            config.push_str(&format!("regular{}={}\n", i, hex(&ansi[i])));
+        for (i, color) in ansi.iter().enumerate().take(8) {
+            config.push_str(&format!("regular{}={}\n", i, hex(color)));
         }
-        config.push_str("\n");
+        config.push('\n');
         // Bright ANSI colors (8-15)
-        for i in 0..8 {
-            config.push_str(&format!("bright{}={}\n", i, hex(&ansi[8 + i])));
+        for (i, color) in ansi.iter().enumerate().skip(8) {
+            config.push_str(&format!("bright{}={}\n", i - 8, hex(color)));
         }
 
         config
