@@ -75,9 +75,9 @@ return config
     fn build_launch_args(&self, config_path: &Path, command: &str) -> Vec<String> {
         vec![
             "wezterm".to_string(),
-            "start".to_string(),
             "--config-file".to_string(),
             config_path.to_string_lossy().into_owned(),
+            "start".to_string(),
             "--".to_string(),
             "bash".to_string(),
             "-c".to_string(),
@@ -179,10 +179,9 @@ mod tests {
         let args = provider.build_launch_args(config_path, "echo hello");
 
         assert_eq!(args[0], "wezterm");
-        assert_eq!(args[1], "start");
-        assert!(args.contains(&"--config-file".to_string()));
-        let config_idx = args.iter().position(|a| a == "--config-file").unwrap();
-        assert_eq!(args[config_idx + 1], "/tmp/test.lua");
+        assert_eq!(args[1], "--config-file");
+        assert_eq!(args[2], "/tmp/test.lua");
+        assert_eq!(args[3], "start");
         assert!(args.contains(&"echo hello".to_string()));
     }
 }
