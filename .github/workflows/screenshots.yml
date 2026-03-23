@@ -1,0 +1,178 @@
+name: Capture Theme Screenshots
+
+on:
+  # Manual trigger with optional filters
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: "Provider slug to capture (default: all registered)"
+        required: false
+        default: ""
+      theme:
+        description: "Theme slug to capture (default: all themes)"
+        required: false
+        default: ""
+      fixture:
+        description: "Fixture id to capture (default: all fixtures)"
+        required: false
+        default: ""
+
+  # Auto-trigger when themes or fixtures change
+  push:
+    branches: [main, wip-design]
+    paths:
+      - themes/**
+      - fixtures/**
+      - crates/litmus-capture/**
+      - .github/workflows/screenshots.yml
+
+jobs:
+  capture:
+    name: Capture screenshots
+    runs-on: ubuntu-latest
+
+    env:
+      # Force wlroots to use headless backend (no DRM device required)
+      WLR_BACKENDS: headless
+      # Use pixman CPU renderer for cage (no GPU required)
+      WLR_RENDERER: pixman
+      # Force Mesa software rendering for kitty (no GPU required)
+      LIBGL_ALWAYS_SOFTWARE: "1"
+      GALLIUM_DRIVER: softpipe
+      # Suppress debug output
+      WLR_SILENT: "1"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Cache Nix store
+        uses: actions/cache@v4
+        with:
+          path: /nix/store
+          key: nix-screenshots-${{ hashFiles('flake.nix', 'flake.lock') }}
+          restore-keys: nix-screenshots-
+
+      - name: Cache cargo registry & build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-screenshots-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: cargo-screenshots-
+
+      - name: Build litmus-capture
+        run: nix develop --command cargo build --release -p litmus-capture
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            mesa-utils \
+            libgl1-mesa-swrast \
+            libgles2-mesa \
+            xwayland \
+            awscli
+
+      - name: Capture all screenshots (all providers × all themes × all fixtures)
+        id: capture
+        run: |
+          PROVIDER_ARG=""
+          THEME_ARG=""
+          FIXTURE_ARG=""
+
+          if [[ -n "${{ github.event.inputs.provider }}" ]]; then
+            PROVIDER_ARG="--provider ${{ github.event.inputs.provider }}"
+          fi
+
+          if [[ -n "${{ github.event.inputs.theme }}" ]]; then
+            THEME_ARG="--theme ${{ github.event.inputs.theme }}"
+          fi
+
+          if [[ -n "${{ github.event.inputs.fixture }}" ]]; then
+            FIXTURE_ARG="--fixture ${{ github.event.inputs.fixture }}"
+          fi
+
+          # Full capture-all or single capture depending on inputs
+          if [[ -n "$THEME_ARG" && -n "$FIXTURE_ARG" ]]; then
+            # Single capture mode (both theme and fixture specified)
+            if [[ -z "$PROVIDER_ARG" ]]; then
+              PROVIDER_ARG="--provider kitty"
+            fi
+            nix develop --command \
+              ./target/release/litmus-capture capture \
+                $PROVIDER_ARG \
+                $THEME_ARG \
+                $FIXTURE_ARG \
+                --staging-dir ./staging
+          else
+            # Capture all (with optional provider filter)
+            nix develop --command \
+              ./target/release/litmus-capture capture-all \
+                $PROVIDER_ARG \
+                --staging-dir ./staging \
+                --keep-going
+          fi
+
+      - name: Build manifest
+        run: |
+          nix develop --command \
+            ./target/release/litmus-capture manifest build \
+              --staging-dir ./staging \
+              --base-url "${{ vars.LITMUS_SCREENSHOTS_BASE_URL || 'https://screenshots.litmus.edger.dev' }}" \
+              --output ./staging/manifest.json
+
+      - name: Check coverage
+        run: |
+          nix develop --command \
+            ./target/release/litmus-capture manifest check \
+              --manifest ./staging/manifest.json || true
+        continue-on-error: true
+
+      - name: Upload screenshots to R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          R2_BUCKET: litmus-screenshots
+        run: |
+          # Upload all WebP images
+          find ./staging -name "*.webp" | while read f; do
+            key="v1/${f#./staging/}"
+            aws s3 cp "$f" "s3://${R2_BUCKET}/${key}" \
+              --endpoint-url "$R2_ENDPOINT" \
+              --cache-control "public, max-age=31536000, immutable" \
+              --content-type "image/webp" \
+              --no-progress
+          done
+
+          # Upload manifest with shorter cache
+          aws s3 cp ./staging/manifest.json "s3://${R2_BUCKET}/manifest.json" \
+            --endpoint-url "$R2_ENDPOINT" \
+            --cache-control "public, max-age=3600" \
+            --content-type "application/json" \
+            --no-progress
+
+          echo "Upload complete"
+
+      - name: Report statistics
+        if: always()
+        run: |
+          echo "### Screenshot Capture Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [[ -f ./staging/manifest.json ]]; then
+            COUNT=$(python3 -c "import json; d=json.load(open('./staging/manifest.json')); print(len(d['screenshots']))")
+            echo "- **Total screenshots**: $COUNT" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ -d ./staging ]]; then
+            SIZE=$(du -sh ./staging | cut -f1)
+            echo "- **Staging size**: $SIZE" >> $GITHUB_STEP_SUMMARY
+          fi

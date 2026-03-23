@@ -1,4 +1,5 @@
 pub mod base16;
+pub mod screenshot;
 pub mod contrast;
 pub mod cvd;
 pub mod defaults;

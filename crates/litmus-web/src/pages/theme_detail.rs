@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 
 use crate::components::*;
 use crate::scene_renderer::{self, SpanIssueDetail};
+use crate::screenshot_view::{scene_id_to_fixture_id, ProviderSelector, ScreenshotSceneView};
 use crate::state::*;
 use crate::themes;
 
@@ -41,6 +42,8 @@ pub fn ThemeDetail(slug: String) -> Element {
             let app_theme = use_context::<Signal<AppThemeSlug>>();
             let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
+            let mut active_provider = use_context::<Signal<ActiveProvider>>();
+            let current_provider = active_provider.read().0.clone();
 
             // Group issues per scene as (line, span, detail) tuples
             let mut issues_per_scene: std::collections::HashMap<&str, Vec<(usize, usize, SpanIssueDetail)>> = std::collections::HashMap::new();
@@ -110,6 +113,13 @@ pub fn ThemeDetail(slug: String) -> Element {
                         UseAsAppThemeButton { slug: this_slug }
                     }
 
+                    // Provider selector (shown when screenshots are available)
+                    ProviderSelector {
+                        theme_slug: theme_slug(&theme.name),
+                        active: current_provider.clone(),
+                        on_change: move |slug: String| active_provider.set(ActiveProvider(slug)),
+                    }
+
                     // All scenes rendered vertically
                     for scene in &scenes {
                         {
@@ -118,6 +128,11 @@ pub fn ThemeDetail(slug: String) -> Element {
                                 .cloned()
                                 .unwrap_or_default();
                             let scene_issue_count = scene_issues.len();
+                            let fixture_id = scene_id_to_fixture_id(&scene.id);
+                            let use_screenshot = !current_provider.starts_with("simulated")
+                                && fixture_id.is_some();
+                            let provider_slug = current_provider.clone();
+                            let t_slug = theme_slug(&theme.name);
                             rsx! {
                                 div {
                                     class: "detail-scene-section",
@@ -128,10 +143,20 @@ pub fn ThemeDetail(slug: String) -> Element {
                                             span { class: "scene-tab-badge", "{scene_issue_count}" }
                                         }
                                     }
-                                    scene_renderer::SceneView {
-                                        theme: theme.clone(),
-                                        scene: scene.clone(),
-                                        issue_details: scene_issues,
+                                    if use_screenshot {
+                                        ScreenshotSceneView {
+                                            provider: provider_slug,
+                                            theme_slug: t_slug,
+                                            fixture_id: fixture_id.unwrap().to_string(),
+                                            fallback_theme: theme.clone(),
+                                            fallback_scene: scene.clone(),
+                                        }
+                                    } else {
+                                        scene_renderer::SceneView {
+                                            theme: theme.clone(),
+                                            scene: scene.clone(),
+                                            issue_details: scene_issues,
+                                        }
                                     }
                                 }
                             }

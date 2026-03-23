@@ -1,4 +1,5 @@
 use litmus_model::cvd::CvdType;
+use litmus_model::screenshot::ScreenshotManifest;
 
 pub const MAX_COMPARE: usize = 4;
 pub const MAX_SHORTLIST: usize = 5;
@@ -62,6 +63,28 @@ pub struct SceneIssueCounts(pub std::collections::HashMap<String, usize>);
 /// Mobile sidebar drawer state.
 #[derive(Clone, Default)]
 pub struct SidebarOpen(pub bool);
+
+/// The currently active rendering mode.
+/// "simulated" always works; other slugs require a manifest entry.
+#[derive(Clone)]
+pub struct ActiveProvider(pub String);
+
+impl Default for ActiveProvider {
+    fn default() -> Self {
+        Self("simulated".to_string())
+    }
+}
+
+impl ActiveProvider {
+    pub fn is_simulated(&self) -> bool {
+        self.0 == "simulated"
+    }
+}
+
+/// Cached screenshot manifest, fetched from the CDN on app load.
+/// None while loading or if unavailable.
+#[derive(Clone, Default)]
+pub struct ManifestState(pub Option<ScreenshotManifest>);
 
 pub fn is_light_theme(theme: &litmus_model::Theme) -> bool {
     litmus_model::contrast::relative_luminance(&theme.background) > 0.5
