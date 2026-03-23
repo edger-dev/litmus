@@ -4,7 +4,6 @@ use crate::components::{GitHubStars, SceneMinimap};
 use crate::state::*;
 use crate::themes;
 use crate::Route;
-use litmus_model::screenshot::ScreenshotManifest;
 
 fn random_index(max: usize) -> usize {
     #[cfg(target_arch = "wasm32")]
@@ -27,8 +26,6 @@ pub fn Sidebar() -> Element {
     let mut cvd_sim = use_context::<Signal<CvdSimulation>>();
     let mut sidebar_open = use_context::<Signal<SidebarOpen>>();
     let app_theme = use_context::<Signal<AppThemeSlug>>();
-    let mut active_provider = use_context::<Signal<ActiveProvider>>();
-    let manifest_state = use_context::<Signal<ManifestState>>();
     let nav = navigator();
     let current_route = use_route::<Route>();
 
@@ -270,45 +267,6 @@ pub fn Sidebar() -> Element {
                 }
             }
 
-            // Rendering mode toggle
-            {
-                let current_provider = active_provider.read().0.clone();
-                let manifest = manifest_state.read();
-                let manifest_providers: Vec<(String, String)> = manifest_providers_list(&manifest.0);
-                rsx! {
-                    div { class: "sidebar-section sidebar-rendering",
-                        label { class: "sidebar-section-label",
-                            r#for: "rendering-select",
-                            "Rendering"
-                        }
-                        select {
-                            id: "rendering-select",
-                            class: "sidebar-rendering-select",
-                            onchange: move |evt: Event<FormData>| {
-                                active_provider.set(ActiveProvider(evt.value()));
-                            },
-                            option {
-                                value: "simulated",
-                                selected: current_provider == "simulated",
-                                "Simulated"
-                            }
-                            for (slug, name) in manifest_providers {
-                                {
-                                    let is_selected = current_provider == slug;
-                                    rsx! {
-                                        option {
-                                            value: "{slug}",
-                                            selected: is_selected,
-                                            "{name}"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
             // CVD (pinned to bottom)
             div { class: "sidebar-section sidebar-cvd",
                 label { class: "sidebar-section-label",
@@ -358,16 +316,4 @@ pub fn Sidebar() -> Element {
             }
         }
     }
-}
-
-/// Extract deduplicated (slug, name) pairs from the manifest's providers list.
-fn manifest_providers_list(manifest: &Option<ScreenshotManifest>) -> Vec<(String, String)> {
-    let Some(manifest) = manifest else {
-        return Vec::new();
-    };
-    manifest
-        .providers
-        .iter()
-        .map(|p| (p.slug.clone(), p.name.clone()))
-        .collect()
 }

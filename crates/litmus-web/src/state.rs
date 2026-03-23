@@ -64,23 +64,6 @@ pub struct SceneIssueCounts(pub std::collections::HashMap<String, usize>);
 #[derive(Clone, Default)]
 pub struct SidebarOpen(pub bool);
 
-/// The currently active rendering mode.
-/// "simulated" always works; other slugs require a manifest entry.
-#[derive(Clone)]
-pub struct ActiveProvider(pub String);
-
-impl Default for ActiveProvider {
-    fn default() -> Self {
-        Self("simulated".to_string())
-    }
-}
-
-impl ActiveProvider {
-    pub fn is_simulated(&self) -> bool {
-        self.0 == "simulated"
-    }
-}
-
 /// Cached screenshot manifest, fetched from the CDN on app load.
 /// None while loading or if unavailable.
 #[derive(Clone, Default)]

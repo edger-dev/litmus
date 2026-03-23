@@ -43,7 +43,6 @@ fn App() -> Element {
     use_context_provider(|| Signal::new(SidebarOpen::default()));
     use_context_provider(|| Signal::new(VisibleScenes::default()));
     use_context_provider(|| Signal::new(SceneIssueCounts::default()));
-    use_context_provider(|| Signal::new(ActiveProvider::default()));
     use_context_provider(|| Signal::new(ManifestState::default()));
 
     // Fetch screenshot manifest on app load.

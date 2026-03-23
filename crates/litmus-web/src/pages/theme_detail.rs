@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 
 use crate::components::*;
 use crate::scene_renderer::{self, SpanIssueDetail};
-use crate::screenshot_view::{scene_id_to_fixture_id, ScreenshotSceneView};
+use crate::screenshot_view::{scene_id_to_fixture_id, ScreenshotImage};
 use crate::state::*;
 use crate::themes;
 
@@ -42,8 +42,7 @@ pub fn ThemeDetail(slug: String) -> Element {
             let app_theme = use_context::<Signal<AppThemeSlug>>();
             let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
-            let active_provider = use_context::<Signal<ActiveProvider>>();
-            let current_provider = active_provider.read().0.clone();
+            let manifest_state = use_context::<Signal<ManifestState>>();
 
             // Group issues per scene as (line, span, detail) tuples
             let mut issues_per_scene: std::collections::HashMap<&str, Vec<(usize, usize, SpanIssueDetail)>> = std::collections::HashMap::new();
@@ -113,7 +112,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                         UseAsAppThemeButton { slug: this_slug }
                     }
 
-                    // All scenes rendered vertically
+                    // All scenes rendered as side-by-side (simulated + screenshot)
                     for scene in &scenes {
                         {
                             let scene_issues = issues_per_scene
@@ -122,10 +121,13 @@ pub fn ThemeDetail(slug: String) -> Element {
                                 .unwrap_or_default();
                             let scene_issue_count = scene_issues.len();
                             let fixture_id = scene_id_to_fixture_id(&scene.id);
-                            let use_screenshot = !current_provider.starts_with("simulated")
-                                && fixture_id.is_some();
-                            let provider_slug = current_provider.clone();
                             let t_slug = theme_slug(&theme.name);
+                            let has_screenshot = fixture_id.is_some()
+                                && crate::screenshot_view::has_screenshot(
+                                    &manifest_state.read().0,
+                                    &t_slug,
+                                    fixture_id.unwrap(),
+                                );
                             rsx! {
                                 div {
                                     class: "detail-scene-section",
@@ -136,19 +138,29 @@ pub fn ThemeDetail(slug: String) -> Element {
                                             span { class: "scene-tab-badge", "{scene_issue_count}" }
                                         }
                                     }
-                                    if use_screenshot {
-                                        ScreenshotSceneView {
-                                            provider: provider_slug,
-                                            theme_slug: t_slug,
-                                            fixture_id: fixture_id.unwrap().to_string(),
-                                            fallback_theme: theme.clone(),
-                                            fallback_scene: scene.clone(),
+                                    div { class: "scene-split",
+                                        // Left: simulated rendering with contrast analysis
+                                        div { class: "scene-split-panel",
+                                            span { class: "scene-split-label", "Simulated" }
+                                            scene_renderer::SceneView {
+                                                theme: theme.clone(),
+                                                scene: scene.clone(),
+                                                issue_details: scene_issues,
+                                            }
                                         }
-                                    } else {
-                                        scene_renderer::SceneView {
-                                            theme: theme.clone(),
-                                            scene: scene.clone(),
-                                            issue_details: scene_issues,
+                                        // Right: real screenshot or placeholder
+                                        div { class: "scene-split-panel",
+                                            span { class: "scene-split-label", "Screenshot" }
+                                            if has_screenshot {
+                                                ScreenshotImage {
+                                                    theme_slug: t_slug,
+                                                    fixture_id: fixture_id.unwrap().to_string(),
+                                                }
+                                            } else {
+                                                div { class: "scene-split-placeholder",
+                                                    "No screenshot captured"
+                                                }
+                                            }
                                         }
                                     }
                                 }
