@@ -3,4 +3,4 @@
 set -euo pipefail
 
 cd "$FIXTURE_WORK_DIR"
-git diff --color=always HEAD
+git --no-pager diff --color=always HEAD

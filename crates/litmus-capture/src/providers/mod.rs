@@ -1,7 +1,9 @@
 use litmus_model::Theme;
 use std::path::Path;
 
+mod foot;
 mod kitty;
+pub use foot::FootProvider;
 pub use kitty::KittyProvider;
 
 /// Terminal geometry for screenshot capture.
@@ -51,7 +53,10 @@ pub trait ProviderCapture {
 
 /// Returns all registered providers.
 pub fn all_providers() -> Vec<Box<dyn ProviderCapture>> {
-    vec![Box::new(KittyProvider)]
+    vec![
+        Box::new(FootProvider),
+        Box::new(KittyProvider),
+    ]
 }
 
 /// Find a provider by slug.

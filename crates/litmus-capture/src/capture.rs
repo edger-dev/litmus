@@ -82,11 +82,15 @@ pub fn capture_screenshot(opts: &CaptureOptions) -> Result<CaptureResult> {
     let png_path = tmp.path().join("screenshot.png");
 
     // Build the command that the terminal runs: execute command.sh, touch sentinel, then sleep
-    let command_script = opts.fixture_dir.join("command.sh");
+    // Canonicalize to absolute path so the script is findable after `cd` to the work dir
+    let command_script = fs::canonicalize(opts.fixture_dir.join("command.sh"))
+        .context("resolve command.sh path")?;
     let _ = opts.fixture_id; // used for identification by callers
+    let work_dir_abs = fs::canonicalize(&work_dir).context("resolve work dir")?;
     let terminal_command = format!(
-        "cd '{}' && bash '{}'; touch '{}'; sleep 300",
-        work_dir.display(),
+        "export FIXTURE_WORK_DIR='{}' && cd '{}' && bash '{}'; touch '{}'; sleep 300",
+        work_dir_abs.display(),
+        work_dir_abs.display(),
         command_script.display(),
         sentinel_path.display(),
     );
@@ -110,11 +114,16 @@ pub fn capture_screenshot(opts: &CaptureOptions) -> Result<CaptureResult> {
     let wrapper_path = tmp.path().join("capture-wrapper.sh");
     fs::write(&wrapper_path, &wrapper_content).context("write wrapper script")?;
 
-    // Run cage
+    // Run the wrapper inside cage (headless Wayland compositor).
+    // WLR_BACKENDS=headless creates a headless Wayland display without DRM.
+    // WLR_RENDERER=pixman uses software rendering; foot (used for capture) renders via SHM so no OpenGL is needed.
     let cage_status = Command::new("cage")
         .args(["--"])
         .arg("bash")
         .arg(&wrapper_path)
+        .env("WLR_BACKENDS", "headless")
+        .env("WLR_RENDERER", "pixman")
+        .env("WLR_SILENT", "1")
         .status()
         .context("run cage")?;
 
@@ -172,7 +181,7 @@ fn build_wrapper_script(
         r#"#!/usr/bin/env bash
 set -euo pipefail
 
-# Launch terminal emulator in background
+# Launch terminal emulator in background (WAYLAND_DISPLAY is set by cage)
 {terminal_bin} {extra_args} &
 TERMINAL_PID=$!
 
@@ -192,7 +201,7 @@ done
 # Extra wait for rendering to fully settle
 sleep 0.5
 
-# Take screenshot of the entire Wayland display
+# Take screenshot of the entire Wayland display (grim uses $WAYLAND_DISPLAY set by cage)
 grim {png_output}
 
 # Kill terminal and exit cleanly

@@ -26,8 +26,9 @@ impl ProviderCapture for KittyProvider {
         config.push('\n');
         config.push_str(&format!("font_family {}\n", geometry.font_family));
         config.push_str(&format!("font_size {:.1}\n", geometry.font_size));
-        config.push_str(&format!("initial_window_columns {}\n", geometry.cols));
-        config.push_str(&format!("initial_window_rows {}\n", geometry.rows));
+        // Use cell-count units (no suffix) for initial window dimensions
+        config.push_str(&format!("initial_window_width {}\n", geometry.cols));
+        config.push_str(&format!("initial_window_height {}\n", geometry.rows));
 
         // Disable features that could interfere with screenshot accuracy
         config.push_str("remember_window_size no\n");
@@ -116,8 +117,8 @@ mod tests {
 
         assert!(config.contains("font_family FiraCode"));
         assert!(config.contains("font_size 12.0"));
-        assert!(config.contains("initial_window_columns 80"));
-        assert!(config.contains("initial_window_rows 24"));
+        assert!(config.contains("initial_window_width 80"));
+        assert!(config.contains("initial_window_height 24"));
     }
 
     #[test]

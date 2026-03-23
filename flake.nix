@@ -68,7 +68,11 @@
             pkgs.mise
             pkgs.dioxus-cli
             pkgs.wasm-bindgen-cli
-            pkgs.cage
+            pkgs.cage             # Wayland kiosk compositor for headless capture
+            pkgs.grim             # Wayland screenshot tool
+            pkgs.foot             # Wayland terminal (SHM-based, no OpenGL needed)
+            pkgs.kitty            # Kitty terminal (requires real display with OpenGL)
+            pkgs.fira-code
             pkgs.mdbook
             pkgs.bacon
           ];

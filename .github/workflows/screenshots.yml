@@ -32,14 +32,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Force wlroots to use headless backend (no DRM device required)
-      WLR_BACKENDS: headless
-      # Use pixman CPU renderer for cage (no GPU required)
-      WLR_RENDERER: pixman
-      # Force Mesa software rendering for kitty (no GPU required)
-      LIBGL_ALWAYS_SOFTWARE: "1"
-      GALLIUM_DRIVER: softpipe
-      # Suppress debug output
+      # Suppress wlroots/cage debug output in CI
       WLR_SILENT: "1"
 
     steps:
@@ -74,10 +67,6 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
-            mesa-utils \
-            libgl1-mesa-swrast \
-            libgles2-mesa \
-            xwayland \
             awscli
 
       - name: Capture all screenshots (all providers × all themes × all fixtures)
@@ -103,7 +92,7 @@ jobs:
           if [[ -n "$THEME_ARG" && -n "$FIXTURE_ARG" ]]; then
             # Single capture mode (both theme and fixture specified)
             if [[ -z "$PROVIDER_ARG" ]]; then
-              PROVIDER_ARG="--provider kitty"
+              PROVIDER_ARG="--provider foot"
             fi
             nix develop --command \
               ./target/release/litmus-capture capture \

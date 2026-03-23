@@ -381,33 +381,31 @@ fn load_theme_by_slug(themes_dir: &Path, query: &str) -> Result<Theme> {
         .context("theme not found")
 }
 
-/// Load all themes from a directory of .toml, .conf, and .yaml files.
+/// Load all themes from a directory tree of .toml and .conf files (recursive).
 pub fn load_all_themes(themes_dir: &Path) -> Result<Vec<Theme>> {
     let mut themes = Vec::new();
 
-    let entries = fs::read_dir(themes_dir)
-        .with_context(|| format!("read themes dir {}", themes_dir.display()))?;
-
-    for entry in entries {
-        let entry = entry.context("read directory entry")?;
+    for entry in walkdir::WalkDir::new(themes_dir)
+        .into_iter()
+        .filter_map(|e| e.ok())
+        .filter(|e| e.file_type().is_file())
+    {
         let path = entry.path();
-
         let theme = match path.extension().and_then(|e| e.to_str()) {
             Some("toml") => {
-                let content = fs::read_to_string(&path)
+                let content = fs::read_to_string(path)
                     .with_context(|| format!("read {}", path.display()))?;
                 parse_toml_theme(&content)
                     .with_context(|| format!("parse {}", path.display()))?
             }
             Some("conf") => {
-                let content = fs::read_to_string(&path)
+                let content = fs::read_to_string(path)
                     .with_context(|| format!("read {}", path.display()))?;
                 parse_kitty_theme(&content)
                     .with_context(|| format!("parse {}", path.display()))?
             }
             _ => continue,
         };
-
         themes.push(theme);
     }
 

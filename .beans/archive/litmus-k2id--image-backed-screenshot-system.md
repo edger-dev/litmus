@@ -5,7 +5,8 @@ status: completed
 type: milestone
 priority: normal
 created_at: 2026-03-23T09:45:58Z
-updated_at: 2026-03-23T10:08:36Z
+updated_at: 2026-03-23T10:26:52Z
+order: zzzV
 ---
 
 Replace simulated scene rendering with real terminal screenshots for 100% accurate theme previews. Covers data model, fixture system, capture tool, R2 storage, web integration, and CI automation.
