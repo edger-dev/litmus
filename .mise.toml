@@ -18,13 +18,13 @@ description = "Build CLI binary (release)"
 run = "cargo run --package litmus-cli"
 description = "Run the litmus TUI"
 
-[tasks.capture-foot]
-run = "WLR_BACKENDS=headless WLR_RENDERER=pixman WLR_SILENT=1 cargo run --package litmus-capture -- capture-all --provider foot --keep-going"
-description = "Capture screenshots with foot (headless, no GPU needed)"
-
 [tasks.capture-kitty]
 run = "cargo run --package litmus-capture -- capture-all --provider kitty --keep-going -j $(( $(nproc) / 2 ))"
 description = "Capture screenshots with kitty at half CPU cores (requires Wayland + GPU)"
+
+[tasks.capture-wezterm]
+run = "cargo run --package litmus-capture -- capture-all --provider wezterm --keep-going -j $(( $(nproc) / 2 ))"
+description = "Capture screenshots with wezterm at half CPU cores (requires Wayland + GPU)"
 
 [tasks.capture-manifest]
 run = "cargo run --package litmus-capture -- manifest build --base-url http://localhost:8884 --url-prefix ''"

@@ -2,7 +2,9 @@ use dioxus::prelude::*;
 
 use crate::components::*;
 use crate::scene_renderer::{self, SpanIssueDetail};
-use crate::screenshot_view::{scene_id_to_fixture_id, ScreenshotImage};
+use crate::screenshot_view::{
+    has_screenshot_for_provider, manifest_provider_slugs, scene_id_to_fixture_id, ScreenshotImage,
+};
 use crate::state::*;
 use crate::themes;
 
@@ -43,6 +45,8 @@ pub fn ThemeDetail(slug: String) -> Element {
             let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
             let manifest_state = use_context::<Signal<ManifestState>>();
+            let providers = manifest_provider_slugs(&manifest_state.read().0);
+            let mut selected_provider = use_signal(|| "kitty".to_string());
 
             // Group issues per scene as (line, span, detail) tuples
             let mut issues_per_scene: std::collections::HashMap<&str, Vec<(usize, usize, SpanIssueDetail)>> = std::collections::HashMap::new();
@@ -110,6 +114,24 @@ pub fn ThemeDetail(slug: String) -> Element {
                         }
                         ShortlistCheckbox { slug: this_slug.clone(), name: theme.name.clone() }
                         UseAsAppThemeButton { slug: this_slug }
+                        if !providers.is_empty() {
+                            div { class: "detail-provider-select",
+                                label { class: "detail-provider-label", "Provider:" }
+                                select {
+                                    value: "{selected_provider.read()}",
+                                    onchange: move |evt: Event<FormData>| {
+                                        selected_provider.set(evt.value());
+                                    },
+                                    for slug in &providers {
+                                        option {
+                                            value: "{slug}",
+                                            selected: *selected_provider.read() == *slug,
+                                            "{slug}"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     // All scenes rendered as side-by-side (simulated + screenshot)
@@ -122,9 +144,11 @@ pub fn ThemeDetail(slug: String) -> Element {
                             let scene_issue_count = scene_issues.len();
                             let fixture_id = scene_id_to_fixture_id(&scene.id);
                             let t_slug = theme_slug(&theme.name);
+                            let cur_provider = selected_provider.read().clone();
                             let has_screenshot = fixture_id.is_some()
-                                && crate::screenshot_view::has_screenshot(
+                                && has_screenshot_for_provider(
                                     &manifest_state.read().0,
+                                    &cur_provider,
                                     &t_slug,
                                     fixture_id.unwrap(),
                                 );
@@ -155,6 +179,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                                                 ScreenshotImage {
                                                     theme_slug: t_slug,
                                                     fixture_id: fixture_id.unwrap().to_string(),
+                                                    provider: cur_provider.clone(),
                                                 }
                                             } else {
                                                 div { class: "scene-split-placeholder",

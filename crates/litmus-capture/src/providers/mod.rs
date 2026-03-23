@@ -1,10 +1,10 @@
 use litmus_model::Theme;
 use std::path::Path;
 
-mod foot;
 mod kitty;
-pub use foot::FootProvider;
+mod wezterm;
 pub use kitty::KittyProvider;
+pub use wezterm::WeztermProvider;
 
 /// Terminal geometry for screenshot capture.
 #[derive(Debug, Clone)]
@@ -54,8 +54,8 @@ pub trait ProviderCapture: Send + Sync {
 /// Returns all registered providers.
 pub fn all_providers() -> Vec<Box<dyn ProviderCapture>> {
     vec![
-        Box::new(FootProvider),
         Box::new(KittyProvider),
+        Box::new(WeztermProvider),
     ]
 }
 

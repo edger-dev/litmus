@@ -5,7 +5,7 @@ use crate::state::ManifestState;
 
 /// Display a real terminal screenshot image.
 ///
-/// Auto-picks the first available provider from the manifest.
+/// If provider is specified, looks up that provider. Otherwise auto-picks first available.
 /// Returns an empty element if no screenshot is found.
 #[component]
 pub fn ScreenshotImage(
@@ -13,11 +13,20 @@ pub fn ScreenshotImage(
     theme_slug: String,
     /// Fixture id (e.g. "git-diff")
     fixture_id: String,
+    /// Provider slug (e.g. "kitty"). If empty, auto-picks first available.
+    #[props(default = String::new())]
+    provider: String,
 ) -> Element {
     let manifest_state = use_context::<Signal<ManifestState>>();
     let manifest = manifest_state.read();
 
-    match find_any_screenshot_url(&manifest.0, &theme_slug, &fixture_id) {
+    let result = if provider.is_empty() {
+        find_any_screenshot_url(&manifest.0, &theme_slug, &fixture_id)
+    } else {
+        find_screenshot_url(&manifest.0, &provider, &theme_slug, &fixture_id)
+    };
+
+    match result {
         Some((url, width, height)) => {
             let display_width = width / 2; // 2x capture → display at 1x
             let display_height = height / 2;
@@ -37,9 +46,36 @@ pub fn ScreenshotImage(
     }
 }
 
-/// Check if a screenshot exists for any provider for the given (theme, fixture).
-pub fn has_screenshot(manifest: &Option<ScreenshotManifest>, theme: &str, fixture: &str) -> bool {
-    find_any_screenshot_url(manifest, theme, fixture).is_some()
+/// Check if a screenshot exists for a specific provider for the given (theme, fixture).
+pub fn has_screenshot_for_provider(
+    manifest: &Option<ScreenshotManifest>,
+    provider: &str,
+    theme: &str,
+    fixture: &str,
+) -> bool {
+    find_screenshot_url(manifest, provider, theme, fixture).is_some()
+}
+
+/// Find a screenshot URL for a specific provider + theme + fixture.
+/// Returns `(full_url, width, height)`.
+fn find_screenshot_url(
+    manifest: &Option<ScreenshotManifest>,
+    provider: &str,
+    theme: &str,
+    fixture: &str,
+) -> Option<(String, u32, u32)> {
+    let manifest = manifest.as_ref()?;
+    let meta = manifest.find(provider, theme, fixture)?;
+    let url = meta.cache_busted_url(&manifest.base_url);
+    Some((url, meta.width, meta.height))
+}
+
+/// Get the list of provider slugs from the manifest.
+pub fn manifest_provider_slugs(manifest: &Option<ScreenshotManifest>) -> Vec<String> {
+    manifest
+        .as_ref()
+        .map(|m| m.providers.iter().map(|p| p.slug.clone()).collect())
+        .unwrap_or_default()
 }
 
 /// Find a screenshot URL from any provider for the given (theme, fixture).
