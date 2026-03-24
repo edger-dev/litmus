@@ -1,11 +1,11 @@
 ---
 # litmus-z20l
 title: Build litmus extract-colors command
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-03-24T13:22:55Z
-updated_at: 2026-03-24T15:13:45Z
+updated_at: 2026-03-24T15:20:17Z
 parent: litmus-knrz
 blocked_by:
     - litmus-jmna
@@ -47,3 +47,17 @@ Look up theme name in vendor/kitty-themes/themes.json index → find .conf file
 
 ### Step 6: Add wezterm vendor lookup
 Look up theme name in vendored .toml files (scan by metadata.name field)
+
+## Summary of Changes
+
+Implemented the extract-colors pipeline across two crates:
+
+**litmus-model additions:**
+- `wezterm.rs`: New parser for wezterm color scheme TOML format (ansi/brights arrays, optional cursor/selection)
+- `provider.rs`: Added `ProviderColors::from_theme()` conversion and `to_toml()` serialization
+
+**litmus-capture additions:**
+- `extract.rs`: Vendor index builders (kitty themes.json, wezterm metadata.name + aliases), theme definition scanner, provider-specific color extraction
+- `main.rs`: New `ExtractColors` subcommand with --provider, --theme, --force flags
+
+End-to-end tested: successfully extracts colors from both kitty and wezterm vendor data, writing correctly formatted ProviderColors TOML files.
