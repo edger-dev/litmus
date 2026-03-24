@@ -1,11 +1,11 @@
 ---
 # litmus-i4kf
 title: Remove old Theme struct and hand-curated color sections
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-03-24T13:23:12Z
-updated_at: 2026-03-24T23:58:28Z
+updated_at: 2026-03-24T23:58:41Z
 parent: litmus-knrz
 blocked_by:
     - litmus-y6dc
@@ -35,3 +35,15 @@ Depends on: web and CLI migrations complete
 - [x] Verify all theme files are in new format
 - [x] Zero warnings across all crates
 - [x] All tests pass
+
+## Summary of Changes
+
+Updated litmus-capture's load_all_themes() to use load_themes_dir() + ProviderColors::to_theme() instead of the old parse_toml_theme() path. Removed unused parse_toml_theme import from capture crate.
+
+Kept in place:
+- Theme struct (runtime display model, used everywhere)
+- parse_toml_theme (still used by CLI for user-provided .toml files)
+- defaults module (used by all format parsers)
+- toml_format module (still needed)
+
+All 60 theme definitions verified to be in new ThemeDefinition format.
