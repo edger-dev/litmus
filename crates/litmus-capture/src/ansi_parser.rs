@@ -5,6 +5,9 @@ use litmus_model::term_output::{TermColor, TermLine, TermOutput, TermSpan};
 /// Uses a cell grid of `cols × rows` to handle cursor movement and overwrites,
 /// then collapses adjacent cells with identical attributes into `TermSpan`s.
 pub fn parse_ansi(input: &[u8], cols: u16, rows: u16, id: &str, name: &str) -> TermOutput {
+    // Clamp to at least 1×1 to avoid underflow in grid operations
+    let cols = cols.max(1);
+    let rows = rows.max(1);
     let mut grid = Grid::new(cols as usize, rows as usize);
     let mut parser = vte::Parser::new();
 
@@ -107,7 +110,25 @@ impl Grid {
     fn apply_sgr(&mut self, params: &[&[u16]]) {
         let mut i = 0;
         while i < params.len() {
-            let p = if params[i].is_empty() { 0 } else { params[i][0] };
+            let slice = params[i];
+            let p = if slice.is_empty() { 0 } else { slice[0] };
+
+            // Check for colon-separated extended colors (subparams in one slice).
+            // e.g., \x1b[38:5:196m → params[i] = [38, 5, 196]
+            // e.g., \x1b[38:2::255:128:0m → params[i] = [38, 2, 0, 255, 128, 0]
+            if (p == 38 || p == 48) && slice.len() > 1 {
+                let color = parse_extended_color_subparams(slice);
+                if let Some(color) = color {
+                    if p == 38 {
+                        self.attrs.fg = color;
+                    } else {
+                        self.attrs.bg = color;
+                    }
+                }
+                i += 1;
+                continue;
+            }
+
             match p {
                 0 => self.attrs = CellAttrs::default(),
                 1 => self.attrs.bold = true,
@@ -122,70 +143,16 @@ impl Grid {
                 24 => self.attrs.underline = false,
                 // Standard foreground colors 30-37
                 30..=37 => self.attrs.fg = TermColor::Ansi((p - 30) as u8),
-                // Extended foreground: 38;5;N or 38;2;R;G;B
+                // Extended foreground: 38;5;N or 38;2;R;G;B (semicolon-separated)
                 38 => {
-                    i += 1;
-                    if i < params.len() {
-                        let sub = if params[i].is_empty() { 0 } else { params[i][0] };
-                        match sub {
-                            5 => {
-                                // 256-color
-                                i += 1;
-                                if i < params.len() {
-                                    let n = if params[i].is_empty() { 0 } else { params[i][0] };
-                                    self.attrs.fg = color_from_index(n);
-                                }
-                            }
-                            2 => {
-                                // Truecolor
-                                if i + 3 <= params.len() {
-                                    let r = if params[i + 1].is_empty() { 0 } else { params[i + 1][0] };
-                                    let g = if params[i + 2].is_empty() { 0 } else { params[i + 2][0] };
-                                    let b = if i + 3 < params.len() && !params[i + 3].is_empty() {
-                                        params[i + 3][0]
-                                    } else {
-                                        0
-                                    };
-                                    self.attrs.fg = TermColor::Rgb(r as u8, g as u8, b as u8);
-                                    i += 3;
-                                }
-                            }
-                            _ => {}
-                        }
-                    }
+                    i = parse_extended_color_semicolons(params, i, &mut self.attrs.fg);
                 }
                 39 => self.attrs.fg = TermColor::Default,
                 // Standard background colors 40-47
                 40..=47 => self.attrs.bg = TermColor::Ansi((p - 40) as u8),
-                // Extended background: 48;5;N or 48;2;R;G;B
+                // Extended background: 48;5;N or 48;2;R;G;B (semicolon-separated)
                 48 => {
-                    i += 1;
-                    if i < params.len() {
-                        let sub = if params[i].is_empty() { 0 } else { params[i][0] };
-                        match sub {
-                            5 => {
-                                i += 1;
-                                if i < params.len() {
-                                    let n = if params[i].is_empty() { 0 } else { params[i][0] };
-                                    self.attrs.bg = color_from_index(n);
-                                }
-                            }
-                            2 => {
-                                if i + 3 <= params.len() {
-                                    let r = if params[i + 1].is_empty() { 0 } else { params[i + 1][0] };
-                                    let g = if params[i + 2].is_empty() { 0 } else { params[i + 2][0] };
-                                    let b = if i + 3 < params.len() && !params[i + 3].is_empty() {
-                                        params[i + 3][0]
-                                    } else {
-                                        0
-                                    };
-                                    self.attrs.bg = TermColor::Rgb(r as u8, g as u8, b as u8);
-                                    i += 3;
-                                }
-                            }
-                            _ => {}
-                        }
-                    }
+                    i = parse_extended_color_semicolons(params, i, &mut self.attrs.bg);
                 }
                 49 => self.attrs.bg = TermColor::Default,
                 // Bright foreground 90-97
@@ -401,6 +368,64 @@ impl vte::Perform for Grid {
     fn unhook(&mut self) {}
     fn osc_dispatch(&mut self, _params: &[&[u8]], _bell_terminated: bool) {}
     fn esc_dispatch(&mut self, _intermediates: &[u8], _ignore: bool, _byte: u8) {}
+}
+
+/// Parse colon-separated extended color subparams: [38, 5, N] or [38, 2, cs, R, G, B].
+fn parse_extended_color_subparams(slice: &[u16]) -> Option<TermColor> {
+    if slice.len() < 3 {
+        return None;
+    }
+    match slice[1] {
+        5 => Some(color_from_index(slice[2])),
+        2 => {
+            // Format: [38/48, 2, colorspace_id, R, G, B] or [38/48, 2, R, G, B]
+            // When colorspace is present, len >= 5 (38:2:cs:R:G:B → 6 elements)
+            // When absent, len >= 4 (38:2:R:G:B → 5 elements)
+            // Some emitters use 38:2::R:G:B (empty colorspace → 0)
+            if slice.len() >= 6 {
+                // [38, 2, cs, R, G, B] — skip colorspace
+                Some(TermColor::Rgb(slice[3] as u8, slice[4] as u8, slice[5] as u8))
+            } else if slice.len() >= 5 {
+                // [38, 2, R, G, B] — no colorspace
+                Some(TermColor::Rgb(slice[2] as u8, slice[3] as u8, slice[4] as u8))
+            } else {
+                None
+            }
+        }
+        _ => None,
+    }
+}
+
+/// Parse semicolon-separated extended color: 38;5;N or 38;2;R;G;B.
+/// Returns the updated index `i` (before the final `i += 1` in the caller's loop).
+fn parse_extended_color_semicolons(params: &[&[u16]], i: usize, target: &mut TermColor) -> usize {
+    let mut i = i + 1;
+    if i >= params.len() {
+        return i;
+    }
+    let sub = if params[i].is_empty() { 0 } else { params[i][0] };
+    match sub {
+        5 => {
+            // 256-color: next param is the color index
+            i += 1;
+            if i < params.len() {
+                let n = if params[i].is_empty() { 0 } else { params[i][0] };
+                *target = color_from_index(n);
+            }
+        }
+        2 => {
+            // Truecolor: next 3 params are R, G, B
+            if i + 3 < params.len() {
+                let r = if params[i + 1].is_empty() { 0 } else { params[i + 1][0] };
+                let g = if params[i + 2].is_empty() { 0 } else { params[i + 2][0] };
+                let b = if params[i + 3].is_empty() { 0 } else { params[i + 3][0] };
+                *target = TermColor::Rgb(r as u8, g as u8, b as u8);
+                i += 3;
+            }
+        }
+        _ => {}
+    }
+    i
 }
 
 fn first_param(params: &[&[u16]], default: u16) -> u16 {
@@ -677,5 +702,110 @@ mod tests {
         let text = &out.lines[0].spans[0].text;
         // 'a' at col 0, tab advances to col 8, then 'b' at col 8
         assert_eq!(text, "a       b");
+    }
+
+    // -- Review fixes: edge cases --
+
+    #[test]
+    fn empty_input_produces_single_empty_line() {
+        let out = parse(b"");
+        assert_eq!(out.lines.len(), 1);
+        assert!(out.lines[0].spans.is_empty());
+    }
+
+    #[test]
+    fn zero_dimensions_clamped_to_1x1() {
+        // Should not panic
+        let out = parse_ansi(b"x", 0, 0, "test", "Test");
+        assert_eq!(out.cols, 1);
+        assert_eq!(out.rows, 1);
+    }
+
+    #[test]
+    fn carriage_return_overwrites() {
+        let out = parse(b"AAAA\rBB");
+        assert_eq!(out.lines[0].spans[0].text, "BBAA");
+    }
+
+    #[test]
+    fn text_beyond_cols_is_clipped() {
+        // 5-column terminal, writing 8 chars
+        let out = parse_ansi(b"12345678", 5, 24, "test", "Test");
+        assert_eq!(out.lines[0].spans[0].text, "12345");
+    }
+
+    #[test]
+    fn individual_attr_resets() {
+        // \x1b[22m resets bold+dim, \x1b[23m resets italic, \x1b[24m resets underline
+        let out = parse(b"\x1b[1;3;4mbold-italic-ul\x1b[22mnot-bold\x1b[23mnot-italic\x1b[24mplain");
+        let spans = &out.lines[0].spans;
+
+        assert!(spans[0].bold);
+        assert!(spans[0].italic);
+        assert!(spans[0].underline);
+
+        assert!(!spans[1].bold);
+        assert!(spans[1].italic);
+        assert!(spans[1].underline);
+
+        assert!(!spans[2].bold);
+        assert!(!spans[2].italic);
+        assert!(spans[2].underline);
+
+        assert!(!spans[3].bold);
+        assert!(!spans[3].italic);
+        assert!(!spans[3].underline);
+    }
+
+    #[test]
+    fn erase_to_end_of_line() {
+        // Write ABCDE, then move cursor back and erase from cursor to end
+        let out = parse(b"ABCDE\r\x1b[2C\x1b[K");
+        // CR → col 0, CUF(2) → col 2, EL(0) → clear cols 2-79
+        assert_eq!(out.lines[0].spans[0].text, "AB");
+    }
+
+    #[test]
+    fn cursor_position_cup() {
+        // \x1b[3;5H = move to row 3, col 5 (1-based)
+        let out = parse(b"\x1b[3;5Hhello");
+        assert_eq!(out.lines.len(), 3);
+        assert!(out.lines[0].spans.is_empty());
+        assert!(out.lines[1].spans.is_empty());
+        // Row 3 (index 2), col 5 (index 4): 4 spaces then "hello"
+        let text: String = out.lines[2].spans.iter().map(|s| s.text.as_str()).collect();
+        assert_eq!(text, "    hello");
+    }
+
+    // -- Colon-form extended colors --
+
+    #[test]
+    fn colon_form_256_color_fg() {
+        // \x1b[38:5:196m — colon-separated 256-color
+        let out = parse(b"\x1b[38:5:196mred");
+        assert_eq!(out.lines[0].spans[0].fg, TermColor::Indexed(196));
+    }
+
+    #[test]
+    fn colon_form_truecolor_fg() {
+        // \x1b[38:2::255:128:0m — colon-separated truecolor with empty colorspace
+        let out = parse(b"\x1b[38:2::255:128:0morange");
+        assert_eq!(out.lines[0].spans[0].fg, TermColor::Rgb(255, 128, 0));
+    }
+
+    #[test]
+    fn colon_form_truecolor_bg() {
+        // \x1b[48:2::0:128:255m — colon-separated truecolor bg
+        let out = parse(b"\x1b[48:2::0:128:255mblue bg");
+        assert_eq!(out.lines[0].spans[0].bg, TermColor::Rgb(0, 128, 255));
+    }
+
+    #[test]
+    fn styled_spaces_not_trimmed() {
+        // Spaces with non-default attributes should be preserved
+        let out = parse(b"\x1b[41m   \x1b[0m");
+        assert_eq!(out.lines[0].spans.len(), 1);
+        assert_eq!(out.lines[0].spans[0].text, "   ");
+        assert_eq!(out.lines[0].spans[0].bg, TermColor::Ansi(1));
     }
 }
