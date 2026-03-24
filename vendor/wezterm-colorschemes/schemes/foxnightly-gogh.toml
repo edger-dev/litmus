@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#2a2a2e",
+    "#b98eff",
+    "#ff7de9",
+    "#729fcf",
+    "#66a05b",
+    "#75507b",
+    "#acacae",
+    "#ffffff",
+]
+background = "#2a2a2e"
+brights = [
+    "#a40000",
+    "#bf4040",
+    "#66a05b",
+    "#ffb86c",
+    "#729fcf",
+    "#8f5902",
+    "#c4a000",
+    "#5c3566",
+]
+cursor_bg = "#d7d7db"
+cursor_border = "#d7d7db"
+cursor_fg = "#2a2a2e"
+foreground = "#d7d7db"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Foxnightly (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#ece3cc",
+    "#d2212d",
+    "#489100",
+    "#ad8900",
+    "#0072d4",
+    "#ca4898",
+    "#009c8f",
+    "#909995",
+]
+background = "#fbf3db"
+brights = [
+    "#d5cdb6",
+    "#cc1729",
+    "#428b00",
+    "#a78300",
+    "#006dce",
+    "#c44392",
+    "#00978a",
+    "#3a4d53",
+]
+cursor_bg = "#3a4d53"
+cursor_border = "#3a4d53"
+cursor_fg = "#fbf3db"
+foreground = "#53676d"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Selenized Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20240127-113634-bbcac864"

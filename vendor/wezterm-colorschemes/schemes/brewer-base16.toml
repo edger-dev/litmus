@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#0c0d0e",
+    "#e31a1c",
+    "#31a354",
+    "#dca060",
+    "#3182bd",
+    "#756bb1",
+    "#80b1d3",
+    "#b7b8b9",
+]
+background = "#0c0d0e"
+brights = [
+    "#737475",
+    "#e31a1c",
+    "#31a354",
+    "#dca060",
+    "#3182bd",
+    "#756bb1",
+    "#80b1d3",
+    "#fcfdfe",
+]
+cursor_bg = "#b7b8b9"
+cursor_border = "#b7b8b9"
+cursor_fg = "#0c0d0e"
+foreground = "#b7b8b9"
+selection_bg = "#b7b8b9"
+selection_fg = "#0c0d0e"
+
+[colors.indexed]
+16 = "#e6550d"
+17 = "#b15928"
+18 = "#2e2f30"
+19 = "#515253"
+20 = "#959697"
+21 = "#dadbdc"
+
+[metadata]
+aliases = ["Brewer (dark) (terminal.sexy)"]
+author = "Timoth\u{e9}e Poisot (http://github.com/tpoisot)"
+name = "Brewer (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

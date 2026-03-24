@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1b1918",
+    "#f22c40",
+    "#5ab738",
+    "#d5911a",
+    "#407ee7",
+    "#6666ea",
+    "#00ad9c",
+    "#a8a19f",
+]
+background = "#1b1918"
+brights = [
+    "#766e6b",
+    "#f22c40",
+    "#5ab738",
+    "#d5911a",
+    "#407ee7",
+    "#6666ea",
+    "#00ad9c",
+    "#f1efee",
+]
+foreground = "#a8a19f"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Atelierforest (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

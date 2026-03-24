@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#151515",
+    "#ff8eaf",
+    "#a6e25f",
+    "#f8e578",
+    "#a6e2f0",
+    "#e85b92",
+    "#5f868f",
+    "#d5f1f2",
+]
+background = "#000000"
+brights = [
+    "#696969",
+    "#ed4c7a",
+    "#a6e179",
+    "#ffdf6b",
+    "#79d2ff",
+    "#bb5d79",
+    "#87a8af",
+    "#e2f1f6",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Colorful Colors (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

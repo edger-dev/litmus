@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#201e24",
+    "#2d2b30",
+    "#3f3d40",
+    "#413c3e",
+    "#423e41",
+    "#4e4a4b",
+    "#6e6765",
+    "#837e81",
+]
+background = "#000000"
+brights = [
+    "#837c78",
+    "#89827d",
+    "#a7a099",
+    "#c2bec1",
+    "#c3bcb2",
+    "#cbc5ba",
+    "#e3ddd2",
+    "#efe8dc",
+]
+foreground = "#d3d3d3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "City Streets (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

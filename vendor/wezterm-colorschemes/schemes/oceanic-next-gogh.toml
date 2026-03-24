@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#121c21",
+    "#e44754",
+    "#89bd82",
+    "#f7bd51",
+    "#5486c0",
+    "#b77eb8",
+    "#50a5a4",
+    "#ffffff",
+]
+background = "#121b21"
+brights = [
+    "#52606b",
+    "#e44754",
+    "#89bd82",
+    "#f7bd51",
+    "#5486c0",
+    "#b77eb8",
+    "#50a5a4",
+    "#ffffff",
+]
+cursor_bg = "#b3b8c3"
+cursor_border = "#b3b8c3"
+cursor_fg = "#121b21"
+foreground = "#b3b8c3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Oceanic Next (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

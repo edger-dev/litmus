@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#4e4e4e",
+    "#af5f5f",
+    "#5f885f",
+    "#af8760",
+    "#5f87ae",
+    "#875f87",
+    "#5f8787",
+    "#e4e4e4",
+]
+background = "#dadada"
+brights = [
+    "#3a3a3a",
+    "#870100",
+    "#005f00",
+    "#d8865f",
+    "#0087af",
+    "#87025f",
+    "#008787",
+    "#eeeeee",
+]
+cursor_bg = "#4e4e4e"
+cursor_border = "#4e4e4e"
+cursor_fg = "#dadada"
+foreground = "#4e4e4e"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Seoul256 Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

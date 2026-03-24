@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#263238",
+    "#ff9800",
+    "#8bc34a",
+    "#ffc107",
+    "#03a9f4",
+    "#e91e63",
+    "#009688",
+    "#cfd8dc",
+]
+background = "#263238"
+brights = [
+    "#37474f",
+    "#ffa74d",
+    "#9ccc65",
+    "#ffa000",
+    "#81d4fa",
+    "#ad1457",
+    "#26a69a",
+    "#eceff1",
+]
+foreground = "#eceff1"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Material (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

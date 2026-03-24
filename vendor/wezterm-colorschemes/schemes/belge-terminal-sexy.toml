@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#252525",
+    "#ef6769",
+    "#a6e22e",
+    "#fd971f",
+    "#6495ed",
+    "#deb887",
+    "#b0c4de",
+    "#dbdcdc",
+]
+background = "#000000"
+brights = [
+    "#454545",
+    "#fc7ca5",
+    "#b6e354",
+    "#fd971f",
+    "#87ceeb",
+    "#996600",
+    "#87ceeb",
+    "#fdfdfd",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Belge (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

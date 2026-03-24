@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#303430",
+    "#bf7979",
+    "#97b26b",
+    "#cdcdc1",
+    "#86a2be",
+    "#d9b798",
+    "#a1b5cd",
+    "#ffffff",
+]
+background = "#000000"
+brights = [
+    "#cdb5cd",
+    "#f4a45f",
+    "#c5f779",
+    "#ffffed",
+    "#98afd9",
+    "#d7d998",
+    "#a1b5cd",
+    "#dedede",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Rydgel (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#101010",
+    "#e84f4f",
+    "#b8d68c",
+    "#e1aa5d",
+    "#7dc1cf",
+    "#9b64fb",
+    "#6d878d",
+    "#dddddd",
+]
+background = "#000000"
+brights = [
+    "#404040",
+    "#d23d3d",
+    "#a0cf5d",
+    "#f39d21",
+    "#4e9fb1",
+    "#8542ff",
+    "#42717b",
+    "#dddddd",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Dotshare (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

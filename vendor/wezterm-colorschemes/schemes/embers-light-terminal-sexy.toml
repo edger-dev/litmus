@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#16130f",
+    "#826d57",
+    "#57826d",
+    "#6d8257",
+    "#6d5782",
+    "#82576d",
+    "#576d82",
+    "#a39a90",
+]
+background = "#dbd6d1"
+brights = [
+    "#5a5047",
+    "#826d57",
+    "#57826d",
+    "#6d8257",
+    "#6d5782",
+    "#82576d",
+    "#576d82",
+    "#dbd6d1",
+]
+foreground = "#433b32"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Embers (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

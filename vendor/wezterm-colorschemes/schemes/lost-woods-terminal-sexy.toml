@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#303030",
+    "#a13a38",
+    "#00715d",
+    "#006f32",
+    "#a43261",
+    "#913e88",
+    "#007086",
+    "#c6c6c6",
+]
+background = "#000000"
+brights = [
+    "#5e5e5e",
+    "#ffa59a",
+    "#24dfc4",
+    "#73db95",
+    "#ff9fc9",
+    "#ffa7f6",
+    "#00ddf4",
+    "#ffffff",
+]
+foreground = "#919191"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Baskerville"
+name = "Lost Woods (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

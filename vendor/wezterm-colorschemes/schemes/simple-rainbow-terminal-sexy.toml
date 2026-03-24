@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#666666",
+    "#ff8278",
+    "#bde077",
+    "#eadc84",
+    "#77bee0",
+    "#dd91f3",
+    "#ffc178",
+    "#dddddd",
+]
+background = "#575757"
+brights = [
+    "#888888",
+    "#ff8278",
+    "#bde077",
+    "#eadc84",
+    "#77bee0",
+    "#dd91f3",
+    "#ffc178",
+    "#cccccc",
+]
+foreground = "#dcdccc"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Simple Rainbow (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

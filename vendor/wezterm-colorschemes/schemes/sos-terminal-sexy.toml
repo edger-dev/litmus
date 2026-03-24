@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#373b43",
+    "#fdcd39",
+    "#fbfd59",
+    "#deac40",
+    "#afb171",
+    "#b387e7",
+    "#63e860",
+    "#efdecb",
+]
+background = "#373b43"
+brights = [
+    "#373b43",
+    "#fdcd39",
+    "#fbfd59",
+    "#deac40",
+    "#afb171",
+    "#b387e7",
+    "#63e860",
+    "#efdecb",
+]
+foreground = "#78796f"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Rooster"
+name = "SOS (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

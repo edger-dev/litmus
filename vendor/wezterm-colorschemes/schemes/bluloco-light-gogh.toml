@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#d5d6dd",
+    "#d52753",
+    "#23974a",
+    "#df631c",
+    "#275fe4",
+    "#823ff1",
+    "#27618d",
+    "#000000",
+]
+background = "#f9f9f9"
+brights = [
+    "#e4e5ed",
+    "#ff6480",
+    "#3cbc66",
+    "#c5a332",
+    "#0099e1",
+    "#ce33c0",
+    "#6d93bb",
+    "#26272d",
+]
+cursor_bg = "#383a42"
+cursor_border = "#383a42"
+cursor_fg = "#f9f9f9"
+foreground = "#383a42"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["BlulocoLight (Gogh)"]
+name = "Bluloco Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

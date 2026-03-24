@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#130f0c",
+    "#604c38",
+    "#8d7f85",
+    "#907256",
+    "#aa8d70",
+    "#b9a38d",
+    "#c4bfbf",
+    "#c4ae99",
+]
+background = "#170f0d"
+brights = [
+    "#c69f77",
+    "#cab9a8",
+    "#d5c6b8",
+    "#dcd1c7",
+    "#e0e0e2",
+    "#e4dad2",
+    "#eae3dc",
+    "#f6f2f0",
+]
+foreground = "#f9f9f9"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "Catch Me If You Can (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

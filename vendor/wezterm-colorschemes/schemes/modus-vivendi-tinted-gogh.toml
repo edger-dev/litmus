@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#0d0e1c",
+    "#ff5f59",
+    "#44bc44",
+    "#d0bc00",
+    "#2fafff",
+    "#feacd0",
+    "#00d3d0",
+    "#ffffff",
+]
+background = "#0d0e1c"
+brights = [
+    "#1d2235",
+    "#ff5f5f",
+    "#44df44",
+    "#efef00",
+    "#338fff",
+    "#ff66ff",
+    "#00eff0",
+    "#989898",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#0d0e1c"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Modus Vivendi Tinted (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

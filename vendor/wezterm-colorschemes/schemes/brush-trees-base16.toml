@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#e3efef",
+    "#b38686",
+    "#87b386",
+    "#aab386",
+    "#868cb3",
+    "#b386b2",
+    "#86b3b3",
+    "#6d828e",
+]
+background = "#e3efef"
+brights = [
+    "#98afb5",
+    "#b38686",
+    "#87b386",
+    "#aab386",
+    "#868cb3",
+    "#b386b2",
+    "#86b3b3",
+    "#485867",
+]
+cursor_bg = "#6d828e"
+cursor_border = "#6d828e"
+cursor_fg = "#e3efef"
+foreground = "#6d828e"
+selection_bg = "#6d828e"
+selection_fg = "#e3efef"
+
+[colors.indexed]
+16 = "#d8bba2"
+17 = "#b39f9f"
+18 = "#c9dbdc"
+19 = "#b0c5c8"
+20 = "#8299a1"
+21 = "#5a6d7a"
+
+[metadata]
+aliases = []
+author = "Abraham White <abelincoln.white@gmail.com>"
+name = "Brush Trees (base16)"
+origin_url = "https://github.com/WhiteAbeLincoln/base16-brushtrees-scheme"
+wezterm_version = "20220807-113146-c2fee766"

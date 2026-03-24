@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff9da3",
+    "#d1f1a9",
+    "#ffeead",
+    "#bbdaff",
+    "#ebbbff",
+    "#99ffff",
+    "#fffefe",
+]
+background = "#002451"
+brights = [
+    "#000000",
+    "#ff9ca3",
+    "#d0f0a8",
+    "#ffedac",
+    "#badaff",
+    "#ebbaff",
+    "#99ffff",
+    "#fffefe",
+]
+cursor_bg = "#fffefe"
+cursor_border = "#fffefe"
+cursor_fg = "#002451"
+foreground = "#fffefe"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["TomorrowNightBlue (Gogh)"]
+name = "Tomorrow Night Blue (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

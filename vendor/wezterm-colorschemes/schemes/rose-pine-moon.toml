@@ -1,0 +1,39 @@
+[colors]
+ansi = [
+    "#393552",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#3e8fb0",
+    "#c4a7e7",
+    "#ea9a97",
+    "#e0def4",
+]
+background = "#232136"
+brights = [
+    "#6e6a86",
+    "#eb6f92",
+    "#9ccfd8",
+    "#f6c177",
+    "#3e8fb0",
+    "#c4a7e7",
+    "#ea9a97",
+    "#e0def4",
+]
+cursor_bg = "#e0def4"
+cursor_border = "#e0def4"
+cursor_fg = "#232136"
+foreground = "#e0def4"
+selection_bg = "#232136"
+selection_fg = "#e0def4"
+
+[colors.indexed]
+
+[metadata]
+aliases = [
+    "Ros\u{e9} Pine Moon (Gogh)",
+    "Ros\u{e9}PineMoon (Gogh)",
+]
+name = "rose-pine-moon"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20230320-124340-559cb7b0"

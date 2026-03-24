@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#303030",
+    "#e1321a",
+    "#6ab017",
+    "#ffc005",
+    "#729fcf",
+    "#ec0048",
+    "#2aa7e7",
+    "#f2f2f2",
+]
+background = "#041a3b"
+brights = [
+    "#5d5d5d",
+    "#ff361e",
+    "#7bc91f",
+    "#ffd00a",
+    "#0071ff",
+    "#ff1d62",
+    "#4bb8fd",
+    "#a020f0",
+]
+cursor_bg = "#f2f2f2"
+cursor_border = "#f2f2f2"
+cursor_fg = "#041a3b"
+foreground = "#f2f2f2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Elio (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

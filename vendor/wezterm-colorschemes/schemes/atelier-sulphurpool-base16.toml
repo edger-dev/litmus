@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#202746",
+    "#c94922",
+    "#ac9739",
+    "#c08b30",
+    "#3d8fd1",
+    "#6679cc",
+    "#22a2c9",
+    "#979db4",
+]
+background = "#202746"
+brights = [
+    "#6b7394",
+    "#c94922",
+    "#ac9739",
+    "#c08b30",
+    "#3d8fd1",
+    "#6679cc",
+    "#22a2c9",
+    "#f5f7ff",
+]
+cursor_bg = "#979db4"
+cursor_border = "#979db4"
+cursor_fg = "#202746"
+foreground = "#979db4"
+selection_bg = "#979db4"
+selection_fg = "#202746"
+
+[colors.indexed]
+16 = "#c76b29"
+17 = "#9c637a"
+18 = "#293256"
+19 = "#5e6687"
+20 = "#898ea4"
+21 = "#dfe2f1"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Sulphurpool (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

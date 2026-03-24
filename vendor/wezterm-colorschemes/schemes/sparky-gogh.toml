@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#212322",
+    "#ff585d",
+    "#78d64b",
+    "#fbdd40",
+    "#4698cb",
+    "#d59ed7",
+    "#2dccd3",
+    "#dee6de",
+]
+background = "#072b31"
+brights = [
+    "#4b4f54",
+    "#ff7276",
+    "#8edd65",
+    "#f6eb61",
+    "#69b3e7",
+    "#f99fc9",
+    "#00c1d5",
+    "#d9e1e2",
+]
+cursor_bg = "#f4f5f0"
+cursor_border = "#f4f5f0"
+cursor_fg = "#072b31"
+foreground = "#f4f5f0"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Sparky (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

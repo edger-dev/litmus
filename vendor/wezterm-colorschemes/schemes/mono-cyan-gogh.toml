@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#003340",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+]
+background = "#00222b"
+brights = [
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+    "#00ccff",
+]
+cursor_bg = "#00ccff"
+cursor_border = "#00ccff"
+cursor_fg = "#00222b"
+foreground = "#00ccff"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-cyan (Gogh)"]
+name = "Mono Cyan (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

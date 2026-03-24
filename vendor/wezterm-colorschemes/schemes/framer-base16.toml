@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#181818",
+    "#fd886b",
+    "#32ccdc",
+    "#fecb6e",
+    "#20bcfc",
+    "#ba8cfc",
+    "#acddfd",
+    "#d0d0d0",
+]
+background = "#181818"
+brights = [
+    "#747474",
+    "#fd886b",
+    "#32ccdc",
+    "#fecb6e",
+    "#20bcfc",
+    "#ba8cfc",
+    "#acddfd",
+    "#eeeeee",
+]
+cursor_bg = "#d0d0d0"
+cursor_border = "#d0d0d0"
+cursor_fg = "#181818"
+foreground = "#d0d0d0"
+selection_bg = "#d0d0d0"
+selection_fg = "#181818"
+
+[colors.indexed]
+16 = "#fc4769"
+17 = "#b15f4a"
+18 = "#151515"
+19 = "#464646"
+20 = "#b9b9b9"
+21 = "#e8e8e8"
+
+[metadata]
+aliases = []
+author = "Framer (Maintained by Jesse Hoyos)"
+name = "Framer (base16)"
+origin_url = "https://github.com/jssee/base16-framer-scheme"
+wezterm_version = "20220807-113146-c2fee766"

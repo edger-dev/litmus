@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1b1d1e",
+    "#7325fa",
+    "#23e298",
+    "#60d4df",
+    "#d08010",
+    "#ff0087",
+    "#d0a843",
+    "#bbbbbb",
+]
+background = "#1b1d1e"
+brights = [
+    "#555555",
+    "#9d66f6",
+    "#5fe0b1",
+    "#6df2ff",
+    "#ffaf00",
+    "#ff87af",
+    "#ffce51",
+    "#ffffff",
+]
+cursor_bg = "#bbbbbb"
+cursor_border = "#bbbbbb"
+cursor_fg = "#1b1d1e"
+foreground = "#bbbbbb"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Molokai (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

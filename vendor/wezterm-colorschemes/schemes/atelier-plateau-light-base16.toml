@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f4ecec",
+    "#ca4949",
+    "#4b8b8b",
+    "#a06e3b",
+    "#7272ca",
+    "#8464c4",
+    "#5485b6",
+    "#585050",
+]
+background = "#f4ecec"
+brights = [
+    "#7e7777",
+    "#ca4949",
+    "#4b8b8b",
+    "#a06e3b",
+    "#7272ca",
+    "#8464c4",
+    "#5485b6",
+    "#1b1818",
+]
+cursor_bg = "#585050"
+cursor_border = "#585050"
+cursor_fg = "#f4ecec"
+foreground = "#585050"
+selection_bg = "#585050"
+selection_fg = "#f4ecec"
+
+[colors.indexed]
+16 = "#b45a3c"
+17 = "#bd5187"
+18 = "#e7dfdf"
+19 = "#8a8585"
+20 = "#655d5d"
+21 = "#292424"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Plateau Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

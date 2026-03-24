@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1d1d1d",
+    "#c5152f",
+    "#c9d05c",
+    "#ffc24b",
+    "#b3deef",
+    "#d3b987",
+    "#73cef4",
+    "#eeeeee",
+]
+background = "#282828"
+brights = [
+    "#323232",
+    "#f43753",
+    "#d9e066",
+    "#facc72",
+    "#c0eafb",
+    "#efd093",
+    "#a1d6ec",
+    "#ffffff",
+]
+cursor_bg = "#eeeeee"
+cursor_border = "#eeeeee"
+cursor_fg = "#282828"
+foreground = "#eeeeee"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Tender (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

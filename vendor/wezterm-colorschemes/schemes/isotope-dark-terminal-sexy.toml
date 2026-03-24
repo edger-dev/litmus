@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff0000",
+    "#33ff00",
+    "#ff0099",
+    "#0066ff",
+    "#cc00ff",
+    "#00ffff",
+    "#d0d0d0",
+]
+background = "#000000"
+brights = [
+    "#808080",
+    "#ff0000",
+    "#33ff00",
+    "#ff0099",
+    "#0066ff",
+    "#cc00ff",
+    "#00ffff",
+    "#ffffff",
+]
+foreground = "#d0d0d0"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Isotope (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

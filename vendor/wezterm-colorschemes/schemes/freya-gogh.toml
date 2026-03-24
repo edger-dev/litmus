@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#073642",
+    "#dc322f",
+    "#859900",
+    "#b58900",
+    "#268bd2",
+    "#ec0048",
+    "#2aa198",
+    "#94a3a5",
+]
+background = "#252e32"
+brights = [
+    "#586e75",
+    "#cb4b16",
+    "#859900",
+    "#b58900",
+    "#268bd2",
+    "#d33682",
+    "#2aa198",
+    "#6c71c4",
+]
+cursor_bg = "#839496"
+cursor_border = "#839496"
+cursor_fg = "#252e32"
+foreground = "#94a3a5"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Freya (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

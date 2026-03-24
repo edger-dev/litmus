@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f2f2f2",
+    "#c50f1f",
+    "#13a10e",
+    "#c19c00",
+    "#0037da",
+    "#881798",
+    "#3a96dd",
+    "#767676",
+]
+background = "#f2f2f2"
+brights = [
+    "#cccccc",
+    "#c50f1f",
+    "#13a10e",
+    "#c19c00",
+    "#0037da",
+    "#881798",
+    "#3a96dd",
+    "#0c0c0c",
+]
+cursor_bg = "#767676"
+cursor_border = "#767676"
+cursor_fg = "#f2f2f2"
+foreground = "#767676"
+selection_bg = "#767676"
+selection_fg = "#f2f2f2"
+
+[colors.indexed]
+16 = "#f9f1a5"
+17 = "#16c60c"
+18 = "#e5e5e5"
+19 = "#d9d9d9"
+20 = "#ababab"
+21 = "#414141"
+
+[metadata]
+aliases = []
+author = "Fergus Collins (https://github.com/C-Fergus)"
+name = "Windows 10 Light (base16)"
+origin_url = "https://github.com/C-Fergus/base16-windows-scheme"
+wezterm_version = "20220807-113146-c2fee766"

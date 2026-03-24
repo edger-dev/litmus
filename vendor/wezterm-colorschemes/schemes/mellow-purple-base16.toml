@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1e0528",
+    "#00d9e9",
+    "#05cb0d",
+    "#955ae7",
+    "#550068",
+    "#8991bb",
+    "#b900b1",
+    "#ffeeff",
+]
+background = "#1e0528"
+brights = [
+    "#320f55",
+    "#00d9e9",
+    "#05cb0d",
+    "#955ae7",
+    "#550068",
+    "#8991bb",
+    "#b900b1",
+    "#f8c0ff",
+]
+cursor_bg = "#ffeeff"
+cursor_border = "#ffeeff"
+cursor_fg = "#1e0528"
+foreground = "#ffeeff"
+selection_bg = "#ffeeff"
+selection_fg = "#1e0528"
+
+[colors.indexed]
+16 = "#aa00a3"
+17 = "#4d6fff"
+18 = "#1a092d"
+19 = "#331354"
+20 = "#873582"
+21 = "#ffeeff"
+
+[metadata]
+aliases = []
+author = "gidsi"
+name = "Mellow Purple (base16)"
+origin_url = "https://github.com/gidsi/base16-mellow-scheme"
+wezterm_version = "20220807-113146-c2fee766"

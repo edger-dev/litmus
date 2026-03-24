@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#292929",
+    "#cf6a4c",
+    "#19cb00",
+    "#fad07a",
+    "#8197bf",
+    "#8787af",
+    "#668799",
+    "#888888",
+]
+background = "#151515"
+brights = [
+    "#525252",
+    "#ff9d80",
+    "#23fd00",
+    "#ffefbf",
+    "#accaff",
+    "#c4c4ff",
+    "#80bfaf",
+    "#e8e8d3",
+]
+foreground = "#888888"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "IWAFU"
+name = "Pretty and Pastel (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

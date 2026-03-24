@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f1efee",
+    "#f22c40",
+    "#7b9726",
+    "#c38418",
+    "#407ee7",
+    "#6666ea",
+    "#3d97b8",
+    "#68615e",
+]
+background = "#f1efee"
+brights = [
+    "#9c9491",
+    "#f22c40",
+    "#7b9726",
+    "#c38418",
+    "#407ee7",
+    "#6666ea",
+    "#3d97b8",
+    "#1b1918",
+]
+cursor_bg = "#68615e"
+cursor_border = "#68615e"
+cursor_fg = "#f1efee"
+foreground = "#68615e"
+selection_bg = "#68615e"
+selection_fg = "#f1efee"
+
+[colors.indexed]
+16 = "#df5320"
+17 = "#c33ff3"
+18 = "#e6e2e0"
+19 = "#a8a19f"
+20 = "#766e6b"
+21 = "#2c2421"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Forest Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#19171c",
+    "#be4678",
+    "#2a9292",
+    "#a06e3b",
+    "#576ddb",
+    "#955ae7",
+    "#398bc6",
+    "#8b8792",
+]
+background = "#19171c"
+brights = [
+    "#655f6d",
+    "#be4678",
+    "#2a9292",
+    "#a06e3b",
+    "#576ddb",
+    "#955ae7",
+    "#398bc6",
+    "#efecf4",
+]
+cursor_bg = "#8b8792"
+cursor_border = "#8b8792"
+cursor_fg = "#19171c"
+foreground = "#8b8792"
+selection_bg = "#8b8792"
+selection_fg = "#19171c"
+
+[colors.indexed]
+16 = "#aa573c"
+17 = "#bf40bf"
+18 = "#26232a"
+19 = "#585260"
+20 = "#7e7887"
+21 = "#e2dfe7"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Cave (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

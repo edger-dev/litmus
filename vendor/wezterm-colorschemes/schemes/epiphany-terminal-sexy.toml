@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#565656",
+    "#ac4f4f",
+    "#88ab77",
+    "#d0d9ad",
+    "#677088",
+    "#cdcdb4",
+    "#445362",
+    "#ffffff",
+]
+background = "#000000"
+brights = [
+    "#656565",
+    "#e85555",
+    "#8ccd6c",
+    "#c5d67d",
+    "#647396",
+    "#cdb4c9",
+    "#505b6c",
+    "#c0c0c0",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Epiphany (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

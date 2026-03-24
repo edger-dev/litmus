@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#293b3b",
+    "#bf5357",
+    "#41a551",
+    "#aea64f",
+    "#416ea5",
+    "#bf6053",
+    "#714da5",
+    "#876868",
+]
+background = "#000000"
+brights = [
+    "#344040",
+    "#bf6367",
+    "#51a55f",
+    "#aea75d",
+    "#5177a5",
+    "#bf6e63",
+    "#7859a5",
+    "#876f6f",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Fishbone (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

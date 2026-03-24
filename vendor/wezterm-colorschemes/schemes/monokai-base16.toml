@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#272822",
+    "#f92672",
+    "#a6e22e",
+    "#f4bf75",
+    "#66d9ef",
+    "#ae81ff",
+    "#a1efe4",
+    "#f8f8f2",
+]
+background = "#272822"
+brights = [
+    "#75715e",
+    "#f92672",
+    "#a6e22e",
+    "#f4bf75",
+    "#66d9ef",
+    "#ae81ff",
+    "#a1efe4",
+    "#f9f8f5",
+]
+cursor_bg = "#f8f8f2"
+cursor_border = "#f8f8f2"
+cursor_fg = "#272822"
+foreground = "#f8f8f2"
+selection_bg = "#f8f8f2"
+selection_fg = "#272822"
+
+[colors.indexed]
+16 = "#fd971f"
+17 = "#cc6633"
+18 = "#383830"
+19 = "#49483e"
+20 = "#a59f85"
+21 = "#f5f4f1"
+
+[metadata]
+aliases = ["Monokai (dark) (terminal.sexy)"]
+author = "Wimer Hazenberg (http://www.monokai.nl)"
+name = "Monokai (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

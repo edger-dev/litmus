@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#16130f",
+    "#826d57",
+    "#57826d",
+    "#6d8257",
+    "#6d5782",
+    "#82576d",
+    "#576d82",
+    "#a39a90",
+]
+background = "#16130f"
+brights = [
+    "#5a5047",
+    "#826d57",
+    "#57826d",
+    "#6d8257",
+    "#6d5782",
+    "#82576d",
+    "#576d82",
+    "#dbd6d1",
+]
+cursor_bg = "#a39a90"
+cursor_border = "#a39a90"
+cursor_fg = "#16130f"
+foreground = "#a39a90"
+selection_bg = "#a39a90"
+selection_fg = "#16130f"
+
+[colors.indexed]
+16 = "#828257"
+17 = "#825757"
+18 = "#2c2620"
+19 = "#433b32"
+20 = "#8a8075"
+21 = "#beb6ae"
+
+[metadata]
+aliases = ["Embers (dark) (terminal.sexy)"]
+author = "Jannik Siebert (https://github.com/janniks)"
+name = "Embers (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

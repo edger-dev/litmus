@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#1e1e1e",
+    "#ff5f59",
+    "#44bc44",
+    "#cabf00",
+    "#2fafff",
+    "#feacd0",
+    "#00d3d0",
+    "#ffffff",
+]
+background = "#000000"
+brights = [
+    "#535353",
+    "#ff7f9f",
+    "#00c06f",
+    "#d8af7a",
+    "#00bcff",
+    "#b6a0ff",
+    "#6ae4b9",
+    "#989898",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#000000"
+foreground = "#ffffff"
+selection_bg = "#5a5a5a"
+selection_fg = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "anhsirk0"
+name = "Modus-Vivendi-Deuteranopia"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/modus-vivendi-deuteranopia-theme.el"
+wezterm_version = "20240127-113634-bbcac864"

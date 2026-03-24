@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff6c60",
+    "#a8ff60",
+    "#ffffb6",
+    "#96cbfe",
+    "#ff73fd",
+    "#c6c5fe",
+    "#b5b3aa",
+]
+background = "#000000"
+brights = [
+    "#6c6c66",
+    "#ff6c60",
+    "#a8ff60",
+    "#ffffb6",
+    "#96cbfe",
+    "#ff73fd",
+    "#c6c5fe",
+    "#fdfbee",
+]
+cursor_bg = "#b5b3aa"
+cursor_border = "#b5b3aa"
+cursor_fg = "#000000"
+foreground = "#b5b3aa"
+selection_bg = "#b5b3aa"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#e9c062"
+17 = "#b18a3d"
+18 = "#242422"
+19 = "#484844"
+20 = "#918f88"
+21 = "#d9d7cc"
+
+[metadata]
+aliases = []
+author = "Timoth\u{e9}e Poisot (http://timotheepoisot.fr)"
+name = "IR Black (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

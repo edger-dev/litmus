@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#a82ee6",
+    "#4595e6",
+    "#f29df2",
+    "#4136d9",
+    "#7e5ce6",
+    "#40dfff",
+    "#b08ae6",
+]
+background = "#000000"
+brights = [
+    "#593380",
+    "#a82ee6",
+    "#4595e6",
+    "#f29df2",
+    "#4136d9",
+    "#7e5ce6",
+    "#40dfff",
+    "#a366ff",
+]
+cursor_bg = "#b08ae6"
+cursor_border = "#b08ae6"
+cursor_fg = "#000000"
+foreground = "#b08ae6"
+selection_bg = "#b08ae6"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#bb66cc"
+17 = "#a886bf"
+18 = "#231a40"
+19 = "#432d59"
+20 = "#00ff00"
+21 = "#9045e6"
+
+[metadata]
+aliases = []
+author = "ruler501 (https://github.com/ruler501/base16-darkviolet)"
+name = "Dark Violet (base16)"
+origin_url = "https://github.com/ruler501/base16-darkviolet-scheme"
+wezterm_version = "20220807-113146-c2fee766"

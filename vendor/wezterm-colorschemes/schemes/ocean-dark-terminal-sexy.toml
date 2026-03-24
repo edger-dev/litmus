@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#2b303b",
+    "#bf616a",
+    "#a3be8c",
+    "#ebcb8b",
+    "#8fa1b3",
+    "#b48ead",
+    "#96b5b4",
+    "#c0c5ce",
+]
+background = "#2b303b"
+brights = [
+    "#65737e",
+    "#bf616a",
+    "#a3be8c",
+    "#ebcb8b",
+    "#8fa1b3",
+    "#b48ead",
+    "#96b5b4",
+    "#eff1f5",
+]
+foreground = "#c0c5ce"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Ocean (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

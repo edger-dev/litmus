@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#f9f5f5",
+    "#cc0000",
+    "#1f1e1f",
+    "#ada110",
+    "#ff004e",
+    "#75507b",
+    "#06919a",
+    "#ffffff",
+]
+background = "#1f1e1f"
+brights = [
+    "#555753",
+    "#ef2929",
+    "#ff0000",
+    "#ada110",
+    "#5f4aa6",
+    "#b74438",
+    "#408f0c",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#1f1e1f"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["GeoHot (Gogh)"]
+name = "Geohot (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

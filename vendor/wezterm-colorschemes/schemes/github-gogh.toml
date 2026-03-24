@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#3e3e3e",
+    "#970b16",
+    "#07962a",
+    "#f8eec7",
+    "#003e8a",
+    "#e94691",
+    "#89d1ec",
+    "#ffffff",
+]
+background = "#f4f4f4"
+brights = [
+    "#666666",
+    "#de0000",
+    "#87d5a2",
+    "#f1d007",
+    "#2e6cba",
+    "#ffa29f",
+    "#1cfafe",
+    "#ffffff",
+]
+cursor_bg = "#3e3e3e"
+cursor_border = "#3e3e3e"
+cursor_fg = "#f4f4f4"
+foreground = "#3e3e3e"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["Github Light (Gogh)"]
+name = "Github (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

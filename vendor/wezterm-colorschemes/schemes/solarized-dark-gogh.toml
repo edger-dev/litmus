@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#073642",
+    "#dc322f",
+    "#859900",
+    "#cf9a6b",
+    "#268bd2",
+    "#d33682",
+    "#2aa198",
+    "#eee8d5",
+]
+background = "#002b36"
+brights = [
+    "#657b83",
+    "#cb4b16",
+    "#859900",
+    "#cf9a6b",
+    "#6c71c4",
+    "#d33682",
+    "#2aa198",
+    "#fdf6e3",
+]
+cursor_bg = "#839496"
+cursor_border = "#839496"
+cursor_fg = "#002b36"
+foreground = "#839496"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["SolarizedDark (Gogh)"]
+name = "Solarized Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

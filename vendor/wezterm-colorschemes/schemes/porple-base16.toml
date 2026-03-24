@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#292c36",
+    "#f84547",
+    "#95c76f",
+    "#efa16b",
+    "#8485ce",
+    "#b74989",
+    "#64878f",
+    "#d8d8d8",
+]
+background = "#292c36"
+brights = [
+    "#65568a",
+    "#f84547",
+    "#95c76f",
+    "#efa16b",
+    "#8485ce",
+    "#b74989",
+    "#64878f",
+    "#f8f8f8",
+]
+cursor_bg = "#d8d8d8"
+cursor_border = "#d8d8d8"
+cursor_fg = "#292c36"
+foreground = "#d8d8d8"
+selection_bg = "#d8d8d8"
+selection_fg = "#292c36"
+
+[colors.indexed]
+16 = "#d28e5d"
+17 = "#986841"
+18 = "#333344"
+19 = "#474160"
+20 = "#b8b8b8"
+21 = "#e8e8e8"
+
+[metadata]
+aliases = []
+author = "Niek den Breeje (https://github.com/AuditeMarlow)"
+name = "Porple (base16)"
+origin_url = "https://github.com/AuditeMarlow/base16-porple-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fdf0ed",
+    "#e95678",
+    "#29d398",
+    "#fadad1",
+    "#26bbd9",
+    "#ee64ac",
+    "#59e1e3",
+    "#403c3d",
+]
+background = "#fdf0ed"
+brights = [
+    "#bdb3b1",
+    "#e95678",
+    "#29d398",
+    "#fadad1",
+    "#26bbd9",
+    "#ee64ac",
+    "#59e1e3",
+    "#201c1d",
+]
+cursor_bg = "#403c3d"
+cursor_border = "#403c3d"
+cursor_fg = "#fdf0ed"
+foreground = "#403c3d"
+selection_bg = "#403c3d"
+selection_fg = "#fdf0ed"
+
+[colors.indexed]
+16 = "#f9cec3"
+17 = "#f9cbbe"
+18 = "#fadad1"
+19 = "#f9cbbe"
+20 = "#948c8a"
+21 = "#302c2d"
+
+[metadata]
+aliases = []
+author = "Micha\u{eb}l Ball (http://github.com/michael-ball/)"
+name = "Horizon Light (base16)"
+origin_url = "https://github.com/michael-ball/base16-horizon-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1e2320",
+    "#705050",
+    "#60b48a",
+    "#dfaf8f",
+    "#506070",
+    "#dc8cc3",
+    "#8cd0d3",
+    "#dcdccc",
+]
+background = "#000000"
+brights = [
+    "#709080",
+    "#dca3a3",
+    "#c3bf9f",
+    "#f0dfaf",
+    "#94bff3",
+    "#ec93d3",
+    "#93e0e3",
+    "#ffffff",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "zenburn (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

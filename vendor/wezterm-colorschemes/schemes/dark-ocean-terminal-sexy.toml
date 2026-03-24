@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#000000",
+    "#571dc2",
+    "#14db49",
+    "#403d70",
+    "#385a70",
+    "#384894",
+    "#4f3a5e",
+    "#999999",
+]
+background = "#000000"
+brights = [
+    "#38372c",
+    "#7c54b0",
+    "#a2e655",
+    "#9c6f59",
+    "#323f5c",
+    "#5e6c99",
+    "#667d77",
+    "#ffffff",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "DOOMICIDE"
+name = "Dark Ocean (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

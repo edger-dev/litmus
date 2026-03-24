@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#c5c1b4",
+    "#e75c58",
+    "#00a250",
+    "#a08a00",
+    "#208ffb",
+    "#d160c4",
+    "#00a4c1",
+    "#3e424d",
+]
+background = "#fef9ec"
+brights = [
+    "#a1a6b2",
+    "#b22b31",
+    "#007427",
+    "#715f00",
+    "#0065ca",
+    "#a03196",
+    "#007693",
+    "#282c36",
+]
+foreground = "#6d727e"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Baskerville"
+name = "Ivory Light (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

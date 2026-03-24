@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#666666",
+    "#cc6666",
+    "#66cc99",
+    "#cc9966",
+    "#6699cc",
+    "#cc6699",
+    "#66cccc",
+    "#cccccc",
+]
+background = "#000000"
+brights = [
+    "#999999",
+    "#ff9999",
+    "#99ffcc",
+    "#ffcc99",
+    "#99ccff",
+    "#ff99cc",
+    "#99ffff",
+    "#ffffff",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "VisiBone (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#363636",
+    "#ff0883",
+    "#83ff08",
+    "#ff8308",
+    "#0883ff",
+    "#8308ff",
+    "#08ff83",
+    "#b6b6b6",
+]
+background = "#0d1926"
+brights = [
+    "#424242",
+    "#ff1e8e",
+    "#8eff1e",
+    "#ff8e1e",
+    "#1e8eff",
+    "#8e1eff",
+    "#1eff8e",
+    "#c2c2c2",
+]
+cursor_bg = "#b4e1fd"
+cursor_border = "#b4e1fd"
+cursor_fg = "#0d1926"
+foreground = "#b4e1fd"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Aci (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#3d3d3d",
+    "#6673bf",
+    "#3ea290",
+    "#b0ead9",
+    "#31658c",
+    "#596196",
+    "#8292b2",
+    "#c8cacc",
+]
+background = "#1b1b1b"
+brights = [
+    "#4d4d4d",
+    "#899aff",
+    "#52ad91",
+    "#98c9bb",
+    "#477ab3",
+    "#7882bf",
+    "#95a7cc",
+    "#edeff2",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Kori Ayakashi"
+name = "Kasugano (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

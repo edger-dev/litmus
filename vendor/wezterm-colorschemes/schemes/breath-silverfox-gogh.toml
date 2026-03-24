@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1e2229",
+    "#ed1515",
+    "#44853a",
+    "#f67400",
+    "#1d99f3",
+    "#9b59b6",
+    "#1abc9c",
+    "#fcfcfc",
+]
+background = "#1e2229"
+brights = [
+    "#7f8c8d",
+    "#c0392b",
+    "#55a649",
+    "#fdbc4b",
+    "#3daee9",
+    "#8e44ad",
+    "#16a085",
+    "#ffffff",
+]
+cursor_bg = "#bbbbbb"
+cursor_border = "#bbbbbb"
+cursor_fg = "#1e2229"
+foreground = "#bbbbbb"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["BreathSilverfox (Gogh)"]
+name = "Breath Silverfox (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230320-124340-559cb7b0"

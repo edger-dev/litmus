@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#181818",
+    "#f43841",
+    "#73c936",
+    "#ffdd33",
+    "#96a6c8",
+    "#9e95c7",
+    "#95a99f",
+    "#f4f4ff",
+]
+background = "#181818"
+brights = [
+    "#9dae93",
+    "#f43841",
+    "#73c936",
+    "#ffdd33",
+    "#96a6c8",
+    "#9e95c7",
+    "#95a99f",
+    "#e4e4ef",
+]
+cursor_bg = "#f4f4ff"
+cursor_border = "#f4f4ff"
+cursor_fg = "#181818"
+foreground = "#f4f4ff"
+selection_bg = "#f4f4ff"
+selection_fg = "#181818"
+
+[colors.indexed]
+16 = "#c73c3f"
+17 = "#cc8c3c"
+18 = "#453d41"
+19 = "#665c7f"
+20 = "#e4e4ef"
+21 = "#f5f5f5"
+
+[metadata]
+aliases = []
+author = "Patel, Nimai <nimai.m.patel@gmail.com>, colors from www.github.com/rexim/gruber-darker-theme"
+name = "Gruber (base16)"
+origin_url = "https://github.com/nimaipatel/base16-gruber"
+wezterm_version = "20220807-113146-c2fee766"

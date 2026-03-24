@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fbf1f2",
+    "#d57e85",
+    "#a3b367",
+    "#dcb16c",
+    "#7297b9",
+    "#bb99b4",
+    "#69a9a7",
+    "#8b8198",
+]
+background = "#fbf1f2"
+brights = [
+    "#bfb9c6",
+    "#d57e85",
+    "#a3b367",
+    "#dcb16c",
+    "#7297b9",
+    "#bb99b4",
+    "#69a9a7",
+    "#585062",
+]
+cursor_bg = "#8b8198"
+cursor_border = "#8b8198"
+cursor_fg = "#fbf1f2"
+foreground = "#8b8198"
+selection_bg = "#8b8198"
+selection_fg = "#fbf1f2"
+
+[colors.indexed]
+16 = "#ebb790"
+17 = "#baa58c"
+18 = "#f2f1f4"
+19 = "#d8d5dd"
+20 = "#a59daf"
+21 = "#72677e"
+
+[metadata]
+aliases = []
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Cupcake (base16)"
+origin_url = "https://github.com/chriskempson/base16-default-schemes"
+wezterm_version = "20220807-113146-c2fee766"

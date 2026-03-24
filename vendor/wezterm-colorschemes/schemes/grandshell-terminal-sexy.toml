@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#000000",
+    "#f25a5a",
+    "#77bb33",
+    "#efc334",
+    "#5555dd",
+    "#c350ff",
+    "#5af2ee",
+    "#bebebe",
+]
+background = "#000000"
+brights = [
+    "#222222",
+    "#ffbbbb",
+    "#dcf692",
+    "#f6df92",
+    "#b2baf6",
+    "#f09fff",
+    "#5af2ee",
+    "#eeeeee",
+]
+foreground = "#bebebe"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Grandshell (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

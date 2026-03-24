@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#ffffff",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#373b41",
+]
+background = "#ffffff"
+brights = [
+    "#b4b7b4",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#1d1f21",
+]
+cursor_bg = "#373b41"
+cursor_border = "#373b41"
+cursor_fg = "#ffffff"
+foreground = "#373b41"
+selection_bg = "#373b41"
+selection_fg = "#ffffff"
+
+[colors.indexed]
+16 = "#f96a38"
+17 = "#3971ed"
+18 = "#e0e0e0"
+19 = "#c5c8c6"
+20 = "#969896"
+21 = "#282a2e"
+
+[metadata]
+aliases = []
+author = "Seth Wright (http://sethawright.com)"
+name = "Google Light (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

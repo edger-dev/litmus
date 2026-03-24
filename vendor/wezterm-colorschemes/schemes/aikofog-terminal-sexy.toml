@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#757475",
+    "#936a6f",
+    "#668462",
+    "#7f7b62",
+    "#6e7291",
+    "#846887",
+    "#637e7b",
+    "#9a9a9a",
+]
+background = "#f1eee9"
+brights = [
+    "#4a4a4a",
+    "#d76572",
+    "#4fae42",
+    "#a8981f",
+    "#7782cf",
+    "#b754c4",
+    "#2ea89a",
+    "#c4c4c4",
+]
+foreground = "#b2b3b8"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Gutterslob"
+name = "aikofog (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

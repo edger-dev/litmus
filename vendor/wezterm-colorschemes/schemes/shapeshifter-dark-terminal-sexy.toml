@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#000000",
+    "#e92f2f",
+    "#0ed839",
+    "#dddd13",
+    "#3b48e3",
+    "#f996e2",
+    "#23edda",
+    "#ababab",
+]
+background = "#000000"
+brights = [
+    "#343434",
+    "#e92f2f",
+    "#0ed839",
+    "#dddd13",
+    "#3b48e3",
+    "#f996e2",
+    "#23edda",
+    "#f9f9f9",
+]
+foreground = "#ababab"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Shapeshifter (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2e3436",
+    "#cc0000",
+    "#4e9a06",
+    "#c4a000",
+    "#3465a4",
+    "#75507b",
+    "#06989a",
+    "#d3d7cf",
+]
+background = "#2e3436"
+brights = [
+    "#555753",
+    "#cc0000",
+    "#4e9a06",
+    "#c4a000",
+    "#3465a4",
+    "#75507b",
+    "#06989a",
+    "#eeeeec",
+]
+cursor_bg = "#d3d7cf"
+cursor_border = "#d3d7cf"
+cursor_fg = "#2e3436"
+foreground = "#d3d7cf"
+selection_bg = "#d3d7cf"
+selection_fg = "#2e3436"
+
+[colors.indexed]
+16 = "#ef2929"
+17 = "#34e2e2"
+18 = "#8ae234"
+19 = "#fce94f"
+20 = "#729fcf"
+21 = "#ad7fa8"
+
+[metadata]
+aliases = []
+author = "@Schnouki, based on the Tango Desktop Project"
+name = "Tango (base16)"
+origin_url = "https://github.com/Schnouki/base16-tango-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#001100",
+    "#007700",
+    "#00bb00",
+    "#007700",
+    "#009900",
+    "#00bb00",
+    "#005500",
+    "#00bb00",
+]
+background = "#001100"
+brights = [
+    "#007700",
+    "#007700",
+    "#00bb00",
+    "#007700",
+    "#009900",
+    "#00bb00",
+    "#005500",
+    "#00ff00",
+]
+cursor_bg = "#00bb00"
+cursor_border = "#00bb00"
+cursor_fg = "#001100"
+foreground = "#00bb00"
+selection_bg = "#00bb00"
+selection_fg = "#001100"
+
+[colors.indexed]
+16 = "#009900"
+17 = "#005500"
+18 = "#003300"
+19 = "#005500"
+20 = "#009900"
+21 = "#00dd00"
+
+[metadata]
+aliases = ["Greenscreen (dark) (terminal.sexy)"]
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Green Screen (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

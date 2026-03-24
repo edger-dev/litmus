@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#303030",
+    "#c10023",
+    "#a83334",
+    "#b51d2c",
+    "#8c4b46",
+    "#7d534f",
+    "#9a413d",
+    "#c6c6c6",
+]
+background = "#000000"
+brights = [
+    "#5e5e5e",
+    "#ff8781",
+    "#ffa095",
+    "#ff948b",
+    "#feb2aa",
+    "#ebbbb5",
+    "#ffaaa0",
+    "#ffffff",
+]
+foreground = "#919191"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Baskerville"
+name = "Count Von Count (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

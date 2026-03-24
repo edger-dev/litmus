@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2e2a31",
+    "#d8137f",
+    "#17ad98",
+    "#dc8a0e",
+    "#796af5",
+    "#bb60ea",
+    "#149bda",
+    "#bcbabe",
+]
+background = "#2e2a31"
+brights = [
+    "#838085",
+    "#d8137f",
+    "#17ad98",
+    "#dc8a0e",
+    "#796af5",
+    "#bb60ea",
+    "#149bda",
+    "#f5f4f7",
+]
+cursor_bg = "#bcbabe"
+cursor_border = "#bcbabe"
+cursor_fg = "#2e2a31"
+foreground = "#bcbabe"
+selection_bg = "#bcbabe"
+selection_fg = "#2e2a31"
+
+[colors.indexed]
+16 = "#d65407"
+17 = "#c720ca"
+18 = "#4a464d"
+19 = "#666369"
+20 = "#9f9da2"
+21 = "#d8d7da"
+
+[metadata]
+aliases = []
+author = "Josh W Lewis (@joshwlewis)"
+name = "Unikitty Dark (base16)"
+origin_url = "https://github.com/joshwlewis/base16-unikitty"
+wezterm_version = "20220807-113146-c2fee766"

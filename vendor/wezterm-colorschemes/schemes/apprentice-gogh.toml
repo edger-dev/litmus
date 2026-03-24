@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1c1c1c",
+    "#af5f5f",
+    "#5f875f",
+    "#87875f",
+    "#5f87af",
+    "#5f5f87",
+    "#5f8787",
+    "#6c6c6c",
+]
+background = "#262626"
+brights = [
+    "#444444",
+    "#ff8700",
+    "#87af87",
+    "#ffffaf",
+    "#8fafd7",
+    "#8787af",
+    "#5fafaf",
+    "#ffffff",
+]
+cursor_bg = "#bcbcbc"
+cursor_border = "#bcbcbc"
+cursor_fg = "#262626"
+foreground = "#bcbcbc"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Apprentice (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

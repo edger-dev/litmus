@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#282a2e",
+    "#a54242",
+    "#a1b56c",
+    "#de935f",
+    "#225555",
+    "#85678f",
+    "#5e8d87",
+    "#777777",
+]
+background = "#091116"
+brights = [
+    "#373b41",
+    "#c63535",
+    "#608360",
+    "#fa805a",
+    "#449da1",
+    "#ba8baf",
+    "#86c1b9",
+    "#c5c8c6",
+]
+cursor_bg = "#868a8c"
+cursor_border = "#868a8c"
+cursor_fg = "#091116"
+foreground = "#868a8c"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["TerminixDark (Gogh)"]
+name = "Terminix Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

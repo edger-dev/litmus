@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#dd0907",
+    "#1fb714",
+    "#fbf305",
+    "#0000d3",
+    "#4700a5",
+    "#02abea",
+    "#c0c0c0",
+]
+background = "#000000"
+brights = [
+    "#808080",
+    "#dd0907",
+    "#1fb714",
+    "#fbf305",
+    "#0000d3",
+    "#4700a5",
+    "#02abea",
+    "#ffffff",
+]
+cursor_bg = "#c0c0c0"
+cursor_border = "#c0c0c0"
+cursor_fg = "#000000"
+foreground = "#c0c0c0"
+selection_bg = "#c0c0c0"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#ff6403"
+17 = "#90713a"
+18 = "#404040"
+19 = "#404040"
+20 = "#808080"
+21 = "#c0c0c0"
+
+[metadata]
+aliases = []
+author = "Rebecca Bettencourt (http://www.kreativekorp.com)"
+name = "Macintosh (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

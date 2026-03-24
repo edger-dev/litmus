@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#271c3a",
+    "#a92258",
+    "#c6914b",
+    "#804ead",
+    "#8e7dc6",
+    "#953b9d",
+    "#7263aa",
+    "#dedcdf",
+]
+background = "#271c3a"
+brights = [
+    "#5d5766",
+    "#a92258",
+    "#c6914b",
+    "#804ead",
+    "#8e7dc6",
+    "#953b9d",
+    "#7263aa",
+    "#bbaadd",
+]
+cursor_bg = "#dedcdf"
+cursor_border = "#dedcdf"
+cursor_fg = "#271c3a"
+foreground = "#dedcdf"
+selection_bg = "#dedcdf"
+selection_fg = "#271c3a"
+
+[colors.indexed]
+16 = "#918889"
+17 = "#59325c"
+18 = "#100323"
+19 = "#3e2d5c"
+20 = "#bebcbf"
+21 = "#edeaef"
+
+[metadata]
+aliases = []
+author = "Gabriel Fontes (https://github.com/Misterio77)"
+name = "Pasque (base16)"
+origin_url = "https://github.com/Misterio77/base16-pasque-scheme"
+wezterm_version = "20220807-113146-c2fee766"

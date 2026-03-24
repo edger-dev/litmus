@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#00002a",
+    "#ff4242",
+    "#59f176",
+    "#f3e877",
+    "#66b0ff",
+    "#f10596",
+    "#0ef0f0",
+    "#d0d0fa",
+]
+background = "#00002a"
+brights = [
+    "#50507a",
+    "#ff4242",
+    "#59f176",
+    "#f3e877",
+    "#66b0ff",
+    "#f10596",
+    "#0ef0f0",
+    "#f5f5ff",
+]
+cursor_bg = "#d0d0fa"
+cursor_border = "#d0d0fa"
+cursor_fg = "#00002a"
+foreground = "#d0d0fa"
+selection_bg = "#d0d0fa"
+selection_fg = "#00002a"
+
+[colors.indexed]
+16 = "#fc8d28"
+17 = "#f003ef"
+18 = "#20204a"
+19 = "#30305a"
+20 = "#b0b0da"
+21 = "#e0e0ff"
+
+[metadata]
+aliases = []
+author = "Hugo Delahousse (http://github.com/hugodelahousse/)"
+name = "Outrun Dark (base16)"
+origin_url = "https://github.com/hugodelahousse/base16-outrun-schemes"
+wezterm_version = "20220807-113146-c2fee766"

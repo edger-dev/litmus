@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#031a16",
+    "#3e9688",
+    "#883e96",
+    "#3e4c96",
+    "#96883e",
+    "#4c963e",
+    "#963e4c",
+    "#81b5ac",
+]
+background = "#031a16"
+brights = [
+    "#2b685e",
+    "#3e9688",
+    "#883e96",
+    "#3e4c96",
+    "#96883e",
+    "#4c963e",
+    "#963e4c",
+    "#d2e7e4",
+]
+cursor_bg = "#81b5ac"
+cursor_border = "#81b5ac"
+cursor_fg = "#031a16"
+foreground = "#81b5ac"
+selection_bg = "#81b5ac"
+selection_fg = "#031a16"
+
+[colors.indexed]
+16 = "#3e7996"
+17 = "#3e965b"
+18 = "#0b342d"
+19 = "#184e45"
+20 = "#5f9c92"
+21 = "#a7cec8"
+
+[metadata]
+aliases = []
+author = "Jannik Siebert (https://github.com/janniks)"
+name = "Apathy (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

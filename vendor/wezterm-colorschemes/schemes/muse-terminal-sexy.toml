@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#2e3436",
+    "#a31604",
+    "#447241",
+    "#c1951a",
+    "#425387",
+    "#965d98",
+    "#06989a",
+    "#d3d7cf",
+]
+background = "#000000"
+brights = [
+    "#555753",
+    "#c60001",
+    "#27a343",
+    "#d5a30e",
+    "#4a5a8d",
+    "#893c8c",
+    "#12bccb",
+    "#eeeeec",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Muse (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

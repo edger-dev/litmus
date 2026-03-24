@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#5c5f77",
+    "#d20f39",
+    "#40a02b",
+    "#df8e1d",
+    "#1e66f5",
+    "#ea76cb",
+    "#179299",
+    "#acb0be",
+]
+background = "#eff1f5"
+brights = [
+    "#6c6f85",
+    "#d20f39",
+    "#40a02b",
+    "#df8e1d",
+    "#1e66f5",
+    "#ea76cb",
+    "#179299",
+    "#bcc0cc",
+]
+cursor_bg = "#4c4f69"
+cursor_border = "#4c4f69"
+cursor_fg = "#eff1f5"
+foreground = "#4c4f69"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Catppuccin Latte (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#5f8787",
+    "#d0dfee",
+    "#5f81a5",
+    "#888888",
+    "#999999",
+    "#aaaaaa",
+    "#c1c1c1",
+]
+background = "#000000"
+brights = [
+    "#333333",
+    "#5f8787",
+    "#d0dfee",
+    "#5f81a5",
+    "#888888",
+    "#999999",
+    "#aaaaaa",
+    "#c1c1c1",
+]
+cursor_bg = "#c1c1c1"
+cursor_border = "#c1c1c1"
+cursor_fg = "#000000"
+foreground = "#c1c1c1"
+selection_bg = "#c1c1c1"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#aaaaaa"
+17 = "#444444"
+18 = "#121212"
+19 = "#222222"
+20 = "#999999"
+21 = "#999999"
+
+[metadata]
+aliases = []
+author = "metalelf0 (https://github.com/metalelf0)"
+name = "Black Metal (Dark Funeral) (base16)"
+origin_url = "https://github.com/metalelf0/base16-black-metal-scheme"
+wezterm_version = "20220807-113146-c2fee766"

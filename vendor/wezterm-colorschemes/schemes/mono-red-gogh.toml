@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#401200",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+]
+background = "#2b0c00"
+brights = [
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+    "#ff3600",
+]
+cursor_bg = "#ff3600"
+cursor_border = "#ff3600"
+cursor_fg = "#2b0c00"
+foreground = "#ff3600"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-red (Gogh)"]
+name = "Mono Red (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

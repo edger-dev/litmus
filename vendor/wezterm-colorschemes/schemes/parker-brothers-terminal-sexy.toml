@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#322a2c",
+    "#79220e",
+    "#344b1b",
+    "#b45b00",
+    "#434045",
+    "#5c1e25",
+    "#394745",
+    "#ae8842",
+]
+background = "#000000"
+brights = [
+    "#46423b",
+    "#aa261f",
+    "#76550f",
+    "#b57f02",
+    "#908862",
+    "#624a35",
+    "#393e38",
+    "#a59058",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Parker Brothers (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#0c1118",
+    "#f04339",
+    "#7f8b00",
+    "#bb8801",
+    "#008dd1",
+    "#6a7fd2",
+    "#00948b",
+    "#afaba2",
+]
+background = "#0c1118"
+brights = [
+    "#7b776e",
+    "#f04339",
+    "#7f8b00",
+    "#bb8801",
+    "#008dd1",
+    "#6a7fd2",
+    "#00948b",
+    "#e7e2d9",
+]
+cursor_bg = "#afaba2"
+cursor_border = "#afaba2"
+cursor_fg = "#0c1118"
+foreground = "#afaba2"
+selection_bg = "#afaba2"
+selection_fg = "#0c1118"
+
+[colors.indexed]
+16 = "#df5923"
+17 = "#e3488e"
+18 = "#181c22"
+19 = "#22262d"
+20 = "#949088"
+21 = "#cac6bd"
+
+[metadata]
+aliases = []
+author = "Carlo Abelli"
+name = "Equilibrium Dark (base16)"
+origin_url = "https://github.com/carloabelli/base16-equilibrium-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#485867",
+    "#b38686",
+    "#87b386",
+    "#aab386",
+    "#868cb3",
+    "#b386b2",
+    "#86b3b3",
+    "#b0c5c8",
+]
+background = "#485867"
+brights = [
+    "#8299a1",
+    "#b38686",
+    "#87b386",
+    "#aab386",
+    "#868cb3",
+    "#b386b2",
+    "#86b3b3",
+    "#e3efef",
+]
+cursor_bg = "#b0c5c8"
+cursor_border = "#b0c5c8"
+cursor_fg = "#485867"
+foreground = "#b0c5c8"
+selection_bg = "#b0c5c8"
+selection_fg = "#485867"
+
+[colors.indexed]
+16 = "#d8bba2"
+17 = "#b39f9f"
+18 = "#5a6d7a"
+19 = "#6d828e"
+20 = "#98afb5"
+21 = "#c9dbdc"
+
+[metadata]
+aliases = []
+author = "Abraham White <abelincoln.white@gmail.com>"
+name = "Brush Trees Dark (base16)"
+origin_url = "https://github.com/WhiteAbeLincoln/base16-brushtrees-scheme"
+wezterm_version = "20220807-113146-c2fee766"

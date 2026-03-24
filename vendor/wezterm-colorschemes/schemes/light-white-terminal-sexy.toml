@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#808080",
+    "#c48980",
+    "#8da862",
+    "#b29b7a",
+    "#809bc4",
+    "#aa88b2",
+    "#82adad",
+    "#bfbfbf",
+]
+background = "#000000"
+brights = [
+    "#9c9c9c",
+    "#a15048",
+    "#4b7508",
+    "#916f27",
+    "#567cb0",
+    "#964e8f",
+    "#4e848a",
+    "#9c9c9c",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Gutterslob"
+name = "Light White (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#252525",
+    "#ff9f95",
+    "#a6e22e",
+    "#fd971f",
+    "#435e87",
+    "#789ec6",
+    "#5e7175",
+    "#dbdcdc",
+]
+background = "#000000"
+brights = [
+    "#454545",
+    "#ff8d80",
+    "#b6e354",
+    "#fd971f",
+    "#587aa4",
+    "#46a4ff",
+    "#a3babf",
+    "#fdfdfd",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Sex Colors (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

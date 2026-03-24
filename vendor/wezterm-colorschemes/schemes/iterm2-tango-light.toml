@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    "#000000",
+    "#d81e00",
+    "#5ea702",
+    "#cfae00",
+    "#427ab3",
+    "#89658e",
+    "#00a7aa",
+    "#dbded8",
+]
+background = "#ffffff"
+brights = [
+    "#686a66",
+    "#f54235",
+    "#99e343",
+    "#fdeb61",
+    "#84b0d8",
+    "#bc94b7",
+    "#37e6e8",
+    "#f1f1f0",
+]
+cursor_bg = "#000000"
+cursor_border = "#000000"
+cursor_fg = "#ffffff"
+foreground = "#000000"
+selection_bg = "#c1deff"
+selection_fg = "#000000"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "iTerm2 Tango Light"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20240127-113634-bbcac864"

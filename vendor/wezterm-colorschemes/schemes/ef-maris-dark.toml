@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#1d2c39",
+    "#ff6f6f",
+    "#41bf4f",
+    "#d0d24f",
+    "#57b0ff",
+    "#f59acf",
+    "#2fd0db",
+    "#eaedef",
+]
+background = "#131c2b"
+brights = [
+    "#4a5664",
+    "#ff7788",
+    "#30c489",
+    "#cab27f",
+    "#12b4ff",
+    "#cf90ff",
+    "#65d5a8",
+    "#969faf",
+]
+cursor_bg = "#8fdfff"
+cursor_border = "#8fdfff"
+cursor_fg = "#131c2b"
+foreground = "#eaedef"
+selection_bg = "#183c65"
+selection_fg = "#eaedef"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "anhsirk0"
+name = "Ef-Maris-Dark"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-maris-dark-theme.el"
+wezterm_version = "20240127-113634-bbcac864"

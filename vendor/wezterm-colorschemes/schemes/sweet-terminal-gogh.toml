@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#3f3f54",
+    "#f60055",
+    "#06c993",
+    "#9700be",
+    "#f69154",
+    "#ec89cb",
+    "#60adec",
+    "#abb2bf",
+]
+background = "#222235"
+brights = [
+    "#959dcb",
+    "#f60055",
+    "#06c993",
+    "#9700be",
+    "#f69154",
+    "#ec89cb",
+    "#00dded",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#222235"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["SweetTerminal (Gogh)"]
+name = "Sweet Terminal (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

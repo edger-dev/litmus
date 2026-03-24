@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f5f0e7",
+    "#d02023",
+    "#637200",
+    "#9d6f00",
+    "#0073b5",
+    "#4e66b6",
+    "#007a72",
+    "#43474e",
+]
+background = "#f5f0e7"
+brights = [
+    "#73777f",
+    "#d02023",
+    "#637200",
+    "#9d6f00",
+    "#0073b5",
+    "#4e66b6",
+    "#007a72",
+    "#181c22",
+]
+cursor_bg = "#43474e"
+cursor_border = "#43474e"
+cursor_fg = "#f5f0e7"
+foreground = "#43474e"
+selection_bg = "#43474e"
+selection_fg = "#f5f0e7"
+
+[colors.indexed]
+16 = "#bf3e05"
+17 = "#c42775"
+18 = "#e7e2d9"
+19 = "#d8d4cb"
+20 = "#5a5f66"
+21 = "#2c3138"
+
+[metadata]
+aliases = []
+author = "Carlo Abelli"
+name = "Equilibrium Light (base16)"
+origin_url = "https://github.com/carloabelli/base16-equilibrium-scheme"
+wezterm_version = "20220807-113146-c2fee766"

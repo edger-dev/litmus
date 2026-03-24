@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#181818",
+    "#ab4642",
+    "#a1b56c",
+    "#f7ca88",
+    "#7cafc2",
+    "#ba8baf",
+    "#86c1b9",
+    "#d8d8d8",
+]
+background = "#181818"
+brights = [
+    "#585858",
+    "#ab4642",
+    "#a1b56c",
+    "#f7ca88",
+    "#7cafc2",
+    "#ba8baf",
+    "#86c1b9",
+    "#f8f8f8",
+]
+cursor_bg = "#d8d8d8"
+cursor_border = "#d8d8d8"
+cursor_fg = "#181818"
+foreground = "#d8d8d8"
+selection_bg = "#d8d8d8"
+selection_fg = "#181818"
+
+[colors.indexed]
+16 = "#dc9656"
+17 = "#a16946"
+18 = "#282828"
+19 = "#383838"
+20 = "#b8b8b8"
+21 = "#e8e8e8"
+
+[metadata]
+aliases = []
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Default Dark (base16)"
+origin_url = "https://github.com/chriskempson/base16-default-schemes"
+wezterm_version = "20220807-113146-c2fee766"

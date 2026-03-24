@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1b181b",
+    "#ca402b",
+    "#918b3b",
+    "#bb8a35",
+    "#516aec",
+    "#7b59c0",
+    "#159393",
+    "#ab9bab",
+]
+background = "#1b181b"
+brights = [
+    "#776977",
+    "#ca402b",
+    "#918b3b",
+    "#bb8a35",
+    "#516aec",
+    "#7b59c0",
+    "#159393",
+    "#f7f3f7",
+]
+cursor_bg = "#ab9bab"
+cursor_border = "#ab9bab"
+cursor_fg = "#1b181b"
+foreground = "#ab9bab"
+selection_bg = "#ab9bab"
+selection_fg = "#1b181b"
+
+[colors.indexed]
+16 = "#a65926"
+17 = "#cc33cc"
+18 = "#292329"
+19 = "#695d69"
+20 = "#9e8f9e"
+21 = "#d8cad8"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Heath (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

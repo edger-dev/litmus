@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#034000",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+]
+background = "#022b00"
+brights = [
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+    "#0bff00",
+]
+cursor_bg = "#0bff00"
+cursor_border = "#0bff00"
+cursor_fg = "#022b00"
+foreground = "#0bff00"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-green (Gogh)"]
+name = "Mono Green (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

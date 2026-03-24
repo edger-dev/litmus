@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1d1f21",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#c5c8c6",
+]
+background = "#1d1f21"
+brights = [
+    "#969896",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#ffffff",
+]
+cursor_bg = "#c5c8c6"
+cursor_border = "#c5c8c6"
+cursor_fg = "#1d1f21"
+foreground = "#c5c8c6"
+selection_bg = "#c5c8c6"
+selection_fg = "#1d1f21"
+
+[colors.indexed]
+16 = "#f96a38"
+17 = "#3971ed"
+18 = "#282a2e"
+19 = "#373b41"
+20 = "#b4b7b4"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = ["Google (dark) (terminal.sexy)"]
+author = "Seth Wright (http://sethawright.com)"
+name = "Google Dark (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

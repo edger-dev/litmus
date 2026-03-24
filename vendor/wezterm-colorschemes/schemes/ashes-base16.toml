@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1c2023",
+    "#c7ae95",
+    "#95c7ae",
+    "#aec795",
+    "#ae95c7",
+    "#c795ae",
+    "#95aec7",
+    "#c7ccd1",
+]
+background = "#1c2023"
+brights = [
+    "#747c84",
+    "#c7ae95",
+    "#95c7ae",
+    "#aec795",
+    "#ae95c7",
+    "#c795ae",
+    "#95aec7",
+    "#f3f4f5",
+]
+cursor_bg = "#c7ccd1"
+cursor_border = "#c7ccd1"
+cursor_fg = "#1c2023"
+foreground = "#c7ccd1"
+selection_bg = "#c7ccd1"
+selection_fg = "#1c2023"
+
+[colors.indexed]
+16 = "#c7c795"
+17 = "#c79595"
+18 = "#393f45"
+19 = "#565e65"
+20 = "#adb3ba"
+21 = "#dfe2e5"
+
+[metadata]
+aliases = ["Ashes (dark) (terminal.sexy)"]
+author = "Jannik Siebert (https://github.com/janniks)"
+name = "Ashes (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

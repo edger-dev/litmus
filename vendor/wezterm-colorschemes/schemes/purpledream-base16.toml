@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#100510",
+    "#ff1d0d",
+    "#14cc64",
+    "#f000a0",
+    "#00a0f0",
+    "#b000d0",
+    "#0075b0",
+    "#ddd0dd",
+]
+background = "#100510"
+brights = [
+    "#605060",
+    "#ff1d0d",
+    "#14cc64",
+    "#f000a0",
+    "#00a0f0",
+    "#b000d0",
+    "#0075b0",
+    "#fff0ff",
+]
+cursor_bg = "#ddd0dd"
+cursor_border = "#ddd0dd"
+cursor_fg = "#100510"
+foreground = "#ddd0dd"
+selection_bg = "#ddd0dd"
+selection_fg = "#100510"
+
+[colors.indexed]
+16 = "#ccae14"
+17 = "#6a2a3c"
+18 = "#302030"
+19 = "#403040"
+20 = "#bbb0bb"
+21 = "#eee0ee"
+
+[metadata]
+aliases = []
+author = "malet"
+name = "Purpledream (base16)"
+origin_url = "https://github.com/archmalet/base16-purpledream-scheme"
+wezterm_version = "20220807-113146-c2fee766"

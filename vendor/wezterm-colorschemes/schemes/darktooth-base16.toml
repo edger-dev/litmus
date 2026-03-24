@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1d2021",
+    "#fb543f",
+    "#95c085",
+    "#fac03b",
+    "#0d6678",
+    "#8f4673",
+    "#8ba59b",
+    "#a89984",
+]
+background = "#1d2021"
+brights = [
+    "#665c54",
+    "#fb543f",
+    "#95c085",
+    "#fac03b",
+    "#0d6678",
+    "#8f4673",
+    "#8ba59b",
+    "#fdf4c1",
+]
+cursor_bg = "#a89984"
+cursor_border = "#a89984"
+cursor_fg = "#1d2021"
+foreground = "#a89984"
+selection_bg = "#a89984"
+selection_fg = "#1d2021"
+
+[colors.indexed]
+16 = "#fe8625"
+17 = "#a87322"
+18 = "#32302f"
+19 = "#504945"
+20 = "#928374"
+21 = "#d5c4a1"
+
+[metadata]
+aliases = []
+author = "Jason Milkins (https://github.com/jasonm23)"
+name = "Darktooth (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

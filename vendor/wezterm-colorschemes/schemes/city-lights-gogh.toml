@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#41505e",
+    "#d95468",
+    "#8bd49c",
+    "#ebbf83",
+    "#539afc",
+    "#b62d65",
+    "#70e1e8",
+    "#ffffff",
+]
+background = "#171d23"
+brights = [
+    "#41505e",
+    "#d95468",
+    "#8bd49c",
+    "#ebbf83",
+    "#539afc",
+    "#b62d65",
+    "#70e1e8",
+    "#ffffff",
+]
+cursor_bg = "#008b94"
+cursor_border = "#008b94"
+cursor_fg = "#171d23"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "City Lights (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

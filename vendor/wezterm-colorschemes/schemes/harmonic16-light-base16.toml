@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f7f9fb",
+    "#bf8b56",
+    "#56bf8b",
+    "#8bbf56",
+    "#8b56bf",
+    "#bf568b",
+    "#568bbf",
+    "#405c79",
+]
+background = "#f7f9fb"
+brights = [
+    "#aabcce",
+    "#bf8b56",
+    "#56bf8b",
+    "#8bbf56",
+    "#8b56bf",
+    "#bf568b",
+    "#568bbf",
+    "#0b1c2c",
+]
+cursor_bg = "#405c79"
+cursor_border = "#405c79"
+cursor_fg = "#f7f9fb"
+foreground = "#405c79"
+selection_bg = "#405c79"
+selection_fg = "#f7f9fb"
+
+[colors.indexed]
+16 = "#bfbf56"
+17 = "#bf5656"
+18 = "#e5ebf1"
+19 = "#cbd6e2"
+20 = "#627e99"
+21 = "#223b54"
+
+[metadata]
+aliases = []
+author = "Jannik Siebert (https://github.com/janniks)"
+name = "Harmonic16 Light (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

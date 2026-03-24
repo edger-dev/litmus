@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2f1e2e",
+    "#ef6155",
+    "#48b685",
+    "#fec418",
+    "#06b6ef",
+    "#815ba4",
+    "#5bc4bf",
+    "#a39e9b",
+]
+background = "#2f1e2e"
+brights = [
+    "#776e71",
+    "#ef6155",
+    "#48b685",
+    "#fec418",
+    "#06b6ef",
+    "#815ba4",
+    "#5bc4bf",
+    "#e7e9db",
+]
+cursor_bg = "#a39e9b"
+cursor_border = "#a39e9b"
+cursor_fg = "#2f1e2e"
+foreground = "#a39e9b"
+selection_bg = "#a39e9b"
+selection_fg = "#2f1e2e"
+
+[colors.indexed]
+16 = "#f99b15"
+17 = "#e96ba8"
+18 = "#41323f"
+19 = "#4f424c"
+20 = "#8d8687"
+21 = "#b9b6b0"
+
+[metadata]
+aliases = []
+author = "Jan T. Sott"
+name = "Paraiso (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20230712-072601-f4abf8fd"

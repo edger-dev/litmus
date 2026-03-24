@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#4e4e4e",
+    "#a9635d",
+    "#468459",
+    "#84763d",
+    "#5879af",
+    "#9c6594",
+    "#008592",
+    "#cfcfcf",
+]
+background = "#292929"
+brights = [
+    "#777777",
+    "#ffbbb2",
+    "#9ddeaf",
+    "#e0ce91",
+    "#b3d1ff",
+    "#fabdf0",
+    "#79e0ed",
+    "#ffffff",
+]
+foreground = "#a2a2a2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Baskerville"
+name = "Eldorado dark (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

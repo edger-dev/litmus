@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff0000",
+    "#00ff00",
+    "#ffff00",
+    "#0000ff",
+    "#ff00ff",
+    "#00ffff",
+    "#c0c0c0",
+]
+background = "#000000"
+brights = [
+    "#808080",
+    "#ff0000",
+    "#00ff00",
+    "#ffff00",
+    "#0000ff",
+    "#ff00ff",
+    "#00ffff",
+    "#ffffff",
+]
+cursor_bg = "#c0c0c0"
+cursor_border = "#c0c0c0"
+cursor_fg = "#000000"
+foreground = "#c0c0c0"
+selection_bg = "#c0c0c0"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#808000"
+17 = "#008000"
+18 = "#2a2a2a"
+19 = "#555555"
+20 = "#a1a1a1"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = []
+author = "Fergus Collins (https://github.com/C-Fergus)"
+name = "Windows NT (base16)"
+origin_url = "https://github.com/C-Fergus/base16-windows-scheme"
+wezterm_version = "20220807-113146-c2fee766"

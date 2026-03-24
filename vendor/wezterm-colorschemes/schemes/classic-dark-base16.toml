@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#151515",
+    "#ac4142",
+    "#90a959",
+    "#f4bf75",
+    "#6a9fb5",
+    "#aa759f",
+    "#75b5aa",
+    "#d0d0d0",
+]
+background = "#151515"
+brights = [
+    "#505050",
+    "#ac4142",
+    "#90a959",
+    "#f4bf75",
+    "#6a9fb5",
+    "#aa759f",
+    "#75b5aa",
+    "#f5f5f5",
+]
+cursor_bg = "#d0d0d0"
+cursor_border = "#d0d0d0"
+cursor_fg = "#151515"
+foreground = "#d0d0d0"
+selection_bg = "#d0d0d0"
+selection_fg = "#151515"
+
+[colors.indexed]
+16 = "#d28445"
+17 = "#8f5536"
+18 = "#202020"
+19 = "#303030"
+20 = "#b0b0b0"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = ["Default (dark) (terminal.sexy)"]
+author = "Jason Heeris (http://heeris.id.au)"
+name = "Classic Dark (base16)"
+origin_url = "https://github.com/detly/base16-classic-scheme"
+wezterm_version = "20220807-113146-c2fee766"

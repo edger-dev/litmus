@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#151718",
+    "#cd3f45",
+    "#9fca56",
+    "#e6cd69",
+    "#55b5db",
+    "#a074c4",
+    "#55dbbe",
+    "#d6d6d6",
+]
+background = "#151718"
+brights = [
+    "#41535b",
+    "#cd3f45",
+    "#9fca56",
+    "#e6cd69",
+    "#55b5db",
+    "#a074c4",
+    "#55dbbe",
+    "#ffffff",
+]
+cursor_bg = "#d6d6d6"
+cursor_border = "#d6d6d6"
+cursor_fg = "#151718"
+foreground = "#d6d6d6"
+selection_bg = "#d6d6d6"
+selection_fg = "#151718"
+
+[colors.indexed]
+16 = "#db7b55"
+17 = "#8a553f"
+18 = "#282a2b"
+19 = "#3b758c"
+20 = "#43a5d5"
+21 = "#eeeeee"
+
+[metadata]
+aliases = []
+author = ""
+name = "Seti UI (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

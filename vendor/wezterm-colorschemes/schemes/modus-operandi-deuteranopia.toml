@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#f2f2f2",
+    "#a60000",
+    "#006800",
+    "#695500",
+    "#0031a9",
+    "#721045",
+    "#005e8b",
+    "#000000",
+]
+background = "#ffffff"
+brights = [
+    "#c4c4c4",
+    "#a0132f",
+    "#00663f",
+    "#77492f",
+    "#0000b0",
+    "#531ab6",
+    "#005f5f",
+    "#595959",
+]
+cursor_bg = "#000000"
+cursor_border = "#000000"
+cursor_fg = "#ffffff"
+foreground = "#000000"
+selection_bg = "#bdbdbd"
+selection_fg = "#000000"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["Modus-Operandi-Tritanopia"]
+author = "anhsirk0"
+name = "Modus-Operandi-Deuteranopia"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/modus-operandi-deuteranopia-theme.el"
+wezterm_version = "20240127-113634-bbcac864"

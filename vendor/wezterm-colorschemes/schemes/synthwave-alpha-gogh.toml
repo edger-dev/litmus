@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#241b30",
+    "#9a0048",
+    "#00986c",
+    "#adad3e",
+    "#6e29ad",
+    "#b300ad",
+    "#00b0b1",
+    "#b9b1bc",
+]
+background = "#241b30"
+brights = [
+    "#7f7094",
+    "#e60a70",
+    "#0ae4a4",
+    "#f9f972",
+    "#aa54f9",
+    "#ff00f6",
+    "#00fbfd",
+    "#f2f2e3",
+]
+cursor_bg = "#f2f2e3"
+cursor_border = "#f2f2e3"
+cursor_fg = "#241b30"
+foreground = "#f2f2e3"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["SynthwaveAlpha (Gogh)"]
+name = "Synthwave Alpha (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220903-194523-3bb1ed61"

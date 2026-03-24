@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#a60001",
+    "#00bb00",
+    "#fecd22",
+    "#3a9bdb",
+    "#bb00bb",
+    "#00bbbb",
+    "#bbbbbb",
+]
+background = "#283033"
+brights = [
+    "#555555",
+    "#ff0003",
+    "#93c863",
+    "#fef874",
+    "#a1d7ff",
+    "#ff55ff",
+    "#55ffff",
+    "#ffffff",
+]
+cursor_bg = "#cdcdcd"
+cursor_border = "#cdcdcd"
+cursor_fg = "#283033"
+foreground = "#cdcdcd"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Obsidian (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

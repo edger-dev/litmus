@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#262626",
+    "#444444",
+    "#ffffaf",
+    "#87af87",
+    "#8787af",
+    "#5fafaf",
+    "#87afd7",
+    "#5f5f87",
+]
+background = "#262626"
+brights = [
+    "#87875f",
+    "#444444",
+    "#ffffaf",
+    "#87af87",
+    "#8787af",
+    "#5fafaf",
+    "#87afd7",
+    "#6c6c6c",
+]
+cursor_bg = "#5f5f87"
+cursor_border = "#5f5f87"
+cursor_fg = "#262626"
+foreground = "#5f5f87"
+selection_bg = "#5f5f87"
+selection_fg = "#262626"
+
+[colors.indexed]
+16 = "#ff8700"
+17 = "#bcbcbc"
+18 = "#af5f5f"
+19 = "#5f875f"
+20 = "#5f87af"
+21 = "#5f8787"
+
+[metadata]
+aliases = []
+author = "romainl"
+name = "Apprentice (base16)"
+origin_url = "https://github.com/casonadams/base16-apprentice-scheme"
+wezterm_version = "20220807-113146-c2fee766"

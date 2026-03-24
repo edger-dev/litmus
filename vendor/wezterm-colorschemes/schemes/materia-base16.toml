@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#263238",
+    "#ec5f67",
+    "#8bd649",
+    "#ffcc00",
+    "#89ddff",
+    "#82aaff",
+    "#80cbc4",
+    "#cdd3de",
+]
+background = "#263238"
+brights = [
+    "#707880",
+    "#ec5f67",
+    "#8bd649",
+    "#ffcc00",
+    "#89ddff",
+    "#82aaff",
+    "#80cbc4",
+    "#ffffff",
+]
+cursor_bg = "#cdd3de"
+cursor_border = "#cdd3de"
+cursor_fg = "#263238"
+foreground = "#cdd3de"
+selection_bg = "#cdd3de"
+selection_fg = "#263238"
+
+[colors.indexed]
+16 = "#ea9560"
+17 = "#ec5f67"
+18 = "#2c393f"
+19 = "#37474f"
+20 = "#c9ccd3"
+21 = "#d5dbe5"
+
+[metadata]
+aliases = []
+author = "Defman21"
+name = "Materia (base16)"
+origin_url = "https://github.com/Defman21/base16-materia"
+wezterm_version = "20220807-113146-c2fee766"

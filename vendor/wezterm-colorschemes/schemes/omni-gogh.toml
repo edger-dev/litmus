@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#191622",
+    "#e96379",
+    "#67e480",
+    "#e89e64",
+    "#78d1e1",
+    "#988bc7",
+    "#ff79c6",
+    "#abb2bf",
+]
+background = "#191622"
+brights = [
+    "#000000",
+    "#e96379",
+    "#67e480",
+    "#e89e64",
+    "#78d1e1",
+    "#988bc7",
+    "#ff79c6",
+    "#ffffff",
+]
+cursor_bg = "#abb2bf"
+cursor_border = "#abb2bf"
+cursor_fg = "#191622"
+foreground = "#abb2bf"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Omni (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

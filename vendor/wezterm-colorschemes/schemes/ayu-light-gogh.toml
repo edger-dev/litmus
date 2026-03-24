@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#575f66",
+    "#f51818",
+    "#86b300",
+    "#f2ae49",
+    "#399ee6",
+    "#a37acc",
+    "#4cbf99",
+    "#fafafa",
+]
+background = "#fafafa"
+brights = [
+    "#8a9199",
+    "#f51818",
+    "#86b300",
+    "#f2ae49",
+    "#399ee6",
+    "#a37acc",
+    "#4cbf99",
+    "#fafafa",
+]
+cursor_bg = "#ff9940"
+cursor_border = "#ff9940"
+cursor_fg = "#fafafa"
+foreground = "#575f66"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["AyuLight (Gogh)"]
+name = "Ayu Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

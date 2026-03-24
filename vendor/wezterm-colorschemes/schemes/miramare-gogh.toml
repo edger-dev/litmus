@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#242021",
+    "#e68183",
+    "#a7c080",
+    "#d9bb80",
+    "#89beba",
+    "#d3a0bc",
+    "#87c095",
+    "#d8caac",
+]
+background = "#2a2426"
+brights = [
+    "#444444",
+    "#e39b7b",
+    "#a7c080",
+    "#d9bb80",
+    "#89beba",
+    "#d3a0bc",
+    "#87c095",
+    "#e6d6ac",
+]
+cursor_bg = "#e6d6ac"
+cursor_border = "#e6d6ac"
+cursor_fg = "#2a2426"
+foreground = "#e6d6ac"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Miramare (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

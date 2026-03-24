@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#cc3e28",
+    "#216609",
+    "#b58900",
+    "#1e6fcc",
+    "#5c21a5",
+    "#158c86",
+    "#aaaaaa",
+]
+background = "#f2eede"
+brights = [
+    "#555555",
+    "#cc3e28",
+    "#216609",
+    "#b58900",
+    "#1e6fcc",
+    "#5c21a5",
+    "#158c86",
+    "#aaaaaa",
+]
+cursor_bg = "#000000"
+cursor_border = "#000000"
+cursor_fg = "#f2eede"
+foreground = "#000000"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Paper (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

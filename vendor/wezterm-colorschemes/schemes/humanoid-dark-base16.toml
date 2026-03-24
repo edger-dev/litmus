@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#232629",
+    "#f11235",
+    "#02d849",
+    "#ffb627",
+    "#00a6fb",
+    "#f15ee3",
+    "#0dd9d6",
+    "#f8f8f2",
+]
+background = "#232629"
+brights = [
+    "#60615d",
+    "#f11235",
+    "#02d849",
+    "#ffb627",
+    "#00a6fb",
+    "#f15ee3",
+    "#0dd9d6",
+    "#fcfcfc",
+]
+cursor_bg = "#f8f8f2"
+cursor_border = "#f8f8f2"
+cursor_fg = "#232629"
+foreground = "#f8f8f2"
+selection_bg = "#f8f8f2"
+selection_fg = "#232629"
+
+[colors.indexed]
+16 = "#ff9505"
+17 = "#b27701"
+18 = "#333b3d"
+19 = "#484e54"
+20 = "#c0c0bd"
+21 = "#fcfcf6"
+
+[metadata]
+aliases = []
+author = "Thomas (tasmo) Friese"
+name = "Humanoid dark (base16)"
+origin_url = "https://github.com/humanoid-colors/base16-humanoid-schemes"
+wezterm_version = "20220807-113146-c2fee766"

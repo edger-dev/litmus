@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff0000",
+    "#00ff00",
+    "#ffff00",
+    "#00bfff",
+    "#ffc0cb",
+    "#40e0d0",
+    "#bebebe",
+]
+background = "#000000"
+brights = [
+    "#414141",
+    "#ffa500",
+    "#98fb98",
+    "#ffff00",
+    "#0000cd",
+    "#a020f0",
+    "#aeeeee",
+    "#ffffff",
+]
+cursor_bg = "#fdfdfd"
+cursor_border = "#fdfdfd"
+cursor_fg = "#000000"
+foreground = "#fdfdfd"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["IBM3270(HighContrast) (Gogh)"]
+name = "Ibm 3270 (High Contrast) (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

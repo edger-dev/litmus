@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#ebf8ff",
+    "#d22d72",
+    "#568c3b",
+    "#8a8a0f",
+    "#257fad",
+    "#6b6bb8",
+    "#2d8f6f",
+    "#516d7b",
+]
+background = "#ebf8ff"
+brights = [
+    "#7195a8",
+    "#d22d72",
+    "#568c3b",
+    "#8a8a0f",
+    "#257fad",
+    "#6b6bb8",
+    "#2d8f6f",
+    "#161b1d",
+]
+cursor_bg = "#516d7b"
+cursor_border = "#516d7b"
+cursor_fg = "#ebf8ff"
+foreground = "#516d7b"
+selection_bg = "#516d7b"
+selection_fg = "#ebf8ff"
+
+[colors.indexed]
+16 = "#935c25"
+17 = "#b72dd2"
+18 = "#c1e4f6"
+19 = "#7ea2b4"
+20 = "#5a7b8c"
+21 = "#1f292e"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Lakeside Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

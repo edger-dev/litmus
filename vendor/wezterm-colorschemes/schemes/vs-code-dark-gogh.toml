@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#6a787a",
+    "#e9653b",
+    "#39e9a8",
+    "#e5b684",
+    "#44aae6",
+    "#e17599",
+    "#3dd5e7",
+    "#c3dde1",
+]
+background = "#1e1e1e"
+brights = [
+    "#598489",
+    "#e65029",
+    "#00ff9a",
+    "#e89440",
+    "#009afb",
+    "#ff578f",
+    "#5fffff",
+    "#d9fbff",
+]
+cursor_bg = "#cccccc"
+cursor_border = "#cccccc"
+cursor_fg = "#1e1e1e"
+foreground = "#cccccc"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["VSCodeDark+ (Gogh)"]
+name = "Vs Code Dark+ (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

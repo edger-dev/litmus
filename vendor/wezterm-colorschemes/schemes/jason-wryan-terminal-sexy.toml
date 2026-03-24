@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#222222",
+    "#9e5641",
+    "#6c7e55",
+    "#caaf2b",
+    "#4c8ea1",
+    "#956d9d",
+    "#7c9aa6",
+    "#909090",
+]
+background = "#000000"
+brights = [
+    "#454545",
+    "#cc896d",
+    "#7db37d",
+    "#bfb556",
+    "#6bc1d0",
+    "#c18fcb",
+    "#8fadbf",
+    "#ffffff",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Jason Wryan (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

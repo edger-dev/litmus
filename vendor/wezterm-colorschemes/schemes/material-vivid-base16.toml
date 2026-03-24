@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#202124",
+    "#f44336",
+    "#00e676",
+    "#ffeb3b",
+    "#2196f3",
+    "#673ab7",
+    "#00bcd4",
+    "#80868b",
+]
+background = "#202124"
+brights = [
+    "#44464d",
+    "#f44336",
+    "#00e676",
+    "#ffeb3b",
+    "#2196f3",
+    "#673ab7",
+    "#00bcd4",
+    "#ffffff",
+]
+cursor_bg = "#80868b"
+cursor_border = "#80868b"
+cursor_fg = "#202124"
+foreground = "#80868b"
+selection_bg = "#80868b"
+selection_fg = "#202124"
+
+[colors.indexed]
+16 = "#ff9800"
+17 = "#8d6e63"
+18 = "#27292c"
+19 = "#323639"
+20 = "#676c71"
+21 = "#9e9e9e"
+
+[metadata]
+aliases = []
+author = "joshyrobot"
+name = "Material Vivid (base16)"
+origin_url = "https://github.com/joshyrobot/base16-material-vivid-scheme"
+wezterm_version = "20220807-113146-c2fee766"

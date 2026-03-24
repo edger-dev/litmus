@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fefbec",
+    "#d73737",
+    "#60ac39",
+    "#ae9513",
+    "#6684e1",
+    "#b854d4",
+    "#1fad83",
+    "#6e6b5e",
+]
+background = "#fefbec"
+brights = [
+    "#999580",
+    "#d73737",
+    "#60ac39",
+    "#ae9513",
+    "#6684e1",
+    "#b854d4",
+    "#1fad83",
+    "#20201d",
+]
+cursor_bg = "#6e6b5e"
+cursor_border = "#6e6b5e"
+cursor_fg = "#fefbec"
+foreground = "#6e6b5e"
+selection_bg = "#6e6b5e"
+selection_fg = "#fefbec"
+
+[colors.indexed]
+16 = "#b65611"
+17 = "#d43552"
+18 = "#e8e4cf"
+19 = "#a6a28c"
+20 = "#7d7a68"
+21 = "#292824"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Dune Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

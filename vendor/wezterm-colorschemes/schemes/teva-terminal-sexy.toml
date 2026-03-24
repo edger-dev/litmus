@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#191f31",
+    "#282e39",
+    "#303844",
+    "#3b444a",
+    "#3c4435",
+    "#4e534f",
+    "#5d5d35",
+    "#66695d",
+]
+background = "#170f0d"
+brights = [
+    "#706d56",
+    "#8b7852",
+    "#909581",
+    "#91703a",
+    "#948658",
+    "#a19662",
+    "#ad9152",
+    "#c6a13f",
+]
+foreground = "#746c48"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "Teva (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

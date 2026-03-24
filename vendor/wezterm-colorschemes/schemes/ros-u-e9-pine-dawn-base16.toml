@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#faf4ed",
+    "#b4637a",
+    "#286983",
+    "#d7827e",
+    "#907aa9",
+    "#ea9d34",
+    "#56949f",
+    "#575279",
+]
+background = "#faf4ed"
+brights = [
+    "#9893a5",
+    "#b4637a",
+    "#286983",
+    "#d7827e",
+    "#907aa9",
+    "#ea9d34",
+    "#56949f",
+    "#cecacd",
+]
+cursor_bg = "#575279"
+cursor_border = "#575279"
+cursor_fg = "#faf4ed"
+foreground = "#575279"
+selection_bg = "#575279"
+selection_fg = "#faf4ed"
+
+[colors.indexed]
+16 = "#ea9d34"
+17 = "#cecacd"
+18 = "#fffaf3"
+19 = "#f2e9de"
+20 = "#797593"
+21 = "#575279"
+
+[metadata]
+aliases = []
+author = "Emilia Dunfelt <edun@dunfelt.se>"
+name = "Ros\u{e9} Pine Dawn (base16)"
+origin_url = "https://github.com/edunfelt/base16-rose-pine-scheme"
+wezterm_version = "20220807-113146-c2fee766"

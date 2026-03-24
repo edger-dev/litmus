@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#3b3228",
+    "#cb6077",
+    "#beb55b",
+    "#f4bc87",
+    "#8ab3b5",
+    "#a89bb9",
+    "#7bbda4",
+    "#d0c8c6",
+]
+background = "#3b3228"
+brights = [
+    "#7e705a",
+    "#cb6077",
+    "#beb55b",
+    "#f4bc87",
+    "#8ab3b5",
+    "#a89bb9",
+    "#7bbda4",
+    "#f5eeeb",
+]
+foreground = "#d0c8c6"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Mocha (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

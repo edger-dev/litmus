@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#040404",
+    "#0f49c4",
+    "#48b117",
+    "#e87324",
+    "#bc0116",
+    "#665b93",
+    "#70a699",
+    "#f5dcbe",
+]
+background = "#211f46"
+brights = [
+    "#4f7cbf",
+    "#1c96c7",
+    "#3bff6f",
+    "#efc31c",
+    "#fb605b",
+    "#975b5a",
+    "#1eff8e",
+    "#f6f5fb",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#211f46"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Morada (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

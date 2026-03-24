@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#323232",
+    "#c22832",
+    "#8ec43d",
+    "#e0c64f",
+    "#43a5d5",
+    "#8b57b5",
+    "#8ec43d",
+    "#eeeeee",
+]
+background = "#111213"
+brights = [
+    "#323232",
+    "#c22832",
+    "#8ec43d",
+    "#e0c64f",
+    "#43a5d5",
+    "#8b57b5",
+    "#8ec43d",
+    "#ffffff",
+]
+cursor_bg = "#cacecd"
+cursor_border = "#cacecd"
+cursor_fg = "#111213"
+foreground = "#cacecd"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Seti (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

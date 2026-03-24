@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#eee8d5",
+    "#dc322f",
+    "#859900",
+    "#b58900",
+    "#268bd2",
+    "#d33682",
+    "#2aa198",
+    "#002b36",
+]
+background = "#fdf6e3"
+brights = [
+    "#657b83",
+    "#cb4b16",
+    "#859900",
+    "#b58900",
+    "#6c71c4",
+    "#d33682",
+    "#2aa198",
+    "#073642",
+]
+cursor_bg = "#657b83"
+cursor_border = "#657b83"
+cursor_fg = "#fdf6e3"
+foreground = "#657b83"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Solarized Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

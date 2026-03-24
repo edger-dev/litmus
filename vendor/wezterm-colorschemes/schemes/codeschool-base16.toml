@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#232c31",
+    "#2a5491",
+    "#237986",
+    "#a03b1e",
+    "#484d79",
+    "#c59820",
+    "#b02f30",
+    "#9ea7a6",
+]
+background = "#232c31"
+brights = [
+    "#3f4944",
+    "#2a5491",
+    "#237986",
+    "#a03b1e",
+    "#484d79",
+    "#c59820",
+    "#b02f30",
+    "#b5d8f6",
+]
+cursor_bg = "#9ea7a6"
+cursor_border = "#9ea7a6"
+cursor_fg = "#232c31"
+foreground = "#9ea7a6"
+selection_bg = "#9ea7a6"
+selection_fg = "#232c31"
+
+[colors.indexed]
+16 = "#43820d"
+17 = "#c98344"
+18 = "#1c3657"
+19 = "#2a343a"
+20 = "#84898c"
+21 = "#a7cfa3"
+
+[metadata]
+aliases = ["Codeschool (dark) (terminal.sexy)"]
+author = "blockloop"
+name = "Codeschool (base16)"
+origin_url = "https://github.com/blockloop/base16-codeschool-scheme"
+wezterm_version = "20220807-113146-c2fee766"

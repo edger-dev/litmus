@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#282c34",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#abb2bf",
+]
+background = "#282c34"
+brights = [
+    "#545862",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#c8ccd4",
+]
+cursor_bg = "#abb2bf"
+cursor_border = "#abb2bf"
+cursor_fg = "#282c34"
+foreground = "#abb2bf"
+selection_bg = "#abb2bf"
+selection_fg = "#282c34"
+
+[colors.indexed]
+16 = "#d19a66"
+17 = "#be5046"
+18 = "#353b45"
+19 = "#3e4451"
+20 = "#565c64"
+21 = "#b6bdca"
+
+[metadata]
+aliases = []
+author = "Lalit Magant (http://github.com/tilal6991)"
+name = "OneDark (base16)"
+origin_url = "https://github.com/tilal6991/base16-onedark-scheme"
+wezterm_version = "20220807-113146-c2fee766"

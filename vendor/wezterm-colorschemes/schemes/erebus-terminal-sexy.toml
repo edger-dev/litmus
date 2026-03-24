@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#757575",
+    "#ff5f5f",
+    "#de8a36",
+    "#d78787",
+    "#af5fd7",
+    "#ff87d7",
+    "#dea3e5",
+    "#b8b8b8",
+]
+background = "#000000"
+brights = [
+    "#b8b8b8",
+    "#d78787",
+    "#ff9f6f",
+    "#ff5f5f",
+    "#dea3e5",
+    "#d7afaf",
+    "#af5fd7",
+    "#757575",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Erebus (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

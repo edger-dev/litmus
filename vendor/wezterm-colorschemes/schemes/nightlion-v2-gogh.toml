@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#4c4c4c",
+    "#bb0000",
+    "#04f623",
+    "#f3f167",
+    "#64d0f0",
+    "#ce6fdb",
+    "#00dadf",
+    "#bbbbbb",
+]
+background = "#171717"
+brights = [
+    "#555555",
+    "#ff5555",
+    "#7df71d",
+    "#ffff55",
+    "#62cbe8",
+    "#ff9bf5",
+    "#00ccd8",
+    "#ffffff",
+]
+cursor_bg = "#bbbbbb"
+cursor_border = "#bbbbbb"
+cursor_fg = "#171717"
+foreground = "#bbbbbb"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Nightlion V2 (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

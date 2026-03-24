@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#414868",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#c0caf5",
+]
+background = "#24283b"
+brights = [
+    "#414868",
+    "#f7768e",
+    "#9ece6a",
+    "#e0af68",
+    "#7aa2f7",
+    "#bb9af7",
+    "#7dcfff",
+    "#c0caf5",
+]
+cursor_bg = "#c0caf5"
+cursor_border = "#c0caf5"
+cursor_fg = "#24283b"
+foreground = "#c0caf5"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["TokyoNightStorm (Gogh)"]
+name = "Tokyo Night Storm (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

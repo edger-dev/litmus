@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#646e5b",
+    "#db7464",
+    "#a7e160",
+    "#dbd560",
+    "#69b2d6",
+    "#a073d6",
+    "#69e1d3",
+    "#9ea894",
+]
+background = "#000000"
+brights = [
+    "#88927e",
+    "#dba08f",
+    "#bde18b",
+    "#dbda8b",
+    "#95a9d6",
+    "#b59fd6",
+    "#95e1d2",
+    "#c9d0c2",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Muzieca"
+name = "Pastel White (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

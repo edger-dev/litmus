@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#282936",
+    "#ea51b2",
+    "#ebff87",
+    "#00f769",
+    "#62d6e8",
+    "#b45bcf",
+    "#a1efe4",
+    "#e9e9f4",
+]
+background = "#282936"
+brights = [
+    "#626483",
+    "#ea51b2",
+    "#ebff87",
+    "#00f769",
+    "#62d6e8",
+    "#b45bcf",
+    "#a1efe4",
+    "#f7f7fb",
+]
+cursor_bg = "#e9e9f4"
+cursor_border = "#e9e9f4"
+cursor_fg = "#282936"
+foreground = "#e9e9f4"
+selection_bg = "#e9e9f4"
+selection_fg = "#282936"
+
+[colors.indexed]
+16 = "#b45bcf"
+17 = "#00f769"
+18 = "#3a3c4e"
+19 = "#4d4f68"
+20 = "#62d6e8"
+21 = "#f1f2f8"
+
+[metadata]
+aliases = []
+author = "Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)"
+name = "Dracula (base16)"
+origin_url = "https://github.com/dracula/base16-dracula-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#333333",
+    "#cc9393",
+    "#efef87",
+    "#ffd7a7",
+    "#c3bf97",
+    "#bca3a3",
+    "#93b3a3",
+    "#f0efd0",
+]
+background = "#3a3a3a"
+brights = [
+    "#757575",
+    "#dfaf87",
+    "#ffff87",
+    "#ffcfaf",
+    "#d7d7af",
+    "#d7afaf",
+    "#93bea3",
+    "#dcdccc",
+]
+cursor_bg = "#dcdccc"
+cursor_border = "#dcdccc"
+cursor_fg = "#3a3a3a"
+foreground = "#dcdccc"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Zenburn (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

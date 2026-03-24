@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#28211c",
+    "#cf6a4c",
+    "#54be0d",
+    "#f9ee98",
+    "#5ea6ea",
+    "#9b859d",
+    "#afc4db",
+    "#8a8986",
+]
+background = "#baae9e"
+brights = [
+    "#666666",
+    "#cf6a4c",
+    "#54be0d",
+    "#f9ee98",
+    "#5ea6ea",
+    "#9b859d",
+    "#afc4db",
+    "#baae9e",
+]
+foreground = "#5e5d5c"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Bespin (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

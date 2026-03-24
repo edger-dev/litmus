@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#4f4f4f",
+    "#af4b57",
+    "#afd383",
+    "#e5c079",
+    "#7d90a4",
+    "#a4799d",
+    "#85a6a5",
+    "#eeedee",
+]
+background = "#1c1f27"
+brights = [
+    "#7b7b7b",
+    "#af4b57",
+    "#ceffab",
+    "#fffecc",
+    "#b5dcfe",
+    "#fb9bfe",
+    "#dfdffd",
+    "#fefffe",
+]
+cursor_bg = "#979cac"
+cursor_border = "#979cac"
+cursor_fg = "#1c1f27"
+foreground = "#979cac"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["OceanDark (Gogh)"]
+name = "Ocean Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

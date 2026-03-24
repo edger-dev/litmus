@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1d3b53",
+    "#fc514e",
+    "#a1cd5e",
+    "#e3d18a",
+    "#82aaff",
+    "#c792ea",
+    "#7fdbca",
+    "#a1aab8",
+]
+background = "#011627"
+brights = [
+    "#7c8f8f",
+    "#ff5874",
+    "#21c7a8",
+    "#ecc48d",
+    "#82aaff",
+    "#ae81ff",
+    "#7fdbca",
+    "#d6deeb",
+]
+cursor_bg = "#9ca1aa"
+cursor_border = "#9ca1aa"
+cursor_fg = "#011627"
+foreground = "#bdc1c6"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Nightfly (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20240127-113634-bbcac864"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fbf1c7",
+    "#9d0006",
+    "#79740e",
+    "#b57614",
+    "#076678",
+    "#8f3f71",
+    "#427b58",
+    "#504945",
+]
+background = "#fbf1c7"
+brights = [
+    "#bdae93",
+    "#9d0006",
+    "#79740e",
+    "#b57614",
+    "#076678",
+    "#8f3f71",
+    "#427b58",
+    "#282828",
+]
+cursor_bg = "#504945"
+cursor_border = "#504945"
+cursor_fg = "#fbf1c7"
+foreground = "#504945"
+selection_bg = "#504945"
+selection_fg = "#fbf1c7"
+
+[colors.indexed]
+16 = "#af3a03"
+17 = "#d65d0e"
+18 = "#ebdbb2"
+19 = "#d5c4a1"
+20 = "#665c54"
+21 = "#3c3836"
+
+[metadata]
+aliases = []
+author = "Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)"
+name = "Gruvbox light, medium (base16)"
+origin_url = "https://github.com/dawikur/base16-gruvbox-scheme"
+wezterm_version = "20220807-113146-c2fee766"

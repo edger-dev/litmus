@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#990000",
+    "#00a600",
+    "#999900",
+    "#2009db",
+    "#b200b2",
+    "#00a6b2",
+    "#bfbfbf",
+]
+background = "#000000"
+brights = [
+    "#666666",
+    "#e50000",
+    "#00d900",
+    "#e5e500",
+    "#0000ff",
+    "#e500e5",
+    "#00e5e5",
+    "#e5e5e5",
+]
+cursor_bg = "#f2f2f2"
+cursor_border = "#f2f2f2"
+cursor_fg = "#000000"
+foreground = "#f2f2f2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Pro (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

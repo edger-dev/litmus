@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#2e8744",
+    "#d84e4c",
+    "#95da5a",
+    "#d6e264",
+    "#4b9ed7",
+    "#945fc5",
+    "#d89b25",
+    "#d8e2d7",
+]
+background = "#0d4a08"
+brights = [
+    "#34934f",
+    "#ff4f59",
+    "#aff56a",
+    "#fcff75",
+    "#57aeff",
+    "#ae63e9",
+    "#ffaa2b",
+    "#fffefe",
+]
+cursor_bg = "#d8e2d7"
+cursor_border = "#d8e2d7"
+cursor_fg = "#0d4a08"
+foreground = "#d8e2d7"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["kokuban (Gogh)"]
+name = "Kokuban (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

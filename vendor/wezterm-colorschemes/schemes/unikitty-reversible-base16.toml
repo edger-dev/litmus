@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2e2a31",
+    "#d8137f",
+    "#17ad98",
+    "#dc8a0e",
+    "#7864fa",
+    "#b33ce8",
+    "#149bda",
+    "#c3c2c4",
+]
+background = "#2e2a31"
+brights = [
+    "#878589",
+    "#d8137f",
+    "#17ad98",
+    "#dc8a0e",
+    "#7864fa",
+    "#b33ce8",
+    "#149bda",
+    "#ffffff",
+]
+cursor_bg = "#c3c2c4"
+cursor_border = "#c3c2c4"
+cursor_fg = "#2e2a31"
+foreground = "#c3c2c4"
+selection_bg = "#c3c2c4"
+selection_fg = "#2e2a31"
+
+[colors.indexed]
+16 = "#d65407"
+17 = "#d41acd"
+18 = "#4b484e"
+19 = "#69666b"
+20 = "#a5a3a6"
+21 = "#e1e0e1"
+
+[metadata]
+aliases = []
+author = "Josh W Lewis (@joshwlewis)"
+name = "Unikitty Reversible (base16)"
+origin_url = "https://github.com/joshwlewis/base16-unikitty"
+wezterm_version = "20220807-113146-c2fee766"

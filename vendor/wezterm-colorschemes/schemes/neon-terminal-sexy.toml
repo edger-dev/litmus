@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#171717",
+    "#d81765",
+    "#97d01a",
+    "#ffa800",
+    "#16b1fb",
+    "#ff2491",
+    "#0fdcb6",
+    "#ebebeb",
+]
+background = "#171717"
+brights = [
+    "#38252c",
+    "#ff0000",
+    "#76b639",
+    "#e1a126",
+    "#289cd5",
+    "#ff2491",
+    "#0a9b81",
+    "#f8f8f8",
+]
+foreground = "#f8f8f8"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Neon (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

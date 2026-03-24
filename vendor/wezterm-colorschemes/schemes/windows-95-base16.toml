@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#fc5454",
+    "#54fc54",
+    "#fcfc54",
+    "#5454fc",
+    "#fc54fc",
+    "#54fcfc",
+    "#a8a8a8",
+]
+background = "#000000"
+brights = [
+    "#545454",
+    "#fc5454",
+    "#54fc54",
+    "#fcfc54",
+    "#5454fc",
+    "#fc54fc",
+    "#54fcfc",
+    "#fcfcfc",
+]
+cursor_bg = "#a8a8a8"
+cursor_border = "#a8a8a8"
+cursor_fg = "#000000"
+foreground = "#a8a8a8"
+selection_bg = "#a8a8a8"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#a85400"
+17 = "#00a800"
+18 = "#1c1c1c"
+19 = "#383838"
+20 = "#7e7e7e"
+21 = "#d2d2d2"
+
+[metadata]
+aliases = []
+author = "Fergus Collins (https://github.com/C-Fergus)"
+name = "Windows 95 (base16)"
+origin_url = "https://github.com/C-Fergus/base16-windows-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#021012",
+    "#16c1d9",
+    "#4dd0e1",
+    "#80deea",
+    "#00bcd4",
+    "#00acc1",
+    "#26c6da",
+    "#095b67",
+]
+background = "#021012"
+brights = [
+    "#052e34",
+    "#16c1d9",
+    "#4dd0e1",
+    "#80deea",
+    "#00bcd4",
+    "#00acc1",
+    "#26c6da",
+    "#109cb0",
+]
+cursor_bg = "#095b67"
+cursor_border = "#095b67"
+cursor_fg = "#021012"
+foreground = "#095b67"
+selection_bg = "#095b67"
+selection_fg = "#021012"
+
+[colors.indexed]
+16 = "#b3ebf2"
+17 = "#0097a7"
+18 = "#031619"
+19 = "#041f23"
+20 = "#064048"
+21 = "#0c7c8c"
+
+[metadata]
+aliases = []
+author = "icyphox (https://icyphox.ga)"
+name = "Icy Dark (base16)"
+origin_url = "https://github.com/icyphox/base16-icy-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#121f34",
+    "#cf8560",
+    "#3faa26",
+    "#aa9f32",
+    "#3f90f0",
+    "#b379bf",
+    "#5faaef",
+    "#ddddee",
+]
+background = "#000a1f"
+brights = [
+    "#445165",
+    "#cf7a7a",
+    "#3fa672",
+    "#bfaf7a",
+    "#009fff",
+    "#9f95ff",
+    "#0db0ff",
+    "#7f8797",
+]
+cursor_bg = "#ffff00"
+cursor_border = "#ffff00"
+cursor_fg = "#000a1f"
+foreground = "#ddddee"
+selection_bg = "#223848"
+selection_fg = "#ddddee"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "anhsirk0"
+name = "Ef-Deuteranopia-Dark"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-deuteranopia-dark-theme.el"
+wezterm_version = "20240127-113634-bbcac864"

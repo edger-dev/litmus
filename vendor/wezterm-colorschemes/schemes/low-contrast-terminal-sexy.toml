@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#5f5f5f",
+    "#d96468",
+    "#a2d964",
+    "#d9c964",
+    "#64a2d9",
+    "#9a64d9",
+    "#64d9d5",
+    "#989898",
+]
+background = "#3c3b37"
+brights = [
+    "#828282",
+    "#d98f93",
+    "#b8d98f",
+    "#d9cf8f",
+    "#8f99d9",
+    "#b08fd9",
+    "#8fd9d5",
+    "#c5c5c5",
+]
+foreground = "#93a1a1"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Muzieca"
+name = "Low Contrast (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

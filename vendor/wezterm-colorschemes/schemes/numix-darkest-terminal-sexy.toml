@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#555555",
+    "#9c3528",
+    "#61bc3b",
+    "#f3b43a",
+    "#0d68a8",
+    "#744560",
+    "#288e9c",
+    "#a2a2a2",
+]
+background = "#282828"
+brights = [
+    "#888888",
+    "#d64937",
+    "#86df5d",
+    "#fdd75a",
+    "#0f75bd",
+    "#9e5e83",
+    "#37c3d6",
+    "#f9f9f9",
+]
+foreground = "#a2a2a2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Numix Darkest (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#494d64",
+    "#ed8796",
+    "#a6da95",
+    "#eed49f",
+    "#8aadf4",
+    "#f5bde6",
+    "#8bd5ca",
+    "#b8c0e0",
+]
+background = "#24273a"
+brights = [
+    "#5b6078",
+    "#ed8796",
+    "#a6da95",
+    "#eed49f",
+    "#8aadf4",
+    "#f5bde6",
+    "#8bd5ca",
+    "#a5adcb",
+]
+cursor_bg = "#cad3f5"
+cursor_border = "#cad3f5"
+cursor_fg = "#24273a"
+foreground = "#cad3f5"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Catppuccin Macchiato (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

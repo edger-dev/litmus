@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#382c2f",
+    "#48393a",
+    "#65534d",
+    "#79665a",
+    "#836e5e",
+    "#8e7766",
+    "#917781",
+    "#9a846d",
+]
+background = "#111111"
+brights = [
+    "#ac9377",
+    "#baa17e",
+    "#bca282",
+    "#c1a67e",
+    "#cfb48e",
+    "#d1baa3",
+    "#dfc39b",
+    "#eed8c4",
+]
+foreground = "#d3d3d3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "Unsifted Wheat (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

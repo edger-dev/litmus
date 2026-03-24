@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff004d",
+    "#00e756",
+    "#fff024",
+    "#83769c",
+    "#ff77a8",
+    "#29adff",
+    "#5f574f",
+]
+background = "#000000"
+brights = [
+    "#008751",
+    "#ff004d",
+    "#00e756",
+    "#fff024",
+    "#83769c",
+    "#ff77a8",
+    "#29adff",
+    "#fff1e8",
+]
+cursor_bg = "#5f574f"
+cursor_border = "#5f574f"
+cursor_fg = "#000000"
+foreground = "#5f574f"
+selection_bg = "#5f574f"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#ffa300"
+17 = "#ffccaa"
+18 = "#1d2b53"
+19 = "#7e2553"
+20 = "#ab5236"
+21 = "#c2c3c7"
+
+[metadata]
+aliases = []
+author = "PICO-8 (http://www.lexaloffle.com/pico-8.php)"
+name = "Pico (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

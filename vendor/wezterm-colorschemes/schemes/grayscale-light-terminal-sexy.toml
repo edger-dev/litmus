@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#101010",
+    "#7c7c7c",
+    "#8e8e8e",
+    "#a0a0a0",
+    "#686868",
+    "#747474",
+    "#868686",
+    "#b9b9b9",
+]
+background = "#f7f7f7"
+brights = [
+    "#525252",
+    "#7c7c7c",
+    "#8e8e8e",
+    "#a0a0a0",
+    "#686868",
+    "#747474",
+    "#868686",
+    "#f7f7f7",
+]
+foreground = "#464646"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Grayscale (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

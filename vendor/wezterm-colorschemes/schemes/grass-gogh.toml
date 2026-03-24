@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#bb0000",
+    "#00bb00",
+    "#e7b000",
+    "#0000a3",
+    "#950062",
+    "#00bbbb",
+    "#bbbbbb",
+]
+background = "#13773d"
+brights = [
+    "#555555",
+    "#bb0000",
+    "#00bb00",
+    "#e7b000",
+    "#0000bb",
+    "#ff55ff",
+    "#55ffff",
+    "#ffffff",
+]
+cursor_bg = "#fff0a5"
+cursor_border = "#fff0a5"
+cursor_fg = "#13773d"
+foreground = "#fff0a5"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Grass (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

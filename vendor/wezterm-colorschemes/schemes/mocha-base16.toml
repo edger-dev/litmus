@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#3b3228",
+    "#cb6077",
+    "#beb55b",
+    "#f4bc87",
+    "#8ab3b5",
+    "#a89bb9",
+    "#7bbda4",
+    "#d0c8c6",
+]
+background = "#3b3228"
+brights = [
+    "#7e705a",
+    "#cb6077",
+    "#beb55b",
+    "#f4bc87",
+    "#8ab3b5",
+    "#a89bb9",
+    "#7bbda4",
+    "#f5eeeb",
+]
+cursor_bg = "#d0c8c6"
+cursor_border = "#d0c8c6"
+cursor_fg = "#3b3228"
+foreground = "#d0c8c6"
+selection_bg = "#d0c8c6"
+selection_fg = "#3b3228"
+
+[colors.indexed]
+16 = "#d28b71"
+17 = "#bb9584"
+18 = "#534636"
+19 = "#645240"
+20 = "#b8afad"
+21 = "#e9e1dd"
+
+[metadata]
+aliases = ["Mocha (dark) (terminal.sexy)"]
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Mocha (base16)"
+origin_url = "https://github.com/chriskempson/base16-default-schemes"
+wezterm_version = "20220807-113146-c2fee766"

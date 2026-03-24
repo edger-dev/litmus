@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#202126",
+    "#ff661a",
+    "#f2e6a9",
+    "#ffdc2d",
+    "#40bfff",
+    "#ae94f9",
+    "#fb6acb",
+    "#e9e7e1",
+]
+background = "#202126"
+brights = [
+    "#a1d2e6",
+    "#ff661a",
+    "#f2e6a9",
+    "#ffdc2d",
+    "#40bfff",
+    "#ae94f9",
+    "#fb6acb",
+    "#f2fbff",
+]
+cursor_bg = "#e9e7e1"
+cursor_border = "#e9e7e1"
+cursor_fg = "#202126"
+foreground = "#e9e7e1"
+selection_bg = "#e9e7e1"
+selection_fg = "#202126"
+
+[colors.indexed]
+16 = "#19f988"
+17 = "#6187ff"
+18 = "#2d303d"
+19 = "#5a576e"
+20 = "#cad3ff"
+21 = "#eff0f9"
+
+[metadata]
+aliases = []
+author = "Aidan Swope (http://github.com/Whillikers)"
+name = "Gigavolt (base16)"
+origin_url = "https://github.com/Whillikers/base16-gigavolt-scheme"
+wezterm_version = "20220807-113146-c2fee766"

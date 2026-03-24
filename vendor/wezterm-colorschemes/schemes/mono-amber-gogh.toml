@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#402500",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+]
+background = "#2b1900"
+brights = [
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+    "#ff9400",
+]
+cursor_bg = "#ff9400"
+cursor_border = "#ff9400"
+cursor_fg = "#2b1900"
+foreground = "#ff9400"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-amber (Gogh)"]
+name = "Mono Amber (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

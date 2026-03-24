@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#181818",
+    "#ff29a8",
+    "#0badff",
+    "#f0ffaa",
+    "#00eaff",
+    "#00f6d9",
+    "#8265ff",
+    "#818181",
+]
+background = "#181818"
+brights = [
+    "#3f3f3f",
+    "#ff29a8",
+    "#0badff",
+    "#f0ffaa",
+    "#00eaff",
+    "#00f6d9",
+    "#8265ff",
+    "#e9e9e9",
+]
+cursor_bg = "#818181"
+cursor_border = "#818181"
+cursor_fg = "#181818"
+foreground = "#818181"
+selection_bg = "#818181"
+selection_fg = "#181818"
+
+[colors.indexed]
+16 = "#85ffe0"
+17 = "#ff3d81"
+18 = "#222222"
+19 = "#323232"
+20 = "#666666"
+21 = "#c6c6c6"
+
+[metadata]
+aliases = []
+author = "Thomas Leon Highbaugh"
+name = "Vice Dark (base16)"
+origin_url = "https://github.com/Thomashighbaugh/base16-vice-scheme"
+wezterm_version = "20220807-113146-c2fee766"

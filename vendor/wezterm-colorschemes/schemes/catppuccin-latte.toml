@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    "#5c5f77",
+    "#d20f39",
+    "#40a02b",
+    "#df8e1d",
+    "#1e66f5",
+    "#ea76cb",
+    "#179299",
+    "#acb0be",
+]
+background = "#eff1f5"
+brights = [
+    "#6c6f85",
+    "#d20f39",
+    "#40a02b",
+    "#df8e1d",
+    "#1e66f5",
+    "#ea76cb",
+    "#179299",
+    "#bcc0cc",
+]
+cursor_bg = "#dc8a78"
+cursor_border = "#dc8a78"
+cursor_fg = "#4c4f69"
+foreground = "#4c4f69"
+selection_bg = "#acb0be"
+selection_fg = "#4c4f69"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["Catppuccin Latte (Gogh)"]
+name = "catppuccin-latte"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20230320-124340-559cb7b0"

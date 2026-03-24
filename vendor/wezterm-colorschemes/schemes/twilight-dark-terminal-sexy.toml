@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1e1e1e",
+    "#cf6a4c",
+    "#8f9d6a",
+    "#f9ee98",
+    "#7587a6",
+    "#9b859d",
+    "#afc4db",
+    "#a7a7a7",
+]
+background = "#1e1e1e"
+brights = [
+    "#5f5a60",
+    "#cf6a4c",
+    "#8f9d6a",
+    "#f9ee98",
+    "#7587a6",
+    "#9b859d",
+    "#afc4db",
+    "#ffffff",
+]
+foreground = "#a7a7a7"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Twilight (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2d2d2d",
+    "#f2777a",
+    "#99cc99",
+    "#ffcc66",
+    "#6699cc",
+    "#cc99cc",
+    "#66cccc",
+    "#d3d0c8",
+]
+background = "#2d2d2d"
+brights = [
+    "#747369",
+    "#f2777a",
+    "#99cc99",
+    "#ffcc66",
+    "#6699cc",
+    "#cc99cc",
+    "#66cccc",
+    "#f2f0ec",
+]
+cursor_bg = "#d3d0c8"
+cursor_border = "#d3d0c8"
+cursor_fg = "#2d2d2d"
+foreground = "#d3d0c8"
+selection_bg = "#d3d0c8"
+selection_fg = "#2d2d2d"
+
+[colors.indexed]
+16 = "#f99157"
+17 = "#d27b53"
+18 = "#393939"
+19 = "#515151"
+20 = "#a09f93"
+21 = "#e8e6df"
+
+[metadata]
+aliases = ["Eighties (dark) (terminal.sexy)"]
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Eighties (base16)"
+origin_url = "https://github.com/chriskempson/base16-default-schemes"
+wezterm_version = "20220807-113146-c2fee766"

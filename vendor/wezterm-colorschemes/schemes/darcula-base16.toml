@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2b2b2b",
+    "#4eade5",
+    "#6a8759",
+    "#bbb529",
+    "#9876aa",
+    "#cc7832",
+    "#629755",
+    "#a9b7c6",
+]
+background = "#2b2b2b"
+brights = [
+    "#606366",
+    "#4eade5",
+    "#6a8759",
+    "#bbb529",
+    "#9876aa",
+    "#cc7832",
+    "#629755",
+    "#ffffff",
+]
+cursor_bg = "#a9b7c6"
+cursor_border = "#a9b7c6"
+cursor_fg = "#2b2b2b"
+foreground = "#a9b7c6"
+selection_bg = "#a9b7c6"
+selection_fg = "#2b2b2b"
+
+[colors.indexed]
+16 = "#689757"
+17 = "#808080"
+18 = "#323232"
+19 = "#323232"
+20 = "#a4a3a3"
+21 = "#ffc66d"
+
+[metadata]
+aliases = []
+author = "jetbrains"
+name = "Darcula (base16)"
+origin_url = "https://github.com/casonadams/base16-darcula-scheme"
+wezterm_version = "20220807-113146-c2fee766"

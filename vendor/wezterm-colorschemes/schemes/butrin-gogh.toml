@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#8c7e78",
+    "#e68a8a",
+    "#99cc99",
+    "#fad7a0",
+    "#6699cc",
+    "#c8a2c8",
+    "#6fc3b2",
+    "#e2cebe",
+]
+background = "#4b3b3c"
+brights = [
+    "#bfaca4",
+    "#f2b1b1",
+    "#b2d8b2",
+    "#f7dcb4",
+    "#87cefa",
+    "#d8bfd8",
+    "#64dbdb",
+    "#f2f2f2",
+]
+cursor_bg = "#e39d93"
+cursor_border = "#e39d93"
+cursor_fg = "#4b3b3c"
+foreground = "#f2f2f2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Butrin (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#4f4f4f",
+    "#ff6c60",
+    "#a8ff60",
+    "#ffffb6",
+    "#96cbfe",
+    "#ff73fd",
+    "#c6c5fe",
+    "#eeeeee",
+]
+background = "#0000a4"
+brights = [
+    "#7c7c7c",
+    "#ffb6b0",
+    "#ceffac",
+    "#ffffcc",
+    "#b5dcff",
+    "#ff9cfe",
+    "#dfdffe",
+    "#ffffff",
+]
+cursor_bg = "#ffff4e"
+cursor_border = "#ffff4e"
+cursor_fg = "#0000a4"
+foreground = "#ffff4e"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Borland (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

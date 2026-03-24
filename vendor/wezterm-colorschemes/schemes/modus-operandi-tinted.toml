@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#efe9dd",
+    "#a60000",
+    "#006800",
+    "#6f5500",
+    "#0031a9",
+    "#721045",
+    "#005e8b",
+    "#000000",
+]
+background = "#fbf7f0"
+brights = [
+    "#c9b9b0",
+    "#a0132f",
+    "#00663f",
+    "#7a4f2f",
+    "#0000b0",
+    "#531ab6",
+    "#005f5f",
+    "#595959",
+]
+cursor_bg = "#000000"
+cursor_border = "#000000"
+cursor_fg = "#fbf7f0"
+foreground = "#000000"
+selection_bg = "#c2bcb5"
+selection_fg = "#000000"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "anhsirk0"
+name = "Modus-Operandi-Tinted"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/modus-operandi-tinted-theme.el"
+wezterm_version = "20240127-113634-bbcac864"

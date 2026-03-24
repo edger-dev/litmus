@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#2b2b2b",
+    "#da4939",
+    "#a5c261",
+    "#ffc66d",
+    "#6d9cbe",
+    "#b6b3eb",
+    "#519f50",
+    "#e6e1dc",
+]
+background = "#f9f7f3"
+brights = [
+    "#5a647e",
+    "#da4939",
+    "#a5c261",
+    "#ffc66d",
+    "#6d9cbe",
+    "#b6b3eb",
+    "#519f50",
+    "#f9f7f3",
+]
+foreground = "#3a4055"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Railscasts (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

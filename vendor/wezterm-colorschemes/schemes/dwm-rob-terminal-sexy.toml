@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#151515",
+    "#bf7979",
+    "#97b26b",
+    "#cdcda1",
+    "#4a5463",
+    "#9c3885",
+    "#88aadd",
+    "#ffffff",
+]
+background = "#000000"
+brights = [
+    "#505450",
+    "#f4a45f",
+    "#c5f779",
+    "#ffffaf",
+    "#7d8794",
+    "#e628ba",
+    "#99ccff",
+    "#dedede",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "DWM rob (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

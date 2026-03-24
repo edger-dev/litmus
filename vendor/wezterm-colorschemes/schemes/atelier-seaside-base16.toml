@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#131513",
+    "#e6193c",
+    "#29a329",
+    "#98981b",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#8ca68c",
+]
+background = "#131513"
+brights = [
+    "#687d68",
+    "#e6193c",
+    "#29a329",
+    "#98981b",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#f4fbf4",
+]
+cursor_bg = "#8ca68c"
+cursor_border = "#8ca68c"
+cursor_fg = "#131513"
+foreground = "#8ca68c"
+selection_bg = "#8ca68c"
+selection_fg = "#131513"
+
+[colors.indexed]
+16 = "#87711d"
+17 = "#e619c3"
+18 = "#242924"
+19 = "#5e6e5e"
+20 = "#809980"
+21 = "#cfe8cf"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Seaside (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

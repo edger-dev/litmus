@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fafafa",
+    "#ff5370",
+    "#91b859",
+    "#ffb62c",
+    "#6182b8",
+    "#7c4dff",
+    "#39adb5",
+    "#80cbc4",
+]
+background = "#fafafa"
+brights = [
+    "#ccd7da",
+    "#ff5370",
+    "#91b859",
+    "#ffb62c",
+    "#6182b8",
+    "#7c4dff",
+    "#39adb5",
+    "#ffffff",
+]
+cursor_bg = "#80cbc4"
+cursor_border = "#80cbc4"
+cursor_fg = "#fafafa"
+foreground = "#80cbc4"
+selection_bg = "#80cbc4"
+selection_fg = "#fafafa"
+
+[colors.indexed]
+16 = "#f76d47"
+17 = "#e53935"
+18 = "#e7eaec"
+19 = "#cceae7"
+20 = "#8796b0"
+21 = "#80cbc4"
+
+[metadata]
+aliases = []
+author = "Nate Peterson"
+name = "Material Lighter (base16)"
+origin_url = "https://github.com/ntpeters/base16-materialtheme-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1c1c1c",
+    "#ff3d81",
+    "#44ffdd",
+    "#ffff73",
+    "#2fb1d4",
+    "#8265ff",
+    "#00caff",
+    "#555555",
+]
+background = "#1c1c1c"
+brights = [
+    "#323232",
+    "#ff3d81",
+    "#44ffdd",
+    "#ffff73",
+    "#2fb1d4",
+    "#8265ff",
+    "#00caff",
+    "#d1d1d1",
+]
+cursor_bg = "#555555"
+cursor_border = "#555555"
+cursor_fg = "#1c1c1c"
+foreground = "#555555"
+selection_bg = "#555555"
+selection_fg = "#1c1c1c"
+
+[colors.indexed]
+16 = "#f67544"
+17 = "#f83d80"
+18 = "#282828"
+19 = "#2c2c2c"
+20 = "#3c3c3c"
+21 = "#b6b6b6"
+
+[metadata]
+aliases = []
+author = "Thomas Leon Highbaugh"
+name = "Vice Alt (base16)"
+origin_url = "https://github.com/Thomashighbaugh/base16-vice-scheme"
+wezterm_version = "20220807-113146-c2fee766"

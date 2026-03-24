@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1b1918",
+    "#f22c40",
+    "#7b9726",
+    "#c38418",
+    "#407ee7",
+    "#6666ea",
+    "#3d97b8",
+    "#a8a19f",
+]
+background = "#1b1918"
+brights = [
+    "#766e6b",
+    "#f22c40",
+    "#7b9726",
+    "#c38418",
+    "#407ee7",
+    "#6666ea",
+    "#3d97b8",
+    "#f1efee",
+]
+cursor_bg = "#a8a19f"
+cursor_border = "#a8a19f"
+cursor_fg = "#1b1918"
+foreground = "#a8a19f"
+selection_bg = "#a8a19f"
+selection_fg = "#1b1918"
+
+[colors.indexed]
+16 = "#df5320"
+17 = "#c33ff3"
+18 = "#2c2421"
+19 = "#68615e"
+20 = "#9c9491"
+21 = "#e6e2e0"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Forest (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

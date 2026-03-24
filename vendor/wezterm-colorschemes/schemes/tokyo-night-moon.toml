@@ -1,0 +1,81 @@
+[colors]
+ansi = [
+    "#1b1d2b",
+    "#ff757f",
+    "#c3e88d",
+    "#ffc777",
+    "#82aaff",
+    "#c099ff",
+    "#86e1fc",
+    "#828bb8",
+]
+background = "#222436"
+brights = [
+    "#444a73",
+    "#ff757f",
+    "#c3e88d",
+    "#ffc777",
+    "#82aaff",
+    "#c099ff",
+    "#86e1fc",
+    "#c8d3f5",
+]
+cursor_bg = "#c8d3f5"
+cursor_border = "#c8d3f5"
+cursor_fg = "#222436"
+foreground = "#c8d3f5"
+selection_bg = "#2d3f76"
+selection_fg = "#c8d3f5"
+
+[colors.indexed]
+
+[colors.tab_bar]
+background = "#191b28"
+inactive_tab_edge = "#1e2030"
+
+[colors.tab_bar.active_tab]
+bg_color = "#222436"
+fg_color = "#82aaff"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#1e2030"
+fg_color = "#545c7e"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#1e2030"
+fg_color = "#82aaff"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab]
+bg_color = "#191b28"
+fg_color = "#82aaff"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#82aaff"
+fg_color = "#1e2030"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[metadata]
+aliases = []
+author = "folke"
+name = "Tokyo Night Moon"
+origin_url = "https://github.com/folke/tokyonight.nvim"
+wezterm_version = "20230712-072601-f4abf8fd"

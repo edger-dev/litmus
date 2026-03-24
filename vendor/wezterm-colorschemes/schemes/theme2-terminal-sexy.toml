@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#191919",
+    "#eb3d51",
+    "#66b61a",
+    "#d98e1d",
+    "#23ffa8",
+    "#ff00da",
+    "#68a783",
+    "#eaeaea",
+]
+background = "#000000"
+brights = [
+    "#484848",
+    "#be6262",
+    "#4b8a10",
+    "#e5d95e",
+    "#23aaff",
+    "#ab005b",
+    "#bbcd81",
+    "#bbbbbb",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "theme2 (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

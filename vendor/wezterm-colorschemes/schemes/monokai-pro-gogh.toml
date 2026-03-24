@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#363537",
+    "#ff6188",
+    "#a9dc76",
+    "#ffd866",
+    "#fc9867",
+    "#ab9df2",
+    "#78dce8",
+    "#fdf9f3",
+]
+background = "#363537"
+brights = [
+    "#908e8f",
+    "#ff6188",
+    "#a9dc76",
+    "#ffd866",
+    "#fc9867",
+    "#ab9df2",
+    "#78dce8",
+    "#fdf9f3",
+]
+cursor_bg = "#fdf9f3"
+cursor_border = "#fdf9f3"
+cursor_fg = "#363537"
+foreground = "#fdf9f3"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["MonokaiPro (Gogh)"]
+name = "Monokai Pro (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

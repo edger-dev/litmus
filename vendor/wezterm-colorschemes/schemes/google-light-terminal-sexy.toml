@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1d1f21",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#c5c8c6",
+]
+background = "#ffffff"
+brights = [
+    "#969896",
+    "#cc342b",
+    "#198844",
+    "#fba922",
+    "#3971ed",
+    "#a36ac7",
+    "#3971ed",
+    "#ffffff",
+]
+foreground = "#373b41"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Google (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f4fbf4",
+    "#e6193c",
+    "#29a329",
+    "#98981b",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#5e6e5e",
+]
+background = "#f4fbf4"
+brights = [
+    "#809980",
+    "#e6193c",
+    "#29a329",
+    "#98981b",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#131513",
+]
+cursor_bg = "#5e6e5e"
+cursor_border = "#5e6e5e"
+cursor_fg = "#f4fbf4"
+foreground = "#5e6e5e"
+selection_bg = "#5e6e5e"
+selection_fg = "#f4fbf4"
+
+[colors.indexed]
+16 = "#87711d"
+17 = "#e619c3"
+18 = "#cfe8cf"
+19 = "#8ca68c"
+20 = "#687d68"
+21 = "#242924"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Seaside Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

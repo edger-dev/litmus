@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#51576d",
+    "#e78284",
+    "#a6d189",
+    "#e5c890",
+    "#8caaee",
+    "#f4b8e4",
+    "#81c8be",
+    "#b5bfe2",
+]
+background = "#303446"
+brights = [
+    "#626880",
+    "#e78284",
+    "#a6d189",
+    "#e5c890",
+    "#8caaee",
+    "#f4b8e4",
+    "#81c8be",
+    "#a5adce",
+]
+cursor_bg = "#c6d0f5"
+cursor_border = "#c6d0f5"
+cursor_fg = "#303446"
+foreground = "#c6d0f5"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Catppuccin Frapp\u{e9} (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

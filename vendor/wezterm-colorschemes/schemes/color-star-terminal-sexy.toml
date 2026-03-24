@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#03010f",
+    "#503b43",
+    "#353b64",
+    "#8c2424",
+    "#6067ac",
+    "#624d19",
+    "#7c83c0",
+    "#9a600f",
+]
+background = "#000000"
+brights = [
+    "#ab9e9e",
+    "#b28930",
+    "#bbada9",
+    "#c37305",
+    "#d0ae58",
+    "#d7b559",
+    "#f4e199",
+    "#f6f4df",
+]
+foreground = "#d3d3d3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "Color Star (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

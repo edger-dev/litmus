@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f8f8f8",
+    "#fa8480",
+    "#a0d2c8",
+    "#ffdc61",
+    "#a0a7d2",
+    "#c8a0d2",
+    "#a2d6f5",
+    "#383838",
+]
+background = "#f8f8f8"
+brights = [
+    "#b8b8b8",
+    "#fa8480",
+    "#a0d2c8",
+    "#ffdc61",
+    "#a0a7d2",
+    "#c8a0d2",
+    "#a2d6f5",
+    "#181818",
+]
+cursor_bg = "#383838"
+cursor_border = "#383838"
+cursor_fg = "#f8f8f8"
+foreground = "#383838"
+selection_bg = "#383838"
+selection_fg = "#f8f8f8"
+
+[colors.indexed]
+16 = "#ffaa61"
+17 = "#d2b2a0"
+18 = "#e8e8e8"
+19 = "#d8d8d8"
+20 = "#585858"
+21 = "#282828"
+
+[metadata]
+aliases = []
+author = "Carter Veldhuizen"
+name = "Sagelight (base16)"
+origin_url = "https://github.com/cveldy/base16-sagelight-scheme"
+wezterm_version = "20220807-113146-c2fee766"

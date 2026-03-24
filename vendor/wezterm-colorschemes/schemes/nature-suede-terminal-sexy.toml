@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#392925",
+    "#98724c",
+    "#908f32",
+    "#aa964c",
+    "#7b854e",
+    "#6b5644",
+    "#5c5142",
+    "#c8b55b",
+]
+background = "#170f0d"
+brights = [
+    "#544b2e",
+    "#af652f",
+    "#c3c13d",
+    "#c8b55b",
+    "#70a16c",
+    "#98724c",
+    "#778725",
+    "#e4dc8c",
+]
+foreground = "#746c48"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Gslob"
+name = "Nature Suede (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

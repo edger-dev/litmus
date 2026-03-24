@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#444444",
+    "#ff0054",
+    "#b1d630",
+    "#9d895e",
+    "#67bee3",
+    "#b576bc",
+    "#569a9f",
+    "#ededed",
+]
+background = "#000000"
+brights = [
+    "#777777",
+    "#d65e75",
+    "#baffaa",
+    "#ece1c8",
+    "#9fd3e5",
+    "#deb3df",
+    "#b6e0e5",
+    "#ffffff",
+]
+cursor_bg = "#baffaa"
+cursor_border = "#baffaa"
+cursor_fg = "#000000"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["HemisuDark (Gogh)"]
+name = "Hemisu Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

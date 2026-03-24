@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#292a44",
+    "#a0a0c5",
+    "#6dfedf",
+    "#ae81ff",
+    "#2de0a7",
+    "#7aa5ff",
+    "#8eaee0",
+    "#f1eff8",
+]
+background = "#292a44"
+brights = [
+    "#666699",
+    "#a0a0c5",
+    "#6dfedf",
+    "#ae81ff",
+    "#2de0a7",
+    "#7aa5ff",
+    "#8eaee0",
+    "#53495d",
+]
+cursor_bg = "#f1eff8"
+cursor_border = "#f1eff8"
+cursor_fg = "#292a44"
+foreground = "#f1eff8"
+selection_bg = "#f1eff8"
+selection_fg = "#292a44"
+
+[colors.indexed]
+16 = "#efe4a1"
+17 = "#ff79c6"
+18 = "#663399"
+19 = "#383a62"
+20 = "#a0a0c5"
+21 = "#ccccff"
+
+[metadata]
+aliases = []
+author = "Victor Borja (http://github.com/vic) based on Rebecca Theme (http://github.com/vic/rebecca-theme)"
+name = "Rebecca (base16)"
+origin_url = "https://github.com/vic/base16-rebecca"
+wezterm_version = "20220807-113146-c2fee766"

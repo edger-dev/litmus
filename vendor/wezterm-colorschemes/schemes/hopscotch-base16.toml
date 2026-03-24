@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#322931",
+    "#dd464c",
+    "#8fc13e",
+    "#fdcc59",
+    "#1290bf",
+    "#c85e7c",
+    "#149b93",
+    "#b9b5b8",
+]
+background = "#322931"
+brights = [
+    "#797379",
+    "#dd464c",
+    "#8fc13e",
+    "#fdcc59",
+    "#1290bf",
+    "#c85e7c",
+    "#149b93",
+    "#ffffff",
+]
+cursor_bg = "#b9b5b8"
+cursor_border = "#b9b5b8"
+cursor_fg = "#322931"
+foreground = "#b9b5b8"
+selection_bg = "#b9b5b8"
+selection_fg = "#322931"
+
+[colors.indexed]
+16 = "#fd8b19"
+17 = "#b33508"
+18 = "#433b42"
+19 = "#5c545b"
+20 = "#989498"
+21 = "#d5d3d5"
+
+[metadata]
+aliases = []
+author = "Jan T. Sott"
+name = "Hopscotch (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20230712-072601-f4abf8fd"

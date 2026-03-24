@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1f2022",
+    "#f2241f",
+    "#67b11d",
+    "#b1951d",
+    "#4f97d7",
+    "#a31db1",
+    "#2d9574",
+    "#a3a3a3",
+]
+background = "#1f2022"
+brights = [
+    "#585858",
+    "#f2241f",
+    "#67b11d",
+    "#b1951d",
+    "#4f97d7",
+    "#a31db1",
+    "#2d9574",
+    "#f8f8f8",
+]
+cursor_bg = "#a3a3a3"
+cursor_border = "#a3a3a3"
+cursor_fg = "#1f2022"
+foreground = "#a3a3a3"
+selection_bg = "#a3a3a3"
+selection_fg = "#1f2022"
+
+[colors.indexed]
+16 = "#ffa500"
+17 = "#b03060"
+18 = "#282828"
+19 = "#444155"
+20 = "#b8b8b8"
+21 = "#e8e8e8"
+
+[metadata]
+aliases = []
+author = "Nasser Alshammari (https://github.com/nashamri/spacemacs-theme)"
+name = "Spacemacs (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

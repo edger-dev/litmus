@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#202020",
+    "#a07070",
+    "#70a070",
+    "#a0a070",
+    "#7070a0",
+    "#a070a0",
+    "#70a0a0",
+    "#a0a0a0",
+]
+background = "#000000"
+brights = [
+    "#505050",
+    "#d07070",
+    "#70d070",
+    "#d0d070",
+    "#7070d0",
+    "#d070d0",
+    "#70d0d0",
+    "#f0f0f0",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "thwump (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#393939",
+    "#da4939",
+    "#519f50",
+    "#cc7833",
+    "#6d9cbe",
+    "#9f5079",
+    "#435d75",
+    "#dddddd",
+]
+background = "#000000"
+brights = [
+    "#474747",
+    "#ff6c5c",
+    "#a5c261",
+    "#bc9458",
+    "#d0d0ff",
+    "#a761c2",
+    "#6e98a4",
+    "#dddddd",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "iiamblack"
+name = "Iiamblack (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

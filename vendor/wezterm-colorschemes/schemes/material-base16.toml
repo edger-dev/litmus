@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#263238",
+    "#f07178",
+    "#c3e88d",
+    "#ffcb6b",
+    "#82aaff",
+    "#c792ea",
+    "#89ddff",
+    "#eeffff",
+]
+background = "#263238"
+brights = [
+    "#546e7a",
+    "#f07178",
+    "#c3e88d",
+    "#ffcb6b",
+    "#82aaff",
+    "#c792ea",
+    "#89ddff",
+    "#ffffff",
+]
+cursor_bg = "#eeffff"
+cursor_border = "#eeffff"
+cursor_fg = "#263238"
+foreground = "#eeffff"
+selection_bg = "#eeffff"
+selection_fg = "#263238"
+
+[colors.indexed]
+16 = "#f78c6c"
+17 = "#ff5370"
+18 = "#2e3c43"
+19 = "#314549"
+20 = "#b2ccd6"
+21 = "#eeffff"
+
+[metadata]
+aliases = []
+author = "Nate Peterson"
+name = "Material (base16)"
+origin_url = "https://github.com/ntpeters/base16-materialtheme-scheme"
+wezterm_version = "20220807-113146-c2fee766"

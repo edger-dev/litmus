@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#002831",
+    "#d11c24",
+    "#6cbe6c",
+    "#a57706",
+    "#2176c7",
+    "#c61c6f",
+    "#259286",
+    "#eae3cb",
+]
+background = "#001e27"
+brights = [
+    "#006488",
+    "#f5163b",
+    "#51ef84",
+    "#b27e28",
+    "#178ec8",
+    "#e24d8e",
+    "#00b39e",
+    "#fcf4dc",
+]
+cursor_bg = "#9cc2c3"
+cursor_border = "#9cc2c3"
+cursor_fg = "#001e27"
+foreground = "#9cc2c3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Solarized Dark Higher Contrast (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

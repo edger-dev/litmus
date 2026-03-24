@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#192033",
+    "#a62a3e",
+    "#38912b",
+    "#b27d12",
+    "#355c9a",
+    "#7c4f9f",
+    "#258f8f",
+    "#77858c",
+]
+background = "#cfcfd9"
+brights = [
+    "#666666",
+    "#f04758",
+    "#93c724",
+    "#ddb62b",
+    "#45a3e6",
+    "#c953ef",
+    "#60c6c8",
+    "#c0c0c0",
+]
+foreground = "#1c2027"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Euphrasia (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

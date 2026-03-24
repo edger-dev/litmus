@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#032c36",
+    "#c2454e",
+    "#7cbf9e",
+    "#8a7a63",
+    "#2e3340",
+    "#ff5879",
+    "#44b5b1",
+    "#f2f1b9",
+]
+background = "#021b21"
+brights = [
+    "#065f73",
+    "#ef5847",
+    "#a2d9b1",
+    "#beb090",
+    "#61778d",
+    "#ff99a1",
+    "#9ed9d8",
+    "#f6f6c9",
+]
+foreground = "#e8dfd6"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "hal"
+name = "Navy and Ivory (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

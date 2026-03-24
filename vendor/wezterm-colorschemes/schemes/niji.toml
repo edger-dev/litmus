@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    "#333333",
+    "#d23e08",
+    "#54ca74",
+    "#fff700",
+    "#2ab9ff",
+    "#ff50da",
+    "#1ef9f5",
+    "#ddd0c4",
+]
+background = "#141515"
+brights = [
+    "#515151",
+    "#ffb7b7",
+    "#c1ffae",
+    "#fcffb8",
+    "#8efff3",
+    "#ffa2ed",
+    "#bcffc7",
+    "#ffffff",
+]
+cursor_bg = "#ffc663"
+cursor_border = "#ffc663"
+cursor_fg = "#141515"
+foreground = "#ffffff"
+selection_bg = "#515151"
+selection_fg = "#ffc663"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "niji"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20230712-072601-f4abf8fd"

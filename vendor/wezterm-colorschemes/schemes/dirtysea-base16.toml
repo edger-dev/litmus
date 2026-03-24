@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#e0e0e0",
+    "#840000",
+    "#730073",
+    "#755b00",
+    "#007300",
+    "#000090",
+    "#755b00",
+    "#000000",
+]
+background = "#e0e0e0"
+brights = [
+    "#707070",
+    "#840000",
+    "#730073",
+    "#755b00",
+    "#007300",
+    "#000090",
+    "#755b00",
+    "#c4d9c4",
+]
+cursor_bg = "#000000"
+cursor_border = "#000000"
+cursor_fg = "#e0e0e0"
+foreground = "#000000"
+selection_bg = "#000000"
+selection_fg = "#e0e0e0"
+
+[colors.indexed]
+16 = "#006565"
+17 = "#755b00"
+18 = "#d0dad0"
+19 = "#d0d0d0"
+20 = "#202020"
+21 = "#f8f8f8"
+
+[metadata]
+aliases = []
+author = "Kahlil (Kal) Hodgson"
+name = "dirtysea (base16)"
+origin_url = "https://github.com/tartansandal/base16-dirtysea-scheme"
+wezterm_version = "20220807-113146-c2fee766"

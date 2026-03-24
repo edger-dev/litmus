@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#efecf4",
+    "#be4678",
+    "#2a9292",
+    "#a06e3b",
+    "#576ddb",
+    "#955ae7",
+    "#398bc6",
+    "#585260",
+]
+background = "#efecf4"
+brights = [
+    "#7e7887",
+    "#be4678",
+    "#2a9292",
+    "#a06e3b",
+    "#576ddb",
+    "#955ae7",
+    "#398bc6",
+    "#19171c",
+]
+cursor_bg = "#585260"
+cursor_border = "#585260"
+cursor_fg = "#efecf4"
+foreground = "#585260"
+selection_bg = "#585260"
+selection_fg = "#efecf4"
+
+[colors.indexed]
+16 = "#aa573c"
+17 = "#bf40bf"
+18 = "#e2dfe7"
+19 = "#8b8792"
+20 = "#655f6d"
+21 = "#26232a"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Cave Light (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

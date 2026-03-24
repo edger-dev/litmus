@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#191927",
+    "#282f5e",
+    "#2b4593",
+    "#344276",
+    "#4e3a4f",
+    "#61372f",
+    "#6b484c",
+    "#744537",
+]
+background = "#000000"
+brights = [
+    "#905749",
+    "#94431c",
+    "#9f582a",
+    "#a38687",
+    "#e1750f",
+    "#eaaf25",
+    "#fa8e08",
+    "#fca806",
+]
+foreground = "#d3d3d3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "dkeg"
+name = "Panels (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

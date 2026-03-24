@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#322a2c",
+    "#a04363",
+    "#9b9329",
+    "#bf7a29",
+    "#6a8c8c",
+    "#856774",
+    "#757978",
+    "#bcbcaf",
+]
+background = "#000000"
+brights = [
+    "#46423b",
+    "#ae837a",
+    "#b4aa30",
+    "#c7a551",
+    "#74999e",
+    "#9c818e",
+    "#9fa590",
+    "#c1c4bc",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Mikado (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

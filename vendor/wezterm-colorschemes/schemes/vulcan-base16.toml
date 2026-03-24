@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#041523",
+    "#818591",
+    "#977d7c",
+    "#adb4b9",
+    "#977d7c",
+    "#9198a3",
+    "#977d7c",
+    "#5b778c",
+]
+background = "#041523"
+brights = [
+    "#7a5759",
+    "#818591",
+    "#977d7c",
+    "#adb4b9",
+    "#977d7c",
+    "#9198a3",
+    "#977d7c",
+    "#214d68",
+]
+cursor_bg = "#5b778c"
+cursor_border = "#5b778c"
+cursor_fg = "#041523"
+foreground = "#5b778c"
+selection_bg = "#5b778c"
+selection_fg = "#041523"
+
+[colors.indexed]
+16 = "#9198a3"
+17 = "#977d7c"
+18 = "#122339"
+19 = "#003552"
+20 = "#6b6977"
+21 = "#333238"
+
+[metadata]
+aliases = []
+author = "Andrey Varfolomeev"
+name = "vulcan (base16)"
+origin_url = "https://github.com/andreyvpng/base16-vulcan-scheme"
+wezterm_version = "20220807-113146-c2fee766"

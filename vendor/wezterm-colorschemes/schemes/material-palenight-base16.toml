@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#292d3e",
+    "#f07178",
+    "#c3e88d",
+    "#ffcb6b",
+    "#82aaff",
+    "#c792ea",
+    "#89ddff",
+    "#959dcb",
+]
+background = "#292d3e"
+brights = [
+    "#676e95",
+    "#f07178",
+    "#c3e88d",
+    "#ffcb6b",
+    "#82aaff",
+    "#c792ea",
+    "#89ddff",
+    "#ffffff",
+]
+cursor_bg = "#959dcb"
+cursor_border = "#959dcb"
+cursor_fg = "#292d3e"
+foreground = "#959dcb"
+selection_bg = "#959dcb"
+selection_fg = "#292d3e"
+
+[colors.indexed]
+16 = "#f78c6c"
+17 = "#ff5370"
+18 = "#444267"
+19 = "#32374d"
+20 = "#8796b0"
+21 = "#959dcb"
+
+[metadata]
+aliases = []
+author = "Nate Peterson"
+name = "Material Palenight (base16)"
+origin_url = "https://github.com/ntpeters/base16-materialtheme-scheme"
+wezterm_version = "20220807-113146-c2fee766"

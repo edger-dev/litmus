@@ -1,0 +1,37 @@
+[colors]
+ansi = [
+    "#131317",
+    "#f58ee0",
+    "#8eb5f5",
+    "#9898a6",
+    "#c58fff",
+    "#fdfdfe",
+    "#ffbb88",
+    "#868690",
+]
+background = "#0f1014"
+brights = [
+    "#575861",
+    "#f58ee0",
+    "#8eb5f5",
+    "#9898a6",
+    "#c58fff",
+    "#fdfdfe",
+    "#ffbb88",
+    "#868690",
+]
+cursor_bg = "#c58fff"
+cursor_border = "#c58fff"
+cursor_fg = "#868690"
+foreground = "#868690"
+selection_bg = "#22222a"
+selection_fg = "#93939c"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Hiroya-W and Michael Andreuzza"
+name = "Sequoia Moonlight"
+origin_url = "https://github.com/Hiroya-W/wezterm-sequoia-theme"
+wezterm_version = "20220903-194523-3bb1ed61"

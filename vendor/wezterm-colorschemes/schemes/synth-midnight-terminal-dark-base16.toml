@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#050608",
+    "#b53b50",
+    "#06ea61",
+    "#c9d364",
+    "#03aeff",
+    "#ea5ce2",
+    "#42fff9",
+    "#c1c3c4",
+]
+background = "#050608"
+brights = [
+    "#474849",
+    "#b53b50",
+    "#06ea61",
+    "#c9d364",
+    "#03aeff",
+    "#ea5ce2",
+    "#42fff9",
+    "#dddfe0",
+]
+cursor_bg = "#c1c3c4"
+cursor_border = "#c1c3c4"
+cursor_fg = "#050608"
+foreground = "#c1c3c4"
+selection_bg = "#c1c3c4"
+selection_fg = "#050608"
+
+[colors.indexed]
+16 = "#ea770d"
+17 = "#cd6320"
+18 = "#1a1b1c"
+19 = "#28292a"
+20 = "#a3a5a6"
+21 = "#cfd1d2"
+
+[metadata]
+aliases = []
+author = "Micha\u{eb}l Ball (http://github.com/michael-ball/)"
+name = "Synth Midnight Terminal Dark (base16)"
+origin_url = "https://github.com/michael-ball/base16-synth-midnight-scheme"
+wezterm_version = "20220807-113146-c2fee766"

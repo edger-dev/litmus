@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#353535",
+    "#d25252",
+    "#a5c261",
+    "#ffc66d",
+    "#6c99bb",
+    "#d197d9",
+    "#bed6ff",
+    "#eeeeec",
+]
+background = "#323232"
+brights = [
+    "#535353",
+    "#f00c0c",
+    "#c2e075",
+    "#e1e48b",
+    "#8ab7d9",
+    "#efb5f7",
+    "#dcf4ff",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#323232"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Espresso (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

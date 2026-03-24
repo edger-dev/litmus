@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#ffffff",
+    "#ff0086",
+    "#00c918",
+    "#aba800",
+    "#3777e6",
+    "#ad00a1",
+    "#1faaaa",
+    "#101010",
+]
+background = "#ffffff"
+brights = [
+    "#b0b0b0",
+    "#ff0086",
+    "#00c918",
+    "#aba800",
+    "#3777e6",
+    "#ad00a1",
+    "#1faaaa",
+    "#202020",
+]
+cursor_bg = "#101010"
+cursor_border = "#101010"
+cursor_fg = "#ffffff"
+foreground = "#101010"
+selection_bg = "#101010"
+selection_fg = "#ffffff"
+
+[colors.indexed]
+16 = "#fd8900"
+17 = "#cc6633"
+18 = "#e0e0e0"
+19 = "#d0d0d0"
+20 = "#000000"
+21 = "#151515"
+
+[metadata]
+aliases = []
+author = "Christopher Corley (http://christop.club/)"
+name = "Summerfruit Light (base16)"
+origin_url = "https://github.com/cscorley/base16-summerfruit-scheme"
+wezterm_version = "20220807-113146-c2fee766"

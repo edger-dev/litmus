@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2d2d2d",
+    "#d25252",
+    "#a5c261",
+    "#ffc66d",
+    "#6c99bb",
+    "#d197d9",
+    "#bed6ff",
+    "#cccccc",
+]
+background = "#2d2d2d"
+brights = [
+    "#777777",
+    "#d25252",
+    "#a5c261",
+    "#ffc66d",
+    "#6c99bb",
+    "#d197d9",
+    "#bed6ff",
+    "#ffffff",
+]
+cursor_bg = "#cccccc"
+cursor_border = "#cccccc"
+cursor_fg = "#2d2d2d"
+foreground = "#cccccc"
+selection_bg = "#cccccc"
+selection_fg = "#2d2d2d"
+
+[colors.indexed]
+16 = "#f9a959"
+17 = "#f97394"
+18 = "#393939"
+19 = "#515151"
+20 = "#b4b7b4"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = []
+author = "Unknown. Maintained by Alex Mirrington (https://github.com/alexmirrington)"
+name = "Espresso (base16)"
+origin_url = "https://github.com/alexmirrington/base16-espresso-scheme"
+wezterm_version = "20220807-113146-c2fee766"

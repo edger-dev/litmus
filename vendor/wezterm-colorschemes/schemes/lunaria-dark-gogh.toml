@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#36464e",
+    "#846560",
+    "#809984",
+    "#a79a79",
+    "#555673",
+    "#866c83",
+    "#7e98b4",
+    "#caced8",
+]
+background = "#36464e"
+brights = [
+    "#404f56",
+    "#bb928b",
+    "#bfdcc2",
+    "#f1dfb6",
+    "#777798",
+    "#bf9db9",
+    "#bddcff",
+    "#dfe2ed",
+]
+cursor_bg = "#caced8"
+cursor_border = "#caced8"
+cursor_fg = "#36464e"
+foreground = "#caced8"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["LunariaDark (Gogh)"]
+name = "Lunaria Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

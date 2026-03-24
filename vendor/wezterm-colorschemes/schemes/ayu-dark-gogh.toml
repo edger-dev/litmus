@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#0a0e14",
+    "#ff3333",
+    "#c2d94c",
+    "#ff8f40",
+    "#59c2ff",
+    "#ffee99",
+    "#95e6cb",
+    "#b3b1ad",
+]
+background = "#0a0e14"
+brights = [
+    "#4d5566",
+    "#ff3333",
+    "#c2d94c",
+    "#ff8f40",
+    "#59c2ff",
+    "#ffee99",
+    "#95e6cb",
+    "#b3b1ad",
+]
+cursor_bg = "#e6b450"
+cursor_border = "#e6b450"
+cursor_fg = "#0a0e14"
+foreground = "#b3b1ad"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["AyuDark (Gogh)"]
+name = "Ayu Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

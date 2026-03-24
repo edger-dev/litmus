@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    "#07080d",
+    "#590008",
+    "#005523",
+    "#6b5300",
+    "#004c73",
+    "#470045",
+    "#007373",
+    "#eef1f8",
+]
+background = "#e0e2ea"
+brights = [
+    "#4f5258",
+    "#590008",
+    "#005523",
+    "#6b5300",
+    "#004c73",
+    "#470045",
+    "#007373",
+    "#eef1f8",
+]
+cursor_bg = "#9b9ea4"
+cursor_border = "#9b9ea4"
+cursor_fg = "#14161b"
+foreground = "#14161b"
+selection_bg = "#9b9ea4"
+selection_fg = "#14161b"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "NvimLight"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "nightly builds only"

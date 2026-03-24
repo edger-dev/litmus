@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#000000",
+    "#eb008a",
+    "#37b349",
+    "#f8ca12",
+    "#0e5a94",
+    "#b31e8d",
+    "#00aabb",
+    "#d0d0d0",
+]
+background = "#000000"
+brights = [
+    "#505050",
+    "#eb008a",
+    "#37b349",
+    "#f8ca12",
+    "#0e5a94",
+    "#b31e8d",
+    "#00aabb",
+    "#ffffff",
+]
+cursor_bg = "#d0d0d0"
+cursor_border = "#d0d0d0"
+cursor_fg = "#000000"
+foreground = "#d0d0d0"
+selection_bg = "#d0d0d0"
+selection_fg = "#000000"
+
+[colors.indexed]
+16 = "#f29333"
+17 = "#7a2d00"
+18 = "#202020"
+19 = "#303030"
+20 = "#b0b0b0"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = []
+author = "Chris Kempson (http://chriskempson.com)"
+name = "Pop (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

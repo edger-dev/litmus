@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1b1818",
+    "#ca4949",
+    "#4b8b8b",
+    "#a06e3b",
+    "#7272ca",
+    "#8464c4",
+    "#5485b6",
+    "#8a8585",
+]
+background = "#1b1818"
+brights = [
+    "#655d5d",
+    "#ca4949",
+    "#4b8b8b",
+    "#a06e3b",
+    "#7272ca",
+    "#8464c4",
+    "#5485b6",
+    "#f4ecec",
+]
+cursor_bg = "#8a8585"
+cursor_border = "#8a8585"
+cursor_fg = "#1b1818"
+foreground = "#8a8585"
+selection_bg = "#8a8585"
+selection_fg = "#1b1818"
+
+[colors.indexed]
+16 = "#b45a3c"
+17 = "#bd5187"
+18 = "#292424"
+19 = "#585050"
+20 = "#7e7777"
+21 = "#e7dfdf"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Plateau (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

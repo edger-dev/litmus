@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#3b3b3b",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+]
+background = "#262626"
+brights = [
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+    "#fafafa",
+]
+cursor_bg = "#fafafa"
+cursor_border = "#fafafa"
+cursor_fg = "#262626"
+foreground = "#fafafa"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-white (Gogh)"]
+name = "Mono White (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

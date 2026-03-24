@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#22273b",
+    "#777abc",
+    "#6562a8",
+    "#4f9062",
+    "#4d6bb6",
+    "#716cae",
+    "#226f68",
+    "#a4a6a9",
+]
+background = "#22273b"
+brights = [
+    "#6e6f72",
+    "#777abc",
+    "#6562a8",
+    "#4f9062",
+    "#4d6bb6",
+    "#716cae",
+    "#226f68",
+    "#8dbdaa",
+]
+cursor_bg = "#a4a6a9"
+cursor_border = "#a4a6a9"
+cursor_fg = "#22273b"
+foreground = "#a4a6a9"
+selection_bg = "#a4a6a9"
+selection_fg = "#22273b"
+
+[colors.indexed]
+16 = "#94929e"
+17 = "#8c70a7"
+18 = "#414f60"
+19 = "#5a8380"
+20 = "#87888b"
+21 = "#c7c9cd"
+
+[metadata]
+aliases = []
+author = "Gabriel Fontes (https://github.com/Misterio77)"
+name = "Nebula (base16)"
+origin_url = "https://github.com/Misterio77/base16-nebula-scheme"
+wezterm_version = "20220807-113146-c2fee766"

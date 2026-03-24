@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#131513",
+    "#e6193c",
+    "#29a329",
+    "#c3c322",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#8ca68c",
+]
+background = "#f0fff0"
+brights = [
+    "#687d68",
+    "#e6193c",
+    "#29a329",
+    "#c3c322",
+    "#3d62f5",
+    "#ad2bee",
+    "#1999b3",
+    "#f0fff0",
+]
+foreground = "#5e6e5e"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Atelierseaside (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

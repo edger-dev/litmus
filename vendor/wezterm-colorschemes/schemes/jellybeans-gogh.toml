@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#929292",
+    "#e27373",
+    "#94b979",
+    "#ffba7b",
+    "#97bedc",
+    "#e1c0fa",
+    "#00988e",
+    "#dedede",
+]
+background = "#121212"
+brights = [
+    "#bdbdbd",
+    "#ffa1a1",
+    "#bddeab",
+    "#ffdca0",
+    "#b1d8f6",
+    "#fbdaff",
+    "#1ab2a8",
+    "#ffffff",
+]
+cursor_bg = "#dedede"
+cursor_border = "#dedede"
+cursor_fg = "#121212"
+foreground = "#dedede"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Jellybeans (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

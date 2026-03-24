@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#201602",
+    "#c35359",
+    "#18974e",
+    "#a88339",
+    "#477ca1",
+    "#8868b3",
+    "#75a738",
+    "#948e48",
+]
+background = "#201602"
+brights = [
+    "#6c6823",
+    "#c35359",
+    "#18974e",
+    "#a88339",
+    "#477ca1",
+    "#8868b3",
+    "#75a738",
+    "#faf0a5",
+]
+foreground = "#948e48"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Marrakesh (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

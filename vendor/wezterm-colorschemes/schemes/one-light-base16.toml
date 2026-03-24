@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#fafafa",
+    "#ca1243",
+    "#50a14f",
+    "#c18401",
+    "#4078f2",
+    "#a626a4",
+    "#0184bc",
+    "#383a42",
+]
+background = "#fafafa"
+brights = [
+    "#a0a1a7",
+    "#ca1243",
+    "#50a14f",
+    "#c18401",
+    "#4078f2",
+    "#a626a4",
+    "#0184bc",
+    "#090a0b",
+]
+cursor_bg = "#383a42"
+cursor_border = "#383a42"
+cursor_fg = "#fafafa"
+foreground = "#383a42"
+selection_bg = "#383a42"
+selection_fg = "#fafafa"
+
+[colors.indexed]
+16 = "#d75f00"
+17 = "#986801"
+18 = "#f0f0f1"
+19 = "#e5e5e6"
+20 = "#696c77"
+21 = "#202227"
+
+[metadata]
+aliases = []
+author = "Daniel Pfeifer (http://github.com/purpleKarrot)"
+name = "One Light (base16)"
+origin_url = "https://github.com/purpleKarrot/base16-one-light-scheme"
+wezterm_version = "20220807-113146-c2fee766"

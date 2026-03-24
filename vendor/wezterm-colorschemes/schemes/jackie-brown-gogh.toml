@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#2c1d16",
+    "#ef5734",
+    "#2baf2b",
+    "#bebf00",
+    "#246eb2",
+    "#d05ec1",
+    "#00acee",
+    "#bfbfbf",
+]
+background = "#2c1d16"
+brights = [
+    "#666666",
+    "#e50000",
+    "#86a93e",
+    "#e5e500",
+    "#0000ff",
+    "#e500e5",
+    "#00e5e5",
+    "#e5e5e5",
+]
+cursor_bg = "#ffcc2f"
+cursor_border = "#ffcc2f"
+cursor_fg = "#2c1d16"
+foreground = "#ffcc2f"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Jackie Brown (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

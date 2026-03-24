@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1c1e26",
+    "#e95678",
+    "#29d398",
+    "#fac29a",
+    "#26bbd9",
+    "#ee64ac",
+    "#59e1e3",
+    "#cbced0",
+]
+background = "#1c1e26"
+brights = [
+    "#6f6f70",
+    "#e95678",
+    "#29d398",
+    "#fac29a",
+    "#26bbd9",
+    "#ee64ac",
+    "#59e1e3",
+    "#e3e6ee",
+]
+cursor_bg = "#cbced0"
+cursor_border = "#cbced0"
+cursor_fg = "#1c1e26"
+foreground = "#cbced0"
+selection_bg = "#cbced0"
+selection_fg = "#1c1e26"
+
+[colors.indexed]
+16 = "#fab795"
+17 = "#f09383"
+18 = "#232530"
+19 = "#2e303e"
+20 = "#9da0a2"
+21 = "#dcdfe4"
+
+[metadata]
+aliases = []
+author = "Micha\u{eb}l Ball (http://github.com/michael-ball/)"
+name = "Horizon Dark (base16)"
+origin_url = "https://github.com/michael-ball/base16-horizon-scheme"
+wezterm_version = "20220807-113146-c2fee766"

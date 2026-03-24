@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#184956",
+    "#fa5750",
+    "#75b938",
+    "#dbb32d",
+    "#4695f7",
+    "#f275be",
+    "#41c7b9",
+    "#72898f",
+]
+background = "#103c48"
+brights = [
+    "#2d5b69",
+    "#ff665c",
+    "#84c747",
+    "#ebc13d",
+    "#58a3ff",
+    "#ff84cd",
+    "#53d6c7",
+    "#cad8d9",
+]
+cursor_bg = "#cad8d9"
+cursor_border = "#cad8d9"
+cursor_fg = "#103c48"
+foreground = "#adbcbc"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Selenized Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20240127-113634-bbcac864"

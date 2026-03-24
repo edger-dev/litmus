@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#0f0e0d",
+    "#845336",
+    "#57553c",
+    "#a17e3e",
+    "#43454f",
+    "#604848",
+    "#5c6652",
+    "#a18b62",
+]
+background = "#191716"
+brights = [
+    "#383332",
+    "#8c4f4a",
+    "#898471",
+    "#c8b491",
+    "#65788f",
+    "#755e4a",
+    "#718062",
+    "#bc9d66",
+]
+foreground = "#daba8b"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "franksn"
+name = "Trim Yer Beard (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

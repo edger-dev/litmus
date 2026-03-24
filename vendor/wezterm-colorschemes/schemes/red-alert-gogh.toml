@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#d62e4e",
+    "#71be6b",
+    "#beb86b",
+    "#489bee",
+    "#e979d7",
+    "#6bbeb8",
+    "#d6d6d6",
+]
+background = "#762423"
+brights = [
+    "#262626",
+    "#e02553",
+    "#aff08c",
+    "#dfddb7",
+    "#65aaf1",
+    "#ddb7df",
+    "#b7dfdd",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#762423"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Red Alert (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

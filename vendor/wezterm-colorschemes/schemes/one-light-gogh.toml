@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#da3e39",
+    "#41933e",
+    "#855504",
+    "#315eee",
+    "#930092",
+    "#0e6fad",
+    "#8e8f96",
+]
+background = "#f8f8f8"
+brights = [
+    "#2a2b32",
+    "#da3e39",
+    "#41933e",
+    "#855504",
+    "#315eee",
+    "#930092",
+    "#0e6fad",
+    "#fffefe",
+]
+cursor_bg = "#2a2b32"
+cursor_border = "#2a2b32"
+cursor_fg = "#f8f8f8"
+foreground = "#2a2b32"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["OneLight (Gogh)"]
+name = "One Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

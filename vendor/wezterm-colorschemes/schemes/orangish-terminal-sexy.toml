@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#251f1f",
+    "#eb4509",
+    "#94e76b",
+    "#ffac18",
+    "#46aede",
+    "#e32c57",
+    "#d6dbac",
+    "#efefef",
+]
+background = "#000000"
+brights = [
+    "#5e5e5e",
+    "#eb4509",
+    "#95e76b",
+    "#ffac18",
+    "#46aede",
+    "#e32c57",
+    "#d6dbac",
+    "#efefef",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Orangish (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

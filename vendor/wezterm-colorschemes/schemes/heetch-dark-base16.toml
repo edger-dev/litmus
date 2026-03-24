@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#190134",
+    "#27d9d5",
+    "#c33678",
+    "#8f6c97",
+    "#bd0152",
+    "#82034c",
+    "#f80059",
+    "#bdb6c5",
+]
+background = "#190134"
+brights = [
+    "#7b6d8b",
+    "#27d9d5",
+    "#c33678",
+    "#8f6c97",
+    "#bd0152",
+    "#82034c",
+    "#f80059",
+    "#feffff",
+]
+cursor_bg = "#bdb6c5"
+cursor_border = "#bdb6c5"
+cursor_fg = "#190134"
+foreground = "#bdb6c5"
+selection_bg = "#bdb6c5"
+selection_fg = "#190134"
+
+[colors.indexed]
+16 = "#5ba2b6"
+17 = "#470546"
+18 = "#392551"
+19 = "#5a496e"
+20 = "#9c92a8"
+21 = "#dedae2"
+
+[metadata]
+aliases = []
+author = "Geoffrey Teale (tealeg@gmail.com)"
+name = "Heetch Dark (base16)"
+origin_url = "https://github.com/tealeg/base16-heetch-scheme"
+wezterm_version = "20220807-113146-c2fee766"

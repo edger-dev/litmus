@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#231f20",
+    "#ee2e24",
+    "#00853e",
+    "#ffd204",
+    "#009ddc",
+    "#98005d",
+    "#85cebc",
+    "#d9d8d8",
+]
+background = "#ffffff"
+brights = [
+    "#737171",
+    "#ee2e24",
+    "#00853e",
+    "#ffd204",
+    "#009ddc",
+    "#98005d",
+    "#85cebc",
+    "#ffffff",
+]
+foreground = "#5a5758"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Londontube (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

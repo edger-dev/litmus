@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f9f9f9",
+    "#e92f2f",
+    "#0ed839",
+    "#dddd13",
+    "#3b48e3",
+    "#f996e2",
+    "#23edda",
+    "#102015",
+]
+background = "#f9f9f9"
+brights = [
+    "#555555",
+    "#e92f2f",
+    "#0ed839",
+    "#dddd13",
+    "#3b48e3",
+    "#f996e2",
+    "#23edda",
+    "#000000",
+]
+cursor_bg = "#102015"
+cursor_border = "#102015"
+cursor_fg = "#f9f9f9"
+foreground = "#102015"
+selection_bg = "#102015"
+selection_fg = "#f9f9f9"
+
+[colors.indexed]
+16 = "#e09448"
+17 = "#69542d"
+18 = "#e0e0e0"
+19 = "#ababab"
+20 = "#343434"
+21 = "#040404"
+
+[metadata]
+aliases = []
+author = "Tyler Benziger (http://tybenz.com)"
+name = "Shapeshifter (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

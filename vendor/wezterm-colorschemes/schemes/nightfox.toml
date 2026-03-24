@@ -1,0 +1,36 @@
+[colors]
+ansi = [
+    "#393b44",
+    "#c94f6d",
+    "#81b29a",
+    "#dbc074",
+    "#719cd6",
+    "#9d79d6",
+    "#63cdcf",
+    "#dfdfe0",
+]
+background = "#192330"
+brights = [
+    "#575860",
+    "#d16983",
+    "#8ebaa4",
+    "#e0c989",
+    "#86abdc",
+    "#baa1e2",
+    "#7ad5d6",
+    "#e4e4e5",
+]
+cursor_bg = "#cdcecf"
+cursor_border = "#cdcecf"
+cursor_fg = "#192330"
+foreground = "#cdcecf"
+selection_bg = "#2b3b51"
+selection_fg = "#cdcecf"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "nightfox"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20220807-113146-c2fee766"

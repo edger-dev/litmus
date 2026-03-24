@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1d2021",
+    "#d72638",
+    "#88b92d",
+    "#f19d1a",
+    "#1e8bac",
+    "#be4264",
+    "#1ba595",
+    "#d5d5d5",
+]
+background = "#1d2021"
+brights = [
+    "#6f7579",
+    "#d72638",
+    "#88b92d",
+    "#f19d1a",
+    "#1e8bac",
+    "#be4264",
+    "#1ba595",
+    "#e5e5e5",
+]
+cursor_bg = "#d5d5d5"
+cursor_border = "#d5d5d5"
+cursor_fg = "#1d2021"
+foreground = "#d5d5d5"
+selection_bg = "#d5d5d5"
+selection_fg = "#1d2021"
+
+[colors.indexed]
+16 = "#eb8413"
+17 = "#c85e0d"
+18 = "#383c3e"
+19 = "#53585b"
+20 = "#cdcdcd"
+21 = "#dddddd"
+
+[metadata]
+aliases = []
+author = "Alex Meyer (https://github.com/reyemxela)"
+name = "Helios (base16)"
+origin_url = "https://github.com/reyemxela/base16-helios-scheme"
+wezterm_version = "20220807-113146-c2fee766"

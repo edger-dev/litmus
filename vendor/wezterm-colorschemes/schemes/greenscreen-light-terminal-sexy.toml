@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#001100",
+    "#007700",
+    "#00bb00",
+    "#007700",
+    "#009900",
+    "#00bb00",
+    "#005500",
+    "#00bb00",
+]
+background = "#00ff00"
+brights = [
+    "#007700",
+    "#007700",
+    "#00bb00",
+    "#007700",
+    "#009900",
+    "#00bb00",
+    "#005500",
+    "#00ff00",
+]
+foreground = "#005500"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Greenscreen (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

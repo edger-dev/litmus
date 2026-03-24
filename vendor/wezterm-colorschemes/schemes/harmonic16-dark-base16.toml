@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#0b1c2c",
+    "#bf8b56",
+    "#56bf8b",
+    "#8bbf56",
+    "#8b56bf",
+    "#bf568b",
+    "#568bbf",
+    "#cbd6e2",
+]
+background = "#0b1c2c"
+brights = [
+    "#627e99",
+    "#bf8b56",
+    "#56bf8b",
+    "#8bbf56",
+    "#8b56bf",
+    "#bf568b",
+    "#568bbf",
+    "#f7f9fb",
+]
+cursor_bg = "#cbd6e2"
+cursor_border = "#cbd6e2"
+cursor_fg = "#0b1c2c"
+foreground = "#cbd6e2"
+selection_bg = "#cbd6e2"
+selection_fg = "#0b1c2c"
+
+[colors.indexed]
+16 = "#bfbf56"
+17 = "#bf5656"
+18 = "#223b54"
+19 = "#405c79"
+20 = "#aabcce"
+21 = "#e5ebf1"
+
+[metadata]
+aliases = []
+author = "Jannik Siebert (https://github.com/janniks)"
+name = "Harmonic16 Dark (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

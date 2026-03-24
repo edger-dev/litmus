@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#282828",
+    "#f43753",
+    "#c9d05c",
+    "#ffc24b",
+    "#b3deef",
+    "#d3b987",
+    "#73cef4",
+    "#eeeeee",
+]
+background = "#282828"
+brights = [
+    "#4c4c4c",
+    "#f43753",
+    "#c9d05c",
+    "#ffc24b",
+    "#b3deef",
+    "#d3b987",
+    "#73cef4",
+    "#feffff",
+]
+cursor_bg = "#eeeeee"
+cursor_border = "#eeeeee"
+cursor_fg = "#282828"
+foreground = "#eeeeee"
+selection_bg = "#eeeeee"
+selection_fg = "#282828"
+
+[colors.indexed]
+16 = "#dc9656"
+17 = "#a16946"
+18 = "#383838"
+19 = "#484848"
+20 = "#b8b8b8"
+21 = "#e8e8e8"
+
+[metadata]
+aliases = []
+author = "Jacobo Tabernero (https://github/com/jacoborus/tender.vim)"
+name = "tender (base16)"
+origin_url = "https://github.com/DanManN/base16-tender-scheme"
+wezterm_version = "20220807-113146-c2fee766"

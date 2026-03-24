@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#000000",
+    "#6b6b6b",
+    "#c4c4c4",
+    "#b3b3b3",
+    "#999999",
+    "#717171",
+    "#8a8a8a",
+    "#b5cabb",
+]
+background = "#000000"
+brights = [
+    "#202020",
+    "#464646",
+    "#f8f8f8",
+    "#eeeeee",
+    "#7c7c7c",
+    "#adadad",
+    "#c0c0c0",
+    "#99ac9e",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Mono Theme (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

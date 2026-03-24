@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#282b35",
+    "#b21889",
+    "#df0002",
+    "#438288",
+    "#790ead",
+    "#b21889",
+    "#00a0be",
+    "#939599",
+]
+background = "#282b35"
+brights = [
+    "#686a71",
+    "#b21889",
+    "#df0002",
+    "#438288",
+    "#790ead",
+    "#b21889",
+    "#00a0be",
+    "#bebfc2",
+]
+cursor_bg = "#939599"
+cursor_border = "#939599"
+cursor_fg = "#282b35"
+foreground = "#939599"
+selection_bg = "#939599"
+selection_fg = "#282b35"
+
+[colors.indexed]
+16 = "#786dc5"
+17 = "#c77c48"
+18 = "#3d4048"
+19 = "#53555d"
+20 = "#7e8086"
+21 = "#a9aaae"
+
+[metadata]
+aliases = []
+author = "Elsa Gonsiorowski (https://github.com/gonsie)"
+name = "XCode Dusk (base16)"
+origin_url = "https://github.com/gonsie/base16-xcode-dusk-scheme"
+wezterm_version = "20220807-113146-c2fee766"

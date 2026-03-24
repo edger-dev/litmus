@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#f1f1f1",
+    "#d02023",
+    "#637200",
+    "#9d6f00",
+    "#0073b5",
+    "#4e66b6",
+    "#007a72",
+    "#474747",
+]
+background = "#f1f1f1"
+brights = [
+    "#777777",
+    "#d02023",
+    "#637200",
+    "#9d6f00",
+    "#0073b5",
+    "#4e66b6",
+    "#007a72",
+    "#1b1b1b",
+]
+cursor_bg = "#474747"
+cursor_border = "#474747"
+cursor_fg = "#f1f1f1"
+foreground = "#474747"
+selection_bg = "#474747"
+selection_fg = "#f1f1f1"
+
+[colors.indexed]
+16 = "#bf3e05"
+17 = "#c42775"
+18 = "#e2e2e2"
+19 = "#d4d4d4"
+20 = "#5e5e5e"
+21 = "#303030"
+
+[metadata]
+aliases = []
+author = "Carlo Abelli"
+name = "Equilibrium Gray Light (base16)"
+origin_url = "https://github.com/carloabelli/base16-equilibrium-scheme"
+wezterm_version = "20220807-113146-c2fee766"

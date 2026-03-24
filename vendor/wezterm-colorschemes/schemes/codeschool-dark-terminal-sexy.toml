@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#232c31",
+    "#2a5491",
+    "#237986",
+    "#a03b1e",
+    "#484d79",
+    "#c59820",
+    "#b02f30",
+    "#9ea7a6",
+]
+background = "#232c31"
+brights = [
+    "#3f4944",
+    "#2a5491",
+    "#237986",
+    "#a03b1e",
+    "#484d79",
+    "#c59820",
+    "#b02f30",
+    "#b5d8f6",
+]
+foreground = "#9ea7a6"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Codeschool (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"

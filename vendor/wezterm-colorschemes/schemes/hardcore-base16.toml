@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#212121",
+    "#f92672",
+    "#a6e22e",
+    "#e6db74",
+    "#66d9ef",
+    "#9e6ffe",
+    "#708387",
+    "#cdcdcd",
+]
+background = "#212121"
+brights = [
+    "#4a4a4a",
+    "#f92672",
+    "#a6e22e",
+    "#e6db74",
+    "#66d9ef",
+    "#9e6ffe",
+    "#708387",
+    "#ffffff",
+]
+cursor_bg = "#cdcdcd"
+cursor_border = "#cdcdcd"
+cursor_fg = "#212121"
+foreground = "#cdcdcd"
+selection_bg = "#cdcdcd"
+selection_fg = "#212121"
+
+[colors.indexed]
+16 = "#fd971f"
+17 = "#e8b882"
+18 = "#303030"
+19 = "#353535"
+20 = "#707070"
+21 = "#e5e5e5"
+
+[metadata]
+aliases = []
+author = "Chris Caller"
+name = "Hardcore (base16)"
+origin_url = "https://github.com/callerc1/base16-hardcore-scheme"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#323232",
+    "#d25252",
+    "#7fe173",
+    "#ffc66d",
+    "#4099ff",
+    "#f680ff",
+    "#bed6ff",
+    "#eeeeec",
+]
+background = "#323232"
+brights = [
+    "#535353",
+    "#f07070",
+    "#9dff91",
+    "#ffe48b",
+    "#5eb7f7",
+    "#ff9dff",
+    "#dcf4ff",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#323232"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Idle Toes (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

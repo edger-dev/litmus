@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#323437",
+    "#ff5454",
+    "#8cc85f",
+    "#e3c78a",
+    "#80a0ff",
+    "#cf87e8",
+    "#79dac8",
+    "#c6c6c6",
+]
+background = "#080808"
+brights = [
+    "#949494",
+    "#ff5189",
+    "#36c692",
+    "#c2c292",
+    "#74b2ff",
+    "#ae81ff",
+    "#85dc85",
+    "#e4e4e4",
+]
+cursor_bg = "#9e9e9e"
+cursor_border = "#9e9e9e"
+cursor_fg = "#080808"
+foreground = "#bdbdbd"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Moonfly (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20240127-113634-bbcac864"

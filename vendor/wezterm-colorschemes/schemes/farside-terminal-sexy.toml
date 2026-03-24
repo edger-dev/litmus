@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#303030",
+    "#a43261",
+    "#006ca5",
+    "#007086",
+    "#6751a6",
+    "#913e88",
+    "#0061b1",
+    "#c6c6c6",
+]
+background = "#000000"
+brights = [
+    "#5e5e5e",
+    "#ff9fc9",
+    "#3bd6ff",
+    "#00ddf4",
+    "#d5b8ff",
+    "#ffa7f6",
+    "#93c9ff",
+    "#ffffff",
+]
+foreground = "#919191"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Baskerville"
+name = "FarSide (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#282c34",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#dcdfe4",
+]
+background = "#000000"
+brights = [
+    "#282c34",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#dcdfe4",
+]
+cursor_bg = "#dcdfe4"
+cursor_border = "#dcdfe4"
+cursor_fg = "#000000"
+foreground = "#dcdfe4"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["OneHalfBlack (Gogh)"]
+name = "One Half Black (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

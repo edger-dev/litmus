@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#171c19",
+    "#b16139",
+    "#489963",
+    "#a07e3b",
+    "#478c90",
+    "#55859b",
+    "#1c9aa0",
+    "#87928a",
+]
+background = "#171c19"
+brights = [
+    "#5f6d64",
+    "#b16139",
+    "#489963",
+    "#a07e3b",
+    "#478c90",
+    "#55859b",
+    "#1c9aa0",
+    "#ecf4ee",
+]
+cursor_bg = "#87928a"
+cursor_border = "#87928a"
+cursor_fg = "#171c19"
+foreground = "#87928a"
+selection_bg = "#87928a"
+selection_fg = "#171c19"
+
+[colors.indexed]
+16 = "#9f713c"
+17 = "#867469"
+18 = "#232a25"
+19 = "#526057"
+20 = "#78877d"
+21 = "#dfe7e2"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Savanna (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

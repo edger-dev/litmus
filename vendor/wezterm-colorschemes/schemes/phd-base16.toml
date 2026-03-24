@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#061229",
+    "#d07346",
+    "#99bf52",
+    "#fbd461",
+    "#5299bf",
+    "#9989cc",
+    "#72b9bf",
+    "#b8bbc2",
+]
+background = "#061229"
+brights = [
+    "#717885",
+    "#d07346",
+    "#99bf52",
+    "#fbd461",
+    "#5299bf",
+    "#9989cc",
+    "#72b9bf",
+    "#ffffff",
+]
+cursor_bg = "#b8bbc2"
+cursor_border = "#b8bbc2"
+cursor_fg = "#061229"
+foreground = "#b8bbc2"
+selection_bg = "#b8bbc2"
+selection_fg = "#061229"
+
+[colors.indexed]
+16 = "#f0a000"
+17 = "#b08060"
+18 = "#2a3448"
+19 = "#4d5666"
+20 = "#9a99a3"
+21 = "#dbdde0"
+
+[metadata]
+aliases = []
+author = "Hennig Hasemann (http://leetless.de/vim.html)"
+name = "PhD (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

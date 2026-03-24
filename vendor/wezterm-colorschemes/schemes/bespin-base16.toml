@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#28211c",
+    "#cf6a4c",
+    "#54be0d",
+    "#f9ee98",
+    "#5ea6ea",
+    "#9b859d",
+    "#afc4db",
+    "#8a8986",
+]
+background = "#28211c"
+brights = [
+    "#666666",
+    "#cf6a4c",
+    "#54be0d",
+    "#f9ee98",
+    "#5ea6ea",
+    "#9b859d",
+    "#afc4db",
+    "#baae9e",
+]
+cursor_bg = "#8a8986"
+cursor_border = "#8a8986"
+cursor_fg = "#28211c"
+foreground = "#8a8986"
+selection_bg = "#8a8986"
+selection_fg = "#28211c"
+
+[colors.indexed]
+16 = "#cf7d34"
+17 = "#937121"
+18 = "#36312e"
+19 = "#5e5d5c"
+20 = "#797977"
+21 = "#9d9b97"
+
+[metadata]
+aliases = ["Bespin (dark) (terminal.sexy)"]
+author = "Jan T. Sott"
+name = "Bespin (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#22221b",
+    "#ba6236",
+    "#7d9726",
+    "#a5980d",
+    "#36a166",
+    "#5f9182",
+    "#5b9d48",
+    "#929181",
+]
+background = "#22221b"
+brights = [
+    "#6c6b5a",
+    "#ba6236",
+    "#7d9726",
+    "#a5980d",
+    "#36a166",
+    "#5f9182",
+    "#5b9d48",
+    "#f4f3ec",
+]
+cursor_bg = "#929181"
+cursor_border = "#929181"
+cursor_fg = "#22221b"
+foreground = "#929181"
+selection_bg = "#929181"
+selection_fg = "#22221b"
+
+[colors.indexed]
+16 = "#ae7313"
+17 = "#9d6c7c"
+18 = "#302f27"
+19 = "#5f5e4e"
+20 = "#878573"
+21 = "#e7e6df"
+
+[metadata]
+aliases = []
+author = "Bram de Haan (http://atelierbramdehaan.nl)"
+name = "Atelier Estuary (base16)"
+origin_url = "https://github.com/atelierbram/base16-atelier-schemes"
+wezterm_version = "20220807-113146-c2fee766"

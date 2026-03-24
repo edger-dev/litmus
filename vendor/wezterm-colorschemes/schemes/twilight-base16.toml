@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#1e1e1e",
+    "#cf6a4c",
+    "#8f9d6a",
+    "#f9ee98",
+    "#7587a6",
+    "#9b859d",
+    "#afc4db",
+    "#a7a7a7",
+]
+background = "#1e1e1e"
+brights = [
+    "#5f5a60",
+    "#cf6a4c",
+    "#8f9d6a",
+    "#f9ee98",
+    "#7587a6",
+    "#9b859d",
+    "#afc4db",
+    "#ffffff",
+]
+cursor_bg = "#a7a7a7"
+cursor_border = "#a7a7a7"
+cursor_fg = "#1e1e1e"
+foreground = "#a7a7a7"
+selection_bg = "#a7a7a7"
+selection_fg = "#1e1e1e"
+
+[colors.indexed]
+16 = "#cda869"
+17 = "#9b703f"
+18 = "#323537"
+19 = "#464b50"
+20 = "#838184"
+21 = "#c3c3c3"
+
+[metadata]
+aliases = ["Twilight (dark) (terminal.sexy)"]
+author = "David Hart (https://github.com/hartbit)"
+name = "Twilight (base16)"
+origin_url = "https://github.com/hartbit/base16-twilight-scheme"
+wezterm_version = "20220807-113146-c2fee766"

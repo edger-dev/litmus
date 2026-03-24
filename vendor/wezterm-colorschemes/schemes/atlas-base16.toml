@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#002635",
+    "#ff5a67",
+    "#7fc06e",
+    "#ffcc1b",
+    "#14747e",
+    "#9a70a4",
+    "#5dd7b9",
+    "#a1a19a",
+]
+background = "#002635"
+brights = [
+    "#6c8b91",
+    "#ff5a67",
+    "#7fc06e",
+    "#ffcc1b",
+    "#14747e",
+    "#9a70a4",
+    "#5dd7b9",
+    "#fafaf8",
+]
+cursor_bg = "#a1a19a"
+cursor_border = "#a1a19a"
+cursor_fg = "#002635"
+foreground = "#a1a19a"
+selection_bg = "#a1a19a"
+selection_fg = "#002635"
+
+[colors.indexed]
+16 = "#f08e48"
+17 = "#c43060"
+18 = "#00384d"
+19 = "#517f8d"
+20 = "#869696"
+21 = "#e6e6dc"
+
+[metadata]
+aliases = []
+author = "Alex Lende (https://ajlende.com)"
+name = "Atlas (base16)"
+origin_url = "https://github.com/ajlende/base16-atlas-scheme"
+wezterm_version = "20220807-113146-c2fee766"

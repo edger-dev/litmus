@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#eeeeee",
+    "#af0000",
+    "#008700",
+    "#5f8700",
+    "#0087af",
+    "#878787",
+    "#005f87",
+    "#444444",
+]
+background = "#eeeeee"
+brights = [
+    "#bcbcbc",
+    "#d70000",
+    "#d70087",
+    "#8700af",
+    "#d75f00",
+    "#d75f00",
+    "#005faf",
+    "#005f87",
+]
+cursor_bg = "#444444"
+cursor_border = "#444444"
+cursor_fg = "#eeeeee"
+foreground = "#444444"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["PaperColorLight (Gogh)"]
+name = "Papercolor Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

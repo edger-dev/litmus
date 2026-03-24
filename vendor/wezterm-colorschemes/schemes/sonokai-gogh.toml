@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#2c2e34",
+    "#fc5d7c",
+    "#9ed072",
+    "#e7c664",
+    "#f39660",
+    "#b39df3",
+    "#76cce0",
+    "#e2e2e3",
+]
+background = "#2c2e34"
+brights = [
+    "#7f8490",
+    "#fc5d7c",
+    "#9ed072",
+    "#e7c664",
+    "#f39660",
+    "#b39df3",
+    "#76cce0",
+    "#e2e2e3",
+]
+cursor_bg = "#e2e2e3"
+cursor_border = "#e2e2e3"
+cursor_fg = "#2c2e34"
+foreground = "#e2e2e3"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Sonokai (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

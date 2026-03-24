@@ -1,0 +1,86 @@
+[colors]
+ansi = [
+    "#1b1e28",
+    "#d0679d",
+    "#5de4c7",
+    "#fffac2",
+    "#89ddff",
+    "#fcc5e9",
+    "#89ddff",
+    "#ffffff",
+]
+background = "#252b37"
+brights = [
+    "#506477",
+    "#d0679d",
+    "#5de4c7",
+    "#fffac2",
+    "#add7ff",
+    "#fcc5e9",
+    "#add7ff",
+    "#ffffff",
+]
+compose_cursor = "#fcc5e9"
+cursor_bg = "#a6accd"
+cursor_border = "#a6accd"
+cursor_fg = "#252b37"
+foreground = "#e4f0fb"
+scrollbar_thumb = "#404350"
+selection_bg = "#506477"
+selection_fg = "#e4f0fb"
+split = "#252b37"
+visual_bell = "#506477"
+
+[colors.indexed]
+16 = "#5de4c7"
+17 = "#d0679d"
+
+[colors.tab_bar]
+background = "#1b1e28"
+
+[colors.tab_bar.active_tab]
+bg_color = "#1b1e28"
+fg_color = "#e4f0fb"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#1b1e28"
+fg_color = "#506477"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#1b1e28"
+fg_color = "#868cad"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab]
+bg_color = "#1b1e28"
+fg_color = "#506477"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#1b1e28"
+fg_color = "#868cad"
+intensity = "Normal"
+italic = true
+strikethrough = false
+underline = "None"
+
+[metadata]
+aliases = []
+author = "Oliver Cederborg"
+name = "Poimandres Storm"
+origin_url = "https://github.com/olivercederborg/poimandres-wezterm"
+wezterm_version = "20220903-194523-3bb1ed61"

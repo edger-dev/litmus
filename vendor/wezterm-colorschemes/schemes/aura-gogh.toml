@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#110f18",
+    "#ff6767",
+    "#61ffca",
+    "#ffca85",
+    "#a277ff",
+    "#a277ff",
+    "#61ffca",
+    "#edecee",
+]
+background = "#15141b"
+brights = [
+    "#6d6d6d",
+    "#ffca85",
+    "#a277ff",
+    "#ffca85",
+    "#a277ff",
+    "#a277ff",
+    "#61ffca",
+    "#edecee",
+]
+cursor_bg = "#edecee"
+cursor_border = "#edecee"
+cursor_fg = "#15141b"
+foreground = "#edecee"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Aura (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

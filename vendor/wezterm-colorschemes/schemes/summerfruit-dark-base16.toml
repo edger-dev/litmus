@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#151515",
+    "#ff0086",
+    "#00c918",
+    "#aba800",
+    "#3777e6",
+    "#ad00a1",
+    "#1faaaa",
+    "#d0d0d0",
+]
+background = "#151515"
+brights = [
+    "#505050",
+    "#ff0086",
+    "#00c918",
+    "#aba800",
+    "#3777e6",
+    "#ad00a1",
+    "#1faaaa",
+    "#ffffff",
+]
+cursor_bg = "#d0d0d0"
+cursor_border = "#d0d0d0"
+cursor_fg = "#151515"
+foreground = "#d0d0d0"
+selection_bg = "#d0d0d0"
+selection_fg = "#151515"
+
+[colors.indexed]
+16 = "#fd8900"
+17 = "#cc6633"
+18 = "#202020"
+19 = "#303030"
+20 = "#b0b0b0"
+21 = "#e0e0e0"
+
+[metadata]
+aliases = []
+author = "Christopher Corley (http://christop.club/)"
+name = "Summerfruit Dark (base16)"
+origin_url = "https://github.com/cscorley/base16-summerfruit-scheme"
+wezterm_version = "20220807-113146-c2fee766"

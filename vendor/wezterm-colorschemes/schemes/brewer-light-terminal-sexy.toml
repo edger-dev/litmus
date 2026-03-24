@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#0c0d0e",
+    "#e31a1c",
+    "#31a354",
+    "#dca060",
+    "#3182bd",
+    "#756bb1",
+    "#80b1d3",
+    "#b7b8b9",
+]
+background = "#fcfdfe"
+brights = [
+    "#737475",
+    "#e31a1c",
+    "#31a354",
+    "#dca060",
+    "#3182bd",
+    "#756bb1",
+    "#80b1d3",
+    "#fcfdfe",
+]
+foreground = "#515253"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Brewer (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

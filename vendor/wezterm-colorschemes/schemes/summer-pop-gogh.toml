@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#666666",
+    "#ff1e8e",
+    "#8eff1e",
+    "#fffb00",
+    "#1e8eff",
+    "#e500e5",
+    "#00e5e5",
+    "#e5e5e5",
+]
+background = "#272822"
+brights = [
+    "#666666",
+    "#ff1e8e",
+    "#8eff1e",
+    "#fffb00",
+    "#1e8eff",
+    "#e500e5",
+    "#00e5e5",
+    "#e5e5e5",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#272822"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["summer-pop (Gogh)"]
+name = "Summer Pop (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#222222",
+    "#e84f4f",
+    "#b7ce42",
+    "#fea63c",
+    "#66aabb",
+    "#b7416e",
+    "#6d878d",
+    "#dddddd",
+]
+background = "#161616"
+brights = [
+    "#666666",
+    "#d23d3d",
+    "#bde077",
+    "#ffe863",
+    "#aaccbb",
+    "#e16a98",
+    "#42717b",
+    "#cccccc",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "hund"
+name = "hund (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

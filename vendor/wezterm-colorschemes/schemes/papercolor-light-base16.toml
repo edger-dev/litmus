@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#eeeeee",
+    "#bcbcbc",
+    "#8700af",
+    "#d70087",
+    "#d75f00",
+    "#005faf",
+    "#d75f00",
+    "#444444",
+]
+background = "#eeeeee"
+brights = [
+    "#5f8700",
+    "#bcbcbc",
+    "#8700af",
+    "#d70087",
+    "#d75f00",
+    "#005faf",
+    "#d75f00",
+    "#878787",
+]
+cursor_bg = "#444444"
+cursor_border = "#444444"
+cursor_fg = "#eeeeee"
+foreground = "#444444"
+selection_bg = "#444444"
+selection_fg = "#eeeeee"
+
+[colors.indexed]
+16 = "#d70000"
+17 = "#005f87"
+18 = "#af0000"
+19 = "#008700"
+20 = "#0087af"
+21 = "#005f87"
+
+[metadata]
+aliases = []
+author = "Jon Leopard (http://github.com/jonleopard) based on PaperColor Theme (https://github.com/NLKNguyen/papercolor-theme)"
+name = "PaperColor Light (base16)"
+origin_url = "https://github.com/jonleopard/base16-papercolor-scheme"
+wezterm_version = "20220807-113146-c2fee766"

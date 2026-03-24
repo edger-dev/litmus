@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#2a3b4d",
+    "#c4676c",
+    "#5de561",
+    "#cfd05d",
+    "#1ae1dc",
+    "#9c6cd3",
+    "#4b8f77",
+    "#9fa2a6",
+]
+background = "#2a3b4d"
+brights = [
+    "#55799c",
+    "#c4676c",
+    "#5de561",
+    "#cfd05d",
+    "#1ae1dc",
+    "#9c6cd3",
+    "#4b8f77",
+    "#ffffff",
+]
+cursor_bg = "#9fa2a6"
+cursor_border = "#9fa2a6"
+cursor_fg = "#2a3b4d"
+foreground = "#9fa2a6"
+selection_bg = "#9fa2a6"
+selection_fg = "#2a3b4d"
+
+[colors.indexed]
+16 = "#ff9966"
+17 = "#bb64a9"
+18 = "#3d566f"
+19 = "#4b6988"
+20 = "#7e90a3"
+21 = "#d6d7d9"
+
+[metadata]
+aliases = []
+author = "kjakapat (https://github.com/kjakapat)"
+name = "Eva Dim (base16)"
+origin_url = "https://github.com/kjakapat/base16-eva-scheme"
+wezterm_version = "20220807-113146-c2fee766"

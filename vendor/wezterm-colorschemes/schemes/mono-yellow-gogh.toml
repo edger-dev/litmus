@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#403500",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+]
+background = "#2b2400"
+brights = [
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+    "#ffd300",
+]
+cursor_bg = "#ffd300"
+cursor_border = "#ffd300"
+cursor_fg = "#2b2400"
+foreground = "#ffd300"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["mono-yellow (Gogh)"]
+name = "Mono Yellow (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

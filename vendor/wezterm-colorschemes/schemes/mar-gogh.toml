@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#b5407b",
+    "#7bb540",
+    "#b57b40",
+    "#407bb5",
+    "#7b40b5",
+    "#40b57b",
+    "#f8f8f8",
+]
+background = "#ffffff"
+brights = [
+    "#737373",
+    "#cd73a0",
+    "#a0cd73",
+    "#cda073",
+    "#73a0cd",
+    "#a073cd",
+    "#73cda0",
+    "#ffffff",
+]
+cursor_bg = "#23476a"
+cursor_border = "#23476a"
+cursor_fg = "#ffffff"
+foreground = "#23476a"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Mar (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

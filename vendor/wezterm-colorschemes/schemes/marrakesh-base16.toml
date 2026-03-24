@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#201602",
+    "#c35359",
+    "#18974e",
+    "#a88339",
+    "#477ca1",
+    "#8868b3",
+    "#75a738",
+    "#948e48",
+]
+background = "#201602"
+brights = [
+    "#6c6823",
+    "#c35359",
+    "#18974e",
+    "#a88339",
+    "#477ca1",
+    "#8868b3",
+    "#75a738",
+    "#faf0a5",
+]
+cursor_bg = "#948e48"
+cursor_border = "#948e48"
+cursor_fg = "#201602"
+foreground = "#948e48"
+selection_bg = "#948e48"
+selection_fg = "#201602"
+
+[colors.indexed]
+16 = "#b36144"
+17 = "#b3588e"
+18 = "#302e00"
+19 = "#5f5b17"
+20 = "#86813b"
+21 = "#ccc37a"
+
+[metadata]
+aliases = ["Marrakesh (dark) (terminal.sexy)"]
+author = "Alexandre Gavioli (http://github.com/Alexx2/)"
+name = "Marrakesh (base16)"
+origin_url = "https://github.com/chriskempson/base16-unclaimed-schemes"
+wezterm_version = "20220807-113146-c2fee766"

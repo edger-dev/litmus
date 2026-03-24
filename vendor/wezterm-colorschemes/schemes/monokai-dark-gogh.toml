@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#75715e",
+    "#f92672",
+    "#a6e22e",
+    "#f4bf75",
+    "#66d9ef",
+    "#ae81ff",
+    "#2aa198",
+    "#f9f8f5",
+]
+background = "#272822"
+brights = [
+    "#272822",
+    "#f92672",
+    "#a6e22e",
+    "#f4bf75",
+    "#66d9ef",
+    "#ae81ff",
+    "#2aa198",
+    "#f8f8f2",
+]
+cursor_bg = "#f8f8f2"
+cursor_border = "#f8f8f2"
+cursor_fg = "#272822"
+foreground = "#f8f8f2"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["MonokaiDark (Gogh)"]
+name = "Monokai Dark (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

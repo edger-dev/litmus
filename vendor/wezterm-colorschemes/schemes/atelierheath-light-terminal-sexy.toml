@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1b181b",
+    "#ca402b",
+    "#379a37",
+    "#bb8a35",
+    "#516aec",
+    "#7b59c0",
+    "#159393",
+    "#ab9bab",
+]
+background = "#f7f3f7"
+brights = [
+    "#776977",
+    "#ca402b",
+    "#379a37",
+    "#bb8a35",
+    "#516aec",
+    "#7b59c0",
+    "#159393",
+    "#f7f3f7",
+]
+foreground = "#695d69"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Atelierheath (light) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

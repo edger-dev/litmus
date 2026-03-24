@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#44475a",
+    "#ff5555",
+    "#50fa7b",
+    "#ffb86c",
+    "#8be9fd",
+    "#bd93f9",
+    "#ff79c6",
+    "#f8f8f2",
+]
+background = "#282a36"
+brights = [
+    "#000000",
+    "#ff5555",
+    "#50fa7b",
+    "#ffb86c",
+    "#8be9fd",
+    "#bd93f9",
+    "#ff79c6",
+    "#ffffff",
+]
+cursor_bg = "#f8f8f2"
+cursor_border = "#f8f8f2"
+cursor_fg = "#282a36"
+foreground = "#f8f8f2"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Dracula (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

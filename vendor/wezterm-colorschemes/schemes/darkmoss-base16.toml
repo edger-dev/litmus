@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#171e1f",
+    "#ff4658",
+    "#499180",
+    "#fdb11f",
+    "#498091",
+    "#9bc0c8",
+    "#66d9ef",
+    "#c7c7a5",
+]
+background = "#171e1f"
+brights = [
+    "#555e5f",
+    "#ff4658",
+    "#499180",
+    "#fdb11f",
+    "#498091",
+    "#9bc0c8",
+    "#66d9ef",
+    "#e1eaef",
+]
+cursor_bg = "#c7c7a5"
+cursor_border = "#c7c7a5"
+cursor_fg = "#171e1f"
+foreground = "#c7c7a5"
+selection_bg = "#c7c7a5"
+selection_fg = "#171e1f"
+
+[colors.indexed]
+16 = "#e6db74"
+17 = "#d27b53"
+18 = "#252c2d"
+19 = "#373c3d"
+20 = "#818f80"
+21 = "#e3e3c8"
+
+[metadata]
+aliases = []
+author = "Gabriel Avanzi (https://github.com/avanzzzi)"
+name = "darkmoss (base16)"
+origin_url = "https://github.com/avanzzzi/base16-darkmoss-scheme"
+wezterm_version = "20220807-113146-c2fee766"

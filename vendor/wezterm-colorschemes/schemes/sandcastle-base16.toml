@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#282c34",
+    "#83a598",
+    "#528b8b",
+    "#a07e3b",
+    "#83a598",
+    "#d75f5f",
+    "#83a598",
+    "#a89984",
+]
+background = "#282c34"
+brights = [
+    "#665c54",
+    "#83a598",
+    "#528b8b",
+    "#a07e3b",
+    "#83a598",
+    "#d75f5f",
+    "#83a598",
+    "#fdf4c1",
+]
+cursor_bg = "#a89984"
+cursor_border = "#a89984"
+cursor_fg = "#282c34"
+foreground = "#a89984"
+selection_bg = "#a89984"
+selection_fg = "#282c34"
+
+[colors.indexed]
+16 = "#a07e3b"
+17 = "#a87322"
+18 = "#2c323b"
+19 = "#3e4451"
+20 = "#928374"
+21 = "#d5c4a1"
+
+[metadata]
+aliases = []
+author = "George Essig (https://github.com/gessig)"
+name = "Sandcastle (base16)"
+origin_url = "https://github.com/gessig/base16-sandcastle-scheme"
+wezterm_version = "20220807-113146-c2fee766"

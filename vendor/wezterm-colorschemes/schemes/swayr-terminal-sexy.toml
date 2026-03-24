@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#1c1709",
+    "#8e4317",
+    "#787200",
+    "#945c00",
+    "#315094",
+    "#5c2e40",
+    "#00617d",
+    "#c2b9a1",
+]
+background = "#1c1709"
+brights = [
+    "#4f4939",
+    "#f07935",
+    "#d9d138",
+    "#ffab26",
+    "#8aa9ed",
+    "#ff8cb8",
+    "#43bfe0",
+    "#f2e8c9",
+]
+foreground = "#c2b9a1"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Swayr (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

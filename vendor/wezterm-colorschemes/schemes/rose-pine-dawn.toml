@@ -1,0 +1,39 @@
+[colors]
+ansi = [
+    "#f2e9e1",
+    "#b4637a",
+    "#56949f",
+    "#ea9d34",
+    "#286983",
+    "#907aa9",
+    "#d7827e",
+    "#575279",
+]
+background = "#faf4ed"
+brights = [
+    "#9893a5",
+    "#b4637a",
+    "#56949f",
+    "#ea9d34",
+    "#286983",
+    "#907aa9",
+    "#d7827e",
+    "#575279",
+]
+cursor_bg = "#575279"
+cursor_border = "#575279"
+cursor_fg = "#faf4ed"
+foreground = "#575279"
+selection_bg = "#faf4ed"
+selection_fg = "#575279"
+
+[colors.indexed]
+
+[metadata]
+aliases = [
+    "Ros\u{e9} Pine Dawn (Gogh)",
+    "Ros\u{e9}PineDawn (Gogh)",
+]
+name = "rose-pine-dawn"
+origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
+wezterm_version = "20230320-124340-559cb7b0"

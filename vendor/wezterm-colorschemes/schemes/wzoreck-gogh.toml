@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#2e3436",
+    "#fc6386",
+    "#a9dc76",
+    "#fce94f",
+    "#fb976b",
+    "#75507b",
+    "#34e2e2",
+    "#ffffff",
+]
+background = "#424043"
+brights = [
+    "#989595",
+    "#fc6386",
+    "#a9dc76",
+    "#fce94f",
+    "#fb976b",
+    "#ab9df2",
+    "#34e2e2",
+    "#d1d1c0",
+]
+cursor_bg = "#fcfcfa"
+cursor_border = "#fcfcfa"
+cursor_fg = "#424043"
+foreground = "#fcfcfa"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Wzoreck (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

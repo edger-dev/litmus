@@ -1,0 +1,85 @@
+[colors]
+ansi = [
+    "#dadac2",
+    "#c72a3c",
+    "#27850b",
+    "#a77b00",
+    "#1745d5",
+    "#8a4adf",
+    "#188a9e",
+    "#3a4238",
+]
+background = "#fafae0"
+brights = [
+    "#c7c7af",
+    "#c72a3c",
+    "#27850b",
+    "#a77b00",
+    "#1745d5",
+    "#8a4adf",
+    "#188a9e",
+    "#252623",
+]
+compose_cursor = "#df5926"
+cursor_bg = "#0f0800"
+cursor_border = "#0f0800"
+cursor_fg = "#fff8f0"
+foreground = "#3a4238"
+scrollbar_thumb = "#c7c7af"
+selection_bg = "#a1a7a0"
+selection_fg = "#3a4238"
+split = "#838781"
+visual_bell = "#e4e4cc"
+
+[colors.indexed]
+
+[colors.tab_bar]
+background = "#e4e4cc"
+inactive_tab_edge = "#dadac2"
+
+[colors.tab_bar.active_tab]
+bg_color = "#3a4238"
+fg_color = "#fafae0"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#c7c7af"
+fg_color = "#5b5e5a"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#838781"
+fg_color = "#dadac2"
+intensity = "Normal"
+italic = true
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab]
+bg_color = "#a1a7a0"
+fg_color = "#dadac2"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#838781"
+fg_color = "#3a4238"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[metadata]
+aliases = []
+author = "Riley Bruins"
+name = "Bamboo Light"
+origin_url = "https://github.com/ribru17/bamboo.nvim"
+wezterm_version = "20240127-113634-bbcac864"

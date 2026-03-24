@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#303030",
+    "#c03000",
+    "#b1d631",
+    "#fecf35",
+    "#426870",
+    "#6d506d",
+    "#4bb5c1",
+    "#e2e2e5",
+]
+background = "#000000"
+brights = [
+    "#5f5f5f",
+    "#ff3a78",
+    "#a6cd07",
+    "#b5c865",
+    "#4a7781",
+    "#ff3b77",
+    "#4bb5c1",
+    "#e2e2e5",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Digerati (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

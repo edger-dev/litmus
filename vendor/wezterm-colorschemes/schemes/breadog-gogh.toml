@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#362c24",
+    "#b10b00",
+    "#007232",
+    "#8b4c00",
+    "#005cb4",
+    "#9b0097",
+    "#006a78",
+    "#d4c3b7",
+]
+background = "#f1ebe6"
+brights = [
+    "#514337",
+    "#de1100",
+    "#008f40",
+    "#ae6000",
+    "#0074e1",
+    "#c300bd",
+    "#008697",
+    "#eae1da",
+]
+cursor_bg = "#362c24"
+cursor_border = "#362c24"
+cursor_fg = "#f1ebe6"
+foreground = "#362c24"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Breadog (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "nightly builds only"

@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#393939",
+    "#ff9f95",
+    "#e2ffc7",
+    "#ffffb9",
+    "#a8ceea",
+    "#e2b5cc",
+    "#c2efff",
+    "#dddddd",
+]
+background = "#000000"
+brights = [
+    "#474747",
+    "#ff8d80",
+    "#dbffb3",
+    "#ffbe64",
+    "#7eb6ff",
+    "#e296ff",
+    "#9ce9ff",
+    "#dddddd",
+]
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Nucolors (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

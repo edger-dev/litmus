@@ -1,0 +1,43 @@
+[colors]
+ansi = [
+    "#101010",
+    "#efa6a2",
+    "#80c990",
+    "#e6a3dc",
+    "#50cacd",
+    "#e0af85",
+    "#c8c874",
+    "#c0c0c0",
+]
+background = "#101010"
+brights = [
+    "#454545",
+    "#efa6a2",
+    "#80c990",
+    "#e6a3dc",
+    "#50cacd",
+    "#e0af85",
+    "#c8c874",
+    "#454545",
+]
+cursor_bg = "#c0c0c0"
+cursor_border = "#c0c0c0"
+cursor_fg = "#101010"
+foreground = "#c0c0c0"
+selection_bg = "#c0c0c0"
+selection_fg = "#101010"
+
+[colors.indexed]
+16 = "#a3b8ef"
+17 = "#808080"
+18 = "#454545"
+19 = "#454545"
+20 = "#808080"
+21 = "#c0c0c0"
+
+[metadata]
+aliases = []
+author = "isaacwhanson"
+name = "Qualia (base16)"
+origin_url = "https://github.com/isaacwhanson/base16-qualia-scheme"
+wezterm_version = "20220807-113146-c2fee766"

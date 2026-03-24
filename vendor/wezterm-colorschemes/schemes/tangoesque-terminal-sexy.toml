@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#202020",
+    "#ff6565",
+    "#93d44f",
+    "#eab93d",
+    "#204a87",
+    "#ce5c00",
+    "#89b6e2",
+    "#cccccc",
+]
+background = "#000000"
+brights = [
+    "#606060",
+    "#ff8d8d",
+    "#c8e7a8",
+    "#ffc123",
+    "#3465a4",
+    "#f57900",
+    "#46a4ff",
+    "#ffffff",
+]
+foreground = "#aaaaaa"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = ""
+name = "Tangoesque (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20220807-113146-c2fee766"

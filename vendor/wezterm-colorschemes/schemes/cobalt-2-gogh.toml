@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#000000",
+    "#ff0000",
+    "#38de21",
+    "#ffe50a",
+    "#1460d2",
+    "#ff005d",
+    "#00bbbb",
+    "#bbbbbb",
+]
+background = "#132738"
+brights = [
+    "#555555",
+    "#f40e17",
+    "#3bd01d",
+    "#edc809",
+    "#5555ff",
+    "#ff55ff",
+    "#6ae3fa",
+    "#ffffff",
+]
+cursor_bg = "#ffffff"
+cursor_border = "#ffffff"
+cursor_fg = "#132738"
+foreground = "#ffffff"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+name = "Cobalt 2 (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20230712-072601-f4abf8fd"

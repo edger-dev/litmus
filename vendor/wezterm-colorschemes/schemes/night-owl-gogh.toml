@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#011627",
+    "#ef5350",
+    "#22da6e",
+    "#addb67",
+    "#82aaff",
+    "#c792ea",
+    "#21c7a8",
+    "#ffffff",
+]
+background = "#011627"
+brights = [
+    "#575656",
+    "#ef5350",
+    "#22da6e",
+    "#ffeb95",
+    "#82aaff",
+    "#c792ea",
+    "#7fdbca",
+    "#ffffff",
+]
+cursor_bg = "#d6deeb"
+cursor_border = "#d6deeb"
+cursor_fg = "#011627"
+foreground = "#d6deeb"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["NightOwl (Gogh)"]
+name = "Night Owl (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

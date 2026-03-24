@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#1f2430",
+    "#ff3333",
+    "#bae67e",
+    "#ffa759",
+    "#73d0ff",
+    "#d4bfff",
+    "#95e6cb",
+    "#cbccc6",
+]
+background = "#1f2430"
+brights = [
+    "#707a8c",
+    "#ff3333",
+    "#bae67e",
+    "#ffa759",
+    "#73d0ff",
+    "#d4bfff",
+    "#95e6cb",
+    "#cbccc6",
+]
+cursor_bg = "#ffcc66"
+cursor_border = "#ffcc66"
+cursor_fg = "#1f2430"
+foreground = "#cbccc6"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["AyuMirage (Gogh)"]
+name = "Ayu Mirage (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

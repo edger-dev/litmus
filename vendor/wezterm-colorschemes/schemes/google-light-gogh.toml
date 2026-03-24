@@ -1,0 +1,34 @@
+[colors]
+ansi = [
+    "#202124",
+    "#ea4335",
+    "#34a853",
+    "#fbbc04",
+    "#4285f4",
+    "#a142f4",
+    "#24c1e0",
+    "#e8eaed",
+]
+background = "#ffffff"
+brights = [
+    "#5f6368",
+    "#ea4335",
+    "#34a853",
+    "#fbbc05",
+    "#4285f4",
+    "#a142f4",
+    "#24c1e0",
+    "#ffffff",
+]
+cursor_bg = "#5f6368"
+cursor_border = "#5f6368"
+cursor_fg = "#ffffff"
+foreground = "#5f6368"
+
+[colors.indexed]
+
+[metadata]
+aliases = ["GoogleLight (Gogh)"]
+name = "Google Light (Gogh)"
+origin_url = "https://github.com/Gogh-Co/Gogh"
+wezterm_version = "20220807-113146-c2fee766"

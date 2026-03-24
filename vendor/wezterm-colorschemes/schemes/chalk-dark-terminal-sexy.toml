@@ -1,0 +1,32 @@
+[colors]
+ansi = [
+    "#151515",
+    "#fb9fb1",
+    "#acc267",
+    "#ddb26f",
+    "#6fc2ef",
+    "#e1a3ee",
+    "#12cfc0",
+    "#d0d0d0",
+]
+background = "#151515"
+brights = [
+    "#505050",
+    "#fb9fb1",
+    "#acc267",
+    "#ddb26f",
+    "#6fc2ef",
+    "#e1a3ee",
+    "#12cfc0",
+    "#f5f5f5",
+]
+foreground = "#d0d0d0"
+
+[colors.indexed]
+
+[metadata]
+aliases = []
+author = "Chris Kempson"
+name = "Chalk (dark) (terminal.sexy)"
+origin_url = "https://github.com/stayradiated/terminal.sexy"
+wezterm_version = "20230712-072601-f4abf8fd"
