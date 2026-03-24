@@ -4,7 +4,7 @@ use std::path::Path;
 use serde::{Deserialize, Serialize};
 
 use crate::error::ThemeError;
-use crate::{AnsiColors, Color};
+use crate::{AnsiColors, Color, parse_hex_color};
 
 /// Whether a theme targets a dark or light background.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -56,7 +56,7 @@ pub struct ThemeDefinition {
 /// red = "#cc241d"
 /// # ...
 /// ```
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct ProviderColors {
     pub provider: String,
     pub source_version: String,
@@ -107,13 +107,6 @@ struct ProviderAnsiRaw {
     bright_white: String,
 }
 
-fn parse_color(field: &str, value: &str) -> Result<Color, ThemeError> {
-    Color::from_hex(value).ok_or_else(|| ThemeError::InvalidColor {
-        field: field.to_string(),
-        value: value.to_string(),
-    })
-}
-
 /// Parse a `ThemeDefinition` from TOML content. The `slug` field is set from `slug_str`.
 pub fn parse_theme_definition(input: &str, slug: &str) -> Result<ThemeDefinition, ThemeError> {
     let mut def: ThemeDefinition = toml::from_str(input)?;
@@ -130,28 +123,28 @@ pub fn parse_provider_colors(input: &str) -> Result<ProviderColors, ThemeError> 
     Ok(ProviderColors {
         provider: raw.provider,
         source_version: raw.source_version,
-        background: parse_color("background", &c.background)?,
-        foreground: parse_color("foreground", &c.foreground)?,
-        cursor: parse_color("cursor", &c.cursor)?,
-        selection_background: parse_color("selection_background", &c.selection_background)?,
-        selection_foreground: parse_color("selection_foreground", &c.selection_foreground)?,
+        background: parse_hex_color("background", &c.background)?,
+        foreground: parse_hex_color("foreground", &c.foreground)?,
+        cursor: parse_hex_color("cursor", &c.cursor)?,
+        selection_background: parse_hex_color("selection_background", &c.selection_background)?,
+        selection_foreground: parse_hex_color("selection_foreground", &c.selection_foreground)?,
         ansi: AnsiColors {
-            black: parse_color("black", &a.black)?,
-            red: parse_color("red", &a.red)?,
-            green: parse_color("green", &a.green)?,
-            yellow: parse_color("yellow", &a.yellow)?,
-            blue: parse_color("blue", &a.blue)?,
-            magenta: parse_color("magenta", &a.magenta)?,
-            cyan: parse_color("cyan", &a.cyan)?,
-            white: parse_color("white", &a.white)?,
-            bright_black: parse_color("bright_black", &a.bright_black)?,
-            bright_red: parse_color("bright_red", &a.bright_red)?,
-            bright_green: parse_color("bright_green", &a.bright_green)?,
-            bright_yellow: parse_color("bright_yellow", &a.bright_yellow)?,
-            bright_blue: parse_color("bright_blue", &a.bright_blue)?,
-            bright_magenta: parse_color("bright_magenta", &a.bright_magenta)?,
-            bright_cyan: parse_color("bright_cyan", &a.bright_cyan)?,
-            bright_white: parse_color("bright_white", &a.bright_white)?,
+            black: parse_hex_color("black", &a.black)?,
+            red: parse_hex_color("red", &a.red)?,
+            green: parse_hex_color("green", &a.green)?,
+            yellow: parse_hex_color("yellow", &a.yellow)?,
+            blue: parse_hex_color("blue", &a.blue)?,
+            magenta: parse_hex_color("magenta", &a.magenta)?,
+            cyan: parse_hex_color("cyan", &a.cyan)?,
+            white: parse_hex_color("white", &a.white)?,
+            bright_black: parse_hex_color("bright_black", &a.bright_black)?,
+            bright_red: parse_hex_color("bright_red", &a.bright_red)?,
+            bright_green: parse_hex_color("bright_green", &a.bright_green)?,
+            bright_yellow: parse_hex_color("bright_yellow", &a.bright_yellow)?,
+            bright_blue: parse_hex_color("bright_blue", &a.bright_blue)?,
+            bright_magenta: parse_hex_color("bright_magenta", &a.bright_magenta)?,
+            bright_cyan: parse_hex_color("bright_cyan", &a.bright_cyan)?,
+            bright_white: parse_hex_color("bright_white", &a.bright_white)?,
         },
     })
 }
@@ -161,9 +154,11 @@ pub type ProviderColorsKey = (String, String);
 
 /// Scan a themes directory and load all theme definitions and provider color files.
 ///
-/// Expects layout:
 /// A `.toml` file is a ThemeDefinition if its stem contains no dots (e.g. `gruvbox-dark.toml`).
 /// A `.toml` file is ProviderColors if its stem contains a dot (e.g. `gruvbox-dark.kitty.toml`).
+///
+/// Note: theme slugs must not contain dots — a file like `dr.doom.toml` would be
+/// misparsed as provider colors for theme `dr` from provider `doom`.
 pub fn load_themes_dir(
     dir: &Path,
 ) -> Result<(Vec<ThemeDefinition>, HashMap<ProviderColorsKey, ProviderColors>), ThemeError> {
@@ -207,9 +202,15 @@ fn load_themes_dir_recursive(
         // Otherwise it's a theme definition (e.g. "gruvbox-dark")
         if let Some(dot_pos) = stem.rfind('.') {
             let theme_slug = &stem[..dot_pos];
-            let _provider_slug = &stem[dot_pos + 1..];
+            let filename_provider = &stem[dot_pos + 1..];
             let content = std::fs::read_to_string(&path)?;
             let colors = parse_provider_colors(&content)?;
+            if colors.provider != filename_provider {
+                return Err(ThemeError::MissingField(format!(
+                    "provider mismatch in {file_name}: filename says '{filename_provider}' but TOML says '{}'",
+                    colors.provider
+                )));
+            }
             provider_colors.insert(
                 (theme_slug.to_string(), colors.provider.clone()),
                 colors,
@@ -450,6 +451,23 @@ kitty = "Test"
         let (defs, colors) = load_themes_dir(&dir).unwrap();
         assert!(defs.is_empty());
         assert!(colors.is_empty());
+    }
+
+    #[test]
+    fn load_themes_dir_provider_mismatch() {
+        let dir = tempdir();
+        // Filename says wezterm but TOML content says kitty
+        fs::write(dir.join("test.wezterm.toml"), PROVIDER_COLORS_TOML).unwrap();
+        let err = load_themes_dir(&dir).unwrap_err();
+        let msg = err.to_string();
+        assert!(msg.contains("provider mismatch"), "expected provider mismatch error, got: {msg}");
+    }
+
+    #[test]
+    fn load_themes_dir_malformed_file() {
+        let dir = tempdir();
+        fs::write(dir.join("bad.toml"), "not valid toml :::").unwrap();
+        assert!(load_themes_dir(&dir).is_err());
     }
 
     fn tempdir() -> std::path::PathBuf {

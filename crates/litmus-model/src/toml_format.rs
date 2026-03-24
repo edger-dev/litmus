@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-use crate::{AnsiColors, Color, Theme, defaults, error::ThemeError};
+use crate::{AnsiColors, Theme, defaults, error::ThemeError, parse_hex_color};
 
 #[derive(Debug, Deserialize)]
 struct TomlThemeRaw {
@@ -38,52 +38,45 @@ struct TomlAnsiRaw {
     bright_white: String,
 }
 
-fn parse_field(field: &str, value: &str) -> Result<Color, ThemeError> {
-    Color::from_hex(value).ok_or_else(|| ThemeError::InvalidColor {
-        field: field.to_string(),
-        value: value.to_string(),
-    })
-}
-
 pub fn parse_toml_theme(input: &str) -> Result<Theme, ThemeError> {
     let raw: TomlThemeRaw = toml::from_str(input)?;
 
-    let background = parse_field("background", &raw.colors.background)?;
-    let foreground = parse_field("foreground", &raw.colors.foreground)?;
+    let background = parse_hex_color("background", &raw.colors.background)?;
+    let foreground = parse_hex_color("foreground", &raw.colors.foreground)?;
 
     let cursor = raw.colors.cursor.as_deref()
-        .map(|v| parse_field("cursor", v))
+        .map(|v| parse_hex_color("cursor", v))
         .transpose()?
         .unwrap_or_else(|| defaults::default_cursor(&foreground));
 
     let selection_background = raw.colors.selection_background.as_deref()
-        .map(|v| parse_field("selection_background", v))
+        .map(|v| parse_hex_color("selection_background", v))
         .transpose()?
         .unwrap_or_else(|| defaults::default_selection_bg(&background));
 
     let selection_foreground = raw.colors.selection_foreground.as_deref()
-        .map(|v| parse_field("selection_foreground", v))
+        .map(|v| parse_hex_color("selection_foreground", v))
         .transpose()?
         .unwrap_or_else(|| defaults::default_selection_fg(&foreground));
 
     let a = &raw.colors.ansi;
     let ansi = AnsiColors {
-        black: parse_field("black", &a.black)?,
-        red: parse_field("red", &a.red)?,
-        green: parse_field("green", &a.green)?,
-        yellow: parse_field("yellow", &a.yellow)?,
-        blue: parse_field("blue", &a.blue)?,
-        magenta: parse_field("magenta", &a.magenta)?,
-        cyan: parse_field("cyan", &a.cyan)?,
-        white: parse_field("white", &a.white)?,
-        bright_black: parse_field("bright_black", &a.bright_black)?,
-        bright_red: parse_field("bright_red", &a.bright_red)?,
-        bright_green: parse_field("bright_green", &a.bright_green)?,
-        bright_yellow: parse_field("bright_yellow", &a.bright_yellow)?,
-        bright_blue: parse_field("bright_blue", &a.bright_blue)?,
-        bright_magenta: parse_field("bright_magenta", &a.bright_magenta)?,
-        bright_cyan: parse_field("bright_cyan", &a.bright_cyan)?,
-        bright_white: parse_field("bright_white", &a.bright_white)?,
+        black: parse_hex_color("black", &a.black)?,
+        red: parse_hex_color("red", &a.red)?,
+        green: parse_hex_color("green", &a.green)?,
+        yellow: parse_hex_color("yellow", &a.yellow)?,
+        blue: parse_hex_color("blue", &a.blue)?,
+        magenta: parse_hex_color("magenta", &a.magenta)?,
+        cyan: parse_hex_color("cyan", &a.cyan)?,
+        white: parse_hex_color("white", &a.white)?,
+        bright_black: parse_hex_color("bright_black", &a.bright_black)?,
+        bright_red: parse_hex_color("bright_red", &a.bright_red)?,
+        bright_green: parse_hex_color("bright_green", &a.bright_green)?,
+        bright_yellow: parse_hex_color("bright_yellow", &a.bright_yellow)?,
+        bright_blue: parse_hex_color("bright_blue", &a.bright_blue)?,
+        bright_magenta: parse_hex_color("bright_magenta", &a.bright_magenta)?,
+        bright_cyan: parse_hex_color("bright_cyan", &a.bright_cyan)?,
+        bright_white: parse_hex_color("bright_white", &a.bright_white)?,
     };
 
     Ok(Theme {
@@ -100,6 +93,7 @@ pub fn parse_toml_theme(input: &str) -> Result<Theme, ThemeError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::Color;
 
     const FULL_TOML: &str = r##"
 name = "Test Theme"

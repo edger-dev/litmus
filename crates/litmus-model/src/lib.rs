@@ -94,6 +94,14 @@ pub struct Theme {
     pub ansi: AnsiColors,
 }
 
+/// Parse a hex color string into a `Color`, returning a `ThemeError::InvalidColor` on failure.
+pub(crate) fn parse_hex_color(field: &str, value: &str) -> Result<Color, error::ThemeError> {
+    Color::from_hex(value).ok_or_else(|| error::ThemeError::InvalidColor {
+        field: field.to_string(),
+        value: value.to_string(),
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
