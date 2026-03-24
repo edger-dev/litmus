@@ -11,7 +11,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 use clap::{Parser, Subcommand};
 use litmus_model::screenshot::{Fixture, Provider, ScreenshotManifest};
-use litmus_model::{kitty::parse_kitty_theme, toml_format::parse_toml_theme, Theme};
+use litmus_model::Theme;
 
 use crate::capture::{capture_screenshot, CaptureOptions};
 use crate::manifest::{build_manifest_from_staging, CoverageReport};
@@ -615,32 +615,23 @@ fn load_theme_by_slug(themes_dir: &Path, query: &str) -> Result<Theme> {
         .context("theme not found")
 }
 
-/// Load all themes from a directory tree of .toml and .conf files (recursive).
+/// Load all themes from a directory of ThemeDefinition + ProviderColors files.
+/// Returns one Theme per definition using the first available provider's colors.
 pub fn load_all_themes(themes_dir: &Path) -> Result<Vec<Theme>> {
-    let mut themes = Vec::new();
+    let (definitions, colors) = litmus_model::provider::load_themes_dir(themes_dir)
+        .with_context(|| format!("load themes from {}", themes_dir.display()))?;
 
-    for entry in walkdir::WalkDir::new(themes_dir)
-        .into_iter()
-        .filter_map(|e| e.ok())
-        .filter(|e| e.file_type().is_file())
-    {
-        let path = entry.path();
-        let theme = match path.extension().and_then(|e| e.to_str()) {
-            Some("toml") => {
-                let content = fs::read_to_string(path)
-                    .with_context(|| format!("read {}", path.display()))?;
-                parse_toml_theme(&content)
-                    .with_context(|| format!("parse {}", path.display()))?
-            }
-            Some("conf") => {
-                let content = fs::read_to_string(path)
-                    .with_context(|| format!("read {}", path.display()))?;
-                parse_kitty_theme(&content)
-                    .with_context(|| format!("parse {}", path.display()))?
-            }
-            _ => continue,
-        };
-        themes.push(theme);
+    let mut themes = Vec::new();
+    for def in &definitions {
+        // Pick first available provider (sorted for determinism)
+        let mut providers: Vec<&String> = def.providers.keys().collect();
+        providers.sort();
+        if let Some(pc) = providers
+            .into_iter()
+            .find_map(|p| colors.get(&(def.slug.clone(), p.clone())))
+        {
+            themes.push(pc.to_theme(&def.name));
+        }
     }
 
     themes.sort_by(|a, b| a.name.cmp(&b.name));
