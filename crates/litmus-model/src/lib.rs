@@ -6,6 +6,7 @@ pub mod defaults;
 pub mod error;
 pub mod export;
 pub mod kitty;
+pub mod provider;
 pub mod scene;
 pub mod scenes;
 pub mod toml_format;
