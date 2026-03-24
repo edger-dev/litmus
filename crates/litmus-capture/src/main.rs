@@ -1,3 +1,4 @@
+mod ansi_parser;
 mod capture;
 mod error;
 mod extract;
@@ -33,6 +34,9 @@ enum Commands {
 
     /// Extract provider colors from vendored theme data into per-provider TOML files
     ExtractColors(ExtractColorsArgs),
+
+    /// Parse raw ANSI output into structured TermOutput JSON
+    ParseAnsi(ParseAnsiArgs),
 
     /// Manifest operations
     #[command(subcommand)]
@@ -158,6 +162,33 @@ struct ManifestCheckArgs {
 }
 
 #[derive(clap::Args)]
+struct ParseAnsiArgs {
+    /// Input file containing raw ANSI output (default: stdin)
+    #[arg(long)]
+    input: Option<PathBuf>,
+
+    /// Fixture ID for the output metadata
+    #[arg(long, default_value = "unknown")]
+    id: String,
+
+    /// Display name for the output metadata
+    #[arg(long, default_value = "Unknown")]
+    name: String,
+
+    /// Terminal width in columns
+    #[arg(long, default_value_t = 80)]
+    cols: u16,
+
+    /// Terminal height in rows
+    #[arg(long, default_value_t = 24)]
+    rows: u16,
+
+    /// Output file (default: stdout)
+    #[arg(long, short)]
+    output: Option<PathBuf>,
+}
+
+#[derive(clap::Args)]
 struct ExtractColorsArgs {
     /// Directory containing ThemeDefinition .toml files
     #[arg(long, default_value = "./themes")]
@@ -187,6 +218,7 @@ fn main() -> Result<()> {
         Commands::Capture(args) => cmd_capture(args),
         Commands::CaptureAll(args) => cmd_capture_all(args),
         Commands::ExtractColors(args) => cmd_extract_colors(args),
+        Commands::ParseAnsi(args) => cmd_parse_ansi(args),
         Commands::Manifest(ManifestCommands::Build(args)) => cmd_manifest_build(args),
         Commands::Manifest(ManifestCommands::Check(args)) => cmd_manifest_check(args),
     }
@@ -436,6 +468,37 @@ fn cmd_manifest_check(args: ManifestCheckArgs) -> Result<()> {
 
     if !report.is_complete() {
         std::process::exit(1);
+    }
+
+    Ok(())
+}
+
+fn cmd_parse_ansi(args: ParseAnsiArgs) -> Result<()> {
+    use std::io::Read;
+
+    let input = match &args.input {
+        Some(path) => fs::read(path).with_context(|| format!("read {}", path.display()))?,
+        None => {
+            let mut buf = Vec::new();
+            std::io::stdin()
+                .read_to_end(&mut buf)
+                .context("read stdin")?;
+            buf
+        }
+    };
+
+    let output = ansi_parser::parse_ansi(&input, args.cols, args.rows, &args.id, &args.name);
+    let json = serde_json::to_string_pretty(&output).context("serialize TermOutput")?;
+
+    match &args.output {
+        Some(path) => {
+            if let Some(parent) = path.parent() {
+                fs::create_dir_all(parent)?;
+            }
+            fs::write(path, &json).with_context(|| format!("write {}", path.display()))?;
+            eprintln!("Written to {}", path.display());
+        }
+        None => println!("{json}"),
     }
 
     Ok(())
