@@ -1,11 +1,11 @@
 ---
 # litmus-dv2l
 title: Update litmus-cli to load new theme format
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-03-24T13:23:09Z
-updated_at: 2026-03-24T15:38:06Z
+updated_at: 2026-03-24T15:40:57Z
 parent: litmus-knrz
 blocked_by:
     - litmus-jmna
@@ -36,8 +36,19 @@ Depends on: new model types, converted themes
 3. Keep all widget code unchanged — still render with `&Theme`
 
 ### Todo
-- [ ] Add ProviderColors → Theme conversion
-- [ ] Update load_bundled_themes to use load_themes_dir
-- [ ] Add --provider CLI flag
-- [ ] Tests pass, zero warnings
-- [ ] Review
+- [x] Add ProviderColors → Theme conversion
+- [x] Update load_bundled_themes to use load_themes_dir
+- [x] Add --provider CLI flag
+- [x] Tests pass, zero warnings
+- [x] Review
+
+## Summary of Changes
+
+Migrated litmus-cli from directly loading Theme objects to using the new provider-based system:
+
+- **ProviderColors::to_theme()**: New method converts provider colors + theme name into a renderable Theme
+- **load_bundled_themes(provider)**: Rewrote to use load_themes_dir(), picking one ProviderColors per ThemeDefinition (first available alphabetically, or filtered by --provider)
+- **--provider CLI flag**: Simple arg parser for --provider <slug> filtering
+- All widget rendering unchanged — still receives &Theme
+- Hardcoded fallback themes preserved for environments without themes/ directory
+- 160 tests pass, zero warnings
