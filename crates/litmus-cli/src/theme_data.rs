@@ -1,3 +1,4 @@
+use litmus_model::provider::load_themes_dir;
 use litmus_model::{AnsiColors, Color, Theme, error::ThemeError};
 use std::path::{Path, PathBuf};
 
@@ -35,47 +36,47 @@ fn find_themes_dir() -> Option<PathBuf> {
     None
 }
 
-/// Recursively collect all .toml files from a directory.
-fn collect_toml_files(dir: &Path) -> Vec<PathBuf> {
-    let mut files = Vec::new();
-    if let Ok(entries) = std::fs::read_dir(dir) {
-        for entry in entries.flatten() {
-            let path = entry.path();
-            if path.is_dir() {
-                files.extend(collect_toml_files(&path));
-            } else if path.extension().is_some_and(|e| e == "toml") {
-                files.push(path);
-            }
-        }
-    }
-    files
-}
-
-/// Load all bundled themes from the themes/ directory.
-pub fn load_bundled_themes() -> Vec<Theme> {
+/// Load bundled themes using the new ThemeDefinition + ProviderColors format.
+///
+/// For each ThemeDefinition, picks one ProviderColors (filtered by `provider` if given,
+/// otherwise the first available) and converts to a `Theme` for rendering.
+pub fn load_bundled_themes(provider: Option<&str>) -> Vec<Theme> {
     let Some(themes_dir) = find_themes_dir() else {
         return all_themes();
     };
 
-    let mut files = collect_toml_files(&themes_dir);
-    files.sort();
+    let (definitions, provider_colors) = match load_themes_dir(&themes_dir) {
+        Ok(result) => result,
+        Err(e) => {
+            eprintln!("Warning: could not load themes from {}: {e}", themes_dir.display());
+            return all_themes();
+        }
+    };
 
-    let mut themes: Vec<Theme> = files
-        .iter()
-        .filter_map(|path| match load_theme(path) {
-            Ok(t) => Some(t),
-            Err(e) => {
-                eprintln!("Warning: could not load theme from {}: {e}", path.display());
-                None
-            }
-        })
-        .collect();
+    let mut themes: Vec<Theme> = Vec::new();
+
+    for def in &definitions {
+        // Try the requested provider first, then fall back to any available
+        let colors = if let Some(prov) = provider {
+            provider_colors.get(&(def.slug.clone(), prov.to_string()))
+        } else {
+            // Pick first available provider (sorted for determinism)
+            let mut providers: Vec<&String> = def.providers.keys().collect();
+            providers.sort();
+            providers
+                .into_iter()
+                .find_map(|p| provider_colors.get(&(def.slug.clone(), p.clone())))
+        };
+
+        if let Some(colors) = colors {
+            themes.push(colors.to_theme(&def.name));
+        }
+    }
 
     if themes.is_empty() {
         return all_themes();
     }
 
-    // Sort by name for consistent ordering
     themes.sort_by(|a, b| a.name.cmp(&b.name));
     themes
 }

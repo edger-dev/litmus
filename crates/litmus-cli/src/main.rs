@@ -18,6 +18,23 @@ use ratatui::{
 use std::{io, path::Path, process::Command};
 use widgets::{LiveWidget, MockupsWidget, SwatchesWidget};
 
+/// Parse --provider <slug> from CLI args, returning the provider and remaining args.
+fn parse_provider_arg(args: &[String]) -> (Option<String>, Vec<String>) {
+    let mut provider = None;
+    let mut rest = Vec::new();
+    let mut iter = args.iter();
+    while let Some(arg) = iter.next() {
+        if arg == "--provider" {
+            provider = iter.next().cloned();
+        } else if let Some(val) = arg.strip_prefix("--provider=") {
+            provider = Some(val.to_string());
+        } else {
+            rest.push(arg.clone());
+        }
+    }
+    (provider, rest)
+}
+
 #[derive(Clone, Copy)]
 enum View {
     Swatches,
@@ -44,8 +61,8 @@ struct App {
 }
 
 impl App {
-    fn new(extra_themes: Vec<Theme>) -> Self {
-        let mut themes = theme_data::load_bundled_themes();
+    fn new(extra_themes: Vec<Theme>, provider: Option<&str>) -> Self {
+        let mut themes = theme_data::load_bundled_themes(provider);
         themes.extend(extra_themes);
         if themes.is_empty() {
             themes = theme_data::all_themes();
@@ -91,8 +108,11 @@ impl App {
 fn main() -> Result<()> {
     color_eyre::install()?;
 
-    let theme_paths: Vec<_> = std::env::args()
-        .skip(1)
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    let (provider, remaining_args) = parse_provider_arg(&args);
+
+    let theme_paths: Vec<_> = remaining_args
+        .iter()
         .filter(|a| {
             a.ends_with(".conf")
                 || a.ends_with(".yaml")
@@ -103,7 +123,7 @@ fn main() -> Result<()> {
     let extra_themes: Vec<Theme> = theme_paths
         .iter()
         .filter_map(|p| {
-            let path = Path::new(p);
+            let path = Path::new(p.as_str());
             match theme_data::load_theme(path) {
                 Ok(t) => Some(t),
                 Err(e) => {
@@ -115,7 +135,7 @@ fn main() -> Result<()> {
         .collect();
 
     let mut terminal = setup_terminal()?;
-    let result = run(&mut terminal, extra_themes);
+    let result = run(&mut terminal, extra_themes, provider.as_deref());
     restore_terminal(&mut terminal)?;
     result
 }
@@ -148,8 +168,8 @@ fn capture_command(program: &str, args: &[&str]) -> Vec<String> {
         .unwrap_or_default()
 }
 
-fn run(terminal: &mut Terminal<CrosstermBackend<io::Stdout>>, extra_themes: Vec<Theme>) -> Result<()> {
-    let mut app = App::new(extra_themes);
+fn run(terminal: &mut Terminal<CrosstermBackend<io::Stdout>>, extra_themes: Vec<Theme>, provider: Option<&str>) -> Result<()> {
+    let mut app = App::new(extra_themes, provider);
 
     loop {
         terminal.draw(|frame| {

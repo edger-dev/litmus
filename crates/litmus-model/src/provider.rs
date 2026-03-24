@@ -83,6 +83,19 @@ impl ProviderColors {
         }
     }
 
+    /// Convert to a `Theme` with the given name (from ThemeDefinition).
+    pub fn to_theme(&self, name: &str) -> crate::Theme {
+        crate::Theme {
+            name: name.to_string(),
+            background: self.background.clone(),
+            foreground: self.foreground.clone(),
+            cursor: self.cursor.clone(),
+            selection_background: self.selection_background.clone(),
+            selection_foreground: self.selection_foreground.clone(),
+            ansi: self.ansi.clone(),
+        }
+    }
+
     /// Serialize to the generated TOML format for writing to disk.
     pub fn to_toml(&self) -> String {
         let a = &self.ansi;
@@ -565,6 +578,19 @@ kitty = "Test"
         assert_eq!(pc.background, theme.background);
         assert_eq!(pc.foreground, theme.foreground);
         assert_eq!(pc.ansi, theme.ansi);
+    }
+
+    #[test]
+    fn to_theme_converts_correctly() {
+        let pc = parse_provider_colors(PROVIDER_COLORS_TOML).unwrap();
+        let theme = pc.to_theme("My Theme");
+        assert_eq!(theme.name, "My Theme");
+        assert_eq!(theme.background, pc.background);
+        assert_eq!(theme.foreground, pc.foreground);
+        assert_eq!(theme.cursor, pc.cursor);
+        assert_eq!(theme.selection_background, pc.selection_background);
+        assert_eq!(theme.selection_foreground, pc.selection_foreground);
+        assert_eq!(theme.ansi, pc.ansi);
     }
 
     #[test]
