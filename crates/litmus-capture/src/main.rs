@@ -1,5 +1,6 @@
 mod capture;
 mod error;
+mod extract;
 mod manifest;
 mod providers;
 
@@ -29,6 +30,9 @@ enum Commands {
 
     /// Capture all combinations for a provider (or all providers if --provider is omitted)
     CaptureAll(CaptureAllArgs),
+
+    /// Extract provider colors from vendored theme data into per-provider TOML files
+    ExtractColors(ExtractColorsArgs),
 
     /// Manifest operations
     #[command(subcommand)]
@@ -153,12 +157,36 @@ struct ManifestCheckArgs {
     provider: Vec<String>,
 }
 
+#[derive(clap::Args)]
+struct ExtractColorsArgs {
+    /// Directory containing ThemeDefinition .toml files
+    #[arg(long, default_value = "./themes")]
+    themes_dir: PathBuf,
+
+    /// Directory containing vendored provider theme data
+    #[arg(long, default_value = "./vendor")]
+    vendor_dir: PathBuf,
+
+    /// Filter to a single provider (e.g. "kitty" or "wezterm")
+    #[arg(long)]
+    provider: Option<String>,
+
+    /// Filter to a single theme slug (e.g. "gruvbox-dark")
+    #[arg(long)]
+    theme: Option<String>,
+
+    /// Overwrite existing generated files
+    #[arg(long, default_value_t = false)]
+    force: bool,
+}
+
 fn main() -> Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
         Commands::Capture(args) => cmd_capture(args),
         Commands::CaptureAll(args) => cmd_capture_all(args),
+        Commands::ExtractColors(args) => cmd_extract_colors(args),
         Commands::Manifest(ManifestCommands::Build(args)) => cmd_manifest_build(args),
         Commands::Manifest(ManifestCommands::Check(args)) => cmd_manifest_check(args),
     }
@@ -409,6 +437,94 @@ fn cmd_manifest_check(args: ManifestCheckArgs) -> Result<()> {
     if !report.is_complete() {
         std::process::exit(1);
     }
+
+    Ok(())
+}
+
+fn cmd_extract_colors(args: ExtractColorsArgs) -> Result<()> {
+    use crate::extract::{
+        build_kitty_index, build_wezterm_index, extract_provider_colors, find_theme_definitions,
+    };
+
+    eprintln!("Building vendor indexes...");
+    let kitty_index = build_kitty_index(&args.vendor_dir)?;
+    let wezterm_index = build_wezterm_index(&args.vendor_dir)?;
+    eprintln!(
+        "  kitty: {} themes, wezterm: {} themes",
+        kitty_index.len(),
+        wezterm_index.len()
+    );
+
+    let definitions = find_theme_definitions(&args.themes_dir)?;
+    eprintln!("Found {} theme definitions", definitions.len());
+
+    if definitions.is_empty() {
+        eprintln!("No ThemeDefinition files found. Theme files must have a [providers] section.");
+        return Ok(());
+    }
+
+    let mut extracted = 0;
+    let mut skipped = 0;
+    let mut failed = 0;
+
+    for (def, parent_dir) in &definitions {
+        if let Some(ref filter) = args.theme
+            && def.slug != *filter
+        {
+            continue;
+        }
+
+        for (provider_slug, provider_theme_name) in &def.providers {
+            if let Some(ref filter) = args.provider
+                && provider_slug != filter
+            {
+                continue;
+            }
+
+            let output_path = parent_dir.join(format!("{}.{}.toml", def.slug, provider_slug));
+
+            if !args.force && output_path.exists() {
+                skipped += 1;
+                continue;
+            }
+
+            match extract_provider_colors(
+                &args.vendor_dir,
+                provider_slug,
+                provider_theme_name,
+                &kitty_index,
+                &wezterm_index,
+            ) {
+                Ok(colors) => {
+                    let toml_content = colors.to_toml();
+                    if let Some(parent) = output_path.parent() {
+                        fs::create_dir_all(parent)?;
+                    }
+                    fs::write(&output_path, toml_content)
+                        .with_context(|| format!("write {}", output_path.display()))?;
+                    eprintln!(
+                        "  {} → {} ({})",
+                        def.slug,
+                        provider_slug,
+                        output_path.display()
+                    );
+                    extracted += 1;
+                }
+                Err(e) => {
+                    eprintln!(
+                        "  ✗ {} → {} error: {:#}",
+                        def.slug, provider_slug, e
+                    );
+                    failed += 1;
+                }
+            }
+        }
+    }
+
+    eprintln!(
+        "\nDone: {} extracted, {} skipped (exist), {} failed",
+        extracted, skipped, failed
+    );
 
     Ok(())
 }
