@@ -915,6 +915,27 @@ mod tests {
     }
 
     #[test]
+    fn term_contrast_validates_ansi_on_ansi_bg() {
+        use crate::term_output::*;
+        // ANSI black (0) on ANSI red (1) — both theme-dependent, should be validated
+        // In dark_theme, ansi[0]=(30,30,30) on ansi[1]=(50,20,20) — very low contrast
+        let output = make_term_output("test", vec![
+            TermLine::new(vec![
+                TermSpan {
+                    text: "ansi on ansi".into(),
+                    fg: TermColor::Ansi(0),
+                    bg: TermColor::Ansi(1),
+                    bold: false, italic: false, dim: false, underline: false,
+                },
+            ]),
+        ]);
+        let theme = dark_theme();
+        let issues = validate_term_output_contrast(&output, &theme);
+        assert_eq!(issues.len(), 1, "Ansi-on-Ansi with low contrast should be flagged");
+        assert_eq!(issues[0].text, "ansi on ansi");
+    }
+
+    #[test]
     fn term_contrast_validates_fixed_fg_on_theme_bg() {
         use crate::term_output::*;
         // Dark RGB color on default (dark) background — should flag
