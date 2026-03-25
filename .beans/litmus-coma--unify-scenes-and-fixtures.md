@@ -1,11 +1,11 @@
 ---
 # litmus-coma
 title: Unify scenes and fixtures
-status: todo
+status: completed
 type: epic
 priority: normal
 created_at: 2026-03-23T15:17:32Z
-updated_at: 2026-03-24T13:47:53Z
+updated_at: 2026-03-25T00:39:49Z
 ---
 
 ## Goal
@@ -95,3 +95,7 @@ fixtures/git-diff/
 
 **Blocked by 4 + 5 + 6:**
 7. `litmus-kbzo` — Remove old Scene, ThemeColor, StyledSpan types and hand-written scenes
+
+## Summary of Changes
+
+All 7 subtasks completed. The codebase now uses TermOutput (parsed from real ANSI output) as the sole rendering model. Scene/ThemeColor/StyledSpan types have been fully removed. The TermOutput data model supports Default, Ansi(0-15), Indexed(16-255), and Rgb colors with bold/italic/dim/underline modifiers. Both litmus-cli and litmus-web render TermOutput fixtures, and contrast validation uses the new TermColor-based analysis.
