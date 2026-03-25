@@ -73,16 +73,16 @@ fn TermLineView(theme: Theme, line: TermLine) -> Element {
 fn TermSpanView(theme: Theme, span: TermSpan) -> Element {
     let mut styles = Vec::new();
 
-    // Resolve foreground color
-    let fg_color = span.fg.resolve_with_theme(&theme, &theme.foreground);
+    // Resolve foreground color (skip for Default — inherits from parent <pre>)
     if span.fg != TermColor::Default {
-        styles.push(format!("color: {}", fg_color.to_hex()));
+        let color = span.fg.resolve_with_theme(&theme, &theme.foreground);
+        styles.push(format!("color: {}", color.to_hex()));
     }
 
-    // Resolve background color
-    let bg_color = span.bg.resolve_with_theme(&theme, &theme.background);
+    // Resolve background color (skip for Default — inherits from parent <pre>)
     if span.bg != TermColor::Default {
-        styles.push(format!("background-color: {}", bg_color.to_hex()));
+        let color = span.bg.resolve_with_theme(&theme, &theme.background);
+        styles.push(format!("background-color: {}", color.to_hex()));
     }
 
     if span.bold {

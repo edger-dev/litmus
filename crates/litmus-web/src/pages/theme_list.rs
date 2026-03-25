@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 
 use crate::components::{ScoreRing, ShortlistCheckbox, UseAsAppThemeButton};
 use crate::fixtures;
+use crate::scene_renderer;
 use crate::term_renderer;
 use crate::state::*;
 use crate::themes;
@@ -150,6 +151,12 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
                             term_renderer::TermOutputPreview {
                                 theme: theme.clone(),
                                 output: fixture.clone(),
+                                max_lines: 5,
+                            }
+                        } else {
+                            scene_renderer::ScenePreview {
+                                theme: theme.clone(),
+                                scene: litmus_model::scenes::shell_prompt_scene(),
                                 max_lines: 5,
                             }
                         }
