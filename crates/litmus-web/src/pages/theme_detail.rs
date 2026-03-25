@@ -45,6 +45,7 @@ pub fn ThemeDetail(slug: String) -> Element {
             let is_current_theme = app_theme.read().0.as_deref() == Some(this_slug.as_str());
             let detail_slug = this_slug.clone();
             let manifest_state = use_context::<Signal<ManifestState>>();
+            let cur_provider = active_provider.read().0.clone();
 
             // Group issues per fixture for the minimap badge counts
             let mut issues_per_fixture: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
@@ -103,7 +104,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                             }
                         }
                         ShortlistCheckbox { slug: this_slug.clone(), name: theme.name.clone() }
-                        UseAsAppThemeButton { slug: this_slug }
+                        UseAsAppThemeButton { slug: this_slug.clone() }
                     }
 
                     // All fixtures rendered as side-by-side (terminal output + screenshot)
@@ -113,12 +114,10 @@ pub fn ThemeDetail(slug: String) -> Element {
                                 .get(fixture.id.as_str())
                                 .copied()
                                 .unwrap_or(0);
-                            let t_slug = theme_slug(&theme.name);
-                            let cur_provider = active_provider.read().0.clone();
                             let has_screenshot = has_screenshot_for_provider(
                                 &manifest_state.read().0,
                                 &cur_provider,
-                                &t_slug,
+                                &this_slug,
                                 &fixture.id,
                             );
                             rsx! {
@@ -145,7 +144,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                                             span { class: "scene-split-label", "Screenshot" }
                                             if has_screenshot {
                                                 ScreenshotImage {
-                                                    theme_slug: t_slug,
+                                                    theme_slug: this_slug.clone(),
                                                     fixture_id: fixture.id.clone(),
                                                     provider: cur_provider.clone(),
                                                 }
