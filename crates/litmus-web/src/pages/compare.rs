@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 
 use crate::components::ColorSwatch;
 use crate::fixtures;
+use crate::screenshot_view::{has_screenshot_for_provider, ScreenshotImage};
 use crate::state::*;
 use crate::term_renderer;
 use crate::themes;
@@ -17,10 +18,13 @@ static ANSI_NAMES: &[&str] = &[
 #[component]
 pub fn CompareThemes(slugs: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
-    let all_themes = themes::themes_for_provider(&active_provider.read().0);
+    let provider = active_provider.read().0.clone();
+    let all_themes = themes::themes_for_provider(&provider);
     let all_fixtures = fixtures::all_fixtures();
     let cvd_sim = use_context::<Signal<CvdSimulation>>();
     let cvd = cvd_sim.read().0;
+    let manifest_state = use_context::<Signal<ManifestState>>();
+    let mut show_screenshots = use_signal(|| false);
 
     let slug_list: Vec<&str> = slugs.split(',').filter(|s| !s.is_empty()).collect();
 
@@ -42,10 +46,27 @@ pub fn CompareThemes(slugs: String) -> Element {
 
     let n = compare_themes.len();
     let grid_cols = format!("repeat({n}, 1fr)");
+    let screenshots_on = *show_screenshots.read();
 
     rsx! {
         div { class: "page-compare",
             style: "--compare-cols: {grid_cols};",
+
+            // Toolbar: toggle + column headers
+            div { class: "compare-toolbar",
+                div { class: "compare-view-toggle",
+                    button {
+                        class: if !screenshots_on { "compare-toggle-btn compare-toggle-btn-active" } else { "compare-toggle-btn" },
+                        onclick: move |_| show_screenshots.set(false),
+                        "Simulated"
+                    }
+                    button {
+                        class: if screenshots_on { "compare-toggle-btn compare-toggle-btn-active" } else { "compare-toggle-btn" },
+                        onclick: move |_| show_screenshots.set(true),
+                        "Screenshot"
+                    }
+                }
+            }
 
             // Sticky column headers with theme names
             div { class: "compare-column-headers",
@@ -70,10 +91,37 @@ pub fn CompareThemes(slugs: String) -> Element {
                     div { class: "compare-grid",
                         for theme in &compare_themes {
                             div { class: "compare-grid-item",
-                                term_renderer::TermOutputView {
-                                    theme: theme.clone(),
-                                    output: fixture.clone(),
-                                    compact: n > 2,
+                                if screenshots_on {
+                                    {
+                                        let t_slug = theme_slug(&theme.name);
+                                        let has_screenshot = has_screenshot_for_provider(
+                                            &manifest_state.read().0,
+                                            &provider,
+                                            &t_slug,
+                                            &fixture.id,
+                                        );
+                                        if has_screenshot {
+                                            rsx! {
+                                                ScreenshotImage {
+                                                    theme_slug: t_slug,
+                                                    fixture_id: fixture.id.clone(),
+                                                    provider: provider.clone(),
+                                                }
+                                            }
+                                        } else {
+                                            rsx! {
+                                                div { class: "compare-screenshot-placeholder",
+                                                    "No screenshot"
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    term_renderer::TermOutputView {
+                                        theme: theme.clone(),
+                                        output: fixture.clone(),
+                                        compact: n > 2,
+                                    }
                                 }
                             }
                         }
