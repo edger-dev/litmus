@@ -1,11 +1,11 @@
 ---
 # litmus-4uyp
 title: Show all themes with availability feedback
-status: in-progress
+status: completed
 type: feature
 priority: normal
 created_at: 2026-03-25T15:05:23Z
-updated_at: 2026-03-25T15:54:11Z
+updated_at: 2026-03-25T15:57:48Z
 ---
 
 Theme list only shows themes for the active provider — switching providers refreshes the list jarringly. Show all themes instead with dimmed cards + badge for unavailable ones. ## Design: Dimmed cards with unavailable badge
@@ -52,3 +52,11 @@ Add `all_themes_with_availability(provider: &str) -> Vec<(Theme, bool)>`:
 ### style.css
 - `.theme-card--unavailable`: opacity 0.45, cursor not-allowed, pointer-events none on card-link
 - `.theme-card-unavailable-badge`: small label overlay
+
+## Summary of Changes
+
+Added `all_themes_with_availability()` to themes.rs that returns every theme annotated with a bool for provider availability. Unavailable themes fall back to the first available provider's colors for rendering.
+
+Updated ThemeList to show all themes — unavailable cards are dimmed (opacity 0.45), have an "unavailable" badge, no hover effect, and no navigation. Extracted ThemeCardBody as a shared component to avoid RSX duplication. Filter counts (variant badges) reflect available themes only; shown/total counter reflects all visible cards.
+
+5 new tests cover the availability function (count, sorting, marking, unavailable presence, nonexistent provider).
