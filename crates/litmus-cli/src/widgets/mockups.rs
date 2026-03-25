@@ -19,6 +19,10 @@ static FIXTURE_DATA: &[(&str, &str)] = &[
     ("ls-color", include_str!("../../../../fixtures/ls-color/output.json")),
     ("cargo-build", include_str!("../../../../fixtures/cargo-build/output.json")),
     ("shell-prompt", include_str!("../../../../fixtures/shell-prompt/output.json")),
+    ("ripgrep-search", include_str!("../../../../fixtures/ripgrep-search/output.json")),
+    ("bat-syntax", include_str!("../../../../fixtures/bat-syntax/output.json")),
+    ("log-viewer", include_str!("../../../../fixtures/log-viewer/output.json")),
+    ("editor-ui", include_str!("../../../../fixtures/editor-ui/output.json")),
 ];
 
 /// Parsed fixtures, cached so we don't re-parse JSON on every render frame.

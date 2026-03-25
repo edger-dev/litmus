@@ -1,0 +1,1966 @@
+{
+  "id": "bat-syntax",
+  "name": "bat Syntax Highlighting",
+  "cols": 80,
+  "rows": 24,
+  "lines": [
+    {
+      "spans": [
+        {
+          "text": "─────┬──────────────────────────────────────────────────────────────────────────",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   1",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "#!/usr/bin/env python3",
+          "fg": {
+            "type": "Indexed",
+            "value": 242
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   2",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"\"\"Simple HTTP server with request logging.\"\"\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 242
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   3",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   4",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "import",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " json",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   5",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "import",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " logging",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   6",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "from",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " http.server ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "import",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " HTTPServer, BaseHTTPRequestHandler",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   7",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "from",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " datetime ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "import",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " datetime",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   8",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "   9",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "LOG_FORMAT ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "=",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "%(",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "asctime",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")s",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " [",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "%(",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "levelname",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")s",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "] ",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "%(",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "message",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")s",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  10",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "logging.basicConfig(",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "level",
+          "fg": {
+            "type": "Indexed",
+            "value": 208
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "=",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "logging.INFO, ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "format",
+          "fg": {
+            "type": "Indexed",
+            "value": 208
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "=",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "LOG_FORMAT)",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  11",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "logger ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "=",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " logging.getLogger(__name__)",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  12",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  13",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "class",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "RequestHandler",
+          "fg": {
+            "type": "Indexed",
+            "value": 81
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "underline": true
+        },
+        {
+          "text": "(",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "BaseHTTPRequestHandler",
+          "fg": {
+            "type": "Indexed",
+            "value": 149
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "underline": true
+        },
+        {
+          "text": "):",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  14",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"\"\"Handle incoming HTTP requests.\"\"\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 242
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  15",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  16",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "def",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "do_GET",
+          "fg": {
+            "type": "Indexed",
+            "value": 149
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "self",
+          "fg": {
+            "type": "Indexed",
+            "value": 208
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "):",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  17",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "        logger.info(",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "f",
+          "fg": {
+            "type": "Indexed",
+            "value": 81
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"GET ",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "{self.path}",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " from ",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "{self.client_address[",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "0",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "]}",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  18",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "        ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "if",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " self.path ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "==",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"/health\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  19",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "            self._send_json({",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"status\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"ok\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"uptime\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "42",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "})",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  20",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "        ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "elif",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " self.path ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "==",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"/api/users\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  21",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "            users ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "=",
+          "fg": {
+            "type": "Indexed",
+            "value": 203
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " [",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  22",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "│",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "                {",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"id\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "1",
+          "fg": {
+            "type": "Indexed",
+            "value": 141
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"name\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"Alice\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"role\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"admin\"",
+          "fg": {
+            "type": "Indexed",
+            "value": 186
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "},",
+          "fg": {
+            "type": "Indexed",
+            "value": 231
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "─────┴──────────────────────────────────────────────────────────────────────────",
+          "fg": {
+            "type": "Indexed",
+            "value": 246
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,10 @@ static FIXTURE_DATA: &[(&str, &str)] = &[
     ("python-repl", include_str!("../../../fixtures/python-repl/output.json")),
     ("htop", include_str!("../../../fixtures/htop/output.json")),
     ("color-showcase", include_str!("../../../fixtures/color-showcase/output.json")),
+    ("ripgrep-search", include_str!("../../../fixtures/ripgrep-search/output.json")),
+    ("bat-syntax", include_str!("../../../fixtures/bat-syntax/output.json")),
+    ("log-viewer", include_str!("../../../fixtures/log-viewer/output.json")),
+    ("editor-ui", include_str!("../../../fixtures/editor-ui/output.json")),
 ];
 
 static PARSED_FIXTURES: OnceLock<Vec<TermOutput>> = OnceLock::new();

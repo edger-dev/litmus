@@ -69,3 +69,7 @@ FIXTURE_WORK_DIR=/tmp/litmus-capture-XXXXXX
 | `htop` | `top -b -n 1` | System monitor colors: CPU, memory, process table |
 | `color-swatch` | ANSI palette | Reference palette: 16 ANSI, 256-color cube, truecolor gradient |
 | `color-showcase` | CI dashboard | Simulated deploy pipeline exercising all 16 ANSI colors |
+| `ripgrep-search` | `rg` search | Search results: filenames, line numbers, match highlighting |
+| `bat-syntax` | `bat` viewer | Syntax-highlighted Python source with line numbers |
+| `log-viewer` | App logs | Structured logs: INFO/WARN/ERROR/DEBUG severity levels |
+| `editor-ui` | Text editor | Simulated editor UI: syntax highlighting, status bar, line numbers |

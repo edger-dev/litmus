@@ -1,0 +1,1438 @@
+{
+  "id": "log-viewer",
+  "name": "Application Logs",
+  "cols": 80,
+  "rows": 24,
+  "lines": [
+    {
+      "spans": [
+        {
+          "text": "── Application Logs ──────────────────────────────────────",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        }
+      ]
+    },
+    {
+      "spans": []
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:01",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "server",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    Starting HTTP server on ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "0.0.0.0:8080",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:01",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "db",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "        Connected to ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "postgres://localhost:5432/app",
+          "fg": {
+            "type": "Ansi",
+            "value": 4
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:02",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "server",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    Ready to accept connections",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:05",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "DEBUG",
+          "fg": {
+            "type": "Ansi",
+            "value": 4
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "http",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "GET",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " /health → ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "200",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(2ms)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:08",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "DEBUG",
+          "fg": {
+            "type": "Ansi",
+            "value": 4
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "http",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "GET",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " /api/users → ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "200",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(15ms)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:12",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " WARN",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "db",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "        Connection pool at ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "80%",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " capacity (",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "8/10",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:15",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "DEBUG",
+          "fg": {
+            "type": "Ansi",
+            "value": 4
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "http",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "POST",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " /api/deploy → ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "202",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(45ms)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:18",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "deploy",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    Build ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "#1847",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " started for branch ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "main",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:22",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " WARN",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "deploy",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    Retrying artifact download (attempt ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "2/3",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:25",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "deploy",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "    Build ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "#1847",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "succeeded",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " in ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "7.2s",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:30",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "ERROR",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "http",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "GET",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " /api/reports → ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "500",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(102ms)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:30",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "ERROR",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "handler",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "   ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "QueryError: relation \"reports\" does not exis",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:30",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "ERROR",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "handler",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "   ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  at src/db/queries.rs:42",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:35",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "DEBUG",
+          "fg": {
+            "type": "Ansi",
+            "value": 4
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "http",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "GET",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " /api/users?limit=50 → ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "200",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(12ms)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "2024-01-15 10:00:40",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " INFO",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "metrics",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "   Requests: ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "127",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " | Errors: ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "1",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " | P99: ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "45ms",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": []
+    },
+    {
+      "spans": [
+        {
+          "text": "── end of log ──",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "id": "ripgrep-search",
+  "name": "ripgrep Search",
+  "cols": 80,
+  "rows": 24,
+  "lines": [
+    {
+      "spans": [
+        {
+          "text": "src/main.rs",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "41",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":        Ok(()) => println!(\"",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " valid: {} keys\", config.len()),",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": []
+    },
+    {
+      "spans": [
+        {
+          "text": "src/error.rs",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "5",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":    ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": "NotFound(String),",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "6",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":    Invalid",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": "(String),",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "14",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":            AppError::",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": "NotFound(path) => write!(f, \"",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " not found: {}",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "15",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":            AppError::Invalid",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": "(msg) => write!(f, \"Invalid config: {}\", m",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": []
+    },
+    {
+      "spans": [
+        {
+          "text": "src/lib.rs",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "10",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":pub struct ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "17",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":impl ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "19",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ":        ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Config",
+          "fg": {
+            "type": "Ansi",
+            "value": 1
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,976 @@
+{
+  "id": "editor-ui",
+  "name": "Editor UI",
+  "cols": 80,
+  "rows": 24,
+  "lines": [
+    {
+      "spans": [
+        {
+          "text": "  1",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "use",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "std::collections::HashMap;",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  2",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "use",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "std::io;",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  3",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  4",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "/// Process incoming requests and return responses.",
+          "fg": {
+            "type": "Ansi",
+            "value": 6
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  5",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "pub fn",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "handle_request",
+          "fg": {
+            "type": "Ansi",
+            "value": 12
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "(",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "req",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ": ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "&Request",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ") -> ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "Response",
+          "fg": {
+            "type": "Ansi",
+            "value": 2
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  6",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "let",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "method",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " = req.method();",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  7",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "let",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "path",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " = req.path();",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  8",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": "  9",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "match",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " (method, path) {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 10",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "          (",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"GET\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"/health\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ") => {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 11",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "              Response::ok(",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"healthy\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ")",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 12",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "          }",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 13",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "          (",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"POST\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"/api/data\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ") => {",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 14",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "              ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "let",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "body",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " = req.body().unwrap_or_default();",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 15",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "              ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "let",
+          "fg": {
+            "type": "Ansi",
+            "value": 5
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "count",
+          "fg": {
+            "type": "Ansi",
+            "value": 7
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " = process_data(&body);",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 16",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "              Response::json(",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "\"processed\"",
+          "fg": {
+            "type": "Ansi",
+            "value": 3
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": ", count)",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 17",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "          }",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 18",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "          _ => Response::not_found(),",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 19",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "      }",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": " 20",
+          "fg": {
+            "type": "Ansi",
+            "value": 8
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": "  }",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": []
+    },
+    {
+      "spans": [
+        {
+          "text": " NOR ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "bold": true
+        },
+        {
+          "text": " src/handler.rs ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " [+] utf-8 rust ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": "                         ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        },
+        {
+          "text": " 5:15 ",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        },
+        {
+          "text": " 20 ln",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "spans": [
+        {
+          "text": ":w",
+          "fg": {
+            "type": "Default"
+          },
+          "bg": {
+            "type": "Default"
+          },
+          "dim": true
+        }
+      ]
+    }
+  ]
+}
