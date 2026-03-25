@@ -59,6 +59,7 @@ struct App {
     themes: Vec<Theme>,
     theme_index: usize,
     view: View,
+    fixture_index: usize,
     git_diff: Vec<String>,
     ls_output: Vec<String>,
 }
@@ -74,6 +75,7 @@ impl App {
             themes,
             theme_index: 0,
             view: View::Swatches,
+            fixture_index: 0,
             git_diff: capture_command("git", &["diff"]),
             ls_output: capture_command("ls", &["-la", "--color=never"]),
         }
@@ -97,6 +99,20 @@ impl App {
             View::Mockups => View::Live,
             View::Live => View::Swatches,
         };
+    }
+
+    fn next_fixture(&mut self) {
+        let count = widgets::fixture_count();
+        if count > 0 {
+            self.fixture_index = (self.fixture_index + 1) % count;
+        }
+    }
+
+    fn prev_fixture(&mut self) {
+        let count = widgets::fixture_count();
+        if count > 0 {
+            self.fixture_index = (self.fixture_index + count - 1) % count;
+        }
     }
 
     fn prev_view(&mut self) {
@@ -184,7 +200,7 @@ fn run(terminal: &mut Terminal<CrosstermBackend<io::Stdout>>, extra_themes: Vec<
             let theme = app.current_theme();
             match app.view {
                 View::Swatches => frame.render_widget(SwatchesWidget { theme }, chunks[0]),
-                View::Mockups => frame.render_widget(MockupsWidget { theme }, chunks[0]),
+                View::Mockups => frame.render_widget(MockupsWidget { theme, fixture_index: app.fixture_index }, chunks[0]),
                 View::Live => frame.render_widget(
                     LiveWidget { theme, git_diff: &app.git_diff, ls_output: &app.ls_output },
                     chunks[0],
@@ -205,7 +221,7 @@ fn run(terminal: &mut Terminal<CrosstermBackend<io::Stdout>>, extra_themes: Vec<
                 Span::styled(app.view.name(), Style::default().fg(RColor::Cyan)),
                 Span::styled(" | ", Style::default().fg(RColor::DarkGray)),
                 Span::styled(
-                    "←/→ theme  Tab/S-Tab view  q quit",
+                    "←/→ theme  ↑/↓ fixture  Tab/S-Tab view  q quit",
                     Style::default().fg(RColor::DarkGray),
                 ),
             ]);
@@ -222,6 +238,8 @@ fn run(terminal: &mut Terminal<CrosstermBackend<io::Stdout>>, extra_themes: Vec<
                 KeyCode::BackTab => app.prev_view(),
                 KeyCode::Left => app.prev_theme(),
                 KeyCode::Right => app.next_theme(),
+                KeyCode::Up => app.prev_fixture(),
+                KeyCode::Down => app.next_fixture(),
                 _ => {}
             }
         }
