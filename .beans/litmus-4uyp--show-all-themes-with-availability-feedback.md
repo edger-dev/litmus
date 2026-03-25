@@ -5,7 +5,7 @@ status: in-progress
 type: feature
 priority: normal
 created_at: 2026-03-25T15:05:23Z
-updated_at: 2026-03-25T15:52:33Z
+updated_at: 2026-03-25T15:54:11Z
 ---
 
 Theme list only shows themes for the active provider — switching providers refreshes the list jarringly. Show all themes instead with dimmed cards + badge for unavailable ones. ## Design: Dimmed cards with unavailable badge
@@ -21,13 +21,13 @@ Theme list only shows themes for the active provider — switching providers ref
 
 ## Tasks
 - [x] Add all_themes_with_availability() returning (Theme, bool) tuples
-- [ ] Update theme_list.rs to render unavailable cards with reduced opacity
-- [ ] Add 'unavailable' badge/icon overlay on dimmed cards
-- [ ] Suppress click/navigation for unavailable themes (cursor: not-allowed)
-- [ ] Keep alphabetical sort with unavailable themes in natural position
-- [ ] Filter counts reflect only available themes
-- [ ] Add CSS for dimmed card state (.theme-card--unavailable or similar)
-- [ ] Test that search/variant/readability filters apply to all themes
+- [x] Update theme_list.rs to render unavailable cards with reduced opacity
+- [x] Add 'unavailable' badge/icon overlay on dimmed cards
+- [x] Suppress click/navigation for unavailable themes (cursor: not-allowed)
+- [x] Keep alphabetical sort with unavailable themes in natural position
+- [x] Filter counts reflect only available themes
+- [x] Add CSS for dimmed card state (.theme-card--unavailable or similar)
+- [x] Test that search/variant/readability filters apply to all themes
 
 ## Plan
 

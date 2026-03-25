@@ -11,27 +11,33 @@ use crate::Route;
 #[component]
 pub fn ThemeList() -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
-    let all_themes = themes::themes_for_provider(&active_provider.read().0);
+    let all_with_avail = themes::all_themes_with_availability(&active_provider.read().0);
     let mut filter = use_signal(FilterState::default);
     let cvd_sim = use_context::<Signal<CvdSimulation>>();
     let cvd = cvd_sim.read().0;
 
     let filter_val = filter.read().clone();
 
-    let mut filtered: Vec<litmus_model::Theme> = all_themes
+    let mut filtered: Vec<(litmus_model::Theme, bool)> = all_with_avail
         .iter()
-        .filter(|t| theme_passes_filter(t, &filter_val))
-        .map(|t| maybe_simulate(t, cvd))
+        .filter(|(t, _)| theme_passes_filter(t, &filter_val))
+        .map(|(t, avail)| (maybe_simulate(t, cvd), *avail))
         .collect();
-    filtered.sort_by(|a, b| a.name.to_lowercase().cmp(&b.name.to_lowercase()));
+    filtered.sort_by(|a, b| a.0.name.to_lowercase().cmp(&b.0.name.to_lowercase()));
 
-    let total = all_themes.len();
-    let shown = filtered.len();
+    // Counts reflect only available themes for the active provider
+    let available_themes: Vec<&litmus_model::Theme> = all_with_avail
+        .iter()
+        .filter(|(_, avail)| *avail)
+        .map(|(t, _)| t)
+        .collect();
+    let total = available_themes.len();
+    let shown = filtered.iter().filter(|(_, a)| *a).count();
 
-    // Count badges for variant filter
-    let count_all = all_themes.len();
-    let count_dark = all_themes.iter().filter(|t| !is_light_theme(t)).count();
-    let count_light = all_themes.iter().filter(|t| is_light_theme(t)).count();
+    // Count badges for variant filter (available only)
+    let count_all = available_themes.len();
+    let count_dark = available_themes.iter().filter(|t| !is_light_theme(t)).count();
+    let count_light = available_themes.iter().filter(|t| is_light_theme(t)).count();
 
     let query = filter_val.query.clone();
     let variant = filter_val.variant;
@@ -111,8 +117,8 @@ pub fn ThemeList() -> Element {
 
             // Flat grid — no family groups
             div { class: "theme-grid",
-                for theme in &filtered {
-                    ThemeCard { theme: theme.clone() }
+                for (theme, available) in &filtered {
+                    ThemeCard { theme: theme.clone(), available: *available }
                 }
             }
 
@@ -124,7 +130,7 @@ pub fn ThemeList() -> Element {
 }
 
 #[component]
-fn ThemeCard(theme: litmus_model::Theme) -> Element {
+fn ThemeCard(theme: litmus_model::Theme, available: bool) -> Element {
     let bg = theme.background.to_hex();
     let fg = theme.foreground.to_hex();
     let slug = theme_slug(&theme.name);
@@ -132,34 +138,72 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
     let readability = litmus_model::contrast::term_readability_score(&theme, all_fixtures) as u8;
     let preview_fixture = fixtures::default_fixture();
 
+    let card_class = if available {
+        "theme-card"
+    } else {
+        "theme-card theme-card--unavailable"
+    };
+
     rsx! {
         div {
-            class: "theme-card",
+            class: "{card_class}",
             style: "background: {bg}; color: {fg};",
 
-            Link {
-                to: Route::ThemeDetail { slug: slug.clone() },
-                class: "theme-card-link",
+            if available {
+                Link {
+                    to: Route::ThemeDetail { slug: slug.clone() },
+                    class: "theme-card-link",
 
-                div { class: "theme-card-body",
-                    div { class: "theme-card-header",
-                        span { class: "theme-card-name", "{theme.name}" }
-                    }
-
-                    div { class: "theme-card-preview",
-                        if let Some(fixture) = preview_fixture {
-                            term_renderer::TermOutputPreview {
-                                theme: theme.clone(),
-                                output: fixture.clone(),
-                                max_lines: 5,
-                            }
+                    div { class: "theme-card-body",
+                        div { class: "theme-card-header",
+                            span { class: "theme-card-name", "{theme.name}" }
                         }
 
-                        div { class: "swatch-row",
-                            for color in theme.ansi.as_array().iter() {
-                                div {
-                                    class: "swatch",
-                                    style: "background: {color.to_hex()};",
+                        div { class: "theme-card-preview",
+                            if let Some(fixture) = preview_fixture {
+                                term_renderer::TermOutputPreview {
+                                    theme: theme.clone(),
+                                    output: fixture.clone(),
+                                    max_lines: 5,
+                                }
+                            }
+
+                            div { class: "swatch-row",
+                                for color in theme.ansi.as_array().iter() {
+                                    div {
+                                        class: "swatch",
+                                        style: "background: {color.to_hex()};",
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                div {
+                    class: "theme-card-link",
+
+                    div { class: "theme-card-body",
+                        div { class: "theme-card-header",
+                            span { class: "theme-card-name", "{theme.name}" }
+                            span { class: "theme-card-unavailable-badge", "unavailable" }
+                        }
+
+                        div { class: "theme-card-preview",
+                            if let Some(fixture) = preview_fixture {
+                                term_renderer::TermOutputPreview {
+                                    theme: theme.clone(),
+                                    output: fixture.clone(),
+                                    max_lines: 5,
+                                }
+                            }
+
+                            div { class: "swatch-row",
+                                for color in theme.ansi.as_array().iter() {
+                                    div {
+                                        class: "swatch",
+                                        style: "background: {color.to_hex()};",
+                                    }
                                 }
                             }
                         }
@@ -171,9 +215,11 @@ fn ThemeCard(theme: litmus_model::Theme) -> Element {
                 span { class: "theme-card-score", title: "Readability score",
                     ScoreRing { score: readability, size: 28.0 }
                 }
-                span { class: "theme-card-actions-right",
-                    ShortlistCheckbox { slug: slug.clone(), name: theme.name.clone() }
-                    UseAsAppThemeButton { slug }
+                if available {
+                    span { class: "theme-card-actions-right",
+                        ShortlistCheckbox { slug: slug.clone(), name: theme.name.clone() }
+                        UseAsAppThemeButton { slug }
+                    }
                 }
             }
         }

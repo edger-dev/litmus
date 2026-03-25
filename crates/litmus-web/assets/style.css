@@ -635,6 +635,24 @@ button.sidebar-feel-lucky:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+.theme-card--unavailable {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.theme-card--unavailable:hover {
+  transform: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.theme-card-unavailable-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin-left: 0.4rem;
+}
+
 .theme-card-body {
   cursor: pointer;
 }
