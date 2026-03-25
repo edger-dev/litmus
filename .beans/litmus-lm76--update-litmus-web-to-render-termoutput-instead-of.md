@@ -1,11 +1,11 @@
 ---
 # litmus-lm76
 title: Update litmus-web to render TermOutput instead of Scene
-status: in-progress
+status: completed
 type: task
 priority: normal
 created_at: 2026-03-24T13:47:28Z
-updated_at: 2026-03-25T00:15:52Z
+updated_at: 2026-03-25T00:22:01Z
 parent: litmus-coma
 blocked_by:
     - litmus-q9lp
@@ -37,3 +37,16 @@ Depends on: TermOutput types, fixture pipeline generating output files
 4. Wire TermOutputPreview into theme_list.rs (replace ScenePreview in cards)
 5. Wire TermOutputView into scene_across.rs and compare.rs
 6. Tests for color resolution and fixture loading
+
+## Summary of Changes
+
+- Created `fixtures.rs` module: embeds 8 fixture output.json files, OnceLock caching, `fixture_by_id()` and `default_fixture()` API (4 tests)
+- Created `term_renderer.rs` module: `TermOutputView` and `TermOutputPreview` Dioxus components that render TermSpan with theme-aware inline CSS colors
+- Updated theme_list.rs: TermOutputPreview for card previews (ScenePreview fallback)
+- Updated theme_detail.rs: TermOutputView on left panel of side-by-side (SceneView fallback for neovim)
+- Updated scene_across.rs: TermOutputView in grid cards
+- Updated compare.rs: TermOutputView in comparison grid
+
+Note: Contrast analysis tooltips are not available in TermOutput path (they were Scene-model-specific). Header stats still computed. Can be reimplemented as a follow-up.
+
+Commits: 975c94d, c475a27, bc2393a
