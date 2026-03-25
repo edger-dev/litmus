@@ -38,10 +38,6 @@ impl Default for FilterState {
 #[derive(Clone, Default)]
 pub struct CvdSimulation(pub Option<CvdType>);
 
-/// Currently selected scene (by index) — used on ThemeDetail.
-#[derive(Clone, Default)]
-pub struct ActiveScene(pub Option<usize>);
-
 /// App chrome theme slug.
 #[derive(Clone)]
 pub struct AppThemeSlug(pub Option<String>);

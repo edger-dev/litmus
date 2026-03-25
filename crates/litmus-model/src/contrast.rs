@@ -563,6 +563,118 @@ mod tests {
         assert!((score - 100.0).abs() < 0.01, "Empty fixtures should give 100%, got {:.1}%", score);
     }
 
+    // Helper to build a Theme from hex strings: [bg, fg, cursor, sel_bg, sel_fg, ansi0..ansi15]
+    fn theme_from_hex(name: &str, colors: [&str; 21]) -> Theme {
+        use crate::AnsiColors;
+        let c = |s: &str| Color::from_hex(s).unwrap();
+        Theme {
+            name: name.into(),
+            background: c(colors[0]),
+            foreground: c(colors[1]),
+            cursor: c(colors[2]),
+            selection_background: c(colors[3]),
+            selection_foreground: c(colors[4]),
+            ansi: AnsiColors::from_array([
+                c(colors[5]),  c(colors[6]),  c(colors[7]),  c(colors[8]),
+                c(colors[9]),  c(colors[10]), c(colors[11]), c(colors[12]),
+                c(colors[13]), c(colors[14]), c(colors[15]), c(colors[16]),
+                c(colors[17]), c(colors[18]), c(colors[19]), c(colors[20]),
+            ]),
+        }
+    }
+
+    /// Build a representative set of TermOutput fixtures for integration tests.
+    fn integration_fixtures() -> Vec<TermOutput> {
+        use crate::term_output::*;
+        vec![
+            // Simulates colored output with various ANSI colors
+            make_term_output("mixed", vec![
+                TermLine::new(vec![
+                    TermSpan { text: "green text".into(), fg: TermColor::Ansi(2), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: " ".into(), fg: TermColor::Default, bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: "red text".into(), fg: TermColor::Ansi(1), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                ]),
+                TermLine::new(vec![
+                    TermSpan { text: "cyan text".into(), fg: TermColor::Ansi(6), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: " ".into(), fg: TermColor::Default, bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: "yellow text".into(), fg: TermColor::Ansi(3), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                ]),
+                TermLine::new(vec![
+                    TermSpan { text: "blue bold".into(), fg: TermColor::Ansi(4), bg: TermColor::Default, bold: true, italic: false, dim: false, underline: false },
+                    TermSpan { text: " ".into(), fg: TermColor::Default, bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: "magenta".into(), fg: TermColor::Ansi(5), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                ]),
+                TermLine::new(vec![
+                    TermSpan { text: "bright green".into(), fg: TermColor::Ansi(10), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: " ".into(), fg: TermColor::Default, bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                    TermSpan { text: "bright blue".into(), fg: TermColor::Ansi(12), bg: TermColor::Default, bold: false, italic: false, dim: false, underline: false },
+                ]),
+            ]),
+        ]
+    }
+
+    #[test]
+    fn term_readability_catppuccin_mocha() {
+        let theme = theme_from_hex("Catppuccin Mocha", [
+            "#1e1e2e", "#cdd6f4", "#f5e0dc", "#313244", "#cdd6f4",
+            "#45475a", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#cba6f7", "#89dceb", "#bac2de",
+            "#585b70", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#cba6f7", "#89dceb", "#a6adc8",
+        ]);
+        let fixtures = integration_fixtures();
+        let score = term_readability_score(&theme, &fixtures);
+        assert!(score > 70.0, "Catppuccin Mocha should score >70%, got {:.1}%", score);
+    }
+
+    #[test]
+    fn term_readability_catppuccin_latte() {
+        let theme = theme_from_hex("Catppuccin Latte", [
+            "#eff1f5", "#4c4f69", "#dc8a78", "#acb0be", "#4c4f69",
+            "#5c5f77", "#d20f39", "#40a02b", "#df8e1d", "#1e66f5", "#8839ef", "#179299", "#acb0be",
+            "#6c6f85", "#d20f39", "#40a02b", "#df8e1d", "#1e66f5", "#8839ef", "#179299", "#bcc0cc",
+        ]);
+        let fixtures = integration_fixtures();
+        let score = term_readability_score(&theme, &fixtures);
+        assert!(score > 50.0, "Catppuccin Latte should score >50%, got {:.1}%", score);
+    }
+
+    #[test]
+    fn term_readability_score_consistent_with_issues() {
+        let theme = theme_from_hex("Solarized Light", [
+            "#fdf6e3", "#657b83", "#657b83", "#eee8d5", "#657b83",
+            "#073642", "#dc322f", "#859900", "#b58900", "#268bd2", "#d33682", "#2aa198", "#eee8d5",
+            "#002b36", "#cb4b16", "#586e75", "#657b83", "#839496", "#6c71c4", "#93a1a1", "#fdf6e3",
+        ]);
+        let fixtures = integration_fixtures();
+        let score = term_readability_score(&theme, &fixtures);
+        let issues = validate_fixtures_contrast(&fixtures, &theme);
+        if !issues.is_empty() {
+            assert!(score < 100.0, "Score should be <100% when there are {} issues", issues.len());
+        }
+    }
+
+    #[test]
+    fn term_readability_light_dark_gap_bounded() {
+        let mocha = theme_from_hex("Catppuccin Mocha", [
+            "#1e1e2e", "#cdd6f4", "#f5e0dc", "#313244", "#cdd6f4",
+            "#45475a", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#cba6f7", "#89dceb", "#bac2de",
+            "#585b70", "#f38ba8", "#a6e3a1", "#f9e2af", "#89b4fa", "#cba6f7", "#89dceb", "#a6adc8",
+        ]);
+        let latte = theme_from_hex("Catppuccin Latte", [
+            "#eff1f5", "#4c4f69", "#dc8a78", "#acb0be", "#4c4f69",
+            "#5c5f77", "#d20f39", "#40a02b", "#df8e1d", "#1e66f5", "#8839ef", "#179299", "#acb0be",
+            "#6c6f85", "#d20f39", "#40a02b", "#df8e1d", "#1e66f5", "#8839ef", "#179299", "#bcc0cc",
+        ]);
+        let fixtures = integration_fixtures();
+        let mocha_score = term_readability_score(&mocha, &fixtures);
+        let latte_score = term_readability_score(&latte, &fixtures);
+        let gap = (mocha_score - latte_score).abs();
+        assert!(
+            gap < 50.0,
+            "Mocha ({:.1}%) and Latte ({:.1}%) should be within 50pp (gap: {:.1}pp)",
+            mocha_score, latte_score, gap
+        );
+    }
+
     #[test]
     fn validate_fixtures_contrast_aggregates() {
         use crate::term_output::*;

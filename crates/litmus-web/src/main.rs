@@ -39,7 +39,6 @@ const MANIFEST_CDN_URL: &str = "https://screenshots.litmus.edger.dev/manifest.js
 fn App() -> Element {
     use_context_provider(|| Signal::new(Shortlist::default()));
     use_context_provider(|| Signal::new(CvdSimulation::default()));
-    use_context_provider(|| Signal::new(ActiveScene::default()));
     use_context_provider(|| Signal::new(AppThemeSlug::default()));
     use_context_provider(|| Signal::new(SidebarOpen::default()));
     use_context_provider(|| Signal::new(VisibleScenes::default()));

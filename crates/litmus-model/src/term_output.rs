@@ -5,8 +5,7 @@ use crate::Color;
 
 /// A terminal color that can reference theme-dependent or fixed colors.
 ///
-/// Unlike `ThemeColor` (which only supports ANSI 0-15 and semantic references),
-/// `TermColor` supports the full spectrum from real terminal output:
+/// Supports the full spectrum from real terminal output:
 /// - `Default` — theme foreground or background (context-dependent)
 /// - `Ansi(0-15)` — resolved from provider's ANSI palette
 /// - `Indexed(16-255)` — fixed xterm-256 color palette
