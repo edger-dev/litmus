@@ -772,29 +772,6 @@ button.sidebar-feel-lucky:hover {
   flex-wrap: wrap;
 }
 
-.detail-provider-select {
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  margin-left: auto;
-}
-
-.detail-provider-label {
-  font-size: 0.75rem;
-  color: var(--app-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.detail-provider-select select {
-  background: var(--app-surface);
-  color: var(--app-fg);
-  border: 1px solid var(--app-border);
-  border-radius: 0.25rem;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.8rem;
-  font-family: inherit;
-}
 
 .detail-ratio {
   font-size: 0.8rem;

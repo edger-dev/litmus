@@ -70,14 +70,6 @@ fn find_screenshot_url(
     Some((url, meta.width, meta.height))
 }
 
-/// Get the list of provider slugs from the manifest.
-pub fn manifest_provider_slugs(manifest: &Option<ScreenshotManifest>) -> Vec<String> {
-    manifest
-        .as_ref()
-        .map(|m| m.providers.iter().map(|p| p.slug.clone()).collect())
-        .unwrap_or_default()
-}
-
 /// Find a screenshot URL from any provider for the given (theme, fixture).
 /// Picks the first provider that has coverage. Returns `(full_url, width, height)`.
 fn find_any_screenshot_url(
