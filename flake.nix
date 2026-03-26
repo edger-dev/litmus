@@ -76,6 +76,7 @@
             pkgs.fira-code
             pkgs.mdbook
             pkgs.bacon
+            pkgs.rclone          # S3-compatible sync for R2 screenshot uploads
           ];
         };
       });

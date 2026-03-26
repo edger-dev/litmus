@@ -70,6 +70,39 @@ description = "Start mdbook live-reload dev server"
 run = "cd docs && mdbook build"
 description = "Build mdbook static site"
 
+# --- Screenshot R2 upload tasks ---
+# Required env vars (set via shadowenv in .shadowenv.d/):
+#   R2_ACCESS_KEY_ID     — Cloudflare R2 S3-compatible access key ID
+#   R2_SECRET_ACCESS_KEY — Cloudflare R2 S3-compatible secret access key
+#   R2_ENDPOINTS         — R2 S3 endpoint, e.g. https://<account-id>.r2.cloudflarestorage.com
+
+[tasks.screenshots-sync]
+run = """
+rclone sync staging/ :s3:litmus-screenshots \
+  --s3-provider Cloudflare \
+  --s3-access-key-id "$R2_ACCESS_KEY_ID" \
+  --s3-secret-access-key "$R2_SECRET_ACCESS_KEY" \
+  --s3-endpoint "$R2_ENDPOINTS" \
+  --s3-no-check-bucket \
+  --checksum \
+  --progress \
+  --verbose
+"""
+description = "Sync staging/ screenshots to R2 bucket"
+
+[tasks.screenshots-deploy]
+run = """
+echo "Building production manifest..."
+cargo run --package litmus-capture -- manifest build \
+  --base-url https://screenshots.litmus.edger.dev \
+  --url-prefix ''
+
+echo ""
+echo "Syncing to R2..."
+mise run screenshots-sync
+"""
+description = "Build production manifest + sync all screenshots to R2"
+
 [tasks.bacon-claude-diagnostics]
 run = "bacon claude-diagnostics"
 description = "Run bacon background checker (exports diagnostics to .bacon-claude-diagnostics)"
