@@ -173,6 +173,12 @@ pub fn validate_term_output_contrast(
                 continue;
             }
 
+            // Skip decorative spans (block elements, box drawing, etc.) —
+            // no readable text, so fg/bg contrast is irrelevant.
+            if !span.text.contains(|c: char| c.is_alphanumeric()) {
+                continue;
+            }
+
             // Skip if both fg and bg are fixed (theme-independent)
             if is_fixed_color(&span.fg) && is_fixed_color(&span.bg) {
                 continue;
@@ -224,6 +230,9 @@ pub fn term_readability_score(theme: &Theme, fixtures: &[TermOutput]) -> f64 {
         for line in &output.lines {
             for span in &line.spans {
                 if span.text.trim().is_empty() || span.dim {
+                    continue;
+                }
+                if !span.text.contains(|c: char| c.is_alphanumeric()) {
                     continue;
                 }
                 if is_fixed_color(&span.fg) && is_fixed_color(&span.bg) {
@@ -498,6 +507,31 @@ mod tests {
         let theme = dark_theme();
         let issues = validate_term_output_contrast(&output, &theme);
         assert!(issues.is_empty(), "Dim spans should be skipped");
+    }
+
+    #[test]
+    fn term_contrast_skips_decorative_block_elements() {
+        use crate::term_output::*;
+        // Block characters like htop color bars — no readable text
+        let output = make_term_output("test", vec![
+            TermLine::new(vec![
+                TermSpan {
+                    text: "████████".into(),
+                    fg: TermColor::Default,
+                    bg: TermColor::Ansi(2),
+                    bold: false, italic: false, dim: false, underline: false,
+                },
+                TermSpan {
+                    text: "───────".into(),
+                    fg: TermColor::Ansi(1),
+                    bg: TermColor::Default,
+                    bold: false, italic: false, dim: false, underline: false,
+                },
+            ]),
+        ]);
+        let theme = dark_theme();
+        let issues = validate_term_output_contrast(&output, &theme);
+        assert!(issues.is_empty(), "Decorative block/box-drawing spans should be skipped");
     }
 
     #[test]

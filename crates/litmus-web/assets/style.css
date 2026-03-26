@@ -1351,16 +1351,15 @@ select:focus-visible {
   animation: crt-flicker 0.1s infinite alternate;
 }
 
-/* Contrast issue span marker — multi-layer border for visibility on any theme bg.
-   Inner ring uses app-error, outer ring uses app-bg as a "halo" to separate
-   the marker from the previewed theme's colors. */
+/* Contrast issue span marker — dotted outline with halo for visibility on
+   any theme background. The outline uses app-error; the box-shadow provides
+   a thin app-bg "halo" to separate the marker from the previewed theme. */
 .contrast-issue-span {
   border-radius: 2px;
   position: relative;
-  box-shadow:
-    0 0 0 1px var(--app-error),
-    0 0 0 2.5px var(--app-bg),
-    0 0 0 3.5px var(--app-error);
+  outline: 1px dotted var(--app-error);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 1px var(--app-bg);
 }
 
 /* Tooltip — positioned above the span on hover */
