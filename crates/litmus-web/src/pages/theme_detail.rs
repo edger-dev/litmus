@@ -4,7 +4,7 @@ use crate::components::*;
 use crate::fixtures;
 use crate::screenshot_view::{has_screenshot_for_provider, ScreenshotImage};
 use crate::state::*;
-use crate::term_renderer;
+use crate::term_renderer::{self, SpanIssueDetail};
 use crate::themes;
 
 static ANSI_NAMES: &[&str] = &[
@@ -50,17 +50,24 @@ pub fn ThemeDetail(slug: String) -> Element {
             let manifest_state = use_context::<Signal<ManifestState>>();
             let cur_provider = active_provider.read().0.clone();
 
-            // Group issues per fixture for the minimap badge counts
-            let mut issues_per_fixture: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
+            // Group issues per fixture as (line, span, detail) tuples
+            let mut issues_per_fixture: std::collections::HashMap<&str, Vec<(usize, usize, SpanIssueDetail)>> = std::collections::HashMap::new();
             for issue in &issues {
-                *issues_per_fixture.entry(issue.fixture_id.as_str()).or_default() += 1;
+                issues_per_fixture.entry(issue.fixture_id.as_str()).or_default().push(
+                    (issue.line, issue.span, SpanIssueDetail {
+                        ratio: issue.ratio,
+                        threshold: issue.threshold,
+                        fg_hex: issue.fg.to_hex(),
+                        bg_hex: issue.bg.to_hex(),
+                    })
+                );
             }
 
             // Publish per-fixture issue counts to context for the minimap
             let mut scene_issue_counts = use_context::<Signal<SceneIssueCounts>>();
             let counts: std::collections::HashMap<String, usize> = issues_per_fixture
                 .iter()
-                .map(|(k, v)| (k.to_string(), *v))
+                .map(|(k, v)| (k.to_string(), v.len()))
                 .collect();
             if counts != scene_issue_counts.read().0 {
                 scene_issue_counts.set(SceneIssueCounts(counts));
@@ -113,10 +120,11 @@ pub fn ThemeDetail(slug: String) -> Element {
                     // All fixtures rendered as side-by-side (terminal output + screenshot)
                     for fixture in all_fixtures {
                         {
-                            let fixture_issue_count = issues_per_fixture
+                            let fixture_issues = issues_per_fixture
                                 .get(fixture.id.as_str())
-                                .copied()
-                                .unwrap_or(0);
+                                .cloned()
+                                .unwrap_or_default();
+                            let fixture_issue_count = fixture_issues.len();
                             let has_screenshot = has_screenshot_for_provider(
                                 &manifest_state.read().0,
                                 &cur_provider,
@@ -140,6 +148,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                                             term_renderer::TermOutputView {
                                                 theme: theme.clone(),
                                                 output: fixture.clone(),
+                                                issue_details: fixture_issues,
                                             }
                                         }
                                         // Right: real screenshot or placeholder
