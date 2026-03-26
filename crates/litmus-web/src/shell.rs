@@ -91,6 +91,11 @@ pub fn Shell() -> Element {
         active_provider.set(ActiveProvider(url_provider.to_string()));
     }
 
+    // Reveal body once WASM has mounted (prevents flash of unstyled content)
+    use_effect(|| {
+        eval("document.body.classList.add('app-ready');");
+    });
+
     // Apply app theme via CSS custom properties
     use_effect(move || {
         let slug = app_theme.read().0.clone();
