@@ -147,8 +147,31 @@ pub fn Shell() -> Element {
             main {
                 id: "main-content",
                 class: "main-content",
+                AlertBanner {}
                 Outlet::<Route> {}
             }
         }
+    }
+}
+
+/// Dismissible alert banner, shown when provider switch is blocked.
+#[component]
+fn AlertBanner() -> Element {
+    let mut alert = use_context::<Signal<AlertMessage>>();
+    let msg = alert.read().0.clone();
+
+    match msg {
+        Some(text) => rsx! {
+            div {
+                class: "alert-banner",
+                span { "{text}" }
+                button {
+                    class: "alert-banner-dismiss",
+                    onclick: move |_| alert.set(AlertMessage(None)),
+                    "\u{00d7}"
+                }
+            }
+        },
+        None => rsx! {},
     }
 }

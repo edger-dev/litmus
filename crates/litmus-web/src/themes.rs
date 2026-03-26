@@ -285,6 +285,12 @@ pub fn all_themes_with_availability(provider: &str) -> Vec<(Theme, bool)> {
     results
 }
 
+/// Check whether a theme (by slug) is available for a given provider.
+pub fn theme_available_for_provider(slug: &str, provider: &str) -> bool {
+    let cache = cached_data();
+    cache.colors.contains_key(&(slug.to_string(), provider.to_string()))
+}
+
 /// Load all embedded themes using the first available provider per theme.
 /// Backward-compatible with the old API — used by tests.
 #[cfg(test)]

@@ -208,6 +208,44 @@ body {
   font-weight: 600;
 }
 
+.provider-btn-unavailable {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.provider-btn-unavailable:hover {
+  opacity: 0.6;
+}
+
+/* Alert banner */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--app-warning);
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.alert-banner-dismiss {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  opacity: 0.6;
+}
+
+.alert-banner-dismiss:hover {
+  opacity: 1;
+}
+
 /* Sidebar nav links */
 .sidebar-nav {
   display: flex;

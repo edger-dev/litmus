@@ -77,6 +77,10 @@ impl Default for ActiveProvider {
     }
 }
 
+/// Transient alert message shown in the main content area.
+#[derive(Clone, Default)]
+pub struct AlertMessage(pub Option<String>);
+
 pub fn is_light_theme(theme: &litmus_model::Theme) -> bool {
     litmus_model::contrast::relative_luminance(&theme.background) > 0.5
 }

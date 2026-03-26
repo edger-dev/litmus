@@ -29,6 +29,7 @@ pub fn Sidebar() -> Element {
     let mut cvd_sim = use_context::<Signal<CvdSimulation>>();
     let mut sidebar_open = use_context::<Signal<SidebarOpen>>();
     let app_theme = use_context::<Signal<AppThemeSlug>>();
+    let mut alert = use_context::<Signal<AlertMessage>>();
     let nav = navigator();
     let current_route = use_route::<Route>();
 
@@ -115,12 +116,45 @@ pub fn Sidebar() -> Element {
                     for p in providers.iter() {
                         {
                             let is_active = *p == provider;
-                            let new_route = current_route.with_provider(p);
-                            rsx! {
-                                Link {
-                                    to: new_route,
-                                    class: if is_active { "provider-btn provider-btn-active" } else { "provider-btn" },
-                                    "{p}"
+                            let p_name = p.clone();
+                            // Check if current theme is available in target provider
+                            let detail_slug_for_check = detail_slug.clone();
+                            let is_available = detail_slug_for_check.as_ref()
+                                .map(|slug| themes::theme_available_for_provider(slug, &p_name))
+                                .unwrap_or(true); // non-detail pages: always available
+                            let btn_class = if is_active {
+                                "provider-btn provider-btn-active"
+                            } else if !is_available {
+                                "provider-btn provider-btn-unavailable"
+                            } else {
+                                "provider-btn"
+                            };
+                            let new_route = current_route.with_provider(&p_name);
+                            if is_available {
+                                rsx! {
+                                    Link {
+                                        to: new_route,
+                                        class: "{btn_class}",
+                                        "{p_name}"
+                                    }
+                                }
+                            } else {
+                                rsx! {
+                                    button {
+                                        class: "{btn_class}",
+                                        onclick: move |_| {
+                                            alert.set(AlertMessage(Some(
+                                                format!("This theme is not available for {p_name}")
+                                            )));
+                                            // Auto-dismiss after 3s
+                                            spawn(async move {
+                                                use dioxus::document::eval;
+                                                let _ = eval("await new Promise(r => setTimeout(r, 3000))").await;
+                                                alert.set(AlertMessage(None));
+                                            });
+                                        },
+                                        "{p_name}"
+                                    }
                                 }
                             }
                         }
