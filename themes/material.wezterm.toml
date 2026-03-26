@@ -3,11 +3,11 @@ provider = "wezterm"
 source_version = "vendored"
 
 [colors]
-background = "#232322"
-foreground = "#E5E5E5"
+background = "#EAEAEA"
+foreground = "#232322"
 cursor = "#16AFCA"
-selection_background = "#DFDFDF"
-selection_foreground = "#3D3D3D"
+selection_background = "#C2C2C2"
+selection_foreground = "#4E4E4E"
 
 [colors.ansi]
 black = "#212121"

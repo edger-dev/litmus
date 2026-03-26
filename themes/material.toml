@@ -3,4 +3,4 @@ variant = "dark"
 
 [providers]
 kitty = "Material"
-wezterm = "MaterialDark"
+wezterm = "Material"
