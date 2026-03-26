@@ -106,6 +106,35 @@ pub fn ThemeDetail(provider: String, slug: String) -> Element {
             // Read active state for rendering
             let focused_rule_id: Option<String> = active_issue.read().as_ref().map(|(id, _)| id.clone());
 
+            // Scroll to #fixture-id anchor on mount
+            use_effect(move || {
+                dioxus::document::eval(
+                    r#"
+                    const hash = window.location.hash.replace('#', '');
+                    if (hash) {
+                        const el = document.getElementById('scene-' + hash) || document.getElementById(hash);
+                        if (el) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    }
+                    "#
+                );
+            });
+
+            // Update URL hash as user scrolls through fixtures
+            let visible_scenes = use_context::<Signal<VisibleScenes>>();
+            use_effect(move || {
+                let visible = visible_scenes.read().0.clone();
+                if visible.is_empty() { return; }
+                // Pick the first visible fixture in document order
+                let fixture_order: Vec<&str> = all_fixtures.iter().map(|f| f.id.as_str()).collect();
+                let first_visible = fixture_order.iter().find(|id| visible.contains(**id));
+                if let Some(id) = first_visible {
+                    let js = format!(
+                        "if (window.location.hash !== '#{id}') history.replaceState(null, '', window.location.pathname + '#{id}')"
+                    );
+                    dioxus::document::eval(&js);
+                }
+            });
+
             rsx! {
                 div {
                     class: "page-theme-detail",
