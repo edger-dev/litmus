@@ -32,6 +32,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+  /* Hardcoded fallback to prevent white flash before CSS vars are applied */
+  background-color: #1a1b26;
 }
 
 body {

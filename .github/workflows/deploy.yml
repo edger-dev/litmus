@@ -44,6 +44,10 @@ jobs:
       - name: Build WASM
         run: cd crates/litmus-web && dx build --release
 
+      - name: Inject critical CSS to prevent flash of white background
+        run: |
+          sed -i 's/<html>/<html style="background:#1a1b26">/' target/dx/litmus-web/release/web/public/index.html
+
       - name: Copy Cloudflare config files
         run: |
           cp crates/litmus-web/_redirects target/dx/litmus-web/release/web/public/
