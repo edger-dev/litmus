@@ -10,7 +10,7 @@ use crate::Color;
 /// - `Ansi(0-15)` — resolved from provider's ANSI palette
 /// - `Indexed(16-255)` — fixed xterm-256 color palette
 /// - `Rgb(r, g, b)` — 24-bit truecolor, used as-is
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[serde(tag = "type", content = "value")]
 pub enum TermColor {
     /// Theme default — foreground or background depending on context.

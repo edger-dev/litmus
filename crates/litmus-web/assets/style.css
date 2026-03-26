@@ -829,6 +829,12 @@ button.sidebar-feel-lucky:hover {
   border: 1px solid var(--app-border);
   background: var(--app-surface);
   color: var(--app-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.detail-issue-chip:hover {
+  border-color: var(--app-error);
 }
 
 .detail-issue-chip-ratio {
@@ -1452,6 +1458,64 @@ select:focus-visible {
   gap: 0.2rem;
   font-size: 0.65rem;
   opacity: 0.7;
+}
+
+.contrast-tooltip-id {
+  font-weight: 700;
+  color: var(--app-error);
+}
+
+/* Focused/dimmed issue states (when a chip is selected) */
+.contrast-issue-focused {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--app-error);
+}
+
+.contrast-issue-dimmed {
+  outline-color: var(--app-muted);
+  outline-style: dotted;
+}
+
+/* Footnote tags at end of line */
+.contrast-footnotes {
+  margin-left: 0.5em;
+  user-select: none;
+}
+
+.contrast-footnote {
+  font-size: 0.55rem;
+  font-weight: 600;
+  vertical-align: super;
+  color: var(--app-error);
+  background: var(--app-bg);
+  border: 1px solid var(--app-error);
+  border-radius: 2px;
+  padding: 0 0.2em;
+  margin-left: 0.15em;
+  opacity: 0.7;
+}
+
+.contrast-footnote-focused {
+  opacity: 1;
+  background: var(--app-error);
+  color: var(--app-bg);
+}
+
+/* Active issue chip (selected) */
+.detail-issue-chip-active {
+  background: var(--app-error) !important;
+  color: var(--app-bg) !important;
+  border-color: var(--app-error) !important;
+}
+
+.detail-issue-chip-active .detail-issue-chip-ratio {
+  color: inherit;
+}
+
+.detail-issue-chip-id {
+  font-weight: 700;
+  margin-right: 0.3em;
 }
 
 /* Scene transition */
