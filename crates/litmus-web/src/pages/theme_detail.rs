@@ -15,7 +15,7 @@ static ANSI_NAMES: &[&str] = &[
 
 /// Single theme detail page — all scenes rendered vertically.
 #[component]
-pub fn ThemeDetail(slug: String) -> Element {
+pub fn ThemeDetail(provider: String, slug: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
     // Only shows themes available for the active provider. Themes unavailable for
     // the current provider show "not found" — the browse page blocks navigation to
@@ -344,7 +344,7 @@ pub fn ThemeDetail(slug: String) -> Element {
                 div {
                     h2 { "Theme not found" }
                     p { "No theme matches \"{slug}\"." }
-                    Link { to: crate::Route::ThemeList {}, class: "accent-link", "Back to all themes" }
+                    Link { to: crate::Route::ThemeList { provider: active_provider.read().0.clone() }, class: "accent-link", "Back to all themes" }
                 }
             }
         }

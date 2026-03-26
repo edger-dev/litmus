@@ -22,14 +22,52 @@ fn main() {
 #[derive(Routable, Clone, PartialEq)]
 pub enum Route {
     #[layout(Shell)]
+    #[nest("/:provider")]
+        #[route("/")]
+        ThemeList { provider: String },
+        #[route("/theme/:slug")]
+        ThemeDetail { provider: String, slug: String },
+        #[route("/scene/:scene_id")]
+        SceneAcrossThemes { provider: String, scene_id: String },
+        #[route("/compare/:slugs")]
+        CompareThemes { provider: String, slugs: String },
+    #[end_nest]
+    #[end_layout]
     #[route("/")]
-    ThemeList {},
-    #[route("/theme/:slug")]
-    ThemeDetail { slug: String },
-    #[route("/scene/:scene_id")]
-    SceneAcrossThemes { scene_id: String },
-    #[route("/compare/:slugs")]
-    CompareThemes { slugs: String },
+    Root {},
+}
+
+/// Redirect from bare `/` to the default provider.
+#[component]
+fn Root() -> Element {
+    let nav = navigator();
+    let default_provider = themes::available_providers().first().cloned().unwrap_or("kitty".into());
+    nav.replace(Route::ThemeList { provider: default_provider });
+    rsx! {}
+}
+
+impl Route {
+    /// Extract provider from the current route, if any.
+    pub fn provider(&self) -> Option<&str> {
+        match self {
+            Route::ThemeList { provider } => Some(provider),
+            Route::ThemeDetail { provider, .. } => Some(provider),
+            Route::SceneAcrossThemes { provider, .. } => Some(provider),
+            Route::CompareThemes { provider, .. } => Some(provider),
+            Route::Root {} => None,
+        }
+    }
+
+    /// Return same route with a different provider.
+    pub fn with_provider(&self, new_provider: &str) -> Route {
+        match self {
+            Route::ThemeList { .. } => Route::ThemeList { provider: new_provider.into() },
+            Route::ThemeDetail { slug, .. } => Route::ThemeDetail { provider: new_provider.into(), slug: slug.clone() },
+            Route::SceneAcrossThemes { scene_id, .. } => Route::SceneAcrossThemes { provider: new_provider.into(), scene_id: scene_id.clone() },
+            Route::CompareThemes { slugs, .. } => Route::CompareThemes { provider: new_provider.into(), slugs: slugs.clone() },
+            Route::Root {} => Route::ThemeList { provider: new_provider.into() },
+        }
+    }
 }
 
 /// Production screenshot manifest URL.

@@ -9,7 +9,7 @@ use crate::Route;
 
 /// Home page: theme card grid with inline filters.
 #[component]
-pub fn ThemeList() -> Element {
+pub fn ThemeList(provider: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
     let all_with_avail = themes::all_themes_with_availability(&active_provider.read().0);
     let mut filter = use_signal(FilterState::default);
@@ -127,6 +127,8 @@ pub fn ThemeList() -> Element {
 
 #[component]
 fn ThemeCard(theme: litmus_model::Theme, available: bool) -> Element {
+    let active_provider = use_context::<Signal<ActiveProvider>>();
+    let cur_provider = active_provider.read().0.clone();
     let bg = theme.background.to_hex();
     let fg = theme.foreground.to_hex();
     let slug = theme_slug(&theme.name);
@@ -146,7 +148,7 @@ fn ThemeCard(theme: litmus_model::Theme, available: bool) -> Element {
 
             if available {
                 Link {
-                    to: Route::ThemeDetail { slug: slug.clone() },
+                    to: Route::ThemeDetail { provider: cur_provider.clone(), slug: slug.clone() },
                     class: "theme-card-link",
                     ThemeCardBody { theme: theme.clone(), available: true }
                 }

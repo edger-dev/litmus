@@ -21,7 +21,7 @@ fn random_index(max: usize) -> usize {
 /// Persistent left sidebar: navigation, shortlist management, CVD toggle.
 #[component]
 pub fn Sidebar() -> Element {
-    let mut active_provider = use_context::<Signal<ActiveProvider>>();
+    let active_provider = use_context::<Signal<ActiveProvider>>();
     let provider = active_provider.read().0.clone();
     let all_themes = themes::themes_for_provider(&provider);
     let providers = themes::available_providers();
@@ -78,10 +78,10 @@ pub fn Sidebar() -> Element {
     let all_slugs: Vec<String> = all_themes.iter().map(|t| theme_slug(&t.name)).collect();
 
     // Determine which nav item is active based on current route
-    let is_browse_active = matches!(current_route, Route::ThemeList {});
+    let is_browse_active = matches!(current_route, Route::ThemeList { .. });
     let is_compare_active = matches!(current_route, Route::CompareThemes { .. } | Route::SceneAcrossThemes { .. });
     let detail_slug = match &current_route {
-        Route::ThemeDetail { slug } => Some(slug.clone()),
+        Route::ThemeDetail { slug, .. } => Some(slug.clone()),
         _ => None,
     };
 
@@ -94,7 +94,7 @@ pub fn Sidebar() -> Element {
             // Header
             div { class: "sidebar-header",
                 div { class: "sidebar-header-row",
-                    Link { to: Route::ThemeList {}, class: "sidebar-logo",
+                    Link { to: Route::ThemeList { provider: provider.clone() }, class: "sidebar-logo",
                         img {
                             class: "sidebar-logo-icon",
                             src: asset!("assets/litmus-icon.svg"),
@@ -114,14 +114,12 @@ pub fn Sidebar() -> Element {
                 div { class: "sidebar-provider-buttons",
                     for p in providers.iter() {
                         {
-                            let p_clone = p.clone();
                             let is_active = *p == provider;
+                            let new_route = current_route.with_provider(p);
                             rsx! {
-                                button {
+                                Link {
+                                    to: new_route,
                                     class: if is_active { "provider-btn provider-btn-active" } else { "provider-btn" },
-                                    onclick: move |_| {
-                                        active_provider.set(ActiveProvider(p_clone.clone()));
-                                    },
                                     "{p}"
                                 }
                             }
@@ -133,14 +131,14 @@ pub fn Sidebar() -> Element {
             // Nav links
             div { class: "sidebar-section sidebar-nav",
                 Link {
-                    to: Route::ThemeList {},
+                    to: Route::ThemeList { provider: provider.clone() },
                     class: if is_browse_active { "sidebar-nav-link active" } else { "sidebar-nav-link" },
                     onclick: move |_| sidebar_open.set(SidebarOpen(false)),
                     "Browse Themes"
                 }
                 if has_shortlist {
                     Link {
-                        to: Route::CompareThemes { slugs: compare_url.clone() },
+                        to: Route::CompareThemes { provider: provider.clone(), slugs: compare_url.clone() },
                         class: if is_compare_active { "sidebar-nav-link active" } else { "sidebar-nav-link" },
                         onclick: move |_| sidebar_open.set(SidebarOpen(false)),
                         "{compare_label}"
@@ -177,7 +175,8 @@ pub fn Sidebar() -> Element {
                                     let random_slug2 = candidates[idx2].clone();
                                     format!("{},{}", random_slug, random_slug2)
                                 };
-                                nav.push(Route::CompareThemes { slugs: compare });
+                                let p = active_provider.read().0.clone();
+                                nav.push(Route::CompareThemes { provider: p, slugs: compare });
                             }
                         },
                         "{compare_label}"
@@ -202,7 +201,7 @@ pub fn Sidebar() -> Element {
                                     div {
                                         class: if is_viewing { "sidebar-shortlist-item sidebar-shortlist-current sidebar-shortlist-viewing" } else { "sidebar-shortlist-item sidebar-shortlist-current" },
                                         Link {
-                                            to: Route::ThemeDetail { slug: app_s.clone() },
+                                            to: Route::ThemeDetail { provider: provider.clone(), slug: app_s.clone() },
                                             class: "sidebar-shortlist-name-link",
                                             onclick: move |_| sidebar_open.set(SidebarOpen(false)),
                                             span { class: "sidebar-shortlist-name", "{name}" }
@@ -226,7 +225,7 @@ pub fn Sidebar() -> Element {
                                     div {
                                         class: if is_viewing { "sidebar-shortlist-item sidebar-shortlist-viewing" } else { "sidebar-shortlist-item" },
                                         Link {
-                                            to: Route::ThemeDetail { slug: slug_link },
+                                            to: Route::ThemeDetail { provider: provider.clone(), slug: slug_link },
                                             class: "sidebar-shortlist-name-link",
                                             onclick: move |_| sidebar_open.set(SidebarOpen(false)),
                                             span { class: "sidebar-shortlist-name", "{name}" }
@@ -248,10 +247,11 @@ pub fn Sidebar() -> Element {
                                                             new_slugs.push(s.clone());
                                                         }
                                                     }
+                                                    let p = active_provider.read().0.clone();
                                                     if new_slugs.len() >= 2 {
-                                                        nav.replace(Route::CompareThemes { slugs: new_slugs.join(",") });
+                                                        nav.replace(Route::CompareThemes { provider: p, slugs: new_slugs.join(",") });
                                                     } else {
-                                                        nav.replace(Route::ThemeList {});
+                                                        nav.replace(Route::ThemeList { provider: p });
                                                     }
                                                 }
                                             },
@@ -270,7 +270,8 @@ pub fn Sidebar() -> Element {
                                 onclick: move |_| {
                                     shortlist.write().0.clear();
                                     if is_compare_active {
-                                        nav.replace(Route::ThemeList {});
+                                        let p = active_provider.read().0.clone();
+                                        nav.replace(Route::ThemeList { provider: p });
                                     }
                                 },
                                 "Clear"

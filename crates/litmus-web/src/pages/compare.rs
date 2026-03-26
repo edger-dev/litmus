@@ -16,7 +16,7 @@ static ANSI_NAMES: &[&str] = &[
 
 /// Multi-theme comparison (2-4 themes side by side).
 #[component]
-pub fn CompareThemes(slugs: String) -> Element {
+pub fn CompareThemes(provider: String, slugs: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
     let provider = active_provider.read().0.clone();
     let all_themes = themes::themes_for_provider(&provider);
@@ -39,7 +39,7 @@ pub fn CompareThemes(slugs: String) -> Element {
             div {
                 h2 { "No themes found" }
                 p { "Could not find any matching themes." }
-                Link { to: Route::ThemeList {}, class: "accent-link", "Back to all themes" }
+                Link { to: Route::ThemeList { provider: provider.clone() }, class: "accent-link", "Back to all themes" }
             }
         };
     }
@@ -74,6 +74,7 @@ pub fn CompareThemes(slugs: String) -> Element {
                     div { class: "compare-column-header",
                         Link {
                             to: Route::ThemeDetail {
+                                provider: provider.clone(),
                                 slug: theme_slug(&theme.name),
                             },
                             class: "compare-column-header-link",

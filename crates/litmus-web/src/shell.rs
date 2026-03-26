@@ -81,7 +81,15 @@ pub fn Shell() -> Element {
     let sidebar_open = use_context::<Signal<SidebarOpen>>();
     let is_open = sidebar_open.read().0;
 
-    let active_provider = use_context::<Signal<ActiveProvider>>();
+    let mut active_provider = use_context::<Signal<ActiveProvider>>();
+
+    // Sync URL provider → ActiveProvider signal
+    let current_route = use_route::<Route>();
+    if let Some(url_provider) = current_route.provider()
+        && active_provider.read().0 != url_provider
+    {
+        active_provider.set(ActiveProvider(url_provider.to_string()));
+    }
 
     // Apply app theme via CSS custom properties
     use_effect(move || {

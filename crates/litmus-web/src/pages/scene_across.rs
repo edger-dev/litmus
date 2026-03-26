@@ -9,7 +9,7 @@ use crate::Route;
 
 /// Fixture-centric view: one fixture rendered across all themes in a grid.
 #[component]
-pub fn SceneAcrossThemes(scene_id: String) -> Element {
+pub fn SceneAcrossThemes(provider: String, scene_id: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
     let all_themes = themes::themes_for_provider(&active_provider.read().0);
     let all_fixtures = fixtures::all_fixtures();
@@ -27,7 +27,7 @@ pub fn SceneAcrossThemes(scene_id: String) -> Element {
                     div { class: "scene-tabs scene-tabs-margin",
                         for f in all_fixtures {
                             Link {
-                                to: Route::SceneAcrossThemes { scene_id: f.id.clone() },
+                                to: Route::SceneAcrossThemes { provider: provider.clone(), scene_id: f.id.clone() },
                                 class: if f.id == fixture.id { "scene-tab scene-tab-active" } else { "scene-tab" },
                                 "{f.name}"
                             }
@@ -43,6 +43,7 @@ pub fn SceneAcrossThemes(scene_id: String) -> Element {
                                         div { class: "scene-grid-card-header",
                                             Link {
                                                 to: Route::ThemeDetail {
+                                                    provider: provider.clone(),
                                                     slug: theme_slug(&theme.name),
                                                 },
                                                 class: "accent-link scene-grid-theme-name",
@@ -71,7 +72,7 @@ pub fn SceneAcrossThemes(scene_id: String) -> Element {
                 div {
                     h2 { "Fixture not found" }
                     p { "No fixture matches \"{scene_id}\"." }
-                    Link { to: Route::ThemeList {}, class: "accent-link", "Back to all themes" }
+                    Link { to: Route::ThemeList { provider: provider.clone() }, class: "accent-link", "Back to all themes" }
                 }
             }
         }
