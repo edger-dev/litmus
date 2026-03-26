@@ -812,6 +812,30 @@ button.sidebar-feel-lucky:hover {
   opacity: 0.7;
 }
 
+.detail-issues-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.detail-issue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-muted);
+}
+
+.detail-issue-chip-ratio {
+  font-weight: 600;
+  color: var(--app-error);
+}
+
 .detail-issues-count {
   font-size: 0.8rem;
 }

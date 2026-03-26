@@ -38,12 +38,16 @@ pub fn ThemeDetail(slug: String) -> Element {
 
             let issues = litmus_model::contrast::validate_fixtures_contrast(all_fixtures, &theme);
 
-            // Count unique color-pair violations (not total spans)
-            let unique_issues: std::collections::HashSet<(String, String)> = issues
-                .iter()
-                .map(|i| (i.fg.to_hex(), i.bg.to_hex()))
-                .collect();
-            let issue_count = unique_issues.len();
+            // Deduplicate issues by unique (fg, bg) color pair
+            let mut seen = std::collections::HashSet::new();
+            let mut unique_issue_list: Vec<(String, String, f64)> = Vec::new();
+            for i in &issues {
+                let key = (i.fg.to_hex(), i.bg.to_hex());
+                if seen.insert(key.clone()) {
+                    unique_issue_list.push((key.0, key.1, i.ratio));
+                }
+            }
+            let issue_count = unique_issue_list.len();
             let fg_bg_ratio = litmus_model::contrast::contrast_ratio(
                 &theme.foreground, &theme.background,
             );
@@ -127,6 +131,25 @@ pub fn ThemeDetail(slug: String) -> Element {
                         }
                         ShortlistCheckbox { slug: this_slug.clone(), name: theme.name.clone() }
                         UseAsAppThemeButton { slug: this_slug.clone() }
+
+                        if issue_count > 0 {
+                            div { class: "detail-issues-list",
+                                for (fg_hex, bg_hex, ratio) in &unique_issue_list {
+                                    span { class: "detail-issue-chip",
+                                        span {
+                                            class: "color-chip",
+                                            style: "background: {fg_hex};",
+                                        }
+                                        " on "
+                                        span {
+                                            class: "color-chip",
+                                            style: "background: {bg_hex};",
+                                        }
+                                        span { class: "detail-issue-chip-ratio", " {ratio:.1}:1" }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     // All fixtures rendered as side-by-side (terminal output + screenshot)
