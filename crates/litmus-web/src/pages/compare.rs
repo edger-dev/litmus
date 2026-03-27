@@ -131,6 +131,28 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
         .map(|theme| compute_theme_contrast(theme, all_fixtures))
         .collect();
 
+    // Publish per-theme issue dots to context for the sidebar minimap
+    let mut compare_dots = use_context::<Signal<CompareIssueDots>>();
+    let dots: HashMap<String, Vec<(String, String, usize)>> = {
+        let mut map: HashMap<String, Vec<(String, String, usize)>> = HashMap::new();
+        for fixture in all_fixtures {
+            let mut entries = Vec::new();
+            for (theme, cdata) in compare_themes.iter().zip(contrast_data.iter()) {
+                let count = cdata.issues_per_fixture
+                    .get(&fixture.id)
+                    .map(|v| unique_issue_count(v))
+                    .unwrap_or(0);
+                entries.push((theme.name.clone(), theme.foreground.to_hex(), count));
+            }
+            map.insert(fixture.id.clone(), entries);
+        }
+        map
+    };
+    let new_dots = CompareIssueDots(dots);
+    if *compare_dots.read() != new_dots {
+        compare_dots.set(new_dots);
+    }
+
     let n = compare_themes.len();
     let grid_cols = format!("repeat({n}, 1fr)");
     let screenshots_on = *show_screenshots.read();

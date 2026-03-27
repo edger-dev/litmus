@@ -56,6 +56,11 @@ pub struct VisibleScenes(pub std::collections::HashSet<String>);
 #[derive(Clone, Default)]
 pub struct SceneIssueCounts(pub std::collections::HashMap<String, usize>);
 
+/// Per-scene, per-theme contrast issue dots for compare mode.
+/// fixture_id → Vec<(theme_name, hex_color, issue_count)>
+#[derive(Clone, Default, PartialEq)]
+pub struct CompareIssueDots(pub std::collections::HashMap<String, Vec<(String, String, usize)>>);
+
 /// Mobile sidebar drawer state.
 #[derive(Clone, Default)]
 pub struct SidebarOpen(pub bool);

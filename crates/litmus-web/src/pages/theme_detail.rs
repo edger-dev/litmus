@@ -71,6 +71,11 @@ pub fn ThemeDetail(provider: String, slug: String) -> Element {
             }
 
             // Publish per-fixture unique issue counts to context for the minimap
+            // Clear compare dots (we're on detail page, not compare)
+            let mut compare_dots = use_context::<Signal<CompareIssueDots>>();
+            if !compare_dots.read().0.is_empty() {
+                compare_dots.set(CompareIssueDots::default());
+            }
             let mut scene_issue_counts = use_context::<Signal<SceneIssueCounts>>();
             let counts: std::collections::HashMap<String, usize> = issues_per_fixture
                 .iter()

@@ -468,8 +468,11 @@ pub fn SceneMinimap(items: Vec<(String, String)>, #[props(default = true)] show_
         }
     });
 
+    let compare_dots = use_context::<Signal<CompareIssueDots>>();
     let visible_set = visible.read().0.clone();
     let issue_counts = scene_issue_counts.read().0.clone();
+    let dots_map = compare_dots.read().0.clone();
+    let has_compare_dots = !dots_map.is_empty();
 
     rsx! {
         nav { class: "scene-minimap",
@@ -479,6 +482,7 @@ pub fn SceneMinimap(items: Vec<(String, String)>, #[props(default = true)] show_
                     let is_visible = visible_set.contains(id);
                     let item_id = id.clone();
                     let issue_count = issue_counts.get(id).copied().unwrap_or(0);
+                    let theme_dots = dots_map.get(id).cloned().unwrap_or_default();
                     rsx! {
                         button {
                             class: if is_visible { "scene-minimap-item scene-minimap-item-active" } else { "scene-minimap-item" },
@@ -490,7 +494,19 @@ pub fn SceneMinimap(items: Vec<(String, String)>, #[props(default = true)] show_
                                 eval(&js);
                             },
                             "{name}"
-                            if show_badges && issue_count > 0 {
+                            if show_badges && has_compare_dots {
+                                span { class: "minimap-dots",
+                                    for (_theme_name, hex_color, count) in &theme_dots {
+                                        if *count > 0 {
+                                            span {
+                                                class: "minimap-dot",
+                                                style: "background: {hex_color};",
+                                                title: "{_theme_name}: {count}",
+                                            }
+                                        }
+                                    }
+                                }
+                            } else if show_badges && issue_count > 0 {
                                 span { class: "scene-tab-badge", "{issue_count}" }
                             }
                         }

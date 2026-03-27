@@ -1725,6 +1725,21 @@ select:focus-visible {
   background: var(--app-active);
 }
 
+.minimap-dots {
+  display: inline-flex;
+  gap: 3px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+.minimap-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    Mobile (<=768px)
    ========================================================================== */
