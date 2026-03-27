@@ -5,7 +5,8 @@ status: completed
 type: bug
 priority: high
 created_at: 2026-03-26T14:51:07Z
-updated_at: 2026-03-26T14:58:23Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzw
 ---
 
 The contrast validation logic exists (validate_fixtures_contrast in theme_detail.rs) and shows count badges, but inline marking on the actual rendered text spans is missing/regressed. Need to highlight the specific TermSpan elements that fail contrast rules.

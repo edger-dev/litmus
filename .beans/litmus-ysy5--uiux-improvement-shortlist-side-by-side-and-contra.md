@@ -1,11 +1,12 @@
 ---
 # litmus-ysy5
 title: 'UI/UX improvement: shortlist, side-by-side, and contrast issues'
-status: in-progress
+status: completed
 type: epic
 priority: normal
 created_at: 2026-03-26T17:46:47Z
-updated_at: 2026-03-27T04:58:52Z
+updated_at: 2026-03-27T15:45:47Z
+order: "N"
 ---
 
 The side-by-side compare page is missing contrast issue indicators — one of the project's killer features. The current shortlist/compare coupling creates UX friction: shortlist is limited to 5, compare gets messy with many themes, and users may confuse the two concepts.

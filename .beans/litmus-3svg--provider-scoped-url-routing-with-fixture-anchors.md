@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-26T14:51:18Z
-updated_at: 2026-03-26T16:26:46Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzzs
 ---
 
 Restructure URL routing to include the provider and support fixture-level deep links.

@@ -5,7 +5,8 @@ status: completed
 type: task
 priority: normal
 created_at: 2026-03-26T15:26:46Z
-updated_at: 2026-03-26T15:27:16Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzzzzw
 ---
 
 Reorder the fixture list so the most visually informative fixtures appear first. Current order is arbitrary (roughly insertion order). New order prioritizes showing theme character at a glance.

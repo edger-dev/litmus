@@ -5,7 +5,8 @@ status: completed
 type: epic
 priority: normal
 created_at: 2026-03-26T15:42:23Z
-updated_at: 2026-03-26T17:08:57Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzy
 ---
 
 End-to-end setup to serve screenshot images from Cloudflare R2 at screenshots.litmus.edger.dev. Includes bucket creation, custom domain, rclone-based upload sync, cache headers, and manifest deployment. Approach: local capture → rclone sync to R2 → served via custom domain with aggressive caching on images (immutable, 1yr) and short TTL (60s) on manifest.json.

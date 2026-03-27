@@ -5,7 +5,8 @@ status: completed
 type: feature
 priority: normal
 created_at: 2026-03-26T14:51:28Z
-updated_at: 2026-03-26T15:06:30Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzzw
 ---
 
 Add a sticky toolbar at the top of the content area so page controls remain accessible when scrolling.

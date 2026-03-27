@@ -5,7 +5,8 @@ status: completed
 type: bug
 priority: normal
 created_at: 2026-03-26T17:10:30Z
-updated_at: 2026-03-27T07:42:02Z
+updated_at: 2026-03-27T15:45:47Z
+order: zzzzz
 ---
 
 Cache rules created under the correct zone for screenshots.litmus.edger.dev but cf-cache-status remains DYNAMIC on all requests. Images and manifest serve correctly, just not being cached at the edge.
