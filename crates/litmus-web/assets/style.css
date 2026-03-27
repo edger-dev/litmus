@@ -892,6 +892,25 @@ button.sidebar-feel-lucky:hover {
   font-size: 0.8rem;
 }
 
+.issue-chip-count {
+  font-size: 0.6rem;
+  font-weight: 700;
+  min-width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--app-error);
+  color: var(--app-bg);
+  margin-left: 0.15rem;
+}
+
+.detail-issue-chip-active .issue-chip-count {
+  background: var(--app-bg);
+  color: var(--app-error);
+}
+
 
 /* Color palette */
 .color-palette {
@@ -1269,7 +1288,15 @@ button.sidebar-feel-lucky:hover {
   font-weight: 600;
 }
 
+.compare-column-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .compare-column-header-link {
+  flex: 1;
+  text-align: center;
   color: var(--app-fg);
   text-decoration: none;
 }
@@ -1282,7 +1309,7 @@ button.sidebar-feel-lucky:hover {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
 .compare-readability {
@@ -1297,6 +1324,13 @@ button.sidebar-feel-lucky:hover {
   border-radius: 8px;
   background: var(--app-error);
   color: var(--app-bg);
+}
+
+.compare-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .compare-grid {

@@ -188,6 +188,7 @@ pub fn ThemeDetail(provider: String, slug: String) -> Element {
                                         let rule_id = rule.id.clone();
                                         let rule_id_click = rule.id.clone();
                                         let fixtures_for_rule = fixtures_per_rule.get(&rule.id).cloned().unwrap_or_default();
+                                        let fixture_count = fixtures_for_rule.len();
                                         let is_active = focused_rule_id.as_ref() == Some(&rule.id);
                                         let chip_class = if is_active {
                                             "detail-issue-chip detail-issue-chip-active"
@@ -237,6 +238,9 @@ pub fn ThemeDetail(provider: String, slug: String) -> Element {
                                                     style: "background: {rule.bg_hex};",
                                                 }
                                                 span { class: "detail-issue-chip-ratio", " {rule.ratio:.1}:1" }
+                                                if fixture_count > 0 {
+                                                    span { class: "issue-chip-count", "{fixture_count}" }
+                                                }
                                             }
                                         }
                                     }

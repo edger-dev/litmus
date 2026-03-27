@@ -85,6 +85,14 @@ pub fn Sidebar() -> Element {
         Route::ThemeDetail { slug, .. } => Some(slug.clone()),
         _ => None,
     };
+    let compare_slugs: Vec<String> = match &current_route {
+        Route::CompareThemes { slugs, .. } => slugs
+            .split(',')
+            .filter(|s| !s.is_empty())
+            .map(|s| s.to_string())
+            .collect(),
+        _ => Vec::new(),
+    };
 
     rsx! {
         aside {
@@ -117,11 +125,33 @@ pub fn Sidebar() -> Element {
                         {
                             let is_active = *p == provider;
                             let p_name = p.clone();
-                            // Check if current theme is available in target provider
+                            // Check if current theme(s) are available in target provider
                             let detail_slug_for_check = detail_slug.clone();
-                            let is_available = detail_slug_for_check.as_ref()
-                                .map(|slug| themes::theme_available_for_provider(slug, &p_name))
-                                .unwrap_or(true); // non-detail pages: always available
+                            let compare_slugs_for_check = compare_slugs.clone();
+                            let missing_names: Vec<String> = if let Some(slug) = detail_slug_for_check.as_ref() {
+                                if themes::theme_available_for_provider(slug, &p_name) {
+                                    Vec::new()
+                                } else {
+                                    let name = all_themes.iter()
+                                        .find(|t| theme_slug(&t.name) == *slug)
+                                        .map(|t| t.name.clone())
+                                        .unwrap_or_else(|| slug.clone());
+                                    vec![name]
+                                }
+                            } else {
+                                compare_slugs_for_check.iter().filter_map(|slug| {
+                                    if themes::theme_available_for_provider(slug, &p_name) {
+                                        None
+                                    } else {
+                                        // Use current provider's theme list for the display name
+                                        Some(all_themes.iter()
+                                            .find(|t| theme_slug(&t.name) == *slug)
+                                            .map(|t| t.name.clone())
+                                            .unwrap_or_else(|| slug.clone()))
+                                    }
+                                }).collect()
+                            };
+                            let is_available = missing_names.is_empty();
                             let btn_class = if is_active {
                                 "provider-btn provider-btn-active"
                             } else if !is_available {
@@ -142,16 +172,18 @@ pub fn Sidebar() -> Element {
                                 rsx! {
                                     button {
                                         class: "{btn_class}",
-                                        onclick: move |_| {
-                                            alert.set(AlertMessage(Some(
-                                                format!("This theme is not available for {p_name}")
-                                            )));
-                                            // Auto-dismiss after 3s
-                                            spawn(async move {
-                                                use dioxus::document::eval;
-                                                let _ = eval("await new Promise(r => setTimeout(r, 3000))").await;
-                                                alert.set(AlertMessage(None));
-                                            });
+                                        onclick: {
+                                            let missing = missing_names.join(", ");
+                                            move |_| {
+                                                let msg = format!("{missing} not available for {p_name}");
+                                                alert.set(AlertMessage(Some(msg)));
+                                                // Auto-dismiss after 3s
+                                                spawn(async move {
+                                                    use dioxus::document::eval;
+                                                    let _ = eval("await new Promise(r => setTimeout(r, 3000))").await;
+                                                    alert.set(AlertMessage(None));
+                                                });
+                                            }
                                         },
                                         "{p_name}"
                                     }
