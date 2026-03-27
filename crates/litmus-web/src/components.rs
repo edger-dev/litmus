@@ -493,21 +493,27 @@ pub fn SceneMinimap(items: Vec<(String, String)>, #[props(default = true)] show_
                                 );
                                 eval(&js);
                             },
-                            "{name}"
+                            span { class: "minimap-label", "{name}" }
                             if show_badges && has_compare_dots {
-                                span { class: "minimap-dots",
-                                    for (_theme_name, hex_color, count) in &theme_dots {
+                                span { class: "minimap-badges",
+                                    for (theme_name, _hex_color, count) in &theme_dots {
                                         if *count > 0 {
                                             span {
-                                                class: "minimap-dot",
-                                                style: "background: {hex_color};",
-                                                title: "{_theme_name}: {count}",
+                                                class: "minimap-badge minimap-badge-error",
+                                                title: "{theme_name}: {count}",
+                                                "{count}"
                                             }
+                                        } else {
+                                            span { class: "minimap-badge minimap-badge-empty" }
                                         }
                                     }
                                 }
                             } else if show_badges && issue_count > 0 {
-                                span { class: "scene-tab-badge", "{issue_count}" }
+                                span { class: "minimap-badges",
+                                    span { class: "minimap-badge minimap-badge-error",
+                                        "{issue_count}"
+                                    }
+                                }
                             }
                         }
                     }
