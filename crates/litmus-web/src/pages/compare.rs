@@ -1,10 +1,12 @@
+use std::collections::{HashMap, HashSet};
+
 use dioxus::prelude::*;
 
-use crate::components::ColorSwatch;
+use crate::components::{ColorSwatch, ScoreRing};
 use crate::fixtures;
 use crate::screenshot_view::{has_screenshot_for_provider, ScreenshotImage};
 use crate::state::*;
-use crate::term_renderer;
+use crate::term_renderer::{self, build_issue_registry, SpanIssueDetail};
 use crate::themes;
 use crate::Route;
 
@@ -13,6 +15,67 @@ static ANSI_NAMES: &[&str] = &[
     "bright black", "bright red", "bright green", "bright yellow",
     "bright blue", "bright magenta", "bright cyan", "bright white",
 ];
+
+/// Pre-computed contrast data for a single theme.
+struct ThemeContrastData {
+    readability: u8,
+    issue_count: usize,
+    /// Per-fixture issue details: fixture_id → Vec<(line, span, detail)>
+    issues_per_fixture: HashMap<String, Vec<(usize, usize, SpanIssueDetail)>>,
+}
+
+fn compute_theme_contrast(
+    theme: &litmus_model::Theme,
+    all_fixtures: &[litmus_model::term_output::TermOutput],
+) -> ThemeContrastData {
+    let issues = litmus_model::contrast::validate_fixtures_contrast(all_fixtures, theme);
+    let (_rules, id_map) = build_issue_registry(&issues);
+    let readability =
+        litmus_model::contrast::term_readability_score(theme, all_fixtures) as u8;
+
+    let mut issues_per_fixture: HashMap<String, Vec<(usize, usize, SpanIssueDetail)>> =
+        HashMap::new();
+    for issue in &issues {
+        let rule_id = id_map.get(&(issue.fg_term, issue.bg_term)).cloned();
+        issues_per_fixture
+            .entry(issue.fixture_id.clone())
+            .or_default()
+            .push((
+                issue.line,
+                issue.span,
+                SpanIssueDetail {
+                    rule_id,
+                    ratio: issue.ratio,
+                    threshold: issue.threshold,
+                    fg_hex: issue.fg.to_hex(),
+                    bg_hex: issue.bg.to_hex(),
+                },
+            ));
+    }
+
+    let issue_count = {
+        let unique: HashSet<Option<&str>> = issues_per_fixture
+            .values()
+            .flat_map(|v| v.iter().map(|(_, _, d)| d.rule_id.as_deref()))
+            .collect();
+        unique.len()
+    };
+
+    ThemeContrastData {
+        readability,
+        issue_count,
+        issues_per_fixture,
+    }
+}
+
+/// Count unique contrast rules in a fixture's issue list.
+fn unique_issue_count(issues: &[(usize, usize, SpanIssueDetail)]) -> usize {
+    let unique: HashSet<Option<&str>> = issues
+        .iter()
+        .map(|(_, _, d)| d.rule_id.as_deref())
+        .collect();
+    unique.len()
+}
 
 /// Multi-theme comparison (2-4 themes side by side).
 #[component]
@@ -44,6 +107,12 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
         };
     }
 
+    // Compute contrast data for each theme
+    let contrast_data: Vec<ThemeContrastData> = compare_themes
+        .iter()
+        .map(|theme| compute_theme_contrast(theme, all_fixtures))
+        .collect();
+
     let n = compare_themes.len();
     let grid_cols = format!("repeat({n}, 1fr)");
     let screenshots_on = *show_screenshots.read();
@@ -68,9 +137,9 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                 }
             }
 
-            // Sticky column headers with theme names
+            // Sticky column headers with theme names + readability
             div { class: "compare-column-headers",
-                for theme in &compare_themes {
+                for (theme, cdata) in compare_themes.iter().zip(contrast_data.iter()) {
                     div { class: "compare-column-header",
                         Link {
                             to: Route::ThemeDetail {
@@ -80,48 +149,83 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                             class: "compare-column-header-link",
                             "{theme.name}"
                         }
+                        div { class: "compare-column-meta",
+                            ScoreRing { score: cdata.readability, size: 22.0 }
+                            span { class: "mono compare-readability", "{cdata.readability}%" }
+                            if cdata.issue_count > 0 {
+                                span { class: "compare-issue-count text-error",
+                                    "{cdata.issue_count}"
+                                }
+                            }
+                        }
                     }
                 }
             }
 
             for fixture in all_fixtures {
-                div { class: "compare-scene-group",
-                    id: "scene-{fixture.id}",
-                    h3 { class: "compare-scene-name", "{fixture.name}" }
+                {
+                    // Compute per-theme issue counts for this fixture's header badge
+                    let fixture_issue_counts: Vec<usize> = contrast_data.iter().map(|cd| {
+                        cd.issues_per_fixture.get(&fixture.id)
+                            .map(|v| unique_issue_count(v))
+                            .unwrap_or(0)
+                    }).collect();
+                    let max_fixture_issues = fixture_issue_counts.iter().copied().max().unwrap_or(0);
 
-                    div { class: "compare-grid",
-                        for theme in &compare_themes {
-                            div { class: "compare-grid-item",
-                                if screenshots_on {
-                                    {
-                                        let t_slug = theme_slug(&theme.name);
-                                        let has_screenshot = has_screenshot_for_provider(
-                                            &manifest_state.read().0,
-                                            &provider,
-                                            &t_slug,
-                                            &fixture.id,
-                                        );
-                                        if has_screenshot {
-                                            rsx! {
-                                                ScreenshotImage {
-                                                    theme_slug: t_slug,
-                                                    fixture_id: fixture.id.clone(),
-                                                    provider: provider.clone(),
+                    rsx! {
+                        div { class: "compare-scene-group",
+                            id: "scene-{fixture.id}",
+                            h3 { class: "compare-scene-name",
+                                "{fixture.name}"
+                                if max_fixture_issues > 0 {
+                                    span { class: "scene-tab-badge", "{max_fixture_issues}" }
+                                }
+                            }
+
+                            div { class: "compare-grid",
+                                for (theme, cdata) in compare_themes.iter().zip(contrast_data.iter()) {
+                                    div { class: "compare-grid-item",
+                                        if screenshots_on {
+                                            {
+                                                let t_slug = theme_slug(&theme.name);
+                                                let has_screenshot = has_screenshot_for_provider(
+                                                    &manifest_state.read().0,
+                                                    &provider,
+                                                    &t_slug,
+                                                    &fixture.id,
+                                                );
+                                                if has_screenshot {
+                                                    rsx! {
+                                                        ScreenshotImage {
+                                                            theme_slug: t_slug,
+                                                            fixture_id: fixture.id.clone(),
+                                                            provider: provider.clone(),
+                                                        }
+                                                    }
+                                                } else {
+                                                    rsx! {
+                                                        div { class: "compare-screenshot-placeholder",
+                                                            "No screenshot"
+                                                        }
+                                                    }
                                                 }
                                             }
                                         } else {
-                                            rsx! {
-                                                div { class: "compare-screenshot-placeholder",
-                                                    "No screenshot"
+                                            {
+                                                let fixture_issues = cdata.issues_per_fixture
+                                                    .get(&fixture.id)
+                                                    .cloned()
+                                                    .unwrap_or_default();
+                                                rsx! {
+                                                    term_renderer::TermOutputView {
+                                                        theme: theme.clone(),
+                                                        output: fixture.clone(),
+                                                        compact: n > 2,
+                                                        issue_details: fixture_issues,
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
-                                } else {
-                                    term_renderer::TermOutputView {
-                                        theme: theme.clone(),
-                                        output: fixture.clone(),
-                                        compact: n > 2,
                                     }
                                 }
                             }

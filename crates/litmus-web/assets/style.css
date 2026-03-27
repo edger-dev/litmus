@@ -1278,6 +1278,27 @@ button.sidebar-feel-lucky:hover {
   color: var(--app-accent);
 }
 
+.compare-column-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.compare-readability {
+  font-size: 0.7rem;
+  color: var(--app-muted);
+}
+
+.compare-issue-count {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.05rem 0.35rem;
+  border-radius: 8px;
+  background: var(--app-error);
+  color: var(--app-bg);
+}
+
 .compare-grid {
   display: grid;
   grid-template-columns: var(--compare-cols);
