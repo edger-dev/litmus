@@ -1,7 +1,7 @@
 use litmus_model::cvd::CvdType;
 use litmus_model::screenshot::ScreenshotManifest;
 
-pub const MAX_COMPARE: usize = 3;
+pub const MAX_COMPARE: usize = 2;
 pub const MAX_FAVORITES: usize = 20;
 
 /// Global favorites state — stores slugs of themes the user has starred.

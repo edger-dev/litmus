@@ -1155,6 +1155,33 @@ button.sidebar-feel-lucky:hover {
 }
 
 /* ==========================================================================
+   Compare button (on cards / detail)
+   ========================================================================== */
+.compare-btn {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.2rem;
+  background: transparent;
+  color: var(--app-fg);
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.compare-btn:hover {
+  border-color: var(--app-accent);
+  background: var(--app-active);
+}
+
+.compare-btn-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ==========================================================================
    Export
    ========================================================================== */
 .export-section {
@@ -1271,7 +1298,7 @@ button.sidebar-feel-lucky:hover {
 
 .compare-column-headers {
   display: grid;
-  grid-template-columns: var(--compare-cols);
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   position: sticky;
   top: 3rem;
@@ -1305,6 +1332,24 @@ button.sidebar-feel-lucky:hover {
   color: var(--app-accent);
 }
 
+.compare-theme-picker {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 0.2rem 0.4rem;
+  background: var(--app-bg);
+  color: var(--app-fg);
+  border: 1px solid var(--app-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.compare-theme-picker:hover {
+  border-color: var(--app-accent);
+}
+
 .compare-column-meta {
   display: flex;
   align-items: center;
@@ -1335,7 +1380,7 @@ button.sidebar-feel-lucky:hover {
 
 .compare-grid {
   display: grid;
-  grid-template-columns: var(--compare-cols);
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
 

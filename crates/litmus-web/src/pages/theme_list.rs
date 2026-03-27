@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::{ScoreRing, FavoritesCheckbox, UseAsAppThemeButton};
+use crate::components::{CompareButton, ScoreRing, FavoritesCheckbox, UseAsAppThemeButton};
 use crate::fixtures;
 use crate::term_renderer;
 use crate::state::*;
@@ -166,6 +166,7 @@ fn ThemeCard(theme: litmus_model::Theme, available: bool) -> Element {
                 if available {
                     span { class: "theme-card-actions-right",
                         FavoritesCheckbox { slug: slug.clone(), name: theme.name.clone() }
+                        CompareButton { slug: slug.clone() }
                         UseAsAppThemeButton { slug }
                     }
                 }

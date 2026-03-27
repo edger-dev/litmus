@@ -264,6 +264,30 @@ pub fn UseAsAppThemeButton(slug: String) -> Element {
     }
 }
 
+/// Button to compare a theme side-by-side with the current app theme.
+#[component]
+pub fn CompareButton(slug: String) -> Element {
+    let app_theme = use_context::<Signal<AppThemeSlug>>();
+    let active_provider = use_context::<Signal<ActiveProvider>>();
+    let app_slug = app_theme.read().0.clone().unwrap_or_else(|| "tokyo-night".to_string());
+    let is_current = app_slug == slug;
+
+    let slug_for_click = slug.clone();
+    rsx! {
+        Link {
+            class: if is_current { "compare-btn compare-btn-disabled" } else { "compare-btn" },
+            to: crate::Route::CompareThemes {
+                provider: active_provider.read().0.clone(),
+                slugs: format!("{},{}", app_slug, slug_for_click),
+            },
+            onclick: move |evt: Event<MouseData>| {
+                evt.stop_propagation();
+            },
+            "Compare"
+        }
+    }
+}
+
 /// CVD simulation selector.
 #[component]
 pub fn CvdSelector(cvd_signal: Signal<Option<CvdType>>) -> Element {

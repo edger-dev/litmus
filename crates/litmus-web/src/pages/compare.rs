@@ -93,7 +93,7 @@ fn unique_issue_count(issues: &[(usize, usize, SpanIssueDetail)]) -> usize {
     unique.len()
 }
 
-/// Multi-theme comparison (2-4 themes side by side).
+/// Side-by-side comparison of two themes.
 #[component]
 pub fn CompareThemes(provider: String, slugs: String) -> Element {
     let active_provider = use_context::<Signal<ActiveProvider>>();
@@ -103,6 +103,7 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
     let cvd_sim = use_context::<Signal<CvdSimulation>>();
     let cvd = cvd_sim.read().0;
     let manifest_state = use_context::<Signal<ManifestState>>();
+    let nav = navigator();
     let mut show_screenshots = use_signal(|| false);
     // Active issue state: (theme_index, rule_id, fixture_cycle_index)
     let mut active_issue: Signal<Option<(usize, String, usize)>> = use_signal(|| None);
@@ -124,6 +125,13 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
             }
         };
     }
+
+    // Build sorted theme list for the picker dropdowns
+    let mut picker_themes: Vec<(String, String)> = all_themes
+        .iter()
+        .map(|t| (theme_slug(&t.name), t.name.clone()))
+        .collect();
+    picker_themes.sort_by(|a, b| a.1.to_lowercase().cmp(&b.1.to_lowercase()));
 
     // Compute contrast data for each theme
     let contrast_data: Vec<ThemeContrastData> = compare_themes
@@ -153,8 +161,6 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
         compare_dots.set(new_dots);
     }
 
-    let n = compare_themes.len();
-    let grid_cols = format!("repeat({n}, 1fr)");
     let screenshots_on = *show_screenshots.read();
     let focused: Option<(usize, String)> = active_issue
         .read()
@@ -163,7 +169,6 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
 
     rsx! {
         div { class: "page-compare",
-            style: "--compare-cols: {grid_cols};",
             tabindex: "0",
             onkeydown: move |evt: KeyboardEvent| {
                 if evt.key() == Key::Escape {
@@ -187,18 +192,45 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                 }
             }
 
-            // Sticky column headers with theme names + readability + issue chips
+            // Sticky column headers with theme picker + readability + issue chips
             div { class: "compare-column-headers",
                 for (theme_idx, (theme, cdata)) in compare_themes.iter().zip(contrast_data.iter()).enumerate() {
+                    {
+                        let current_slug = theme_slug(&theme.name);
+                        let picker_opts = picker_themes.clone();
+                        let other_slug = if theme_idx == 0 {
+                            slug_list.get(1).unwrap_or(&"").to_string()
+                        } else {
+                            slug_list.first().unwrap_or(&"").to_string()
+                        };
+                        rsx! {
                     div { class: "compare-column-header",
                         div { class: "compare-column-title-row",
-                            Link {
-                                to: Route::ThemeDetail {
-                                    provider: provider.clone(),
-                                    slug: theme_slug(&theme.name),
+                            select {
+                                class: "compare-theme-picker",
+                                value: "{current_slug}",
+                                onchange: {
+                                    let provider = provider.clone();
+                                    move |evt: Event<FormData>| {
+                                        let new_slug = evt.value();
+                                        let new_slugs = if theme_idx == 0 {
+                                            format!("{},{}", new_slug, other_slug)
+                                        } else {
+                                            format!("{},{}", other_slug, new_slug)
+                                        };
+                                        nav.replace(Route::CompareThemes {
+                                            provider: provider.clone(),
+                                            slugs: new_slugs,
+                                        });
+                                    }
                                 },
-                                class: "compare-column-header-link",
-                                "{theme.name}"
+                                for (slug, name) in &picker_opts {
+                                    option {
+                                        value: "{slug}",
+                                        selected: *slug == current_slug,
+                                        "{name}"
+                                    }
+                                }
                             }
                             div { class: "compare-column-meta",
                                 ScoreRing { score: cdata.readability, size: 22.0 }
@@ -278,6 +310,8 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                             }
                         }
                     }
+                        }
+                    }
                 }
             }
 
@@ -339,7 +373,6 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                                                             term_renderer::TermOutputView {
                                                                 theme: theme.clone(),
                                                                 output: fixture.clone(),
-                                                                compact: n > 2,
                                                                 issue_details: fixture_issues,
                                                                 focused_rule: col_focused,
                                                             }
