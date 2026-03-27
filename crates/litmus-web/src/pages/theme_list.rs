@@ -166,8 +166,8 @@ fn ThemeCard(theme: litmus_model::Theme, available: bool) -> Element {
                 if available {
                     span { class: "theme-card-actions-right",
                         FavoritesCheckbox { slug: slug.clone(), name: theme.name.clone() }
-                        CompareButton { slug: slug.clone() }
-                        UseAsAppThemeButton { slug }
+                        UseAsAppThemeButton { slug: slug.clone() }
+                        CompareButton { slug }
                     }
                 }
             }

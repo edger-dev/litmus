@@ -157,7 +157,7 @@ pub fn ColorSwatch(label: String, color: String) -> Element {
     }
 }
 
-/// Checkbox to add/remove a theme from the favorites (used on cards).
+/// Star toggle to add/remove a theme from favorites (used on cards).
 #[component]
 pub fn FavoritesCheckbox(slug: String, name: String) -> Element {
     let mut favorites = use_context::<Signal<Favorites>>();
@@ -167,33 +167,23 @@ pub fn FavoritesCheckbox(slug: String, name: String) -> Element {
 
     let slug_for_click = slug.clone();
     rsx! {
-        label {
-            class: {
-                let mut cls = String::from("favorites-checkbox");
-                if is_current { cls.push_str(" favorites-checkbox-disabled"); }
-                else if is_selected { cls.push_str(" favorites-checkbox-active"); }
-                cls
-            },
+        button {
+            class: if is_selected || is_current { "favorites-star favorites-star-active" } else { "favorites-star" },
+            disabled: is_current,
+            title: if is_selected { "Remove from favorites" } else { "Add to favorites" },
             onclick: move |evt: Event<MouseData>| {
                 evt.stop_propagation();
-            },
-            input {
-                r#type: "checkbox",
-                checked: is_selected || is_current,
-                disabled: is_current,
-                onchange: move |_| {
-                    let mut sel = favorites.write();
-                    if let Some(pos) = sel.0.iter().position(|s| s == &slug_for_click) {
-                        sel.0.remove(pos);
-                    } else {
-                        if sel.0.len() >= MAX_FAVORITES {
-                            sel.0.remove(0);
-                        }
-                        sel.0.push(slug_for_click.clone());
+                let mut sel = favorites.write();
+                if let Some(pos) = sel.0.iter().position(|s| s == &slug_for_click) {
+                    sel.0.remove(pos);
+                } else {
+                    if sel.0.len() >= MAX_FAVORITES {
+                        sel.0.remove(0);
                     }
-                },
-            }
-            span { if is_current { "Current" } else { "\u{2606}" } }
+                    sel.0.push(slug_for_click.clone());
+                }
+            },
+            if is_selected || is_current { "\u{2605}" } else { "\u{2606}" }
         }
     }
 }

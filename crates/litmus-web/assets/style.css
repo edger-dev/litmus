@@ -1094,38 +1094,30 @@ button.sidebar-feel-lucky:hover {
   cursor: default;
 }
 
-/* Favorites checkbox (on cards) */
-.favorites-checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.7rem;
+/* Favorites star toggle (on cards) */
+.favorites-star {
+  background: none;
+  border: none;
+  font-size: 1rem;
   cursor: pointer;
   color: var(--app-fg);
-  opacity: 0.7;
+  opacity: 0.5;
+  padding: 0;
+  line-height: 1;
 }
 
-.favorites-checkbox:hover {
+.favorites-star:hover {
   opacity: 1;
 }
 
-.favorites-checkbox-active {
+.favorites-star-active {
   opacity: 1;
   color: var(--app-accent);
 }
 
-.favorites-checkbox-disabled {
-  opacity: 0.4;
+.favorites-star:disabled {
+  opacity: 0.3;
   cursor: default;
-}
-
-.favorites-checkbox-disabled input[type="checkbox"] {
-  cursor: default;
-}
-
-.favorites-checkbox input[type="checkbox"] {
-  accent-color: var(--app-accent);
-  cursor: pointer;
 }
 
 /* ==========================================================================
@@ -1134,18 +1126,19 @@ button.sidebar-feel-lucky:hover {
 .use-as-app-theme-btn {
   font-size: 0.7rem;
   padding: 0.15rem 0.45rem;
-  border: 1px solid var(--app-accent);
+  border: 1px solid var(--app-border);
   border-radius: 0.2rem;
-  background: var(--app-accent);
-  color: var(--app-bg);
+  background: transparent;
+  color: var(--app-fg);
   cursor: pointer;
   font-family: inherit;
   white-space: nowrap;
-  transition: filter 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .use-as-app-theme-btn:hover {
-  filter: brightness(1.1);
+  border-color: var(--app-accent);
+  background: var(--app-active);
 }
 
 .use-as-app-theme-btn-active {
@@ -1160,20 +1153,19 @@ button.sidebar-feel-lucky:hover {
 .compare-btn {
   font-size: 0.7rem;
   padding: 0.15rem 0.45rem;
-  border: 1px solid var(--app-border);
+  border: 1px solid var(--app-accent);
   border-radius: 0.2rem;
-  background: transparent;
-  color: var(--app-fg);
+  background: var(--app-accent);
+  color: var(--app-bg);
   cursor: pointer;
   font-family: inherit;
   white-space: nowrap;
   text-decoration: none;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: filter 0.15s ease, background 0.15s ease;
 }
 
 .compare-btn:hover {
-  border-color: var(--app-accent);
-  background: var(--app-active);
+  filter: brightness(1.1);
 }
 
 .compare-btn-disabled {

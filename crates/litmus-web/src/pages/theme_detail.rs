@@ -184,8 +184,8 @@ pub fn ThemeDetail(provider: String, slug: String) -> Element {
                             }
                         }
                         FavoritesCheckbox { slug: this_slug.clone(), name: theme.name.clone() }
-                        CompareButton { slug: this_slug.clone() }
                         UseAsAppThemeButton { slug: this_slug.clone() }
+                        CompareButton { slug: this_slug.clone() }
 
                         if issue_count > 0 {
                             div { class: "detail-issues-list",
