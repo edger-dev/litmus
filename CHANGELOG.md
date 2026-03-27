@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-03-27
+
+### Added
+- Compare page: push both themes into visit history when selected
+- Sidebar compare label shows "vs \<right>" or "\<left> vs \<right>" instead of "Side by Side"
+
 ## [0.4.0] - 2026-03-27
 
 ### Added

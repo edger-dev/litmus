@@ -117,8 +117,10 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
         .collect();
 
     // Record the non-app-theme slug as the last compared theme
+    // and push all compared themes into visit history
     {
         let mut last_compared = use_context::<Signal<LastComparedSlug>>();
+        let mut visit_history = use_context::<Signal<VisitHistory>>();
         let app_theme = use_context::<Signal<AppThemeSlug>>();
         let app_s = app_theme.read().0.clone();
         // Pick the slug that isn't the app theme (the "other" side)
@@ -129,6 +131,14 @@ pub fn CompareThemes(provider: String, slugs: String) -> Element {
                 last_compared.set(LastComparedSlug(Some(other_str)));
             }
         }
+        // Push all compared slugs into history (most recent first, dedup)
+        let mut h = visit_history.write();
+        for slug in slug_list.iter().rev() {
+            let s = slug.to_string();
+            h.0.retain(|x| x != &s);
+            h.0.insert(0, s);
+        }
+        h.0.truncate(MAX_HISTORY);
     }
 
     if compare_themes.is_empty() {

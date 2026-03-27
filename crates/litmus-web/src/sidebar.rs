@@ -200,9 +200,31 @@ pub fn Sidebar() -> Element {
                     "Browse Themes"
                 }
                 if is_compare_active {
-                    span {
-                        class: "sidebar-nav-link active",
-                        "Side by Side"
+                    {
+                        let label = {
+                            let left = compare_slugs.first().map(|s| {
+                                all_themes.iter().find(|t| theme_slug(&t.name) == *s)
+                                    .map(|t| t.name.clone()).unwrap_or_else(|| s.clone())
+                            });
+                            let right = compare_slugs.get(1).map(|s| {
+                                all_themes.iter().find(|t| theme_slug(&t.name) == *s)
+                                    .map(|t| t.name.clone()).unwrap_or_else(|| s.clone())
+                            });
+                            let left_is_current = compare_slugs.first()
+                                .map(|s| app_slug.as_deref() == Some(s.as_str()))
+                                .unwrap_or(false);
+                            match (left, right, left_is_current) {
+                                (_, Some(r), true) => format!("vs {r}"),
+                                (Some(l), Some(r), false) => format!("{l} vs {r}"),
+                                _ => "Side by Side".to_string(),
+                            }
+                        };
+                        rsx! {
+                            span {
+                                class: "sidebar-nav-link active",
+                                "{label}"
+                            }
+                        }
                     }
                 } else {
                     button {
