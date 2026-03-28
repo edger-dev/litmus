@@ -21,3 +21,5 @@
   - [Adding Fixtures](./contributing/adding-fixtures.md)
   - [Adding Providers](./contributing/adding-providers.md)
 - [Roadmap](./roadmap.md)
+- [Kanban](./beans/kanban.md)
+- [All Tasks](./beans/tasks.md)

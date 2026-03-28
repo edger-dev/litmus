@@ -6,3 +6,6 @@ src = "src"
 
 [build]
 build-dir = "dist"
+
+[preprocessor.beans]
+command = "mdbook-beans"
