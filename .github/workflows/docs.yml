@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - docs/**
+      - flake.lock
       - .beans/**
       - .beans.yml
       - .github/workflows/docs.yml
