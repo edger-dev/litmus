@@ -32,7 +32,7 @@ jobs:
           echo "$PWD" >> $GITHUB_PATH
 
       - name: Install mdbook-beans
-        run: cargo install mdbook-beans --git https://github.com/edger-dev/mdbook-beans --tag v0.1.0
+        run: cargo install mdbook-beans --git https://github.com/edger-dev/mdbook-beans --tag v0.2.0
 
       - name: Build docs
         run: mdbook build docs/

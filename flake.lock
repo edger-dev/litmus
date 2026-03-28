@@ -70,11 +70,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774703749,
-        "narHash": "sha256-8hoGFZAO2/Bev/oN+SzC3qmvMopB5KvLZdpVmz7Dmco=",
+        "lastModified": 1774707909,
+        "narHash": "sha256-DIbAF+dF/VzA94XdINV8K4PSelxZrNGfkkv/hiuqsKI=",
         "owner": "edger-dev",
         "repo": "mdbook-beans",
-        "rev": "a81b99a64ba6b397c145d0f47c0432519d3ac005",
+        "rev": "d595a9966b4cde3240ed5ed99cd65b44da95cdf0",
         "type": "github"
       },
       "original": {
