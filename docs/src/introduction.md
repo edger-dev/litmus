@@ -2,6 +2,8 @@
 
 > Litmus test your terminal themes — preview them across all your apps before you commit.
 
+<a href="https://litmus.edger.dev"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Crect width='32' height='32' rx='6' fill='%231a1b26'/%3E%3Crect x='6' y='5' width='5' height='22' rx='2.5' fill='%23ff6b6b'/%3E%3Crect x='13.5' y='5' width='5' height='22' rx='2.5' fill='%23ffd93d'/%3E%3Crect x='21' y='5' width='5' height='22' rx='2.5' fill='%236bcb77'/%3E%3C/svg%3E" alt="Litmus" height="20" style="vertical-align: middle;" /></a> Try it live at [**litmus.edger.dev**](https://litmus.edger.dev)
+
 ## The Problem
 
 Switching terminal themes is a frustrating loop:
