@@ -25,7 +25,7 @@ worktree:
     integrate: local
 agent:
     # Enable agent functionality in the web UI (true, false)
-    enabled: true
+    enabled: false
     # Default mode for agent sessions (act, plan)
     default_mode: act
 server:
