@@ -27,6 +27,7 @@ result-*
 # Dioxus web build output
 dist/
 .direnv/
+.envrc.local
 
 # mdbook output
 docs/dist/

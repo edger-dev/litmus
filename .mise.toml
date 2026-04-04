@@ -1,6 +1,6 @@
 [tasks._beans-serve]
 run = 'beans-serve --cors-origin "*"'
-description = "Start beans dev server"
+description = "⭐ Start beans dev server"
 
 [tasks.dev]
 run = "cd crates/litmus-web && dx serve --port 8883 --addr 0.0.0.0"
@@ -64,7 +64,7 @@ description = "Format all Rust code"
 
 [tasks._docs-serve]
 run = "cd docs && mdbook serve --port 8882 --hostname 0.0.0.0"
-description = "Start mdbook live-reload dev server"
+description = "⭐ Start mdbook live-reload dev server"
 
 [tasks.docs-build]
 run = "cd docs && mdbook build"
@@ -125,10 +125,14 @@ mise run screenshots-sync
 """
 description = "Build production manifest + sync all screenshots to R2"
 
-[tasks.update-mdbook-beans]
-run = "nix flake update mdbook-beans"
-description = "Update mdbook-beans to latest main"
+[tasks.jig-update]
+run = "nix flake update jig"
+description = "Update jig to latest from github"
 
-[tasks.bacon-claude-diagnostics]
+[tasks.jig-update-local]
+run = "nix flake update --override-input jig path:$HOME/edger/jig"
+description = "Override jig with local checkout (for development)"
+
+[tasks._bacon-claude-diagnostics]
 run = "bacon claude-diagnostics"
-description = "Run bacon background checker (exports diagnostics to .bacon-claude-diagnostics)"
+description = "⭐ Run bacon background checker (exports diagnostics to .bacon-claude-diagnostics)"
