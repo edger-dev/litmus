@@ -5,6 +5,7 @@ Terminal color theme previewer — Rust workspace with three crates:
 - `crates/litmus-cli` — TUI binary (ratatui + crossterm)
 - `crates/litmus-web` — web frontend (Dioxus, targets wasm32)
 
+<!-- jig:rust -->
 ## Rust Workflow
 
 bacon is running in the background and continuously writes compiler
@@ -36,8 +37,19 @@ resolve them as part of every change.
 
 If `.bacon-claude-diagnostics` is absent or clearly stale (e.g. the file doesn't
 exist after the first save), warn the user that bacon does not appear to
-be running and ask them to start it in a Zellij pane with `mise run bacon-claude-diagnostics`.
+be running and ask them to start it in a Zellij pane with `mise run _bacon-claude-diagnostics`.
 
+## Test-Driven Development
+
+Write tests **before** implementation. The sequence:
+
+1. Write tests that capture the expected behavior from the spec
+2. Run `cargo test --workspace` — confirm tests fail for the right reasons (not compilation errors from missing types, but assertion failures or missing functionality)
+3. Implement the minimum code to make tests pass
+4. Verify all tests pass (not just the new ones)
+<!-- /jig:rust -->
+
+<!-- jig:beans -->
 ## Planning
 
 Do NOT write design docs or plans to `docs/plans/`. All planning and design
@@ -48,20 +60,7 @@ Do NOT start implementation during the planning stage. The outcome of planning
 is beans with clear specs — enough detail for a clean design and implementation
 stage later.
 
-## Development Workflow
-
-Follow this workflow for all implementation work — whether interactive or autonomous.
-
-### Test-Driven Development
-
-Write tests **before** implementation. The sequence:
-
-1. Write tests that capture the expected behavior from the spec
-2. Run `cargo test --workspace` — confirm tests fail for the right reasons (not compilation errors from missing types, but assertion failures or missing functionality)
-3. Implement the minimum code to make tests pass
-4. Verify all tests pass (not just the new ones)
-
-### Commit Granularity
+## Commit Granularity
 
 Each task should produce 2–3 focused commits:
 
@@ -71,7 +70,7 @@ Each task should produce 2–3 focused commits:
 
 Each commit should include updated bean files (checked-off todo items, status changes).
 
-### Code Review
+## Code Review
 
 After the implementation commit, do a code review before considering the task done.
 Prefer spawning a subagent for a fresh perspective — it should review the last 1–2
@@ -81,12 +80,13 @@ imports, etc.). If a subagent isn't available, self-review by re-reading the ful
 
 Fix any real issues found, then commit the fixes separately.
 
-### Acceptance Criteria
+## Acceptance Criteria
 
 Every task must pass before being marked complete:
 
-- All `cargo test --workspace` tests pass
-- Zero compiler warnings in `.bacon-claude-diagnostics`
+- All tests pass
+- Zero compiler warnings
 - Bean todo items all checked off
 - Bean marked as `completed` with a `## Summary of Changes` section
 - Changes committed with descriptive messages
+<!-- /jig:beans -->
