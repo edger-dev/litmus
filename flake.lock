@@ -64,14 +64,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1775281003,
-        "narHash": "sha256-/j8Ofvk1ImQRqvuXMb89Oh2umcLoFLLmHdeI/q8niis=",
-        "path": "/home/yj/agents/edger/jig",
-        "type": "path"
+        "lastModified": 1775281964,
+        "narHash": "sha256-EVEaralPSyWVr20oWWTPpwSZHrvY10+xXiPIKplK5mE=",
+        "owner": "edger-dev",
+        "repo": "jig",
+        "rev": "8599d6b4429e1758e49724c64c2812d6c30be87a",
+        "type": "github"
       },
       "original": {
-        "path": "/home/yj/agents/edger/jig",
-        "type": "path"
+        "owner": "edger-dev",
+        "repo": "jig",
+        "type": "github"
       }
     },
     "mdbook-beans": {
